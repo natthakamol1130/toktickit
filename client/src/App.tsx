@@ -50,13 +50,17 @@ export default function App() {
           </p>
 
           <p className="fw-semibold mb-2">Supported Request Categories:</p>
-          <ul className="list-unstyled ps-3">
-            {categories.map((category) => (
-              <li key={category.id} className="mb-1">
-                • {category.name}
-              </li>
-            ))}
-          </ul>
+          {categories.length > 0 ? (
+            <ul className="list-unstyled ps-3">
+              {categories.map((category) => (
+                <li key={category.id} className="mb-1">
+                  • {category.name}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-muted ps-3 mb-0">No categories found.</p>
+          )}
         </div>
       )}
 

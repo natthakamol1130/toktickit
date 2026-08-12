@@ -37,6 +37,21 @@ describe("App", () => {
     expect(screen.getByText(/Network/i)).toBeInTheDocument();
   });
 
+  it("handles empty category list gracefully", async () => {
+    vi.spyOn(api, "checkSystem").mockResolvedValue({
+      online: true,
+      categories: [],
+    });
+
+    render(<App />);
+    const user = userEvent.setup();
+    const button = screen.getByRole("button", { name: /Check System/i });
+    await user.click(button);
+
+    expect(await screen.findByText(/Online/i)).toBeInTheDocument();
+    expect(screen.getByText(/No categories found/i)).toBeInTheDocument();
+  });
+
   it("shows an Offline error message when the API is unavailable", async () => {
     vi.spyOn(api, "checkSystem").mockRejectedValue(
       new Error("Unable to connect to TokTickIT API")
