@@ -1,19 +1,28 @@
 import { useState } from "react";
 import { checkSystem, Category } from "./api.js";
 
-// UI states you must handle for Issue 4: idle, loading, success, error.
 type UiState = "idle" | "loading" | "success" | "error";
 
 export default function App() {
   const [state, setState] = useState<UiState>("idle");
   const [categories, setCategories] = useState<Category[]>([]);
-  void categories;
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   async function handleCheck() {
-    // TODO(Issue 4): set loading, call checkSystem(), then either
-    //   - success: store categories and show Online + the list, or
-    //   - error: show Offline + a useful message.
     setState("loading");
+    setErrorMessage("");
+    try {
+      const result = await checkSystem();
+      setCategories(result.categories);
+      setState("success");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setErrorMessage(err.message);
+      } else {
+        setErrorMessage("Unable to connect to TokTickIT API");
+      }
+      setState("error");
+    }
   }
 
   return (
@@ -22,11 +31,43 @@ export default function App() {
         TokTickIT <span className="text-success">IT Service Desk</span>
       </h1>
 
-      <button className="btn btn-success" onClick={handleCheck} disabled={state === "loading"}>
+      <button
+        className="btn btn-success mb-4"
+        onClick={handleCheck}
+        disabled={state === "loading"}
+      >
         {state === "loading" ? "Loading…" : "Check System"}
       </button>
 
-      {/* TODO(Issue 4): render loading / success (Online + categories) / error (Offline) states. */}
+      {state === "loading" && (
+        <div className="text-muted mt-3">Loading…</div>
+      )}
+
+      {state === "success" && (
+        <div className="mt-3">
+          <p className="mb-3">
+            <strong>System Status:</strong> <span className="text-success fw-bold">Online</span>
+          </p>
+
+          <p className="fw-semibold mb-2">Supported Request Categories:</p>
+          <ul className="list-unstyled ps-3">
+            {categories.map((category) => (
+              <li key={category.id} className="mb-1">
+                • {category.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {state === "error" && (
+        <div className="mt-3">
+          <p className="mb-2">
+            <strong>System Status:</strong> <span className="text-danger fw-bold">Offline</span>
+          </p>
+          <p className="text-muted mb-0">{errorMessage}</p>
+        </div>
+      )}
     </div>
   );
 }
