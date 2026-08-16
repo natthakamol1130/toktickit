@@ -215,7 +215,17 @@ def create_report_docx():
     # 4. Directory Structure
     p_d = doc.add_paragraph()
     p_d.add_run("4. Repository Directory Structure Evidence").font.bold = True
-    add_placeholder_box(doc, "[ แนบภาพ Screenshot: แถบ Explorer ของ VS Code/IDE แสดงโครงสร้าง Directory ที่ครบถ้วน ]")
+    
+    img_dir = r"c:\Users\Windows\OneDrive\kmutt\Lab1_Starter_Scaffold\toktickit\docs\lab-01\images\directory_structure.png"
+    if os.path.exists(img_dir):
+        p_img_d = doc.add_paragraph()
+        p_img_d.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_img_d.paragraph_format.space_before = Pt(6)
+        p_img_d.paragraph_format.space_after = Pt(8)
+        run_img_d = p_img_d.add_run()
+        run_img_d.add_picture(img_dir, width=Inches(3.8))
+    else:
+        add_placeholder_box(doc, "[ แนบภาพ Screenshot: แถบ Explorer ของ VS Code/IDE แสดงโครงสร้าง Directory ที่ครบถ้วน ]")
 
     # 5. .gitignore
     p_gi = doc.add_paragraph()

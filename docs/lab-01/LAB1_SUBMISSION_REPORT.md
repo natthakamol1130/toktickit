@@ -72,7 +72,7 @@
 
 ### 4. Repository Directory Structure Evidence
 
-> **[🖼️ แนบภาพ Screenshot: แถบ Explorer ของ VS Code/IDE แสดงโครงสร้าง Directory ที่ครบถ้วนตามข้อกำหนด]**
+![Repository Directory Structure](images/directory_structure.png)
 
 **File Tree Checklist:**
 - `toktickit/`
