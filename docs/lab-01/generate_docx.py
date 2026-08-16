@@ -441,11 +441,16 @@ def create_report_docx():
     p_a1_desc.add_run("หน้าจอเริ่มต้นเมื่อเปิด Web Application มีข้อความหัวข้อ TokTickIT IT Service Desk และปุ่ม [Check System]")
     add_placeholder_box(doc, "[ แนบภาพ Screenshot: หน้าจอเริ่มต้นแสดงหัวข้อ TokTickIT และปุ่ม Check System ]")
 
-    p_a2 = doc.add_paragraph()
-    p_a2.add_run("2. Success Case (Backend Online & Database Connected)").font.bold = True
-    p_a2_desc = doc.add_paragraph()
-    p_a2_desc.add_run("เมื่อกดปุ่ม [Check System] โดยเปิด Backend Server และ Database ปกติ ระบบแสดงผลสถานะ System Status: Online พร้อมรายการ 4 หมวดหมู่ (1. Account and Access, 2. Hardware, 3. Software, 4. Network)")
-    add_placeholder_box(doc, "[ แนบภาพ Screenshot: หน้าจอแสดง System Status: Online พร้อมรายการ 4 หมวดหมู่ ]")
+    img_success = r"c:\Users\Windows\OneDrive\kmutt\Lab1_Starter_Scaffold\toktickit\docs\lab-01\images\app_demo_success.png"
+    if os.path.exists(img_success):
+        p_img_s = doc.add_paragraph()
+        p_img_s.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_img_s.paragraph_format.space_before = Pt(6)
+        p_img_s.paragraph_format.space_after = Pt(8)
+        run_img_s = p_img_s.add_run()
+        run_img_s.add_picture(img_success, width=Inches(4.5))
+    else:
+        add_placeholder_box(doc, "[ แนบภาพ Screenshot: หน้าจอแสดง System Status: Online พร้อมรายการ 4 หมวดหมู่ ]")
 
     p_a3 = doc.add_paragraph()
     p_a3.add_run("3. Failure Case (Backend Offline / API Unavailable)").font.bold = True

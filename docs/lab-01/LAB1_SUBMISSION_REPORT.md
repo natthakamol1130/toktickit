@@ -318,7 +318,7 @@ All test files live under `server/tests/lab-01/` and `client/tests/lab-01/`.
 ### 2. Success Case (Backend Online & DB Connected)
 เมื่อกดปุ่ม `[Check System]` โดยที่ระบบ Backend และ Database ทำงานปกติ หน้าจอจะแสดงสถานะ `System Status: Online` และรายชื่อ 4 หมวดหมู่คำขอที่ดึงมาจากฐานข้อมูล
 
-> **[🖼️ แนบภาพ Screenshot: หน้าจอแสดง System Status: Online พร้อมรายการ 4 หมวดหมู่ (Account and Access, Hardware, Software, Network)]**
+![Success Case Screen](images/app_demo_success.png)
 
 ---
 
