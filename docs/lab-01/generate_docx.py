@@ -201,9 +201,16 @@ def create_report_docx():
     r_code = p_code.add_run(code_text)
     r_code.font.name = "Consolas"
     r_code.font.size = Pt(8.5)
-    r_code.font.color.rgb = RGBColor(30, 41, 59)
-    
-    add_placeholder_box(doc, "[ แนบภาพ Screenshot: Terminal แสดงคำสั่ง git log --oneline --graph -n 25 บน branch main ]")
+    img_git_graph = r"c:\Users\Windows\OneDrive\kmutt\Lab1_Starter_Scaffold\toktickit\docs\lab-01\images\git_log_graph.png"
+    if os.path.exists(img_git_graph):
+        p_img_g = doc.add_paragraph()
+        p_img_g.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_img_g.paragraph_format.space_before = Pt(6)
+        p_img_g.paragraph_format.space_after = Pt(8)
+        run_img_g = p_img_g.add_run()
+        run_img_g.add_picture(img_git_graph, width=Inches(6.5))
+    else:
+        add_placeholder_box(doc, "[ แนบภาพ Screenshot: Terminal แสดงคำสั่ง git log --oneline --graph -n 25 บน branch main ]")
 
     # 4. Directory Structure
     p_d = doc.add_paragraph()

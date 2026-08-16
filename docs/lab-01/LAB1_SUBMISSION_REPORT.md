@@ -38,6 +38,8 @@
 
 ### 3. Git Workflow Evidence (`git log --oneline --graph --all` on `main`)
 
+![Git Workflow Evidence](images/git_log_graph.png)
+
 ```text
 *   c03027e Merge pull request #9 from natthakamol1130/lab1-staging
 |\  
