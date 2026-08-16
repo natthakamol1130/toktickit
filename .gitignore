@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# env & secrets
+.env
+*.env
+.env.local
+.env.*.local
+!.env.example
+
+# build output
+dist/
+build/
+
+# prisma
+server/prisma/*.db
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# logs & OS
+*.log
+.DS_Store
+Thumbs.db
