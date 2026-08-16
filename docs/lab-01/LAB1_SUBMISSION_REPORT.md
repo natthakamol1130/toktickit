@@ -1,9 +1,9 @@
 # CPE 334 — Lab 1 Submission Report
 
-**Student Name:** Natthakamol  
-**Student ID:** 67090500411  
+**Student Name:** Natthakamol Mornparn
+**Student ID:** 67070505215
 **GitHub Username:** @natthakamol1130  
-**Peer Reviewer:** Chanya (67090500406, @chanya06)  
+**Peer Reviewer:** Chanya (6707051058, @chanya06)  
 **Date:** August 16, 2026  
 
 ---
@@ -32,7 +32,7 @@
 
 ### 2. GitHub Project Board Evidence (Kanban)
 
-> **[🖼️ แนบภาพ Screenshot: GitHub Project Kanban Board ที่ทุก Issue #1, #2, #3, #4 อยู่ในสถานะ 'Done']**
+![GitHub Project Kanban Board](images/kanban_board.png)
 
 ---
 

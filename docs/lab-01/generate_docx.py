@@ -93,7 +93,7 @@ def create_report_docx():
     meta_table.alignment = WD_TABLE_ALIGNMENT.CENTER
     meta_table.autofit = False
     meta_data = [
-        [("Student Name:", " Natthakamol"), ("Student ID:", " 67090500411")],
+        [("Student Name:", " Natthakamol Mornparn"), ("Student ID:", " 67070505215")],
         [("GitHub Account:", " @natthakamol1130"), ("Peer Reviewer:", " Chanya (6707051058, @chanya06)")]
     ]
     for row_idx, row in enumerate(meta_table.rows):
@@ -154,7 +154,17 @@ def create_report_docx():
     doc.add_paragraph()
     p_k = doc.add_paragraph()
     p_k.add_run("2. GitHub Project Board Evidence (Kanban)").font.bold = True
-    add_placeholder_box(doc, "[ แนบภาพ Screenshot: GitHub Project Kanban Board ที่ทุก Issue #1, #2, #3, #4 อยู่ในสถานะ 'Done' ]")
+    
+    img_kanban = r"c:\Users\Windows\OneDrive\kmutt\Lab1_Starter_Scaffold\toktickit\docs\lab-01\images\kanban_board.png"
+    if os.path.exists(img_kanban):
+        p_img = doc.add_paragraph()
+        p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_img.paragraph_format.space_before = Pt(6)
+        p_img.paragraph_format.space_after = Pt(8)
+        run_img = p_img.add_run()
+        run_img.add_picture(img_kanban, width=Inches(6.5))
+    else:
+        add_placeholder_box(doc, "[ แนบภาพ Screenshot: GitHub Project Kanban Board ที่ทุก Issue #1, #2, #3, #4 อยู่ในสถานะ 'Done' ]")
 
     # 3. Git Log Graph
     p_g = doc.add_paragraph()
@@ -219,6 +229,10 @@ def create_report_docx():
     # 6. Peer review record
     p_pr = doc.add_paragraph()
     p_pr.add_run("6. Rendered docs/lab-01/reviewer.md (Peer Review Record)").font.bold = True
+    
+    p_pr_auth = doc.add_paragraph()
+    p_pr_auth.add_run("Author: Natthakamol Mornparn — 67070505215 — GitHub: @natthakamol1130\n").font.bold = True
+    p_pr_auth.add_run("Peer reviewer: Chanya — 6707051058 — GitHub: @chanya06").font.bold = True
     
     # Table of PRs
     t_pr = doc.add_table(rows=5, cols=3)
@@ -423,8 +437,14 @@ def create_report_docx():
     add_placeholder_box(doc, "[ แนบภาพ Screenshot: หน้าจอแสดง System Status: Offline พร้อมข้อความ Unable to connect to TokTickIT API ]")
 
     output_path = r"c:\Users\Windows\OneDrive\kmutt\Lab1_Starter_Scaffold\toktickit\docs\lab-01\LAB1_SUBMISSION_REPORT.docx"
-    doc.save(output_path)
-    print(f"Successfully generated docx at: {output_path}")
+    output_ready = r"c:\Users\Windows\OneDrive\kmutt\Lab1_Starter_Scaffold\toktickit\docs\lab-01\LAB1_SUBMISSION_REPORT_READY.docx"
+    doc.save(output_ready)
+    print(f"Successfully generated docx at: {output_ready}")
+    try:
+        doc.save(output_path)
+        print(f"Successfully generated docx at: {output_path}")
+    except Exception as e:
+        print(f"Note: {output_path} is currently open in Word. Saved to {output_ready} instead.")
 
 if __name__ == "__main__":
     create_report_docx()

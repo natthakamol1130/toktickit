@@ -1,7 +1,7 @@
 # Lab 1 — Peer Review Record
 
-**Author:** Natthakamol — 67090500411 — GitHub: @natthakamol1130
-**Peer reviewer:** Chanya — 67090500406 — GitHub: @chanya06
+**Author:** Natthakamol Mornparn — 67070505215 — GitHub: @natthakamol1130
+**Peer reviewer:** Chanya — 6707051058 — GitHub: @chanya06
 
 ## Pull Requests I authored (reviewed by my partner)
 | PR | Branch | Reviewer verdict |
