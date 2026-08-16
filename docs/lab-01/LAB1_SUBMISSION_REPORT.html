@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPE 334 - Lab 1 Submission Report</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #0d5f58;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --code-bg: #0f172a;
+      --code-text: #f1f5f9;
+      --box-accent: #f0fdf4;
+      --box-border: #86efac;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2.5rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
+      background: #f1f5f9;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .meta-item strong {
+      color: var(--primary-dark);
+    }
+
+    h2.section-title {
+      font-size: 1.45rem;
+      color: #0f172a;
+      background: #e6fffa;
+      border-left: 5px solid var(--primary);
+      padding: 0.5rem 1rem;
+      margin: 2.5rem 0 1.25rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      color: #334155;
+      margin: 1.5rem 0 0.75rem 0;
+    }
+
+    p {
+      margin-bottom: 0.75rem;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f8fafc;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #fbfcfe;
+    }
+
+    pre {
+      background-color: var(--code-bg);
+      color: var(--code-text);
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 0.85rem;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+      line-height: 1.45;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      background-color: #f1f5f9;
+      color: #b91c1c;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+
+    pre code {
+      background-color: transparent;
+      color: inherit;
+      padding: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--primary);
+      padding: 0.75rem 1rem;
+      background-color: #f0fdfa;
+      margin: 1rem 0;
+      font-style: italic;
+      color: #134e4a;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .screenshot-box {
+      border: 2px dashed #94a3b8;
+      background-color: #f8fafc;
+      border-radius: 8px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      margin: 1.25rem 0;
+      color: #64748b;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .screenshot-box:hover {
+      border-color: var(--primary);
+      background-color: #f0fdfa;
+      color: var(--primary);
+    }
+
+    .screenshot-box span {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-pass {
+      display: inline-block;
+      background-color: #dcfce7;
+      color: #15803d;
+      font-weight: bold;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      h2.section-title {
+        page-break-before: auto;
+        background: none;
+        border-left: 4px solid #000;
+        color: #000;
+      }
+      .screenshot-box {
+        border: 1px solid #ccc;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>CPE 334 — Lab 1 Submission Report</h1>
+    <p><strong>Topic:</strong> TokTickIT Full-Stack Hello World Starter & Git Engineering Workflow</p>
+    
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Student:</strong> Natthakamol</div>
+      <div class="meta-item"><strong>Student ID:</strong> 67090500411</div>
+      <div class="meta-item"><strong>GitHub:</strong> @natthakamol1130</div>
+      <div class="meta-item"><strong>Peer Reviewer:</strong> Chanya (67090500406)</div>
+    </div>
+  </div>
+
+  <!-- PART 1 -->
+  <h2 class="section-title">Answer Part 1: Git Use with Engineering Workflow</h2>
+
+  <h3>1. Repository & Project URLs List</h3>
+  <ul>
+    <li><strong>GitHub Repository:</strong> <a href="https://github.com/natthakamol1130/toktickit" target="_blank">https://github.com/natthakamol1130/toktickit</a></li>
+    <li><strong>GitHub Project (Kanban):</strong> <a href="https://github.com/users/natthakamol1130/projects" target="_blank">https://github.com/users/natthakamol1130/projects</a></li>
+    <li><strong>GitHub Issues:</strong>
+      <ul>
+        <li>Issue #1: <a href="https://github.com/natthakamol1130/toktickit/issues/1" target="_blank">https://github.com/natthakamol1130/toktickit/issues/1</a></li>
+        <li>Issue #2: <a href="https://github.com/natthakamol1130/toktickit/issues/2" target="_blank">https://github.com/natthakamol1130/toktickit/issues/2</a></li>
+        <li>Issue #3: <a href="https://github.com/natthakamol1130/toktickit/issues/3" target="_blank">https://github.com/natthakamol1130/toktickit/issues/3</a></li>
+        <li>Issue #4: <a href="https://github.com/natthakamol1130/toktickit/issues/4" target="_blank">https://github.com/natthakamol1130/toktickit/issues/4</a></li>
+      </ul>
+    </li>
+    <li><strong>Pull Requests (PRs):</strong>
+      <ul>
+        <li>PR #5 (Issue 1 → lab1-staging): <a href="https://github.com/natthakamol1130/toktickit/pull/5" target="_blank">https://github.com/natthakamol1130/toktickit/pull/5</a></li>
+        <li>PR #6 (Issue 2 → lab1-staging): <a href="https://github.com/natthakamol1130/toktickit/pull/6" target="_blank">https://github.com/natthakamol1130/toktickit/pull/6</a></li>
+        <li>PR #7 (Issue 3 → lab1-staging): <a href="https://github.com/natthakamol1130/toktickit/pull/7" target="_blank">https://github.com/natthakamol1130/toktickit/pull/7</a></li>
+        <li>PR #8 (Issue 4 → lab1-staging): <a href="https://github.com/natthakamol1130/toktickit/pull/8" target="_blank">https://github.com/natthakamol1130/toktickit/pull/8</a></li>
+        <li>PR #9 (Release lab1-staging → main): <a href="https://github.com/natthakamol1130/toktickit/pull/9" target="_blank">https://github.com/natthakamol1130/toktickit/pull/9</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>2. GitHub Project Board Evidence (Kanban)</h3>
+  <div class="screenshot-box">
+    <span>🖼️</span>
+    [แนบภาพ Screenshot: GitHub Project Kanban Board ที่ทุก Issue #1, #2, #3, #4 อยู่ในสถานะ 'Done']
+  </div>
+
+  <h3>3. Git Workflow Evidence (`git log --oneline --graph --all` on `main`)</h3>
+  <pre><code>*   c03027e Merge pull request #9 from natthakamol1130/lab1-staging
+|\  
+| *   ae40b84 Merge pull request #8 from natthakamol1130/feature/4-category-list
+| |\  
+| | * 50e7cec docs: update peer review record in reviewer.md (Issue #4)
+| | * 6f90e97 feat: handle empty categories edge case gracefully in UI and tests
+| | * b7e2d9b docs: document AI prompts and reflection for Lab 1 (Issue #4)
+| | * 0f262cb feat: display IT request category list and system status UI (Issue #4)
+| |/  
+| *   4bc5182 Merge pull request #7 from natthakamol1130/feature/3-category-seed
+| |\  
+| | * 79f9d51 feat: create Category model and seed 4 initial categories (Issue #3)
+| |/  
+| *   69dbaf0 Merge pull request #6 from natthakamol1130/feature/2-health-check
+| |\  
+| | * eb256e6 feat: implement GET /api/health endpoint (Issue #2)
+| |/  
+| * f3bbc12 Merge pull request #5 from natthakamol1130/feature/1-project-foundation
+|/| 
+| * 2dc4643 chore: update .gitignore with IDE and env rules from peer review
+| * 440e812 feat: set up TokTickIT project foundation (Issue #1)
+|/  
+* 101f877 Initial commit</code></pre>
+
+  <div class="screenshot-box">
+    <span>🖼️</span>
+    [แนบภาพ Screenshot: Terminal แสดงคำสั่ง git log --oneline --graph -n 25 บน branch main]
+  </div>
+
+  <h3>4. Repository Directory Structure Evidence</h3>
+  <div class="screenshot-box">
+    <span>🖼️</span>
+    [แนบภาพ Screenshot: แถบ Explorer ของ VS Code/IDE แสดงโครงสร้าง Directory ที่ครบถ้วน]
+  </div>
+
+  <h3>5. Rendered `.gitignore` Content</h3>
+  <pre><code># dependencies
+node_modules/
+
+# env & secrets
+.env
+*.env
+.env.local
+.env.*.local
+!.env.example
+
+# build output
+dist/
+build/
+
+# prisma
+server/prisma/*.db
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# logs & OS
+*.log
+.DS_Store
+Thumbs.db</code></pre>
+
+  <h3>6. Rendered `docs/lab-01/reviewer.md` (Peer Review Record)</h3>
+  <p><strong>Author:</strong> Natthakamol — 67090500411 — GitHub: @natthakamol1130<br>
+  <strong>Peer reviewer:</strong> Chanya — 67090500406 — GitHub: @chanya06</p>
+
+  <h4>Pull Requests I authored (reviewed by my partner)</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>PR</th>
+        <th>Branch</th>
+        <th>Reviewer verdict</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://github.com/natthakamol1130/toktickit/pull/5">#5</a></td>
+        <td><code>feature/1-project-foundation</code></td>
+        <td><span class="badge-pass">Approved</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/natthakamol1130/toktickit/pull/6">#6</a></td>
+        <td><code>feature/2-health-check</code></td>
+        <td><span class="badge-pass">Approved</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/natthakamol1130/toktickit/pull/7">#7</a></td>
+        <td><code>feature/3-category-seed</code></td>
+        <td><span class="badge-pass">Approved</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/natthakamol1130/toktickit/pull/8">#8</a></td>
+        <td><code>feature/4-category-list</code></td>
+        <td><span class="badge-pass">Approved</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Reviewer comment I received:</strong></p>
+  <blockquote>"โดยรวมทำได้ค่อนข้างครบตาม requirement ทั้ง API, การดึง category มาแสดงใน UI และมีการรองรับ Loading กับ Error state ด้วย แนะนำเพิ่มเติมว่าอาจลองทดสอบกรณี API ตอบข้อมูลว่าง หรือไม่มี category เพื่อดูว่า UI จะแสดงผลอย่างไร จะช่วยให้รองรับ edge case ได้ครบขึ้น"</blockquote>
+
+  <p><strong>How I responded:</strong></p>
+  <blockquote>"ขอบคุณสำหรับคำแนะนำ ได้อัปเดตไฟล์ client/src/App.tsx ให้รองรับกรณี categories เป็นลิสต์ว่าง โดยแสดงผลข้อความ 'No categories found.' พร้อมเพิ่ม Unit Test ตรวจสอบ Edge case นี้ใน App.test.tsx และ push ขึ้น GitHub เรียบร้อยแล้ว"</blockquote>
+
+  <h4>Pull Requests I reviewed for my partner</h4>
+  <p><strong>My comment:</strong></p>
+  <blockquote>"ตรวจสอบโค้ดและเอกสารใน PR (Issue 4) ทั้งหมดแล้วครับ พัฒนาได้สมบูรณ์แบบมาก Endpoint GET /api/categories ดึงข้อมูลและเรียงตาม id ถูกต้อง, หน้าจอ React UI และ Unit Tests ครอบคลุมทั้ง Online, Offline และ Loading, บันทึกผลเทสต์ใน tests.md และ Prompts ใน ai_use.md ได้ละเอียดครบถ้วน Approved!"</blockquote>
+
+  <p><strong>Partner's response:</strong></p>
+  <blockquote>"ขอบคุณสำหรับ Review และคำแนะนำครับ ได้ตรวจสอบผลการรันเทสต์และเตรียม Merge เข้า lab1-staging เรียบร้อยครับ"</blockquote>
+
+
+  <!-- PART 2 -->
+  <h2 class="section-title">Answer Part 2: Tests</h2>
+
+  <h3>1. Test Plan Table (`docs/lab-01/tests.md`)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Test ID</th>
+        <th>File Path</th>
+        <th>Tool</th>
+        <th>Test Description</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>API-01</strong></td>
+        <td><code>server/tests/lab-01/health.test.ts</code></td>
+        <td>Supertest</td>
+        <td>Health endpoint returns 200 and expected JSON status=ok</td>
+        <td><span class="badge-pass">Pass</span></td>
+      </tr>
+      <tr>
+        <td><strong>API-02</strong></td>
+        <td><code>server/tests/lab-01/categories.test.ts</code></td>
+        <td>Supertest</td>
+        <td>Categories endpoint returns the four seeded categories in predictable ID order</td>
+        <td><span class="badge-pass">Pass</span></td>
+      </tr>
+      <tr>
+        <td><strong>UI-01</strong></td>
+        <td><code>client/tests/lab-01/App.test.tsx</code></td>
+        <td>Vitest</td>
+        <td>TokTickIT heading renders properly</td>
+        <td><span class="badge-pass">Pass</span></td>
+      </tr>
+      <tr>
+        <td><strong>UI-02</strong></td>
+        <td><code>client/tests/lab-01/App.test.tsx</code></td>
+        <td>Vitest</td>
+        <td>Success state shows Online + 4 request categories list</td>
+        <td><span class="badge-pass">Pass</span></td>
+      </tr>
+      <tr>
+        <td><strong>UI-03</strong></td>
+        <td><code>client/tests/lab-01/App.test.tsx</code></td>
+        <td>Vitest</td>
+        <td>Empty categories shows 'No categories found.' fallback</td>
+        <td><span class="badge-pass">Pass</span></td>
+      </tr>
+      <tr>
+        <td><strong>UI-04</strong></td>
+        <td><code>client/tests/lab-01/App.test.tsx</code></td>
+        <td>Vitest</td>
+        <td>API failure displays Offline status + useful error message</td>
+        <td><span class="badge-pass">Pass</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2. Terminal Test Evidence on `main` Branch</h3>
+
+  <h4>Server Tests Output (Supertest)</h4>
+  <pre><code>> toktickit-server@1.0.0 test
+> vitest run
+
+ RUN  v2.1.9 C:/Users/Windows/OneDrive/kmutt/Lab1_Starter_Scaffold/toktickit/server
+
+ ✓ tests/lab-01/health.test.ts (1 test) 20ms
+ ✓ tests/lab-01/categories.test.ts (1 test) 194ms
+
+ Test Files  2 passed (2)
+      Tests  2 passed (2)
+   Start at  21:33:09
+   Duration  10.68s</code></pre>
+
+  <h4>Client Tests Output (Vitest)</h4>
+  <pre><code>> toktickit-client@1.0.0 test
+> vitest run
+
+ RUN  v2.1.9 C:/Users/Windows/OneDrive/kmutt/Lab1_Starter_Scaffold/toktickit/client
+
+ ✓ tests/lab-01/App.test.tsx (4 tests) 249ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  21:34:04
+   Duration  35.21s</code></pre>
+
+  <div class="screenshot-box">
+    <span>🖼️</span>
+    [แนบภาพ Screenshot: Terminal แสดงผลการรัน npm test ทั้งฝั่ง Server และ Client ผ่าน 100% บน branch main]
+  </div>
+
+
+  <!-- PART 3 -->
+  <h2 class="section-title">Answer Part 3: AI Use and Reflection</h2>
+
+  <p><strong>LLM/agent used:</strong> Antigravity (Gemini 3.6 Flash / Medium Thinking)</p>
+
+  <h3>Selected Key Prompts</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Prompt Name</th>
+        <th>Actual Prompt Text (Summarised)</th>
+        <th>What I did with the result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Plan Lab 1 Implementation</strong></td>
+        <td>Read the enclosed TokTickIT Lab 1 requirements. Summarize the four GitHub Issues, their dependencies, required outputs, and required automated tests. Propose an implementation order, but do not write code yet.</td>
+        <td>Reviewed the proposed implementation steps and approved the execution plan.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Set Up Full-Stack Project</strong></td>
+        <td>Setup the TokTickIT project tech stack as given in Lab 1 using React, TypeScript, Vite, and Bootstrap for the frontend, and Node.js, Express, and TypeScript for the backend. Configure PostgreSQL and Prisma. Use the required folder structure.</td>
+        <td>Verified dependencies, initialized git repository and branch structure, and created PR #5 to lab1-staging.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Implement Health Check</strong></td>
+        <td>Add GET /api/health to the existing Express backend returning HTTP 200 with <code>{ status: "ok", service: "TokTickIT API" }</code> and verify with Supertest.</td>
+        <td>Verified test passed 100%, committed changes to <code>feature/2-health-check</code>, and created PR #6.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Implement Category DB Feature</strong></td>
+        <td>Define Category model in Prisma schema, run migration, and implement idempotent database seeding using upsert for the 4 required categories.</td>
+        <td>Ran Prisma migrations against PostgreSQL, verified seed idempotency, and opened PR #7.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>Implement Category List API</strong></td>
+        <td>Implement GET /api/categories endpoint in Express backend returning categories in predictable ID order from PostgreSQL via Prisma.</td>
+        <td>Verified endpoint with Supertest in <code>categories.test.ts</code>.</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Build and Test Check System UI</strong></td>
+        <td>Create a Bootstrap-based page with [Check System] button. When clicked, show a loading state, call backend APIs, and render status badge and category list.</td>
+        <td>Implemented <code>App.tsx</code> and <code>api.ts</code>, connected frontend with backend API.</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>Write Client Unit Tests</strong></td>
+        <td>Write Vitest test suite for App component covering heading, success state, offline error state, and empty categories edge case.</td>
+        <td>Ran Vitest in client, confirming all 4 test cases passed.</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Review Peer PRs and Finalize Lab 1</strong></td>
+        <td>Review peer partners' pull requests for Issues 1, 2, 3, and 4 with constructive feedback and document peer review records.</td>
+        <td>Provided review comments, suggested improvements (.gitignore, seed idempotency), and documented review records in <code>reviewer.md</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Reflection on Experience Improving Prompts</h3>
+  <blockquote>"Providing structured prompt contexts with explicit acceptance criteria, expected JSON response formats, and clear Git branch instructions allowed the agent to implement endpoints and test assertions accurately in one shot. When handling Windows PowerShell syntax nuances and database connection configurations, detailing the local environment parameters ensured that database migrations, seed scripts, and test suites executed reliably without errors."</blockquote>
+
+
+  <!-- PART 4 -->
+  <h2 class="section-title">Answer Part 4: App Demo</h2>
+
+  <h3>1. Initial State</h3>
+  <p>หน้าจอเริ่มต้นเมื่อเปิด Web Application มีข้อความหัวข้อ <code>TokTickIT IT Service Desk</code> และปุ่ม <code>[Check System]</code></p>
+  <div class="screenshot-box">
+    <span>🖼️</span>
+    [แนบภาพ Screenshot: หน้าจอเริ่มต้นแสดงหัวข้อ TokTickIT และปุ่ม Check System]
+  </div>
+
+  <h3>2. Success Case (Backend Online & Database Connected)</h3>
+  <p>เมื่อกดปุ่ม <code>[Check System]</code> ระบบแสดงสถานะ <code>System Status: Online</code> พร้อมรายชื่อหมวดหมู่ที่ดึงมาจากฐานข้อมูล (1. Account and Access, 2. Hardware, 3. Software, 4. Network)</p>
+  <div class="screenshot-box">
+    <span>🖼️</span>
+    [แนบภาพ Screenshot: หน้าจอแสดง System Status: Online พร้อมรายการ 4 หมวดหมู่]
+  </div>
+
+  <h3>3. Failure Case (Backend Offline / API Unavailable)</h3>
+  <p>เมื่อกดปุ่ม <code>[Check System]</code> ในขณะที่ Backend Server หรือ Database ปิดอยู่ ระบบแสดงสถานะ <code>System Status: Offline</code> พร้อมข้อความแจ้งเตือน <code>Unable to connect to TokTickIT API</code></p>
+  <div class="screenshot-box">
+    <span>🖼️</span>
+    [แนบภาพ Screenshot: หน้าจอแสดง System Status: Offline พร้อมข้อความ Unable to connect to TokTickIT API]
+  </div>
+
+</div>
+
+</body>
+</html>
