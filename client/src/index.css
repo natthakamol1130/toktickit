@@ -1,20 +1,20 @@
-/* TokTickIT Zen Green Theme CSS */
+/* TokTickIT Sakura Pink & Rose Palette Theme CSS */
 
 :root {
-  --zg-primary: #006B3C;
-  --zg-primary-hover: #00542F;
-  --zg-secondary: #0B7A46;
-  --zg-pale: #EAF6EF;
-  --zg-bg: #F5F7F6;
+  --zg-primary: #D81B60;
+  --zg-primary-hover: #AD1457;
+  --zg-secondary: #E91E63;
+  --zg-pale: #FCE4EC;
+  --zg-bg: #FFF5F8;
   --zg-surface: #FFFFFF;
-  --zg-text: #1F2925;
+  --zg-text: #2D1B24;
   --zg-muted: #64748B;
-  --zg-border: #E2E8F0;
-  --zg-read-only: #F1F5F9;
+  --zg-border: #F8BBD0;
+  --zg-read-only: #FDF2F5;
   --zg-error: #D32F2F;
   --zg-error-bg: #FDEDED;
   --zg-warning: #F59E0B;
-  --zg-success: #10B981;
+  --zg-success: #E91E63;
 }
 
 body {
@@ -27,43 +27,44 @@ body {
 
 /* Header Navbar */
 .zg-navbar {
-  background-color: var(--zg-primary);
+  background: linear-gradient(135deg, #D81B60 0%, #C2185B 100%);
   color: #FFFFFF;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.2);
 }
 
 .zg-navbar .nav-link {
   color: rgba(255, 255, 255, 0.85);
   font-weight: 500;
   padding: 0.5rem 1rem;
-  border-radius: 6px;
+  border-radius: 20px;
   transition: all 0.2s ease;
 }
 
 .zg-navbar .nav-link:hover {
   color: #FFFFFF;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .zg-navbar .nav-link.active {
   color: #FFFFFF;
-  background-color: var(--zg-secondary);
+  background-color: rgba(255, 255, 255, 0.25);
   font-weight: 600;
+  backdrop-filter: blur(4px);
 }
 
 /* Cards & Surfaces */
 .zg-card {
   background-color: var(--zg-surface);
   border: 1px solid var(--zg-border);
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(216, 27, 96, 0.05);
 }
 
 /* Read-Only Fields */
 .zg-read-only-field {
   background-color: var(--zg-read-only) !important;
-  border-color: #CBD5E1 !important;
-  color: #334155 !important;
+  border-color: #F8BBD0 !important;
+  color: #880E4F !important;
   font-weight: 500;
 }
 
@@ -77,13 +78,13 @@ body {
 /* Form Controls Focus State */
 .form-control:focus, .form-select:focus {
   border-color: var(--zg-secondary);
-  box-shadow: 0 0 0 0.2rem rgba(11, 122, 70, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(233, 30, 99, 0.25);
 }
 
 /* Priority Badges */
 .badge-priority-low {
-  background-color: #DEF7EC;
-  color: #03543F;
+  background-color: #FCE4EC;
+  color: #C2185B;
 }
 
 .badge-priority-medium {
@@ -103,8 +104,8 @@ body {
 
 /* Status Badges */
 .badge-status-new {
-  background-color: #E1F5FE;
-  color: #0277BD;
+  background-color: #F8BBD0;
+  color: #880E4F;
 }
 
 .badge-status-in_progress {
@@ -113,8 +114,8 @@ body {
 }
 
 .badge-status-resolved {
-  background-color: #DEF7EC;
-  color: #03543F;
+  background-color: #FCE4EC;
+  color: #C2185B;
 }
 
 .badge-status-closed {
@@ -124,32 +125,37 @@ body {
 
 /* Buttons */
 .btn-zg-primary {
-  background-color: var(--zg-primary);
-  border-color: var(--zg-primary);
+  background: linear-gradient(135deg, #D81B60 0%, #C2185B 100%);
+  border-color: #C2185B;
   color: #FFFFFF;
-  font-weight: 500;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(216, 27, 96, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn-zg-primary:hover, .btn-zg-primary:focus {
-  background-color: var(--zg-primary-hover);
-  border-color: var(--zg-primary-hover);
+  background: linear-gradient(135deg, #C2185B 0%, #AD1457 100%);
+  border-color: #AD1457;
   color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.35);
 }
 
 .btn-zg-primary:disabled {
-  background-color: #94A3B8;
-  border-color: #94A3B8;
+  background: #F48FB1;
+  border-color: #F48FB1;
 }
 
 /* Attachment Dropzone */
 .zg-dropzone {
-  border: 2px dashed #CBD5E1;
-  border-radius: 8px;
-  background-color: #F8FAFC;
+  border: 2px dashed #F8BBD0;
+  border-radius: 12px;
+  background-color: #FFF0F5;
   padding: 1.5rem;
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .zg-dropzone:hover {

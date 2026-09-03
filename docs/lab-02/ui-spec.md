@@ -6,17 +6,17 @@ The application follows the official **Zen Green Theme** visual design system ac
 
 | Token / Element | Color Code / Style | Usage |
 | :--- | :--- | :--- |
-| **Primary Green** | `#006B3C` | App header bar, primary action buttons, main heading accents |
-| **Secondary Green** | `#0B7A46` | Active tab highlights, focus ring accents, interactive links, hover states |
-| **Pale Green** | `#EAF6EF` | Selected item backgrounds, success banner bg, section subtle callouts |
-| **Page Background** | `#F5F7F6` | Quiet, comfortable off-white application background |
-| **Surface / Cards** | `#FFFFFF` | Card containers with subtle border (`#E2E8F0`) and 2px blur drop shadow |
-| **Text Primary** | `#1F2925` | Dark charcoal-green text for optimal readability (not pure black) |
-| **Editable Field** | `#FFFFFF` | White background with neutral 1px border (`#CBD5E1`), 8px border-radius |
-| **Read-Only Field** | `#F1F5F9` | Soft gray-green shading clearly distinct from editable fields |
-| **Error Indicator** | `#D32F2F` | Dark red text and 1px border; validation message directly below control |
+| **Primary Rose/Pink** | `#D81B60` | App header bar, primary action buttons, main heading accents |
+| **Secondary Pink** | `#E91E63` | Active tab highlights, focus ring accents, interactive links, hover states |
+| **Pale Pink** | `#FCE4EC` | Selected item backgrounds, subtle section emphasis |
+| **Page Background** | `#FFF5F8` | Quiet, comfortable off-white blush application background |
+| **Surface / Cards** | `#FFFFFF` | Card containers with subtle rose border (`#F8BBD0`) and shadow |
+| **Text Primary** | `#2D1B24` | Dark charcoal berry text for comfortable reading |
+| **Editable Field** | `#FFFFFF` | White background with neutral/rose border, 8px border-radius |
+| **Read-Only Field** | `#FDF2F5` | Soft rose-ivory shading clearly distinct from editable fields |
+| **Error Indicator** | `#D32F2F` | Dark red text and border; validation message directly below control |
 | **Warning Callout** | `#F59E0B` | Amber callout badge or notification banner |
-| **Success Banner** | `#10B981` | Green confirmation banner with check icon and readable dark text |
+| **Success Banner** | `#E91E63` | Rose pink confirmation banner with check icon |
 
 ---
 

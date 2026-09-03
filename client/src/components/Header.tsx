@@ -20,7 +20,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Brand & Identity */}
         <div className="d-flex align-items-center me-3">
           <span className="fs-4 fw-bold me-4 cursor-pointer" onClick={() => onTabChange("my-tickets")}>
-            🟢 TokTickIT
+            🌸 TokTickIT
           </span>
 
           {/* Nav Tabs */}

@@ -177,7 +177,7 @@ export const CreateTicketView: React.FC<CreateTicketViewProps> = ({
   return (
     <div className="container py-4" style={{ maxWidth: 900 }}>
       <div className="d-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 fw-bold m-0 text-success">Create IT Support Ticket</h1>
+        <h1 className="h3 fw-bold m-0" style={{ color: "#D81B60" }}>Create IT Support Ticket</h1>
         <button className="btn btn-outline-secondary btn-sm" onClick={onCancel}>
           ← Back to My Tickets
         </button>

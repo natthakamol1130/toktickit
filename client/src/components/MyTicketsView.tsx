@@ -109,7 +109,7 @@ export const MyTicketsView: React.FC<MyTicketsViewProps> = ({
       {/* Header Bar */}
       <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
         <div>
-          <h1 className="h3 fw-bold text-success m-0">My Tickets</h1>
+          <h1 className="h3 fw-bold m-0" style={{ color: "#D81B60" }}>My Tickets</h1>
           <p className="text-muted small m-0">View and track all of your IT support requests</p>
         </div>
         <button className="btn btn-zg-primary fw-semibold" onClick={onCreateTicketClick}>

@@ -178,7 +178,7 @@ export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
         {/* Ticket Header & Number */}
         <div className="border-bottom pb-3 mb-4">
           <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
-            <h2 className="h3 fw-bold text-success m-0">{ticket.ticketNo}</h2>
+            <h2 className="h3 fw-bold m-0" style={{ color: "#D81B60" }}>{ticket.ticketNo}</h2>
             <div>{renderPriorityBadge(ticket.requestedPriority)}</div>
           </div>
           <h1 className="h5 fw-semibold text-dark m-0">{ticket.summary}</h1>
