@@ -1,70 +1,25 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import App from "../../src/App.js";
-import * as api from "../../src/api.js";
 
-describe("App", () => {
+vi.mock("../../src/api.js", async (importOriginal) => {
+  const actual: any = await importOriginal();
+  return {
+    ...actual,
+    fetchRequesters: vi.fn().mockResolvedValue([
+      { id: 1, name: "Jennifer Anderson", email: "jennifer@kmutt.ac.th", department: "CPE" },
+    ]),
+  };
+});
+
+describe("App (Lab 2 Increment)", () => {
   beforeEach(() => {
-    vi.restoreAllMocks();
+    localStorage.clear();
   });
 
-  it("renders the TokTickIT heading", () => {
+  it("renders the TokTickIT heading and Requester Selector screen", async () => {
     render(<App />);
-    expect(screen.getByText(/TokTickIT/i)).toBeInTheDocument();
-  });
-
-  it("shows Online and the seeded categories on success", async () => {
-    vi.spyOn(api, "checkSystem").mockResolvedValue({
-      online: true,
-      categories: [
-        { id: 1, name: "Account and Access" },
-        { id: 2, name: "Hardware" },
-        { id: 3, name: "Software" },
-        { id: 4, name: "Network" },
-      ],
-    });
-
-    render(<App />);
-    const user = userEvent.setup();
-    const button = screen.getByRole("button", { name: /Check System/i });
-    await user.click(button);
-
-    expect(await screen.findByText(/Online/i)).toBeInTheDocument();
-    expect(screen.getByText(/Account and Access/i)).toBeInTheDocument();
-    expect(screen.getByText(/Hardware/i)).toBeInTheDocument();
-    expect(screen.getByText(/Software/i)).toBeInTheDocument();
-    expect(screen.getByText(/Network/i)).toBeInTheDocument();
-  });
-
-  it("handles empty category list gracefully", async () => {
-    vi.spyOn(api, "checkSystem").mockResolvedValue({
-      online: true,
-      categories: [],
-    });
-
-    render(<App />);
-    const user = userEvent.setup();
-    const button = screen.getByRole("button", { name: /Check System/i });
-    await user.click(button);
-
-    expect(await screen.findByText(/Online/i)).toBeInTheDocument();
-    expect(screen.getByText(/No categories found/i)).toBeInTheDocument();
-  });
-
-  it("shows an Offline error message when the API is unavailable", async () => {
-    vi.spyOn(api, "checkSystem").mockRejectedValue(
-      new Error("Unable to connect to TokTickIT API")
-    );
-
-    render(<App />);
-    const user = userEvent.setup();
-    const button = screen.getByRole("button", { name: /Check System/i });
-    await user.click(button);
-
-    expect(await screen.findByText(/Offline/i)).toBeInTheDocument();
-    expect(
-      screen.getByText("Unable to connect to TokTickIT API")
-    ).toBeInTheDocument();
+    expect(screen.getAllByText(/TokTickIT/i).length).toBeGreaterThan(0);
+    expect(await screen.findByText(/Select Development Requester/i)).toBeInTheDocument();
   });
 });

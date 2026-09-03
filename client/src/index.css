@@ -1,0 +1,177 @@
+/* TokTickIT Zen Green Theme CSS */
+
+:root {
+  --zg-primary: #006B3C;
+  --zg-primary-hover: #00542F;
+  --zg-secondary: #0B7A46;
+  --zg-pale: #EAF6EF;
+  --zg-bg: #F5F7F6;
+  --zg-surface: #FFFFFF;
+  --zg-text: #1F2925;
+  --zg-muted: #64748B;
+  --zg-border: #E2E8F0;
+  --zg-read-only: #F1F5F9;
+  --zg-error: #D32F2F;
+  --zg-error-bg: #FDEDED;
+  --zg-warning: #F59E0B;
+  --zg-success: #10B981;
+}
+
+body {
+  background-color: var(--zg-bg);
+  color: var(--zg-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Navbar */
+.zg-navbar {
+  background-color: var(--zg-primary);
+  color: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.zg-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.zg-navbar .nav-link:hover {
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.zg-navbar .nav-link.active {
+  color: #FFFFFF;
+  background-color: var(--zg-secondary);
+  font-weight: 600;
+}
+
+/* Cards & Surfaces */
+.zg-card {
+  background-color: var(--zg-surface);
+  border: 1px solid var(--zg-border);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Read-Only Fields */
+.zg-read-only-field {
+  background-color: var(--zg-read-only) !important;
+  border-color: #CBD5E1 !important;
+  color: #334155 !important;
+  font-weight: 500;
+}
+
+/* Asterisk for Required Fields */
+.zg-required-asterisk {
+  color: var(--zg-error);
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* Form Controls Focus State */
+.form-control:focus, .form-select:focus {
+  border-color: var(--zg-secondary);
+  box-shadow: 0 0 0 0.2rem rgba(11, 122, 70, 0.25);
+}
+
+/* Priority Badges */
+.badge-priority-low {
+  background-color: #DEF7EC;
+  color: #03543F;
+}
+
+.badge-priority-medium {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+.badge-priority-high {
+  background-color: #FFEDD5;
+  color: #C2410C;
+}
+
+.badge-priority-urgent {
+  background-color: #FDE8E8;
+  color: #9B1C1C;
+}
+
+/* Status Badges */
+.badge-status-new {
+  background-color: #E1F5FE;
+  color: #0277BD;
+}
+
+.badge-status-in_progress {
+  background-color: #FEF9C3;
+  color: #854D0E;
+}
+
+.badge-status-resolved {
+  background-color: #DEF7EC;
+  color: #03543F;
+}
+
+.badge-status-closed {
+  background-color: #F1F5F9;
+  color: #475569;
+}
+
+/* Buttons */
+.btn-zg-primary {
+  background-color: var(--zg-primary);
+  border-color: var(--zg-primary);
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.btn-zg-primary:hover, .btn-zg-primary:focus {
+  background-color: var(--zg-primary-hover);
+  border-color: var(--zg-primary-hover);
+  color: #FFFFFF;
+}
+
+.btn-zg-primary:disabled {
+  background-color: #94A3B8;
+  border-color: #94A3B8;
+}
+
+/* Attachment Dropzone */
+.zg-dropzone {
+  border: 2px dashed #CBD5E1;
+  border-radius: 8px;
+  background-color: #F8FAFC;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.zg-dropzone:hover {
+  border-color: var(--zg-secondary);
+  background-color: var(--zg-pale);
+}
+
+/* Responsive Table & Card Views */
+@media (max-width: 767.98px) {
+  .zg-desktop-table {
+    display: none;
+  }
+  .zg-mobile-cards {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .zg-desktop-table {
+    display: table;
+  }
+  .zg-mobile-cards {
+    display: none;
+  }
+}

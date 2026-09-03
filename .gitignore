@@ -12,6 +12,10 @@ node_modules/
 dist/
 build/
 
+# uploads
+server/uploads/*
+!server/uploads/.gitkeep
+
 # prisma
 server/prisma/*.db
 
