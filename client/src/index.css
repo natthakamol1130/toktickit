@@ -1,0 +1,183 @@
+/* TokTickIT Sakura Pink & Rose Palette Theme CSS */
+
+:root {
+  --zg-primary: #D81B60;
+  --zg-primary-hover: #AD1457;
+  --zg-secondary: #E91E63;
+  --zg-pale: #FCE4EC;
+  --zg-bg: #FFF5F8;
+  --zg-surface: #FFFFFF;
+  --zg-text: #2D1B24;
+  --zg-muted: #64748B;
+  --zg-border: #F8BBD0;
+  --zg-read-only: #FDF2F5;
+  --zg-error: #D32F2F;
+  --zg-error-bg: #FDEDED;
+  --zg-warning: #F59E0B;
+  --zg-success: #E91E63;
+}
+
+body {
+  background-color: var(--zg-bg);
+  color: var(--zg-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Navbar */
+.zg-navbar {
+  background: linear-gradient(135deg, #D81B60 0%, #C2185B 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.2);
+}
+
+.zg-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.zg-navbar .nav-link:hover {
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.zg-navbar .nav-link.active {
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* Cards & Surfaces */
+.zg-card {
+  background-color: var(--zg-surface);
+  border: 1px solid var(--zg-border);
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(216, 27, 96, 0.05);
+}
+
+/* Read-Only Fields */
+.zg-read-only-field {
+  background-color: var(--zg-read-only) !important;
+  border-color: #F8BBD0 !important;
+  color: #880E4F !important;
+  font-weight: 500;
+}
+
+/* Asterisk for Required Fields */
+.zg-required-asterisk {
+  color: var(--zg-error);
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* Form Controls Focus State */
+.form-control:focus, .form-select:focus {
+  border-color: var(--zg-secondary);
+  box-shadow: 0 0 0 0.25rem rgba(233, 30, 99, 0.25);
+}
+
+/* Priority Badges */
+.badge-priority-low {
+  background-color: #FCE4EC;
+  color: #C2185B;
+}
+
+.badge-priority-medium {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+.badge-priority-high {
+  background-color: #FFEDD5;
+  color: #C2410C;
+}
+
+.badge-priority-urgent {
+  background-color: #FDE8E8;
+  color: #9B1C1C;
+}
+
+/* Status Badges */
+.badge-status-new {
+  background-color: #F8BBD0;
+  color: #880E4F;
+}
+
+.badge-status-in_progress {
+  background-color: #FEF9C3;
+  color: #854D0E;
+}
+
+.badge-status-resolved {
+  background-color: #FCE4EC;
+  color: #C2185B;
+}
+
+.badge-status-closed {
+  background-color: #F1F5F9;
+  color: #475569;
+}
+
+/* Buttons */
+.btn-zg-primary {
+  background: linear-gradient(135deg, #D81B60 0%, #C2185B 100%);
+  border-color: #C2185B;
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(216, 27, 96, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-zg-primary:hover, .btn-zg-primary:focus {
+  background: linear-gradient(135deg, #C2185B 0%, #AD1457 100%);
+  border-color: #AD1457;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.35);
+}
+
+.btn-zg-primary:disabled {
+  background: #F48FB1;
+  border-color: #F48FB1;
+}
+
+/* Attachment Dropzone */
+.zg-dropzone {
+  border: 2px dashed #F8BBD0;
+  border-radius: 12px;
+  background-color: #FFF0F5;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zg-dropzone:hover {
+  border-color: var(--zg-secondary);
+  background-color: var(--zg-pale);
+}
+
+/* Responsive Table & Card Views */
+@media (max-width: 767.98px) {
+  .zg-desktop-table {
+    display: none;
+  }
+  .zg-mobile-cards {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .zg-desktop-table {
+    display: table;
+  }
+  .zg-mobile-cards {
+    display: none;
+  }
+}
