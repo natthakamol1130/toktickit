@@ -1,8 +1,10 @@
-# TokTickIT Lab 2 Zen Green UI Specification
+# TokTickIT Lab 2 Sakura Rose Pink UI Specification
 
-## 1. Zen Green Design System Tokens
+## 1. Sakura Rose Pink Design System Tokens
 
-The application follows the official **Zen Green Theme** visual design system across desktop, tablet, and mobile views.
+The application follows the official **Sakura Rose Pink Theme** visual design system across desktop, tablet, and mobile views.
+
+> **Note**: The CSS custom properties retain the `--zg-` prefix to maintain 100% architectural compatibility with the base component framework and test assertions.
 
 | Token / Element | Color Code / Style | Usage |
 | :--- | :--- | :--- |
@@ -22,11 +24,11 @@ The application follows the official **Zen Green Theme** visual design system ac
 
 ## 2. Global Navigation & Header Shell
 
-- **Title**: "TokTickIT" with brand logo icon in primary green header.
+- **Title**: "TokTickIT" with brand logo icon in primary rose header.
 - **Navigation Tabs**:
   - `My Tickets` (Icon: List)
   - `Create Ticket` (Icon: Plus Circle)
-- **Active Tab Highlight**: Underlined or filled with `#0B7A46` and `#EAF6EF` badge background.
+- **Active Tab Highlight**: Underlined or filled with `#D81B60` and `#FCE4EC` badge background.
 - **Requester Identity Badge**: Shows current user icon, user name (e.g. `Jennifer Anderson`), and a clear **"Change Requester"** action button.
 
 ---
@@ -39,18 +41,18 @@ The application follows the official **Zen Green Theme** visual design system ac
 - **Controls**:
   - Requester Dropdown (populated with active seeded requesters from database).
   - Info Callout: "Authentication coming in Lab 3".
-  - Actions: "Cancel" (neutral outline) and "Continue" (primary green filled).
+  - Actions: "Cancel" (neutral outline) and "Continue" (primary rose filled).
 - **States**: Loading skeleton while fetching requesters, empty state if no active requesters exist, API failure alert banner.
 
 ### 3.2 Create Ticket Screen
-- **Section 1: Read-Only System Fields** (styled with `#F1F5F9` shading):
+- **Section 1: Read-Only System Fields** (styled with `#FDF2F5` shading):
   - Ticket Number: `Auto-generated after submission`
   - Ticket Date: `Current Date/Time`
   - Requester: `Selected Development Requester Name`
 - **Section 2: Classification Fields**:
   - Category Dropdown (Required `*`)
   - Related System Dropdown (Required `*`)
-  - Requested Priority Badges/Select: `LOW` (Green), `MEDIUM` (Amber), `HIGH` (Orange), `URGENT` (Red)
+  - Requested Priority Badges/Select: `LOW` (Pink), `MEDIUM` (Amber), `HIGH` (Orange), `URGENT` (Red)
 - **Section 3: Content Fields**:
   - Ticket Summary Input (Required `*`, character counter: e.g. `28 / 150`)
   - Description Textarea (Required `*`, min-height 120px, character counter: e.g. `120 / 2000`)
@@ -60,7 +62,7 @@ The application follows the official **Zen Green Theme** visual design system ac
   - Selected files preview list with size, type icon, and remove file button.
 - **Section 5: Form Actions**:
   - "Cancel" button -> navigates back to My Tickets.
-  - "Submit Ticket" button -> Primary green filled; shows spinning indicator + "Submitting..." in busy state and is disabled during request.
+  - "Submit Ticket" button -> Primary rose filled; shows spinning indicator + "Submitting..." in busy state and is disabled during request.
 
 ### 3.3 My Tickets Screen Layout
 - **Header Action**: Title "My Tickets" + "Create Ticket" primary button top-right.
@@ -69,10 +71,10 @@ The application follows the official **Zen Green Theme** visual design system ac
   - Filter Dropdowns: Category, Requested Priority, Status.
   - Sort Select: Sort By (Date, Priority, Status) & Direction (Desc, Asc).
   - "Clear Filters" button (visible when filters are active).
-- **Desktop Table View ($\ge 992\text{px}$)**:
+- **Desktop Table View (>= 992px)**:
   - Columns: Ticket No, Created Date, Summary, Category, Requested Priority, Current Status, Actions.
-  - Hover row effect with pale green tint (`#EAF6EF`).
-- **Mobile Card View ($< 768\text{px}$)**:
+  - Hover row effect with pale pink tint (`#FCE4EC`).
+- **Mobile Card View (< 768px)**:
   - Responsive stacked cards with priority/status badges at top right, bold Ticket No, summary text, and timestamp.
 - **Pagination Bar**: Showing "Showing 1 to 10 of 42 tickets", Previous button, Page numbers, Next button.
 - **States**:
@@ -83,7 +85,7 @@ The application follows the official **Zen Green Theme** visual design system ac
 ### 3.4 Ticket Detail Screen Layout
 - **Header Bar**: Back button `← Back to My Tickets`, Ticket No header (`TKT-2026-001234`), Status badge (`NEW`, `IN_PROGRESS`, etc.).
 - **Read-Only Fields Grid**: Category, Related System, Requester Name, Requested Priority, Creation Timestamp.
-- **Summary & Description Card**: Displayed in readable dark charcoal text (`#1F2925`).
+- **Summary & Description Card**: Displayed in readable dark charcoal text (`#2D1B24`).
 - **Attachments Management Section**:
   - Active Attachments list with file type icon, file name, size, download button (`↓`), and soft-remove button (`🗑️`).
   - Soft-Removed Attachments list with strike-through styling, "Removed" badge, removal reason tooltip, and disabled download button.
@@ -117,11 +119,11 @@ The application follows the official **Zen Green Theme** visual design system ac
 
 ## 5. Visual Inspection Checklist
 
-- [ ] Header uses Primary Green `#006B3C` with crisp white logo text.
-- [ ] Required fields display a red asterisk (`*`) next to the label.
-- [ ] Field validation errors appear in red text directly below the affected control.
-- [ ] Submit button displays busy spinning indicator and disables click when submitting.
-- [ ] Read-only fields have soft gray-green shading `#F1F5F9`.
-- [ ] Priority badges use distinct colors: Low (Green), Medium (Amber), High (Orange), Urgent (Red).
-- [ ] Mobile viewport (< 768px) contains no clipped text or horizontal overflow.
-- [ ] Keyboard focus states show visible `#0B7A46` focus ring outline.
+- [x] Header uses Primary Rose `#D81B60` with crisp white logo text.
+- [x] Required fields display a red asterisk (`*`) next to the label.
+- [x] Field validation errors appear in red text directly below the affected control.
+- [x] Submit button displays busy spinning indicator and disables click when submitting.
+- [x] Read-only fields have soft rose shading `#FDF2F5`.
+- [x] Priority badges use distinct colors: Low (Pink), Medium (Amber), High (Orange), Urgent (Red).
+- [x] Mobile viewport (< 768px) contains no clipped text or horizontal overflow.
+- [x] Keyboard focus states show visible `#E91E63` focus ring outline.
