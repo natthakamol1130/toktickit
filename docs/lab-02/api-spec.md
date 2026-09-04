@@ -313,3 +313,39 @@ Binary stream (`Content-Type: image/png` or `application/pdf`, `Content-Disposit
 ```
 
 <!-- Feature 2: REST API Endpoints Contract & Status Codes -->
+
+
+---
+
+## Comprehensive REST API Endpoint Specification
+
+### 1. Context & Headers
+- All API endpoints are served under `http://localhost:3000/api`
+- All protected requester operations require the `x-requester-id` header specifying the requester user ID.
+
+### 2. Reference Data API Endpoints
+- `GET /api/requesters` - Returns active development requester accounts for context switching.
+- `GET /api/categories` - Returns available ticket category options.
+- `GET /api/related-systems` - Returns available IT system metadata.
+
+### 3. Ticket Management API Endpoints
+- `POST /api/tickets` - Creates a new support ticket. Auto-generates sequence ticket number (`TKT-YYYY-XXXXXX`).
+- `GET /api/tickets` - Retrieves tickets filtered by category, priority, status, search keyword, with sorting and pagination.
+- `GET /api/tickets/:id` - Retrieves read-only ticket details. Returns `403 Forbidden` if requested by a different user.
+
+### 4. Attachment Management API Endpoints
+- `POST /api/tickets/:id/attachments` - Uploads attachment file (max 5MB: JPG, PNG, WEBP, PDF).
+- `DELETE /api/attachments/:id` - Soft-removes attachment with mandatory removal reason in payload.
+- `GET /api/attachments/:id/download` - Downloads attached file. Returns `410 Gone` if the file has been soft-removed.
+
+### 5. HTTP Error Response Shapes
+All error responses follow the standard JSON error shape:
+```json
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid ticket payload",
+    "details": []
+  }
+}
+```
