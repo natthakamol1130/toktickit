@@ -1,20 +1,20 @@
-/* TokTickIT Sakura Pink & Rose Palette Theme CSS (Zen Green Component Compatible) */
+/* TokTickIT Zen Green Palette Theme CSS */
 
 :root {
-  --zg-primary: #D81B60;
-  --zg-primary-hover: #AD1457;
-  --zg-secondary: #E91E63;
-  --zg-pale: #FCE4EC;
-  --zg-bg: #FFF5F8;
+  --zg-primary: #10B981;
+  --zg-primary-hover: #059669;
+  --zg-secondary: #064E3B;
+  --zg-pale: #ECFDF5;
+  --zg-bg: #F0FDF4;
   --zg-surface: #FFFFFF;
-  --zg-text: #2D1B24;
+  --zg-text: #064E3B;
   --zg-muted: #64748B;
-  --zg-border: #F8BBD0;
-  --zg-read-only: #FDF2F5;
-  --zg-error: #D32F2F;
-  --zg-error-bg: #FDEDED;
+  --zg-border: #A7F3D0;
+  --zg-read-only: #F6FEF9;
+  --zg-error: #EF4444;
+  --zg-error-bg: #FEF2F2;
   --zg-warning: #F59E0B;
-  --zg-success: #E91E63;
+  --zg-success: #10B981;
 }
 
 body {
@@ -27,9 +27,9 @@ body {
 
 /* Header Navbar */
 .zg-navbar {
-  background: linear-gradient(135deg, #D81B60 0%, #C2185B 100%);
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.2);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
 .zg-navbar .nav-link {
@@ -57,14 +57,14 @@ body {
   background-color: var(--zg-surface);
   border: 1px solid var(--zg-border);
   border-radius: 14px;
-  box-shadow: 0 4px 15px rgba(216, 27, 96, 0.05);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.05);
 }
 
 /* Read-Only Fields */
 .zg-read-only-field {
   background-color: var(--zg-read-only) !important;
-  border-color: #F8BBD0 !important;
-  color: #880E4F !important;
+  border-color: #A7F3D0 !important;
+  color: #064E3B !important;
   font-weight: 500;
 }
 
@@ -77,14 +77,14 @@ body {
 
 /* Form Controls Focus State */
 .form-control:focus, .form-select:focus {
-  border-color: var(--zg-secondary);
-  box-shadow: 0 0 0 0.25rem rgba(233, 30, 99, 0.25);
+  border-color: var(--zg-primary);
+  box-shadow: 0 0 0 0.25rem rgba(16, 185, 129, 0.25);
 }
 
 /* Priority Badges */
 .badge-priority-low {
-  background-color: #FCE4EC;
-  color: #C2185B;
+  background-color: #ECFDF5;
+  color: #047857;
 }
 
 .badge-priority-medium {
@@ -104,8 +104,8 @@ body {
 
 /* Status Badges */
 .badge-status-new {
-  background-color: #F8BBD0;
-  color: #880E4F;
+  background-color: #A7F3D0;
+  color: #064E3B;
 }
 
 .badge-status-in_progress {
@@ -114,8 +114,8 @@ body {
 }
 
 .badge-status-resolved {
-  background-color: #FCE4EC;
-  color: #C2185B;
+  background-color: #D1FAE5;
+  color: #047857;
 }
 
 .badge-status-closed {
@@ -125,33 +125,33 @@ body {
 
 /* Buttons */
 .btn-zg-primary {
-  background: linear-gradient(135deg, #D81B60 0%, #C2185B 100%);
-  border-color: #C2185B;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border-color: #059669;
   color: #FFFFFF;
   font-weight: 600;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(216, 27, 96, 0.25);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn-zg-primary:hover, .btn-zg-primary:focus {
-  background: linear-gradient(135deg, #C2185B 0%, #AD1457 100%);
-  border-color: #AD1457;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border-color: #047857;
   color: #FFFFFF;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.35);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
 }
 
 .btn-zg-primary:disabled {
-  background: #F48FB1;
-  border-color: #F48FB1;
+  background: #6EE7B7;
+  border-color: #6EE7B7;
 }
 
 /* Attachment Dropzone */
 .zg-dropzone {
-  border: 2px dashed #F8BBD0;
+  border: 2px dashed #A7F3D0;
   border-radius: 12px;
-  background-color: #FFF0F5;
+  background-color: #F0FDF4;
   padding: 1.5rem;
   text-align: center;
   cursor: pointer;
@@ -159,7 +159,7 @@ body {
 }
 
 .zg-dropzone:hover {
-  border-color: var(--zg-secondary);
+  border-color: var(--zg-primary);
   background-color: var(--zg-pale);
 }
 
