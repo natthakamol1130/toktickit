@@ -311,3 +311,5 @@ Binary stream (`Content-Type: image/png` or `application/pdf`, `Content-Disposit
   }
 }
 ```
+
+<!-- Feature 2: REST API Endpoints Contract & Status Codes -->

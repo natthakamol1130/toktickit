@@ -127,3 +127,5 @@ The application follows the official **Zen Green Theme** visual design system ac
 - [ ] Keyboard focus states show visible `#0B7A46` focus ring outline.
 
 <!-- Verified Zen Green UI tokens and responsive breakpoints -->
+
+<!-- Feature 2: UI Design Tokens & Responsive Specs -->
