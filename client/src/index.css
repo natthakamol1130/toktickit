@@ -1,20 +1,20 @@
-/* TokTickIT Sakura Pink & Rose Palette Theme CSS */
+/* TokTickIT Official Zen Green Palette Theme CSS */
 
 :root {
-  --zg-primary: #D81B60;
-  --zg-primary-hover: #AD1457;
-  --zg-secondary: #E91E63;
-  --zg-pale: #FCE4EC;
-  --zg-bg: #FFF5F8;
+  --zg-primary: #006B3C;
+  --zg-primary-hover: #00522E;
+  --zg-secondary: #0B7A46;
+  --zg-pale: #EAF6EF;
+  --zg-bg: #F5F7F6;
   --zg-surface: #FFFFFF;
-  --zg-text: #2D1B24;
+  --zg-text: #1F2925;
   --zg-muted: #64748B;
-  --zg-border: #F8BBD0;
-  --zg-read-only: #FDF2F5;
+  --zg-border: #D1E7DD;
+  --zg-read-only: #F1F5F9;
   --zg-error: #D32F2F;
   --zg-error-bg: #FDEDED;
   --zg-warning: #F59E0B;
-  --zg-success: #E91E63;
+  --zg-success: #0B7A46;
 }
 
 body {
@@ -27,9 +27,9 @@ body {
 
 /* Header Navbar */
 .zg-navbar {
-  background: linear-gradient(135deg, #D81B60 0%, #C2185B 100%);
+  background: linear-gradient(135deg, #006B3C 0%, #0B7A46 100%);
   color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 107, 60, 0.2);
 }
 
 .zg-navbar .nav-link {
@@ -57,14 +57,14 @@ body {
   background-color: var(--zg-surface);
   border: 1px solid var(--zg-border);
   border-radius: 14px;
-  box-shadow: 0 4px 15px rgba(216, 27, 96, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 107, 60, 0.05);
 }
 
 /* Read-Only Fields */
 .zg-read-only-field {
   background-color: var(--zg-read-only) !important;
-  border-color: #F8BBD0 !important;
-  color: #880E4F !important;
+  border-color: #D1E7DD !important;
+  color: #0B7A46 !important;
   font-weight: 500;
 }
 
@@ -78,13 +78,13 @@ body {
 /* Form Controls Focus State */
 .form-control:focus, .form-select:focus {
   border-color: var(--zg-secondary);
-  box-shadow: 0 0 0 0.25rem rgba(233, 30, 99, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(11, 122, 70, 0.25);
 }
 
 /* Priority Badges */
 .badge-priority-low {
-  background-color: #FCE4EC;
-  color: #C2185B;
+  background-color: #EAF6EF;
+  color: #0B7A46;
 }
 
 .badge-priority-medium {
@@ -104,8 +104,8 @@ body {
 
 /* Status Badges */
 .badge-status-new {
-  background-color: #F8BBD0;
-  color: #880E4F;
+  background-color: #D1E7DD;
+  color: #0B7A46;
 }
 
 .badge-status-in_progress {
@@ -114,8 +114,8 @@ body {
 }
 
 .badge-status-resolved {
-  background-color: #FCE4EC;
-  color: #C2185B;
+  background-color: #EAF6EF;
+  color: #0B7A46;
 }
 
 .badge-status-closed {
@@ -125,33 +125,33 @@ body {
 
 /* Buttons */
 .btn-zg-primary {
-  background: linear-gradient(135deg, #D81B60 0%, #C2185B 100%);
-  border-color: #C2185B;
+  background: linear-gradient(135deg, #006B3C 0%, #0B7A46 100%);
+  border-color: #0B7A46;
   color: #FFFFFF;
   font-weight: 600;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(216, 27, 96, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 107, 60, 0.25);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn-zg-primary:hover, .btn-zg-primary:focus {
-  background: linear-gradient(135deg, #C2185B 0%, #AD1457 100%);
-  border-color: #AD1457;
+  background: linear-gradient(135deg, #0B7A46 0%, #00522E 100%);
+  border-color: #00522E;
   color: #FFFFFF;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 107, 60, 0.35);
 }
 
 .btn-zg-primary:disabled {
-  background: #F48FB1;
-  border-color: #F48FB1;
+  background: #A3D9C9;
+  border-color: #A3D9C9;
 }
 
 /* Attachment Dropzone */
 .zg-dropzone {
-  border: 2px dashed #F8BBD0;
+  border: 2px dashed #D1E7DD;
   border-radius: 12px;
-  background-color: #FFF0F5;
+  background-color: #F5F7F6;
   padding: 1.5rem;
   text-align: center;
   cursor: pointer;
