@@ -125,3 +125,5 @@ The application follows the official **Zen Green Theme** visual design system ac
 - [ ] Priority badges use distinct colors: Low (Green), Medium (Amber), High (Orange), Urgent (Red).
 - [ ] Mobile viewport (< 768px) contains no clipped text or horizontal overflow.
 - [ ] Keyboard focus states show visible `#0B7A46` focus ring outline.
+
+<!-- Verified Zen Green UI tokens and responsive breakpoints -->
