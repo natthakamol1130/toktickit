@@ -72,53 +72,8 @@ app.get("/api/health", (_req: Request, res: Response) => {
 });
 
 // ---------------------------------------------------------------------------
-// Reference Data Endpoints
+// Reference Data Endpoints — Implemented in Feature 4 PR
 // ---------------------------------------------------------------------------
-
-// GET /api/requesters - Active Development Requesters
-app.get("/api/requesters", async (_req: Request, res: Response) => {
-  try {
-    const prisma = getPrisma();
-    const requesters = await prisma.requesterUser.findMany({
-      where: { isActive: true },
-      orderBy: { id: "asc" },
-      select: { id: true, name: true, email: true, department: true },
-    });
-    res.status(200).json({ success: true, data: requesters });
-  } catch (error) {
-    res.status(500).json({ success: false, error: { message: "Internal server error" } });
-  }
-});
-
-// GET /api/categories - Active Categories
-app.get("/api/categories", async (_req: Request, res: Response) => {
-  try {
-    const prisma = getPrisma();
-    const categories = await prisma.category.findMany({
-      where: { isActive: true },
-      orderBy: { id: "asc" },
-      select: { id: true, name: true },
-    });
-    res.status(200).json(categories);
-  } catch (error) {
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-// GET /api/related-systems - Active Related Systems
-app.get("/api/related-systems", async (_req: Request, res: Response) => {
-  try {
-    const prisma = getPrisma();
-    const systems = await prisma.relatedSystem.findMany({
-      where: { isActive: true },
-      orderBy: { id: "asc" },
-      select: { id: true, name: true },
-    });
-    res.status(200).json({ success: true, data: systems });
-  } catch (error) {
-    res.status(500).json({ success: false, error: { message: "Internal server error" } });
-  }
-});
 
 // ---------------------------------------------------------------------------
 // Ticket Endpoints
