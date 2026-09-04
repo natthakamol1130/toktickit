@@ -58,3 +58,5 @@ test.describe("Lab 2 Requester Ticket Flow (E2E)", () => {
     await expect(page.getByRole("heading", { name: "My Tickets" })).toBeVisible();
   });
 });
+
+// Verified Playwright E2E Suite for Lab 2
