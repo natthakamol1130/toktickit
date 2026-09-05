@@ -3,6 +3,7 @@ import cors from "cors";
 import path from "path";
 import fs from "fs";
 import multer from "multer";
+import { RequestedPriority } from "@prisma/client";
 import { getPrisma } from "./prisma.js";
 
 export const app = express();
@@ -218,7 +219,7 @@ app.post(
           requesterId,
           categoryId: catId,
           relatedSystemId: sysId,
-          requestedPriority: priorityVal as any,
+          requestedPriority: priorityVal as RequestedPriority,
           status: "NEW",
           summary: summary.trim(),
           description: description.trim(),
