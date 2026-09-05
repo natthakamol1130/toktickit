@@ -166,18 +166,18 @@ body {
 /* Responsive Table & Card Views */
 @media (max-width: 767.98px) {
   .zg-desktop-table {
-    display: none;
+    display: none !important;
   }
   .zg-mobile-cards {
-    display: block;
+    display: block !important;
   }
 }
 
 @media (min-width: 768px) {
   .zg-desktop-table {
-    display: table;
+    display: table !important;
   }
   .zg-mobile-cards {
-    display: none;
+    display: none !important;
   }
 }

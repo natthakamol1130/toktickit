@@ -244,7 +244,7 @@ export const MyTicketsView: React.FC<MyTicketsViewProps> = ({
       ) : (
         <>
           {/* Desktop Table View */}
-          <div className="zg-card shadow-sm overflow-hidden mb-4 zg-desktop-table">
+          <div className="zg-card shadow-sm overflow-hidden mb-4 d-none d-md-block zg-desktop-table">
             <table className="table table-hover align-middle m-0">
               <thead className="table-light">
                 <tr>
