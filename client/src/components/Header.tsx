@@ -36,7 +36,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className={`nav-link border-0 bg-transparent ${activeTab === "create-ticket" ? "active" : ""}`}
                 onClick={() => onTabChange("create-ticket")}
               >
-                ➕ Create Ticket
+                Create Ticket
               </button>
             </nav>
           )}

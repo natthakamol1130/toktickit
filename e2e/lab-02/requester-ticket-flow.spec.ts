@@ -38,7 +38,7 @@ test.describe("Lab 2 Requester Ticket Flow (E2E)", () => {
 
     // 7. Click View My Tickets and verify created ticket appears
     await page.getByRole("button", { name: "📋 View My Tickets" }).click();
-    await expect(page.getByText("E2E Automated Test Issue Summary")).toBeVisible();
+    await expect(page.getByText("E2E Automated Test Issue Summary").first()).toBeVisible();
   });
 
   test("E2E-02: Requester Switching & Ownership Security Isolation (AC-04)", async ({ page }) => {
