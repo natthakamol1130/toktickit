@@ -10,7 +10,7 @@ export const RequesterSelectorScreen: React.FC<RequesterSelectorScreenProps> = (
   onSelectRequester,
 }) => {
   const [requesters, setRequesters] = useState<RequesterUser[]>([]);
-  const [selectedId, setSelectedId] = useState<number | "">("");
+  const [selectedId, setSelectedId] = useState<number | string | "">("");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,7 +27,7 @@ export const RequesterSelectorScreen: React.FC<RequesterSelectorScreenProps> = (
   }, []);
 
   const handleContinue = () => {
-    const found = requesters.find((r) => r.id === Number(selectedId));
+    const found = requesters.find((r) => String(r.id) === String(selectedId));
     if (found) {
       onSelectRequester(found);
     }
@@ -71,7 +71,7 @@ export const RequesterSelectorScreen: React.FC<RequesterSelectorScreenProps> = (
             <select
               className="form-select form-select-lg"
               value={selectedId}
-              onChange={(e) => setSelectedId(Number(e.target.value))}
+              onChange={(e) => setSelectedId(e.target.value)}
             >
               {requesters.map((r) => (
                 <option key={r.id} value={r.id}>
