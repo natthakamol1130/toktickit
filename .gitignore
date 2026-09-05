@@ -29,3 +29,9 @@ server/prisma/*.db
 *.log
 .DS_Store
 Thumbs.db
+
+# test artifacts
+test-results/
+playwright-report/
+client/src/**/*.js
+client/tests/**/*.js

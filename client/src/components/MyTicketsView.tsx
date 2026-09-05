@@ -243,8 +243,8 @@ export const MyTicketsView: React.FC<MyTicketsViewProps> = ({
         )
       ) : (
         <>
-          {/* Desktop Table View */}
-          <div className="zg-card shadow-sm overflow-hidden mb-4 zg-desktop-table">
+          {/* Responsive Table View */}
+          <div className="zg-card shadow-sm overflow-hidden mb-4 table-responsive">
             <table className="table table-hover align-middle m-0">
               <thead className="table-light">
                 <tr>
@@ -293,34 +293,6 @@ export const MyTicketsView: React.FC<MyTicketsViewProps> = ({
                 ))}
               </tbody>
             </table>
-          </div>
-
-          {/* Mobile Card View */}
-          <div className="zg-mobile-cards mb-4">
-            <div className="d-flex flex-column gap-3">
-              {tickets.map((t) => (
-                <div
-                  key={t.id}
-                  className="zg-card p-3 shadow-sm cursor-pointer"
-                  onClick={() => onSelectTicket(t.id)}
-                >
-                  <div className="d-flex justify-content-between align-items-center mb-2">
-                    <span className="fw-bold text-success">{t.ticketNo}</span>
-                    <div>{renderStatusBadge(t.status)}</div>
-                  </div>
-                  <h6 className="fw-semibold text-dark mb-2">{t.summary}</h6>
-                  <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 text-muted small">
-                    <div>
-                      <span className="me-2">{t.category?.name}</span>
-                      {renderPriorityBadge(t.requestedPriority)}
-                    </div>
-                    <div>
-                      {new Date(t.createdAt).toLocaleDateString()}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Pagination Controls */}
