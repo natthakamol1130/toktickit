@@ -125,8 +125,126 @@ app.get("/api/related-systems", async (_req: Request, res: Response) => {
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
-// Ticket Creation API Endpoint — Implemented in Feature 6 PR
+// Ticket Creation API Endpoint — Feature 6
 // ---------------------------------------------------------------------------
+
+// POST /api/tickets - Create Ticket with optional attachments
+app.post(
+  "/api/tickets",
+  (req: Request, res: Response, next: NextFunction) => {
+    upload.array("files", 5)(req, res, (err) => {
+      if (err instanceof multer.MulterError) {
+        if (err.code === "LIMIT_FILE_SIZE") {
+          return res.status(400).json({
+            success: false,
+            error: { code: "FILE_TOO_LARGE", message: "File size exceeds maximum limit of 5MB" },
+          });
+        }
+        return res.status(400).json({ success: false, error: { message: err.message } });
+      } else if (err) {
+        if (err.message === "UNSUPPORTED_FILE_TYPE") {
+          return res.status(400).json({
+            success: false,
+            error: {
+              code: "UNSUPPORTED_FILE_TYPE",
+              message: "Allowed file types are JPG, PNG, WEBP, and PDF",
+            },
+          });
+        }
+        return res.status(400).json({ success: false, error: { message: err.message } });
+      }
+      next();
+    });
+  },
+  async (req: Request, res: Response) => {
+    try {
+      const requesterId = getRequesterId(req);
+      if (!requesterId) {
+        return res.status(401).json({
+          success: false,
+          error: { code: "UNAUTHORIZED", message: "Requester identity missing or invalid" },
+        });
+      }
+
+      const prisma = getPrisma();
+
+      // Verify active requester exists
+      const requester = await prisma.requesterUser.findFirst({
+        where: { id: requesterId, isActive: true },
+      });
+      if (!requester) {
+        return res.status(403).json({
+          success: false,
+          error: { code: "FORBIDDEN", message: "Inactive or invalid Development Requester" },
+        });
+      }
+
+      const { categoryId, relatedSystemId, requestedPriority, summary, description } = req.body;
+
+      // Field validation
+      const errors: Record<string, string[]> = {};
+      const catId = parseInt(categoryId, 10);
+      const sysId = parseInt(relatedSystemId, 10);
+
+      if (!catId || isNaN(catId)) errors.categoryId = ["Category is required"];
+      if (!sysId || isNaN(sysId)) errors.relatedSystemId = ["Related System is required"];
+      if (!summary || summary.trim().length < 5 || summary.trim().length > 150) {
+        errors.summary = ["Summary must be between 5 and 150 characters"];
+      }
+      if (!description || description.trim().length < 10 || description.trim().length > 2000) {
+        errors.description = ["Description must be between 10 and 2000 characters"];
+      }
+
+      const validPriorities = ["LOW", "MEDIUM", "HIGH", "URGENT"];
+      const priorityVal = (requestedPriority || "MEDIUM").toUpperCase();
+      if (!validPriorities.includes(priorityVal)) {
+        errors.requestedPriority = ["Invalid requested priority"];
+      }
+
+      if (Object.keys(errors).length > 0) {
+        return res.status(400).json({
+          success: false,
+          error: { code: "VALIDATION_ERROR", message: "Validation failed", details: errors },
+        });
+      }
+
+      const ticketNo = await generateTicketNumber();
+
+      const files = (req.files as Express.Multer.File[]) || [];
+
+      const ticket = await prisma.ticket.create({
+        data: {
+          ticketNo,
+          requesterId,
+          categoryId: catId,
+          relatedSystemId: sysId,
+          requestedPriority: priorityVal as any,
+          status: "NEW",
+          summary: summary.trim(),
+          description: description.trim(),
+          attachments: {
+            create: files.map((f) => ({
+              fileName: f.originalname,
+              fileKey: f.filename,
+              fileSize: f.size,
+              mimeType: f.mimetype,
+            })),
+          },
+        },
+        include: {
+          category: { select: { id: true, name: true } },
+          relatedSystem: { select: { id: true, name: true } },
+          attachments: true,
+        },
+      });
+
+      res.status(201).json({ success: true, data: ticket });
+    } catch (error) {
+      console.error("Create ticket error:", error);
+      res.status(500).json({ success: false, error: { message: "Failed to create ticket" } });
+    }
+  }
+);
 
 // GET /api/tickets - List owned tickets (search, filter, sort, paginate)
 app.get("/api/tickets", async (req: Request, res: Response) => {
