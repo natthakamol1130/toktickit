@@ -11,6 +11,12 @@ node_modules/
 # build output
 dist/
 build/
+client/src/**/*.js
+client/tests/**/*.js
+
+# uploads
+server/uploads/*
+!server/uploads/.gitkeep
 
 # prisma
 server/prisma/*.db
