@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { MyTicketsView } from "../../src/components/MyTicketsView.js";
-import * as api from "../../src/api.js";
+import { MyTicketsView } from "../../src/components/MyTicketsView";
+import * as api from "../../src/api";
 
-vi.mock("../../src/api.js", async (importOriginal) => {
+vi.mock("../../src/api", async (importOriginal) => {
   const actual: any = await importOriginal();
   return {
     ...actual,
