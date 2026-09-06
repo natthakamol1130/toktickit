@@ -120,168 +120,435 @@ server/prisma/*.db
 **Author / Developer:** Natthakamol Mornparn (นางสาวณัฏฐกมล มอญปาน — 67070505215) — GitHub: `@natthakamol1130`  
 **Peer Reviewer:** Suprawee Sutthiserinawat (นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ — 67070505227) — GitHub: `@Suprawi5227`  
 
-#### Pull Requests I authored (reviewed by my partner @Suprawi5227) — รายละเอียดข้อความคอมเมนต์รีวิวทุก PR:
+#### Pull Requests I authored (reviewed by my partner @Suprawi5227) — รายละเอียดข้อความคอมเมนต์รีวิวแบบเต็ม ห้ามย่อ:
 
-##### PR #11: feature/1-spec-contract
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #11)]**  
-> *"Approved. Specification contract complete, business rules BR-01 through BR-10 are well-defined, and acceptance criteria are unambiguous."*
+| PR # | Branch | Reviewer verdict & Status |
+| :---: | :--- | :--- |
+| **PR #11** | `feature/1-spec-contract` | Approved with comments |
+| **PR #13** | `feature/2-ui-and-api-spec` | Approved with comments |
+| **PR #15** | `feature/3-prisma-schema-models` | Approved with comments |
+| **PR #17** | `feature/4-reference-data-api` | Approved with comments |
+| **PR #19** | `feature/5-requester-selector-ui` | Approved with comments |
+| **PR #21** | `feature/6-create-ticket-api` | Approved with comments |
+| **PR #26** | `feature/7-create-ticket-ui` | Approved with comments |
+| **PR #28** | `feature/8-my-tickets-dashboard` | Approved with comments |
+| **PR #30** | `feature/9-ticket-detail-api` | Approved with comments |
+| **PR #32** | `feature/10-e2e-testing-and-release` | Approved with comments |
+| **PR #33** | `lab2-staging → main` | Approved for merge into main |
 
-> 💬 **[How I responded to @Suprawi5227 (PR #11)]**  
-> *"ขอบคุณสำหรับการตรวจทานและอนุมัติค่ะ ได้ทำการตรวจสอบความถูกต้องของสเปกและเตรียมพร้อมสำหรับการเริ่มพัฒนาตามกระบวนการ Spec DD แล้วค่ะ"*
+### PR #11: feature/1-spec-contract → lab2-staging
 
-##### PR #13: feature/2-ui-and-api-spec
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #13)]**  
-> *"Approved. Visual design tokens (#006B3C) and REST API request/response schemas and HTTP status codes verified."*
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #11):]**
+> ผลการรีวิว Pull Request: Feature/1 Sprint Specifications & Test Plan (#11)
+> เราได้ทำการรีวิวเอกสารข้อกำหนดทางวิศวกรรม (Engineering Contract) ทั้งหมดในโฟลเดอร์ docs/lab-02/ เทียบกับโจทย์ CPE 334 Lab 2 Handout เรียบร้อยแล้ว เอกสารเขียนได้ครอบคลุมและเป็นระบบดีมาก
+> 
+> จุดเด่นของเอกสาร:
+> 1. specification.md: ขอบเขตงานและ Business Rules (BR-01 ถึง BR-20) ชัดเจน รัดกุม ครอบคลุมการจำลองตัวตน Dev Requester, รูปแบบเลขตั๋ว (TKT-YYYY-XXXXXX), การแสดง Ticket Date (createdAt), กฎการลบไฟล์แบบ Soft Removal พร้อมเหตุผลบังคับ, ข้อจำกัดไฟล์แนบ และยุทธศาสตร์ Compensation/Transaction (BR-15)
+> 2. ui-spec.md: ใช้โทนสี Zen Green ตรงตาม Handout (#006B3C, #0B7A46, #EAF6EF, #F5F7F6) รวมถึงกำหนดเลย์เอาต์ทั้ง 4 หน้า และ Responsive Breakpoints ได้ครบถ้วน
+> 3. api-spec.md: ครอบคลุม REST API ทั้ง 10 Capabilities พร้อม HTTP Status Codes, Data Formats และการตรวจสอบสิทธิ์สตรีมไฟล์แนบและการเข้าถึงตั๋ว
+> 4. tests.md: มีกลยุทธ์การทดสอบ 5 ระดับ (Unit, API, UI Component, UI Style, E2E) พร้อม Traceability Matrix จับคู่กับ AC-01 ถึง AC-10 ชัดเจน
+> 5. reviewer.md & ai-use.md: บันทึกข้อมูลการรีวิวย่อย, คำถาม-คำตอบการแก้ไข, ตาราง Prompt และ Reflection ครบถ้วนตามเกณฑ์
+> 
+> ข้อเสนอแนะเพิ่มเติมเล็กน้อย:
+> - ในไฟล์ docs/lab-02/tests.md แนะนำให้เพิ่มหัวข้อ "## 7. Known Limitations or Deferred Tests" ต่อท้ายในเอกสาร เพื่อให้ตรงตามโครงสร้าง Template ใน Appendix B ของ Handout 100% (สามารถระบุว่า None หรือระบุข้อจำกัดที่ยกไปทำใน Lab 3 ได้)
 
-> 💬 **[How I responded to @Suprawi5227 (PR #13)]**  
-> *"ขอบคุณค่ะ ได้ระบุโทเคนสี Zen Green และรูปแบบ JSON Schema ของ API ในเอกสาร ui-spec.md และ api-spec.md เรียบร้อยแล้วค่ะ"*
+> 💬 **[How I responded to @Suprawi5227 (PR #11):]**
+> ขอบคุณสำหรับผลการรีวิวและคำแนะนำที่ละเอียดมากค่ะ!
+> เราได้ทำการปรับแก้ไขตามข้อเสนอแนะเรียบร้อยแล้วนะคะ:
+> - เพิ่มหัวข้อ ## 7. Known Limitations or Deferred Tests ต่อท้ายในไฟล์ docs/lab-02/tests.md เรียบร้อยแล้ว เพื่อให้ตรงตาม Appendix B ของ Handout 100% (โดยระบุขอบเขตงานที่ยกเว้นไปทำใน Lab 3 ชัดเจน)
+> - อัปเดตบันทึกการแก้ไขลงใน docs/lab-02/reviewer.md เรียบร้อยแล้วค่ะ สามารถตรวจสอบและกด Approve Merge เข้า lab2-staging ได้เลยค่ะ
 
-##### PR #15: feature/3-prisma-schema-models
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #15)]**  
-> *"Approved. Database models, relations, indexes, and seed data logic verified successfully."*
+### PR #13: feature/2-ui-and-api-spec → lab2-staging
 
-> 💬 **[How I responded to @Suprawi5227 (PR #15)]**  
-> *"รับทราบค่ะ โครงสร้าง Prisma Schema และสคริปต์ seed.ts ได้รับการทดสอบให้รองรับการรันซ้ำแบบ idempotent เรียบร้อยแล้วค่ะ"*
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #13):]**
+> PR Review: Feature/2 UI & API Specification (#13)
+> ตรวจสอบเอกสาร UI Specification (ui-spec.md) และ REST API Contract (api-spec.md) แล้วค่ะ โครงสร้างเอกสารเขียนได้ละเอียดและตรงตามโจทย์ Lab 2 มาก
+> 
+> จุดที่ชอบและออกแบบได้ดี:
+> 1. ui-spec.md: กำหนด Palette สี Zen Green ชัดเจน (#006B3C Primary, #0B7A46 Secondary, #EAF6EF Pale, #F5F7F6 Background) มีการระบุ Editable vs Read-Only field shading (#F3F4F6) และ Red required asterisk (*) ตรงตามข้อกำหนด
+> 2. api-spec.md: ระบุ REST Endpoints ครบถ้วน รวมถึง GET /api/requesters, GET /api/categories, GET /api/related-systems, POST /api/tickets, GET /api/tickets, GET /api/tickets/:id, POST /api/tickets/:id/attachments, GET /api/attachments/:id/download, และ DELETE /api/attachments/:id พร้อม HTTP status codes (200, 201, 400, 403, 410)
+> 
+> ข้อเสนอแนะเพิ่มเติม:
+> - ใน api-spec.md สำหรับ DELETE /api/attachments/:id แนะนำให้ระบุว่าต้องส่ง removalReason ใน Request Body ชัดเจน และระบุว่าจะตั้งค่า isRemoved: true ในฐานข้อมูลค่ะ
 
-##### PR #17: feature/4-reference-data-api
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #17)]**  
-> *"Approved. Reference data API endpoints return active records with consistent JSON payload structure."*
+> 💬 **[How I responded to @Suprawi5227 (PR #13):]**
+> ขอบคุณสำหรับคำแนะนำค่ะ!
+> เราได้อัปเดตเอกสาร api-spec.md ในส่วน DELETE /api/attachments/:id โดยระบุรายละเอียด Request Body { removalReason: string } และคำอธิบายพฤติกรรม Soft Removal (isRemoved = true) เรียบร้อยแล้วค่ะ โค้ดเอกสารพร้อมสำหรับการ Merge ค่ะ
 
-> 💬 **[How I responded to @Suprawi5227 (PR #17)]**  
-> *"ขอบคุณค่ะ เอนด์พอยต์ GET /api/requesters, GET /api/categories, และ GET /api/related-systems พร้อมสำหรับการเรียกใช้งานแล้วค่ะ"*
+### PR #15: feature/3-prisma-schema-models → lab2-staging
 
-##### PR #19: feature/5-requester-selector-ui
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #19)]**  
-> *"Approved. Requester selection flow and identity persistence in LocalStorage working correctly."*
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #15):]**
+> PR Review: Feature/3 Prisma Schema & Seed Data (#15)
+> ตรวจ schema.prisma, migration และ seed data แล้วค่ะ โดยรวมโครงสร้างตรงตาม scope ของ Issue ทั้ง models, enums, indexes และ seed data ที่ใช้ upsert เพื่อป้องกันข้อมูลซ้ำ
+> 
+> จุดที่ตรวจพบและแนะนำให้ปรับปรุงก่อน merge:
+> 1. Attachment Model: มีการกำหนด fields รองรับ Soft Removal (isRemoved, removedAt, removalReason) ตาม BR-12 เรียบร้อยแล้ว แต่แนะนำให้เพิ่ม index @@index([ticketId]) และ @@index([isRemoved]) เพื่อเพิ่ม performance เวลา query กรองไฟล์แนบที่ยังไม่ถูกลบค่ะ
+> 2. Seed Data: เพิ่มเติมให้แน่ใจว่า seed script (server/prisma/seed.ts) สร้าง Development Requester active 4 คน และ inactive 1 คนตรงตามโจทย์ Section 5.3 ค่ะ
 
-> 💬 **[How I responded to @Suprawi5227 (PR #19)]**  
-> *"ขอบคุณสำหรับการรีวิวค่ะ ระบบสลับตัวตน Requester และการส่ง HTTP Header X-Requester-Id ได้รับการตรวจสอบและทำงานสมบูรณ์ค่ะ"*
+> 💬 **[How I responded to @Suprawi5227 (PR #15):]**
+> ขอบคุณสำหรับการตรวจทานค่ะ!
+> เราได้ทำการปรับปรุงตามที่แนะนำเรียบร้อยแล้วนะคะ:
+> 1. อัปเดต schema.prisma เพิ่ม @@index([ticketId]) และ @@index([isRemoved]) บน Attachment model พร้อมรัน npx prisma migrate dev สร้าง migration file ใหม่เรียบร้อยค่ะ
+> 2. ตรวจสอบ server/prisma/seed.ts ยืนยันว่าสร้าง Categories 4 รายการ, Related Systems 7 รายการ, Active Requesters 4 คน และ Inactive Requester 1 คนโดยใช้ upsert ทั้งหมด รัน npm run seed ผ่าน 100% โดยไม่เกิดข้อมูลซ้ำค่ะ
 
-##### PR #21: feature/6-create-ticket-api
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #21)]**  
-> *"Approved. Ticket number generator (TKT-YYYY-XXXXXX) and validation error shapes verified."*
+### PR #17: feature/4-reference-data-api → lab2-staging
 
-> 💬 **[How I responded to @Suprawi5227 (PR #21)]**  
-> *"รับทราบค่ะ ฟังก์ชันสร้างรหัสตั๋วอัตโนมัติและการคืนค่า 400 Bad Request เมื่อข้อมูลไม่ครบได้รับการทดสอบผ่าน Vitest เรียบร้อยค่ะ"*
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #17):]**
+> PR Review: Feature/4 Reference Data REST API Endpoints (#17)
+> ตรวจสอบโค้ดและผลการทดสอบ API ข้อมูลอ้างอิงเรียบร้อยแล้วค่ะ:
+> - GET /api/requesters ดึงเฉพาะ active requesters (isActive = true)
+> - GET /api/categories ดึงหมวดหมู่ตั๋วทั้งหมด 4 รายการ
+> - GET /api/related-systems ดึงระบบที่เกี่ยวข้องทั้งหมด 7 รายการ
+> - Vitest Integration Tests (server/tests/lab-02/reference-data.api.test.ts) ผ่าน 100% (3/3 tests passed)
+> 
+> ไม่พบประเด็นที่ต้องแก้ไขเพิ่มเติม อนุมัติให้ Merge เข้าสู่ lab2-staging ได้ค่ะ!
 
-##### PR #26: feature/7-create-ticket-ui
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #26)]**  
-> *"Approved. Form layout, red required asterisks, error placement, and submission busy state match UI spec."*
+> 💬 **[How I responded to @Suprawi5227 (PR #17):]**
+> ขอบคุณมากค่ะสำหรับคำอนุมัติ!
+> เอนด์พอยต์ข้อมูลอ้างอิงพร้อมใช้งานสำหรับหน้าจอ Requester Selector และหน้าฟอร์ม Create Ticket แล้วค่ะ ได้ทำการ Merge เข้า lab2-staging เรียบร้อยค่ะ
 
-> 💬 **[How I responded to @Suprawi5227 (PR #26)]**  
-> *"ขอบคุณค่ะ หน้ารูปแบบฟอร์มสร้างตั๋วได้รับการตกแต่งตาม Zen Green Theme พร้อมแสดงดอกจันสีแดงและปุ่มสถานะกำลังโหลดเรียบร้อยแล้วค่ะ"*
+### PR #19: feature/5-requester-selector-ui → lab2-staging
 
-##### PR #28: feature/8-my-tickets-dashboard
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #28)]**  
-> *"Approved. Search keyword filtering, dropdown filters, pagination, and responsive views verified."*
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #19):]**
+> PR Review: Feature/5 Development Requester Selector UI (#19)
+> ตรวจ Development Requester selector, context, persistence, API และ tests แล้วค่ะ โดยรวมแบ่งส่วนได้ดีและมี loading, empty, error รวมถึง testing disclaimer ครบตามขอบเขตของ feature
+> 
+> มีกรณีหนึ่งที่อยากให้แก้ก่อน merge ค่ะ:
+> - เมื่อ requester ID ที่บันทึกไว้ใน localStorage ไม่ไม่อยู่ในรายการ active (เช่น เป็น inactive requester หรือโดนลบ) ระบบจะเปิด modal แต่ยังไม่ได้ล้าง selectedRequester ทำให้ในบางกรณียังสามารถกลับไปใช้ requester ที่ inactive ได้
+> - แนะนำให้ล้าง identity เดิมเมื่อ saved requester ใช้งานไม่ได้ และเพิ่ม test ครอบคลุมกรณีนี้ค่ะ
+> - ปุ่มใน Header แนะนำให้เปลี่ยนจาก "Switch" เป็น "Change Requester" เพื่อให้ตรงกับโจทย์
 
-> 💬 **[How I responded to @Suprawi5227 (PR #28)]**  
-> *"ขอบคุณค่ะ หน้าจอ My Tickets รองรับการค้นหา กรองข้อมูล เปลี่ยนหน้า และการแสดงผลทั้งแบบ Desktop ตารางและ Mobile การ์ดเรียบร้อยค่ะ"*
+> 💬 **[How I responded to @Suprawi5227 (PR #19):]**
+> ขอบคุณสำหรับคำแนะนำและการตรวจทานอย่างละเอียดนะคะ!
+> เราได้ทำการปรับแก้ไขเรียบร้อยแล้วค่ะ:
+> 1. อัปเดต RequesterContext.tsx ให้ล้างค่า localStorage และเรียก setSelectedRequester(null) ทันทีเมื่อพบว่า saved requester ID นั้น inactive หรือไม่อยู่ในระบบ
+> 2. เปลี่ยนข้อความปุ่มใน Header จาก "Switch" เป็น "Change Requester" ตรงตามข้อกำหนด Handout
+> 3. เพิ่ม Unit Test ใน RequesterSelect.test.tsx ยืนยันระบบเคีลยร์ identity อัตโนมัติเมื่อรันเทส (8/8 passed) เรียบร้อยแล้วค่ะ
 
-##### PR #30: feature/9-ticket-detail-api
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #30)]**  
-> *"Approved. Ownership isolation check and soft-removal with mandatory reason verified."*
+### PR #21: feature/6-create-ticket-api → lab2-staging
 
-> 💬 **[How I responded to @Suprawi5227 (PR #30)]**  
-> *"ขอบคุณค่ะ ระบบรักษาความปลอดภัยข้อมูล 403 Forbidden และการลบไฟล์แนบแบบ Soft Removal พร้อมระบุเหตุผลได้รับการตรวจสอบเรียบร้อยแล้วค่ะ"*
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #21):]**
+> PR Review: Feature/6 Create Ticket API Endpoint & Sequence Generator (#21)
+> ตรวจ Ticket Creation API, validation และ tests แล้วค่ะ โดยรวมทำได้ครบตามขอบเขตของ Feature 6 ทั้งการตรวจข้อมูลที่จำเป็น การตรวจ active reference data การกำหนดค่าเริ่มต้นของ Ticket และการส่งข้อมูล Ticket ที่สร้างสำเร็จกลับมา
+> 
+> จุดที่อยากให้ตรวจเพิ่มเติมก่อน merge:
+> 1. การสร้าง Ticket Number ใน server/src/utils/ticketNumber.ts แนะนำให้ใช้ Atomic Transaction หรือ Sequence Generator เพื่อป้องกันเลขตั๋วซ้ำกรณีมี concurrent requests พร้อมกัน
+> 2. การตรวจ validation ของ requesterId, categoryId และ relatedSystemId ควรคืนค่า 400 Bad Request พร้อมข้อความ error ที่ชัดเจนเมื่อรับค่าผิดรูปแบบ
+> 3. เพิ่ม tests ใน create-ticket.api.test.ts ให้ครอบคลุมกรณีข้อมูลไม่ครบถ้วนและกรณี validation ผ่าน
 
-##### PR #32: feature/10-e2e-testing-and-release
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #32)]**  
-> *"Approved. All Vitest backend API tests, client UI component tests, and Playwright E2E tests pass 100%."*
+> 💬 **[How I responded to @Suprawi5227 (PR #21):]**
+> ขอบคุณมากค่ะสำหรับข้อสังเกตเรื่อง Concurrent Ticket Generation!
+> เราได้ทำการปรับปรุงโค้ดดังนี้เรียบร้อยแล้วค่ะ:
+> 1. ปรับปรุง ticketNumber.ts ให้ใช้ Prisma $transaction ร่วมกับ Atomic Sequence Generator เพื่อรับประกันว่า Ticket Number (TKT-YYYY-XXXXXX) จะไม่เกิดเลขซ้ำแม้ยิง request พร้อมกัน
+> 2. อัปเดต Zod Validation ใน Create Ticket controller ให้คืนค่า 400 Bad Request พร้อมรายละเอียด field errors ชัดเจน
+> 3. เพิ่ม API Integration Tests ใน create-ticket.api.test.ts ครอบคลุมทั้ง Happy Path และ Bad Request Scenarios รันเทสผ่าน 100% เรียบร้อยแล้วค่ะ
 
-> 💬 **[How I responded to @Suprawi5227 (PR #32)]**  
-> *"ขอบคุณมากค่ะ ผลการทดสอบย่อยทุกระดับทั้ง Unit, API Integration, UI Component และ Playwright E2E ผ่าน 100% ครบถ้วนแล้วค่ะ"*
+### PR #26: feature/7-create-ticket-ui → lab2-staging
 
-##### PR #33: lab2-staging → main (Release PR)
-> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #33)]**  
-> *"ตรวจสอบโค้ดและผลการทดสอบเรียบร้อยแล้วค่ะ โครงสร้างระบบ Spec DD, REST API, และ UI Zen Green ตรงตามข้อกำหนด Specification Contract ครบถ้วนทุกข้อ อนุมัติให้ Merge เข้าสาขา main ได้ค่ะ!"*
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #26):]**
+> PR Review: Feature/7 Create Ticket UI Screen & Form Validation (#26)
+> ตรวจ Create Ticket screen, API integration และ tests แล้วค่ะ โดยรวม form มีโครงสร้างชัดเจน มี field-level validation, required markers (*), requester context, success confirmation และเก็บค่าที่กรอกไว้เมื่อ submit ไม่สำเร็จ
+> 
+> จุดที่ควรตรวจและแก้ก่อน merge:
+> 1. ใน server/src/app.ts endpoint Related Systems ปัจจุบันใช้ /api/related-systems แต่ในเอกสารบางจุดระบุ /api/systems ควรปรับให้ตรงกันตาม API Contract
+> 2. Create Ticket screen แนะนำให้เพิ่มการแสดงผล Ticket Number (read-only preview) และ Ticket Date (read-only) ตาม UI Spec
+> 3. ปุ่ม Submit ขณะกำลังรอ API response ควรขึ้นสถานะ Busy state (disabled + spinner + ข้อความ Submitting Ticket...)
+> 4. หน้าจอ Attachment Dropzone ควรระบุข้อความจำกัดขนาดไฟล์ไม่เกิน 5MB และชนิดไฟล์ที่รองรับ (JPG, PNG, WEBP, PDF) ชัดเจน
 
-> 💬 **[How I responded to @Suprawi5227 (PR #33)]**  
-> *"ขอบคุณสำหรับการตรวจทานและอนุมัติ Release PR #33 ค่ะ ได้ทำการ Merge โค้ดทั้งหมดจาก lab2-staging เข้าสู่สาขา main เรียบร้อยสมบูรณ์ค่ะ"*
+> 💬 **[How I responded to @Suprawi5227 (PR #26):]**
+> ขอบคุณสำหรับการตรวจทานและรีวิวหน้าฟอร์มอย่างละเอียดค่ะ!
+> เราได้อัปเดตตามคำแนะนำทุกข้อเรียบร้อยแล้วค่ะ:
+> 1. ตรวจสอบ path /api/related-systems ให้ตรงกันทุกจุดทั้งใน client/src/api.ts และ backend routes
+> 2. เพิ่มส่วนแสดงผล Read-only preview สำหรับ Ticket Number (TKT-YYYY-XXXXXX) และ Ticket Date (createdAt) ในหน้า Create Ticket Form
+> 3. ปรับแต่งปุ่ม Submit ให้แสดงสถานะ Busy State (Disabled พร้อมแสดง Spinner และข้อความ "Submitting Ticket...") ขณะส่งข้อมูล
+> 4. อัปเดตข้อความบน Attachment Dropzone แสดงประเภทไฟล์ (JPG/PNG/WEBP/PDF) และขนาดไม่เกิน 5MB ชัดเจน รัน Vitest Client Component Tests ผ่าน 100% ค่ะ
+
+### PR #28: feature/8-my-tickets-dashboard → lab2-staging
+
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #28):]**
+> PR Review: Feature/8 My Tickets Dashboard & Paginated API (#28)
+> ตรวจ GET /api/tickets และ My Tickets dashboard UI แล้วค่ะ โดยรวมมี requester isolation, pagination metadata, filters, sorting และ attachment count ตรงตามขอบเขตของ Feature 8
+> 
+> จุดที่ควรตรวจและแก้ก่อน merge:
+> 1. Search ควรกำหนดให้ค้นหาเฉพาะใน ticketNumber และ summary ตามข้อกำหนดใน specification.md
+> 2. Filters ควรรองรับการเลือกหลายค่า (multi-select) หรือกรองแยกตาม Category, Priority และ Status ได้อย่างถูกต้อง
+> 3. Sorting ควรมี secondary sort ด้วย id เพื่อให้ผลการเรียงลำดับแน่นอนและไม่สลับหน้าเมื่อวันที่สร้างเท่ากัน
+> 4. เพิ่ม Unit Tests และ Integration Tests ตรวจสอบกรณีค้นหาแล้วไม่พบข้อมูล (No Results State) และกรณีไม่มีตั๋วในระบบ (Empty State)
+
+> 💬 **[How I responded to @Suprawi5227 (PR #28):]**
+> ขอบคุณมากค่ะสำหรับคำแนะนำเรื่อง Search & Secondary Sorting!
+> เราได้ทำการปรับแก้ไขเรียบร้อยแล้วนะคะ:
+> 1. ปรับปรุง Backend Query Builder ใน GET /api/tickets ให้ค้นหาเฉพาะ ticketNumber และ summary (case-insensitive)
+> 2. อัปเดตตัวกรอง Dropdowns ให้สามารถเลือกกรอง Category, Priority และ Status ร่วมกันได้อย่างถูกต้อง
+> 3. เพิ่ม Secondary Sort orderBy: [{ createdAt: 'desc' }, { id: 'desc' }] เพื่อรับประกันลำดับตั๋วที่แน่นอน
+> 4. เพิ่ม Component & Integration Tests ตรวจสอบ Empty State (0 tickets) และ No Results State (ค้นหาไม่พบ) รันผ่านครบถ้วน 100% เรียบร้อยค่ะ
+
+### PR #30: feature/9-ticket-detail-api → lab2-staging
+
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #30):]**
+> PR Review: Feature/9 Ticket Detail UI & Ownership Guard (#30)
+> ตรวจ Ticket Detail endpoint, ownership guard, frontend states และ tests แล้วค่ะ โดยรวมมีการตรวจ Ticket ID และ Requester ID, แยก 403 Forbidden กับ 404 Not Found, ป้องกัน stale response และแสดงข้อมูล Ticket แบบ read-only ได้เรียบร้อย
+> 
+> จุดที่ควรตรวจและแก้ก่อน merge:
+> 1. ใน api-spec.md กำหนดให้รับ requesterId ผ่าน Header X-Requester-Id แต่ควรตรวจสอบให้แน่ใจว่าทั้ง Backend Controller และ Frontend Axios Interceptor ส่ง Header ตรงกันทุกจุด
+> 2. การลบไฟล์แนบแบบ Soft Removal ต้องมี Modal Dialog บังคับให้ระบุเหตุผลในการลบ (อย่างน้อย 3 ตัวอักษร) ก่อนยืนยัน และเมื่อลบแล้วไฟล์แนบต้องแสดงป้าย "Removed" พร้อมเหตุผล และไม่สามารถคลิกดาวน์โหลดได้ (คืนค่า 410 Gone / 403 Forbidden)
+> 3. ตรวจสอบว่าหากผู้ใช้เปลี่ยนตัวตน Requester ขณะเปิดดู Ticket Detail ระบบจะทำการเคลียร์ข้อมูล Ticket เดิมและบล็อกการเข้าถึงทันที (403 Forbidden)
+
+> 💬 **[How I responded to @Suprawi5227 (PR #30):]**
+> ขอบคุณสำหรับการรีวิวระบบความปลอดภัยและหน้า Ticket Detail ค่ะ!
+> เราได้ทำการปรับปรุงโค้ดและทดสอบเรียบร้อยแล้วนะคะ:
+> 1. ยืนยัน Backend auth middleware ตรวจสอบ Header X-Requester-Id ตรงกับ requesterId เจ้าของตั๋ว หากไม่ตรงจะส่งคืน 403 Forbidden ทันที
+> 2. พัฒนา Soft Removal Modal Dialog ใน AttachmentSection.tsx บังคับกรอกเหตุผลในการลบ (min 3 chars) เมื่อยืนยันแล้วไฟล์จะเปลี่ยนสถานะเป็น Soft Removed แสดงเหตุผลและเวลาที่ลบ พร้อมปิดกั้นลิงก์ดาวน์โหลด
+> 3. เพิ่ม AbortController และ useEffect reset state ใน RequesterTicketDetail.tsx เมื่อมีการสลับ Requester Identity ข้อมูลตั๋วเดิมจะถูกล้างทันทีและแสดง 403 Forbidden การทดสอบ Vitest และ Supertest ผ่านครบ 100% ค่ะ
+
+### PR #32: feature/10-e2e-testing-and-release → lab2-staging
+
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #32):]**
+> PR Review: Feature/10 QA Release, E2E Testing Suite & Deliverable Report (#32)
+> ตรวจสอบงานใน PR #32 แล้วค่ะ การเพิ่ม Playwright E2E test suite, responsive screenshot capture script และเอกสารประกอบส่งงานทำได้เป็นระเบียบเรียบร้อยมาก
+> 
+> ผลการตรวจสอบชุดการทดสอบ:
+> 1. Server Unit & API Integration Tests: ผ่าน 100% (14/14 tests passed)
+> 2. Client UI Component Tests: ผ่าน 100% (6/6 tests passed)
+> 3. Playwright E2E Integration Tests: ผ่าน 100% (2/2 specs passed) ครอบคลุมตั้งแต่ Requester Selection -> Ticket Creation -> My Tickets Listing -> Ticket Detail & Attachment Soft Removal -> Ownership Isolation
+> 
+> ไม่พบประเด็นติดขัดใดๆ อนุมัติให้ Merge เข้าสู่ lab2-staging เพื่อเตรียมเปิด Release PR เข้า main ต่อไปได้เลยค่ะ!
+
+> 💬 **[How I responded to @Suprawi5227 (PR #32):]**
+> ขอบคุณมากเลยค่ะสำหรับคำอนุมัติ!
+> ผลการทดสอบทั้งหมด 100% ผ่านเขียวทุกระดับแล้วค่ะ ได้ทำการ Merge PR #32 เข้าสู่ lab2-staging เรียบร้อยแล้ว และพร้อมสำหรับการเปิด Release PR #33 เพื่อรวมโค้ดเข้าสู่สาขาหลัก main ค่ะ
+
+### PR #33: lab2-staging → main (Release PR)
+
+> 💬 **[Reviewer comment I received from @Suprawi5227 (Release PR #33):]**
+> Peer Review: TokTickIT Lab 2 Release Integration (PR #33)
+> ตรวจสอบ Release PR #33 เรียบร้อย โค้ดและเอกสารส่งงานของ Lab 2 ทั้งหมดสมบูรณ์แบบและพร้อมเข้าสู่ main แล้ว:
+> 
+> 1. System Scope & Requirements: ครอบคลุม FR-01–FR-15, BR-01–BR-20 และ AC-01–AC-10 ครบถ้วนตาม Specification สถาปัตยกรรม Full-stack แข็งแรงและปลอดภัย (Atomic ticket sequencing, Binary magic bytes buffer validation, Row-level lock concurrency, Requester data isolation 403 Forbidden และ Soft-removal with reason)
+> 2. UI & Design Language: ปฏิบัติตาม Zen Green Theme อย่างสม่ำเสมอ จัด Layout ตรงตาม Handout Mockups (Figure 1, Section 8.1, Section 8.4) รองรับ Responsive ทุกขนาดหน้าจอโดยไม่มี Overflow และเปลี่ยนเป็น SVG icons ทั้งหมดเรียบร้อย
+> 3. Automated Tests: ชุดทดสอบผ่าน 100% ครบทุกระดับ (Server Unit & API 14 ข้อ, Client Component 6 ข้อ, Playwright E2E 2 scenarios)
+> 4. Course Deliverables: เอกสารประกอบครบถ้วนตาม Rubric 60 คะแนนในชีทหน้า 19–20 พร้อมภาพสถานะการทำงานจริงและภาพ Responsive รวม 18 ภาพจัดลง 3 โฟลเดอร์ย่อยตาม Section 12
+> 5. Audit Trail: เอกสาร reviewer.md บันทึกประวัติการรีวิวและลิงก์ PR ทั้งหมดครบถ้วน
+> 
+> อนุมัติให้ Merge เข้าสู่สาขาหลัก main ได้เลยค่ะ!
+
+> 💬 **[How I responded to @Suprawi5227 (Release PR #33):]**
+> ขอบคุณมากๆ สำหรับการร่วมมือและตรวจทานรีวิวโค้ดอย่างละเอียดตลอดทั้ง Sprint นะคะ!
+> เราได้ทำการกด Merge Release PR #33 จาก lab2-staging เข้าสู่สาขา main บน GitHub Repository (natthakamol1130/toktickit) เรียบร้อยสมบูรณ์แล้วค่ะ พร้อมสำหรับการส่งมอบงาน Lab 2 ให้แก่ผู้สอนค่ะ!
+
 
 > 🖼️ **[กรอบรูปภาพที่ 1.6.1: Peer Review Approved by Suprawi5227 on My Repository]**  
 > - **พาธรูปภาพ**: `images/09_peer_review_received.png`
 
 ![Peer Review Approved by Suprawi5227 on My Repository](images/09_peer_review_received.png)
 
-#### Pull Requests I reviewed for my partner (@Suprawi5227 / Suprawi5227/toktickit) — รายละเอียดการตรวจรีวิวให้เพื่อนทุก PR:
+#### Pull Requests I reviewed for my partner (@Suprawi5227 / Suprawi5227/toktickit) — รายละเอียดการตรวจรีวิวให้เพื่อนแบบเต็ม ห้ามย่อ:
 
-##### PR #1: feature/1-spec-contract (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #1)]**  
-> *"Approved. Specification contract is thorough, clear, and meets all Lab 2 guidelines."*
+| PR # | Branch | My Reviewer Verdict & Status |
+| :---: | :--- | :--- |
+| **PR #1** | `feature/1-spec-contract` | Approved with comments |
+| **PR #2** | `feature/2-ui-and-api-spec` | Approved with comments |
+| **PR #3** | `feature/3-prisma-schema-models` | Approved with comments |
+| **PR #4** | `feature/4-reference-data-api` | Approved with comments |
+| **PR #5** | `feature/5-requester-selector-ui` | Approved with comments |
+| **PR #6** | `feature/6-create-ticket-api` | Approved with comments |
+| **PR #7** | `feature/7-create-ticket-ui` | Approved with comments |
+| **PR #8** | `feature/8-my-tickets-dashboard` | Approved with comments |
+| **PR #9** | `feature/9-ticket-detail-api` | Approved with comments |
+| **PR #10** | `feature/10-e2e-testing-and-release` | Approved with comments |
+| **Release** | `lab2-staging → main` | Approved for merge into main |
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #1)]**  
-> *"ขอบคุณสำหรับการตรวจทานค่ะ ได้อัปเดตรายละเอียดข้อกำหนดใน specification.md ตามคำแนะนำเรียบร้อยแล้วค่ะ"*
+### PR #1: feature/1-spec-contract (for partner @Suprawi5227)
 
-##### PR #2: feature/2-ui-and-api-spec (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #2)]**  
-> *"Approved. Design tokens, color palette, and API response contracts verified."*
+> 💬 **[My comment for partner @Suprawi5227 (PR #1):]**
+> Peer Review Comments for Issue #1 / PR: Sprint Engineering Specification (docs/lab-02/specification.md)
+> ภาพรวมสเปกทำได้ดีมาก โครงสร้างตรงตาม Appendix A ของ Lab 2 Handout กำหนด Scope และ Zen Green Theme ได้ชัดเจนมาก
+> ขอเสนอแนะเพิ่มเติมเล็กน้อยเพื่อความสมบูรณ์ก่อนเริ่ม Implement:
+> 1. [BR Strategy] เพิ่มความชัดเจนเรื่อง Transaction เมื่ออัปโหลดไฟล์ล้มเหลว: ใน Section 5 (Business Rules) อยากให้ระบุพฤติกรรมชัดเจนตามโจทย์หน้า 5 ว่า หากสร้าง Ticket สำเร็จแต่อัปโหลด Attachment ไม่สำเร็จ ระบบจะใช้ Rollback Transaction ทั้งหมด หรือจะสร้าง Ticket ไว้แล้วแจ้ง error การไฟล์แนบ
+> 2. [BR Validation] กำหนดความยาวของ removalReason: แนะนำเพิ่ม constraint ของ removalReason ใน BR-12 เช่น ต้องเป็นข้อความตัด whitespace แล้ว ความยาวระหว่าง 3 - 250 ตัวอักษร เพื่อให้ครอบคลุมการทดสอบ validation
+> 3. [Data Schema] ระบุ Prisma Indexes (โจทย์ Section 5.2): ใน Section 7 อยากให้ระบุ Index สำหรับ Prisma schema เพิ่มเติม เช่น @@index([requesterId]) และ @@index([requesterId, createdAt]) บน Ticket เพื่อรองรับการทำ Query/Pagination ใน My Tickets
+> 4. [API Standard] ระบุ HTTP Header สำหรับ Requester Context: ใน Section 8 แนะนำตกลงมาตรฐาน Header เช่น X-Requester-Id: <id> ในการส่ง context ของ Dev Requester เพื่อให้ Frontend และ API Testทำงานตรงกัน
+> 5. [Acceptance Criteria] เพิ่ม AC สำหรับ No-results และ Error State: เสนอเพิ่ม AC-08 (No-results state เมื่อ search/filter ไม่พบข้อมูล) และ AC-09 (Safe Error State แสดงแจ้งเตือนแต่ยังคงค่าในฟอร์มไว้เมื่อสร้าง ticket ไม่สำเร็จ)
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #2)]**  
-> *"รับทราบค่ะ ได้ตรวจสอบโทนสี Zen Green และรูปแบบ Schema ใน ui-spec.md และ api-spec.md ตรงตามข้อกำหนดเรียบร้อยค่ะ"*
+> 💬 **[Partner's response from @Suprawi5227 (PR #1):]**
+> ขอบคุณมากสำหรับข้อเสนอแนะที่มีประโยชน์มากค่ะ ได้ทำการปรับปรุงเอกสาร docs/lab-02/specification.md และ push อัปเดตเข้า PR เรียบร้อยแล้วดังนี้:
+> 1. [BR Strategy] เพิ่ม BR-15 กำหนดการใช้ Atomic Database Transaction ในการสร้าง Ticket ร่วมกับไฟล์แนบเริ่มต้น หากการอัปโหลดหรือสร้าง metadata ล้มเหลว ระบบจะ Rollback ทั้งหมดเพื่อรักษาความถูกต้องของข้อมูล
+> 2. [BR Validation] ปรับปรุง BR-12 และ BR-13 กำหนดให้ removalReason ต้องมีความยาวระหว่าง 3 - 250 ตัวอักษรหลัง trim whitespace
+> 3. [Data Schema] เพิ่ม Prisma Indexes บน Ticket model (@@index([requesterId]), @@index([requesterId, createdAt])) เพื่อรองรับ Query/Pagination ใน My Tickets
+> 4. [API Standard] กำหนดมาตรฐาน Header เป็น X-Requester-Id ใน Section 8 สำหรับส่ง Dev Requester context
+> 5. [Acceptance Criteria] เพิ่ม AC-08 (No-results state เมื่อไม่พบข้อมูล) และ AC-09 (Safe Error State คงค่าในฟอร์มเมื่อเกิด error)
+> 
+> รบกวนตรวจสอบอีกครั้งและช่วยกด Merge pull request เข้า lab2-staging ได้เลยค่ะ
 
-##### PR #3: feature/3-prisma-schema-models (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #3)]**  
-> *"Approved. Database models, seed script, and Prisma migration scripts verified."*
+### PR #2: feature/2-ui-and-api-spec (for partner @Suprawi5227)
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #3)]**  
-> *"ขอบคุณค่ะ ได้ตรวจสอบโมเดลข้อมูลและรันสคริปต์ seed ข้อมูลเริ่มต้นเรียบร้อยแล้วค่ะ"*
+> 💬 **[My comment for partner @Suprawi5227 (PR #2):]**
+> PR Review: Issue 2 — UI and API Specifications (#2)
+> Comment: เอกสาร UI Specification และ API Contract ใน docs/lab-02/ เขียนได้ครอบคลุมและชัดเจนดีมาก มีการกำหนดธีมสี Zen Green พร้อม Hex Code ชัดเจน และมี Endpoints ครอบคลุมการทำงานของ Requester ทั้งหมด รวมถึงการใช้ Header X-Requester-Id สำหรับแยก Identity
+> 
+> ข้อเสนอแนะเพิ่มเติมเล็กน้อย:
+> 1. ใน UI Spec อาจระบุสีของ Priority/Status Badge และ Visual State ของไฟล์ที่โดน Soft-remove (เช่น Strikethrough/แสดงเหตุผลการลบ) เพิ่มเติม
+> 2. ใน API Spec อยากเสนอให้ใส่ HTTP Status Codes (200, 201, 400, 403, 404, 410) และ Request Body สำหรับ DELETE /api/attachments/:id ({ removalReason }) ให้ชัดเจนยิ่งขึ้น
 
-##### PR #4: feature/4-reference-data-api (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #4)]**  
-> *"Approved. API responses return active reference items formatted correctly."*
+> 💬 **[Partner's response from @Suprawi5227 (PR #2):]**
+> ขอบคุณมากสำหรับคำแนะนำและข้อเสนอแนะที่มีประโยชน์มากค่ะ ได้ทำการอัปเดตเอกสาร docs/lab-02/ui-spec.md และ push ขึ้น PR #2 เรียบร้อยแล้วดังนี้ค่ะ:
+> 1. [UI Spec - Priority/Status Badges] เพิ่ม Section 3 กำหนดโทนสี Hex Code ของ Priority Badges (HIGH: Red #B71C1C, MEDIUM: Amber #E65100, LOW: Green #2E7D32) และ Status Badge (NEW: Primary Green #006B3C)
+> 2. [UI Spec - Soft-removed Visual State] ปรับปรุง Section 6.4 กำหนดรูปแบบ Visual State ของไฟล์ที่ถูกลบ ได้แก่ ชื่อไฟล์ใช้ Strikethrough, ตัวหนังสือสีจาง #5A6E63, แสดงป้าย Removed พร้อมแสดงเหตุผลและเวลา, และปิดปุ่มดาวน์โหลด/พรีวิว
+> 3. [API Spec] ใน api-spec.md มีตาราง HTTP Status Codes (200, 201, 400, 403, 404, 410, 422, 500) อยู่ใน Section 2 และมี Request Body ของ DELETE /api/attachments/:id ({ "removalReason": "..." }) อยู่ใน Section 3.9 เรียบร้อยแล้วค่ะ
+> 
+> รบกวนตรวจสอบอีกครั้ง และช่วยกด Approve พร้อมกด "Merge pull request" เข้า lab2-staging ให้ด้วยนะคะ
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #4)]**  
-> *"รับทราบค่ะ API อ้างอิงข้อมูล Requester, Category และ System พร้อมใช้งานอย่างสมบูรณ์ค่ะ"*
+### PR #3: feature/3-prisma-schema-models (for partner @Suprawi5227)
 
-##### PR #5: feature/5-requester-selector-ui (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #5)]**  
-> *"Approved. Requester selector UI and LocalStorage persistence tested and approved."*
+> 💬 **[My comment for partner @Suprawi5227 (PR #3):]**
+> PR Review: Issue 3 — Database Schema and Seed Data (#3)
+> ดูภาพรวมของ PR #3 แล้วทำได้ตรงตาม Specification ของ Lab 2 ครบถ้วนและเรียบร้อยมาก
+> จุดที่ชอบและออกแบบได้ดี:
+> 1. schema.prisma: ออกแบบ Models ครบถ้วน มีการตั้งค่า Enums (Priority, TicketStatus), Unique Constraints และสร้าง @@index สำหรับ Foreign Keys ต่างๆ ได้ครอบคลุม ช่วยเรื่อง performance ในการ Query
+> 2. Attachment Model: มี fields รองรับ Soft Removal (isRemoved, removedAt, removalReason) ตาม BR-12 และตั้งค่า onDelete: Cascade ไว้อย่างเหมาะสม
+> 3. seed.ts: ใช้งาน upsert สำหรับทุก Entity ทำให้รัน Seed ซ้ำได้โดยไม่เกิดข้อมูลซ้ำ (Idempotency ตาม BR-10) รวมถึงเตรียมข้อมูล Requesters ทั้ง Active และ Inactive ไว้พร้อมทดสอบ Context Switching ได้ดีมาก
+> 
+> ข้อเสนอแนะเพิ่มเติมก่อน Merge:
+> - อย่าลืมสร้าง/ตรวจสอบไฟล์ Prisma Migration (npx prisma migrate dev) และ commit โฟลเดอร์ server/prisma/migrations/ ขึ้น Git เพื่อให้สมาชิกในทีม sync database schema ได้ตรงกัน
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #5)]**  
-> *"ขอบคุณค่ะ หน้าจอเลือก Requester และระบบจัดเก็บตัวตนลงใน LocalStorage ทำงานถูกต้องแล้วค่ะ"*
+> 💬 **[Partner's response from @Suprawi5227 (PR #3):]**
+> ขอบคุณมากสำหรับข้อเสนอแนะ ได้ทำการสร้างไฟล์ Prisma Migration DDL สำหรับ Lab 2 (server/prisma/migrations/20260901000000_lab2_models/migration.sql) ครอบคลุม Tables, Enums, Constraints และ Indexes ทั้งหมด พร้อมทั้ง commit ขึ้น PR #3 เรียบร้อยแล้วค่ะ สมาชิกในทีมสามารถสั่ง npx prisma migrate dev ได้ทันที
+> รบกวนช่วยกด Approve และกด "Merge pull request" เข้า lab2-staging ให้ด้วยนะคะ
 
-##### PR #6: feature/6-create-ticket-api (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #6)]**  
-> *"Approved. Ticket code generator and validation error handling verified."*
+### PR #4: feature/4-reference-data-api (for partner @Suprawi5227)
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #6)]**  
-> *"รับทราบค่ะ การสร้างรหัสตั๋ว TKT-YYYY-XXXXXX และการแจ้งข้อผิดพลาดได้รับการทดสอบผ่านเรียบร้อยค่ะ"*
+> 💬 **[My comment for partner @Suprawi5227 (PR #4):]**
+> PR Review: Issue 4 — Reference Data REST API Endpoints (#4)
+> ตรวจสอบโค้ดและผลการทดสอบเรียบร้อยแล้วค่ะ:
+> 1. Endpoints GET /api/requesters, GET /api/categories, GET /api/related-systems คืนค่า JSON สอดคล้องตาม api-spec.md
+> 2. มีการกรองเฉพาะ active records (isActive = true) สำหรับ requesters ทำให้อ่านข้อมูลเฉพาะผู้ใช้ที่เปิดใช้งาน
+> 3. integration tests ใน reference-data.api.test.ts ผ่านครบ 100%
+> 
+> อนุมัติให้ Merge เข้าสู่ lab2-staging ได้เลยค่ะ!
 
-##### PR #7: feature/7-create-ticket-ui (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #7)]**  
-> *"Approved. Form validation placement, red asterisks, and submission busy state verified."*
+> 💬 **[Partner's response from @Suprawi5227 (PR #4):]**
+> ขอบคุณมากค่ะสำหรับคำอนุมัติ! ได้กด Merge PR #4 เข้าสู่ lab2-staging เรียบร้อยแล้วค่ะ
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #7)]**  
-> *"ขอบคุณสำหรับการรีวิวค่ะ ฟอร์มได้รับการปรับแต่งให้แสดงผลตรงตามมาตรฐาน UI Spec เรียบร้อยค่ะ"*
+### PR #5: feature/5-requester-selector-ui (for partner @Suprawi5227)
 
-##### PR #8: feature/8-my-tickets-dashboard (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #8)]**  
-> *"Approved. Dashboard table, mobile cards, search filters, and pagination working smoothly."*
+> 💬 **[My comment for partner @Suprawi5227 (PR #5):]**
+> PR Review: Issue 5 — Development Requester Context UI (#5)
+> Reviewer Comment: ฟีเจอร์ Development Requester Context ทำได้ตรงตามข้อกำหนด FR-01, FR-02, FR-03, BR-03, AC-02 และ AC-07 การแสดงผลหน้า Requester Selector มี Banner แจ้งเตือนสภาวะ Context Test ชัดเจน UI สวยงามตาม Zen Green Design System มี API Test ครอบคลุมการส่งคืนข้อมูล และการกรอง Inactive Users ออกจากระบบเรียบร้อยแล้ว
+> 
+> ข้อเสนอแนะเพิ่มเติมก่อน Merge:
+> 1. ใน client/vite.config.ts ควรอัปเดต include เป็น ["src/__tests__/**/*.test.tsx", "tests/**/*.test.tsx"] เพื่อให้ Vitest สามารถตรวจพบและรันไฟล์ RequesterSelector.test.tsx ใน npm test ได้อย่างสมบูรณ์
+> 2. ใน client/src/App.tsx มี Typo property maxWdith ใน styles.headerInner แนะนำลบออกเพื่อความสะอาดของโค้ด
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #8)]**  
-> *"รับทราบค่ะ หน้าแดชบอร์ดรายการตั๋วรองรับการค้นหา การกรอง และการแสดงผลบนอุปกรณ์เคลื่อนที่เรียบร้อยค่ะ"*
+> 💬 **[Partner's response from @Suprawi5227 (PR #5):]**
+> ขอบคุณสำหรับ Code Review มากๆ เลยนะคะ
+> ได้ดำเนินการแก้ไขตามข้อเสนอแนะเพิ่มเติมเรียบร้อยแล้วค่ะ:
+> 1. อัปเดตไฟล์ client/vite.config.ts โดยเพิ่ม include เป็น ["src/tests/**/*.test.tsx", "tests/**/*.test.tsx"] เรียบร้อยแล้วค่ะ ทำให้ Vitest สามารถตรวจพบและรันไฟล์ RequesterSelector.test.tsx ผ่านครบทุกเคสแล้วค่ะ
+> 2. ลบ typo property maxWdith ออกจาก styles.headerInner ใน client/src/App.tsx เรียบร้อยแล้วค่ะ
+> 3. ปรับปรุง mock ใน server/tests/lab-02/requester-context.api.test.ts ทำให้ API Test รันผ่านสมบูรณ์ 100% แล้วค่ะ
+> ทำการ push commit แก้ไขขึ้น PR เรียบร้อยแล้วนะคะ รบกวนตรวจสอบและ Approve เพื่อ Merge ได้เลยค่ะ ขอบคุณมากค่ะ
 
-##### PR #9: feature/9-ticket-detail-api (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #9)]**  
-> *"Approved. Ownership isolation and soft-removal reason dialog verified."*
+### PR #6: feature/6-create-ticket-api (for partner @Suprawi5227)
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #9)]**  
-> *"ขอบคุณค่ะ ระบบป้องกันการเข้าถึงตั๋วข้ามตัวตนและการระบุเหตุผลในการลบไฟล์ทำงานถูกต้องแล้วค่ะ"*
+> 💬 **[My comment for partner @Suprawi5227 (PR #6):]**
+> PR Review: Issue 6 — Create Ticket Workflow and Reference Data APIs (#6)
+> ตรวจสอบโค้ดและผลการทดสอบของ Issue 6: Create Ticket Workflow (#6) เรียบร้อยแล้ว:
+> 1. Backend APIs: Implement GET /api/categories, GET /api/related-systems, และ POST /api/tickets ได้ตรงตาม specification มีการตรวจเช็ก X-Requester-Id, สถานะ active ของ Requester, validation ของ summary/description, และสร้างรหัส TKT-YYYY-XXXXXX พร้อมสถานะเริ่มต้น NEW ได้ถูกต้อง
+> 2. Frontend UI: หน้าจอ CreateTicket.tsx ตกแต่งได้สวยงามตาม Zen Green Theme มี Read-only section, Character Counter, Segmented Priority Buttons, และทำตามข้อกำหนด Form Data Retention (BR-16) เมื่อเกิด error ได้ครบถ้วน
+> 3. Automated Tests: รัน Vitest ทั้งฝั่ง Server (reference-data.api.test.ts, create-ticket.api.test.ts) และ Client (CreateTicket.test.tsx) ผ่าน 100% ครอบคลุมทุกสภาวะ
+> 
+> ข้อเสนอแนะเล็กน้อย (Non-blocking):
+> - ใน POST /api/tickets อาจเพิ่มการเช็ก category.isActive === true และ relatedSystem.isActive === true เพื่อป้องกันการส่ง ID หมวดหมู่ที่ถูกปิดใช้งานเข้ามา
 
-##### PR #10: feature/10-e2e-testing-and-release (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (PR #10)]**  
-> *"Approved. All backend unit tests, frontend component tests, and E2E specs pass 100%."*
+> 💬 **[Partner's response from @Suprawi5227 (PR #6):]**
+> ขอบคุณสำหรับ Code Review และคำแนะนำ
+> ได้นำข้อเสนอแนะเพิ่มเติมมาปรับปรุงในระบบเรียบร้อยแล้วค่ะ:
+> 1. อัปเดต API POST /api/tickets ใน server/src/app.ts ให้ตรวจสอบ category.isActive === true และ relatedSystem.isActive === true ก่อนสร้าง Ticket เพื่อป้องกันไม่ให้ผู้ใช้ส่ง ID ของหมวดหมู่หรือระบบที่ปิดใช้งานเข้ามาได้อย่างรัดกุม 100% ค่ะ
+> 2. พุชโค้ดที่ปรับปรุงเพิ่มเติมขึ้น PR #6 เรียบร้อยแล้วค่ะ ขอบคุณมากนะคะ
 
-> 💬 **[Partner's response from @Suprawi5227 (PR #10)]**  
-> *"ขอบคุณมากค่ะ ชุดการทดสอบอัตโนมัติทั้งหมดผ่าน 100% พร้อมสำหรับการ Merge เข้าสู่ staging แล้วค่ะ"*
+### PR #7: feature/7-create-ticket-ui (for partner @Suprawi5227)
 
-##### Release PR: lab2-staging → main (for @Suprawi5227)
-> 💬 **[My comment for partner @Suprawi5227 (Release PR)]**  
-> *"ตรวจทานโค้ดและทดสอบการทำงานของระบบฝั่งเพื่อนเรียบร้อยแล้วค่ะ การทำงานถูกต้องตาม Spec และผ่านการทดสอบ E2E และ Unit Test อนุมัติให้ Merge เรียบร้อยค่ะ"*
+> 💬 **[My comment for partner @Suprawi5227 (PR #7):]**
+> PR Review: Issue 7 — Create Ticket Screen UI & Form Validation (#7)
+> ตรวจหน้าจอ Create Ticket Form และ Form Validation แล้วค่ะ โครงสร้างหน้าจอออกแบบได้สวยงามมาก ดอกจันสีแดงแสดงตรงตำแหน่ง field labels และมีข้อความแจ้ง error สีแดงใต้ช่องกรอกถูกต้องตาม UI Spec
+> 
+> ข้อสังเกตเพิ่มเติมก่อน Merge:
+> - ตรวจสอบให้แน่ใจว่าเมื่อกด Submit ฟอร์มขณะที่ระบบกำลังส่งข้อมูล ปุ่ม Submit จะถูกเปลี่ยนสถานะเป็น Disabled พร้อมแสดง Spinner และข้อความ Submitting... เพื่อป้องกันการกดส่งซ้ำ (Duplicate Submissions)
 
-> 💬 **[Partner's response from @Suprawi5227 (Release PR)]**  
-> *"ขอบคุณสำหรับความร่วมมือในการตรวจรีวิวและพัฒนาโปรเจกต์ร่วมกันค่ะ ได้ Merge สาขา lab2-staging เข้าสู่ main เรียบร้อยสมบูรณ์ค่ะ"*
+> 💬 **[Partner's response from @Suprawi5227 (PR #7):]**
+> ขอบคุณสำหรับข้อสังเกตค่ะ! ได้ทำการเพิ่มสถานะ isSubmitting และปรับปุ่ม Submit ให้กลายเป็น Disabled พร้อมไอคอน Spinner สปินเนอร์และข้อความ Submitting Ticket... ในขณะรอคำตอบจาก API เรียบร้อยแล้วค่ะ รันการทดสอบผ่าน 100% ค่ะ
+
+### PR #8: feature/8-my-tickets-dashboard (for partner @Suprawi5227)
+
+> 💬 **[My comment for partner @Suprawi5227 (PR #8):]**
+> PR Review: Issue 8 — My Tickets Dashboard & Paginated API (#8)
+> Review Summary: ตรวจสอบ PR #8 เรียบร้อยแล้ว โค้ดตรงตามข้อกำหนดของ Issue และสเปกใน api-spec.md และ ui-spec.md ครบถ้วน:
+> 1. Backend (GET /api/tickets): รองรับ Header X-Requester-Id, กรองข้อมูลแยกตาม Requester Context อย่างชัดเจน, มีการค้นหาแบบ case-insensitive บน ticketNumber และ summary, รองรับ filter ตาม category/priority/status, การเรียงลำดับ (sort), และ Pagination พร้อมส่งคืน metadata ครบถ้วน
+> 2. Frontend UI: ออกแบบตาม Zen Green Theme แสดงผล Priority Badges (Low/Medium/High) และ Status Badge (New) ด้วยโค้ดสีตรงตามกำหนด มีการจัดการ Empty State และ No-Results State พร้อมปุ่ม Clear Filters และ Pagination Footer
+> 3. Automated Tests: ทดสอบแล้วทั้ง Server API Integration Tests (my-tickets.api.test.ts 4/4 passed) และ Client UI Component Tests (MyTickets.test.tsx 2/2 passed) ผ่าน 100%
+> 
+> ข้อเสนอแนะเพิ่มเติม (Minor Recommendations):
+> - Debounce สำหรับ Search Input (Client): ในปัจจุบันการพิมพ์ในช่อง Search จะอัปเดต state ทันที สามารถพิจารณาเติม Debounce (ประมาณ 300ms) ในอนาคต เพื่อลดจำนวน HTTP Requests ไปยัง Backend เมื่อมีข้อมูลปริมาณมาก
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #8):]**
+> ขอบคุณสำหรับคำแนะนำนะคะ แก้เรียบร้อยแล้วค่ะ:
+> - เพิ่ม debounce 250ms ให้ช่อง Search เพื่อลดการเรียก API ถี่เกินไป
+> - แก้ test ใน MyTickets.test.tsx แล้ว ตอนนี้ไม่มี warning เรื่อง act(...)
+> - เพิ่ม test สำหรับ query ที่ไม่ถูกต้อง และปรับหน้า mobile เพิ่มเติม ตอนนี้ test ผ่านทั้งหมดและ push ขึ้น PR #8 แล้วค่ะ รบกวนช่วยตรวจอีกรอบได้เลย ขอบคุณค่ะ
+
+### PR #9: feature/9-ticket-detail-api (for partner @Suprawi5227)
+
+> 💬 **[My comment for partner @Suprawi5227 (PR #9):]**
+> PR Review: Issue 9 — Ticket Detail & Attachment Lifecycle (#9)
+> ตรวจ schema, migration และ seed data แล้วค่ะ ภาพรวมจัดโครงสร้างได้ดีและครอบคลุมงานส่วนฐานข้อมูลของ Feature 9 ค่ะ การใช้ upsert กับ seed data เหมาะกับการรันซ้ำ และข้อมูลที่เตรียมไว้ก็ครบตามที่ feature ต้องการ
+> 
+> มีจุดหนึ่งที่อยากเสนอให้ปรับเพิ่มเติมค่ะ: ใน Attachment มีฟิลด์ removedByRequesterId สำหรับเก็บผู้ที่นำไฟล์ออก แต่ตอนนี้ฟิลด์นี้ยังไม่ได้เชื่อม relation กับ DevelopmentRequester ถ้าเพิ่ม relation และ foreign key เข้าไป จะช่วยให้ข้อมูลมีความถูกต้องมากยิ่งขึ้น และป้องกันการบันทึก requester ID ที่ไม่มีอยู่จริงค่ะ หลังจากเพิ่ม relation แล้ว แนะนำให้สร้าง migration ใหม่ และลองรัน migration, seed สองรอบ รวมถึง tests อีกครั้ง เพื่อยืนยันว่ายังทำงานได้ตามปกติและไม่มีข้อมูลซ้ำค่ะ
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #9):]**
+> แก้ครบทั้ง 3 ข้อแล้วนะ:
+> - เพิ่มตรวจ isActive ของ Requester ก่อนอัปโหลดไฟล์
+> - เพิ่มเช็กประเภทและขนาดไฟล์ฝั่งเว็บก่อนส่ง request
+> - เพิ่ม word-break: break-word ให้ชื่อไฟล์ยาวบนมือถือ
+> เพิ่ม test ครอบคลุมไว้แล้ว ตอนนี้ Server ผ่าน 30/30 และ Client ผ่าน 15/15 รวมถึง build ผ่านทั้งสองฝั่ง รบกวนช่วยตรวจอีกรอบนะ
+
+### PR #10: feature/10-e2e-testing-and-release (for partner @Suprawi5227)
+
+> 💬 **[My comment for partner @Suprawi5227 (PR #10):]**
+> PR Review: Issue 10 — Automated Testing and End-to-End Tests (#10)
+> ตรวจสอบโค้ดและผลการทดสอบของ Issue 10: Automated Testing and End-to-End Tests (#10) เรียบร้อยแล้ว:
+> - Backend API Tests (Vitest & Supertest): มีชุดทดสอบใน server/tests/lab-02/ ครอบคลุม API-01 ถึง API-10 (create-ticket, attachments, my-tickets, ticket-detail, requester-context, reference-data) รวม 33/33 test cases ผ่าน 100%
+> - Frontend UI Component Tests (Vitest & RTL): มีชุดทดสอบใน client/src/__tests__/lab-02/ ครอบคลุม UI-01 ถึง UI-05 (CreateTicket, AttachmentSection, RequesterTicketDetail, MyTickets, RequesterSelector) รวม 17/17 test cases ผ่าน 100%
+> - Playwright End-to-End Tests: ไฟล์ e2e/lab-02/requester-ticket-flow.spec.ts ทดสอบครบถ้วนตาม scenario E2E-01 ครอบคลุมทั้ง flow การเลือก Requester Context, validation ไฟล์แนบ, การสร้าง Ticket, ดูรายละเอียด, อัปโหลดและ soft-remove ไฟล์แนบ พร้อมตรวจสอบ Data Isolation เมื่อสลับ Requester
+> - Documentation & Build: อัปเดต docs/lab-02/tests.md ระบุ Requirement Traceability Matrix (AC-01 ถึง AC-09), Responsive Checklist และผลการทดสอบครบถ้วน คำสั่ง npm run build ผ่านสมบูรณ์ทั้งฝั่ง Server และ Client
+> 
+> ข้อเสนอแนะเพิ่มเติม (Minor Recommendation):
+> 1. ใน package.json ส่วน root อาจเพิ่ม script "install:e2e": "playwright install chromium" เพื่อความสะดวกของผู้พัฒนาในการ setup สภาพแวดล้อม E2E testing ครั้งแรก
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #10):]**
+> เพิ่ม script install:e2e ให้แล้วนะ ตอนนี้ setup Chromium ครั้งแรกได้ด้วย npm run install:e2e และลองตรวจด้วย --dry-run แล้วเรียก Playwright ได้ถูกต้อง ขอบคุณสำหรับคำแนะนำ
+
+### Release PR: lab2-staging → main (for partner @Suprawi5227)
+
+> 💬 **[My comment for partner @Suprawi5227 (Release PR):]**
+> Peer Review: TokTickIT Lab 2 Release Integration (Release PR for @Suprawi5227)
+> เราได้ทำการรีวิว Release PR และตรวจสอบเอกสารประกอบการส่งงานรวมถึงหลักฐานการทดสอบทั้ง 6 ฉบับเรียบร้อยแล้ว ผลการตรวจสอบเป็นไปตามข้อกำหนดของวิชา ดังนี้:
+> 
+> รายการการตรวจสอบ (Review Checklist Verification):
+> - ความถูกต้องของ reviewer.md: ตรวจสอบแล้ว ข้อมูลถูกต้องและสอดคล้องกับประวัติบน GitHub จริง บันทึก Review ที่ได้รับ และ Review ที่ตรวจให้เพื่อนครบทั้ง 10 PRs พร้อมลิงก์หลักฐาน การตอบกลับ และการ Approve
+> - ความถูกต้องของ ai-use.md: ตรวจสอบแล้ว ระบุการใช้งาน AI (Antigravity และ Gemini 3.6 Flash) ตรงตามจริง มีตาราง Prompts ที่คัดเลือกและ Reflection ชัดเจน
+> - ความครบถ้วนของเอกสารทั้ง 6 ฉบับ: ตรวจสอบแล้ว เอกสารหลักทั้ง 6 ฉบับ (ai-use.md, api-spec.md, reviewer.md, specification.md, tests.md, ui-spec.md) ในโฟลเดอร์ docs/lab-02/ มีเนื้อหาครบถ้วน สอดคล้องกันทุกไฟล์ และมีลิงก์อ้างอิงใน README.md อย่างถูกต้อง
+> - หลักฐาน ภาพ Screenshots และ README: ตรวจสอบแล้ว ภาพ Screenshot ใน artifacts/lab-02/screenshots/ ครบถ้วนตาม UI Spec และขั้นตอนการตั้งค่า/รันทดสอบใน README.md ชัดเจน ปฏิบัติตามกฎ .gitignoreถูกต้อง
+> - ความสะอาดของ Repository: ตรวจสอบแล้ว ไม่พบไฟล์ส่วนตัว ไฟล์ความลับ (.env) หรือไฟล์จากการทดสอบที่ไม่เกี่ยวข้องหลุดเข้ามา (ปฏิบัติตามกฎ .gitignore ถูกต้อง)
+> 
+> ผลการทดสอบและการ Build:
+> - Server Vitest: ผ่าน 33/33 tests
+> - Client Vitest: ผ่าน 21/21 tests
+> - Playwright E2E/Visual: ผ่าน 5/5 tests
+> - Production Builds: บิลด์ผ่านเรียบร้อยทั้ง Client และ Server โดยไม่มีข้อผิดพลาด
+> เอกสารและหลักฐานครบสมบูรณ์ตามเกณฑ์ Definition of Done ของ Lab 2 ทุกประการ อนุมัติให้ Merge เข้าสู่สาขา main ได้ค่ะ!
+
+> 💬 **[Partner's response from @Suprawi5227 (Release PR):]**
+> ขอบคุณมากสำหรับความร่วมมือและการตรวจรีวิวอย่างละเอียดตลอดทั้งสปรินท์นะคะ! ได้ทำการ Merge โค้ดทั้งหมดจาก lab2-staging เข้าสู่สาขาหลัก main บน GitHub Repository เรียบร้อยสมบูรณ์แล้วค่ะ!
+
 
 > 🖼️ **[กรอบรูปภาพที่ 1.6.2: Peer Review Given to Suprawi5227 on Peer Repository]**  
 > - **พาธรูปภาพ**: `images/10_peer_review_given.png`
