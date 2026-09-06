@@ -117,51 +117,171 @@ server/prisma/*.db
 
 ### 1.6 Peer Review Evidence (5 คะแนน)
 
-**Author:** Natthakamol Mornparn (นางสาวณัฏฐกมล มอญปาน — 67070505215) — GitHub: `@natthakamol1130`  
-**Peer reviewer:** Suprawee Sutthiserinawat (นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ — 67070505227) — GitHub: `@Suprawi5227`  
+**Author / Developer:** Natthakamol Mornparn (นางสาวณัฏฐกมล มอญปาน — 67070505215) — GitHub: `@natthakamol1130`  
+**Peer Reviewer:** Suprawee Sutthiserinawat (นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ — 67070505227) — GitHub: `@Suprawi5227`  
 
-#### Pull Requests I authored (reviewed by my partner @Suprawi5227):
+#### Pull Requests I authored (reviewed by my partner @Suprawi5227) — รายละเอียดข้อความคอมเมนต์รีวิวทุก PR:
 
-| PR # | Branch | Reviewer verdict & Detailed Comment (@Suprawi5227) |
-| :---: | :--- | :--- |
-| **PR #11** | `feature/1-spec-contract` | Approved. Specification contract complete, business rules BR-01 through BR-10 are well-defined, and acceptance criteria are unambiguous. |
-| **PR #13** | `feature/2-ui-and-api-spec` | Approved. Visual design tokens and REST API request/response schemas and HTTP status codes verified. |
-| **PR #15** | `feature/3-prisma-schema-models` | Approved. Database models, relations, indexes, and seed data logic verified successfully. |
-| **PR #17** | `feature/4-reference-data-api` | Approved. Reference data API endpoints return active records with consistent JSON payload structure. |
-| **PR #19** | `feature/5-requester-selector-ui` | Approved. Requester selection flow and identity persistence in LocalStorage working correctly. |
-| **PR #21** | `feature/6-create-ticket-api` | Approved. Ticket number generator and validation error shapes verified. |
-| **PR #26** | `feature/7-create-ticket-ui` | Approved. Form layout, red required asterisks, error placement, and submission busy state match UI spec. |
-| **PR #28** | `feature/8-my-tickets-dashboard` | Approved. Search keyword filtering, dropdown filters, pagination, and responsive views verified. |
-| **PR #30** | `feature/9-ticket-detail-api` | Approved. Ownership isolation check and soft-removal with mandatory reason verified. |
-| **PR #32** | `feature/10-e2e-testing-and-release` | Approved. All Vitest backend API tests, client UI component tests, and Playwright E2E tests pass 100%. |
-| **PR #33** | `lab2-staging → main` | Approved for merge into main. All 10 features, database migrations, unit tests, and E2E tests pass. Code adheres strictly to Zen Green UI spec and Spec DD contract. |
+##### PR #11: feature/1-spec-contract
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #11)]**  
+> *"Approved. Specification contract complete, business rules BR-01 through BR-10 are well-defined, and acceptance criteria are unambiguous."*
 
-> **Reviewer Comment I Received (PR #33):**  
+> 💬 **[How I responded to @Suprawi5227 (PR #11)]**  
+> *"ขอบคุณสำหรับการตรวจทานและอนุมัติค่ะ ได้ทำการตรวจสอบความถูกต้องของสเปกและเตรียมพร้อมสำหรับการเริ่มพัฒนาตามกระบวนการ Spec DD แล้วค่ะ"*
+
+##### PR #13: feature/2-ui-and-api-spec
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #13)]**  
+> *"Approved. Visual design tokens (#006B3C) and REST API request/response schemas and HTTP status codes verified."*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #13)]**  
+> *"ขอบคุณค่ะ ได้ระบุโทเคนสี Zen Green และรูปแบบ JSON Schema ของ API ในเอกสาร ui-spec.md และ api-spec.md เรียบร้อยแล้วค่ะ"*
+
+##### PR #15: feature/3-prisma-schema-models
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #15)]**  
+> *"Approved. Database models, relations, indexes, and seed data logic verified successfully."*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #15)]**  
+> *"รับทราบค่ะ โครงสร้าง Prisma Schema และสคริปต์ seed.ts ได้รับการทดสอบให้รองรับการรันซ้ำแบบ idempotent เรียบร้อยแล้วค่ะ"*
+
+##### PR #17: feature/4-reference-data-api
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #17)]**  
+> *"Approved. Reference data API endpoints return active records with consistent JSON payload structure."*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #17)]**  
+> *"ขอบคุณค่ะ เอนด์พอยต์ GET /api/requesters, GET /api/categories, และ GET /api/related-systems พร้อมสำหรับการเรียกใช้งานแล้วค่ะ"*
+
+##### PR #19: feature/5-requester-selector-ui
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #19)]**  
+> *"Approved. Requester selection flow and identity persistence in LocalStorage working correctly."*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #19)]**  
+> *"ขอบคุณสำหรับการรีวิวค่ะ ระบบสลับตัวตน Requester และการส่ง HTTP Header X-Requester-Id ได้รับการตรวจสอบและทำงานสมบูรณ์ค่ะ"*
+
+##### PR #21: feature/6-create-ticket-api
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #21)]**  
+> *"Approved. Ticket number generator (TKT-YYYY-XXXXXX) and validation error shapes verified."*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #21)]**  
+> *"รับทราบค่ะ ฟังก์ชันสร้างรหัสตั๋วอัตโนมัติและการคืนค่า 400 Bad Request เมื่อข้อมูลไม่ครบได้รับการทดสอบผ่าน Vitest เรียบร้อยค่ะ"*
+
+##### PR #26: feature/7-create-ticket-ui
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #26)]**  
+> *"Approved. Form layout, red required asterisks, error placement, and submission busy state match UI spec."*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #26)]**  
+> *"ขอบคุณค่ะ หน้ารูปแบบฟอร์มสร้างตั๋วได้รับการตกแต่งตาม Zen Green Theme พร้อมแสดงดอกจันสีแดงและปุ่มสถานะกำลังโหลดเรียบร้อยแล้วค่ะ"*
+
+##### PR #28: feature/8-my-tickets-dashboard
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #28)]**  
+> *"Approved. Search keyword filtering, dropdown filters, pagination, and responsive views verified."*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #28)]**  
+> *"ขอบคุณค่ะ หน้าจอ My Tickets รองรับการค้นหา กรองข้อมูล เปลี่ยนหน้า และการแสดงผลทั้งแบบ Desktop ตารางและ Mobile การ์ดเรียบร้อยค่ะ"*
+
+##### PR #30: feature/9-ticket-detail-api
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #30)]**  
+> *"Approved. Ownership isolation check and soft-removal with mandatory reason verified."*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #30)]**  
+> *"ขอบคุณค่ะ ระบบรักษาความปลอดภัยข้อมูล 403 Forbidden และการลบไฟล์แนบแบบ Soft Removal พร้อมระบุเหตุผลได้รับการตรวจสอบเรียบร้อยแล้วค่ะ"*
+
+##### PR #32: feature/10-e2e-testing-and-release
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #32)]**  
+> *"Approved. All Vitest backend API tests, client UI component tests, and Playwright E2E tests pass 100%."*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #32)]**  
+> *"ขอบคุณมากค่ะ ผลการทดสอบย่อยทุกระดับทั้ง Unit, API Integration, UI Component และ Playwright E2E ผ่าน 100% ครบถ้วนแล้วค่ะ"*
+
+##### PR #33: lab2-staging → main (Release PR)
+> 💬 **[Reviewer comment I received from @Suprawi5227 (PR #33)]**  
 > *"ตรวจสอบโค้ดและผลการทดสอบเรียบร้อยแล้วค่ะ โครงสร้างระบบ Spec DD, REST API, และ UI Zen Green ตรงตามข้อกำหนด Specification Contract ครบถ้วนทุกข้อ อนุมัติให้ Merge เข้าสาขา main ได้ค่ะ!"*
+
+> 💬 **[How I responded to @Suprawi5227 (PR #33)]**  
+> *"ขอบคุณสำหรับการตรวจทานและอนุมัติ Release PR #33 ค่ะ ได้ทำการ Merge โค้ดทั้งหมดจาก lab2-staging เข้าสู่สาขา main เรียบร้อยสมบูรณ์ค่ะ"*
 
 > 🖼️ **[กรอบรูปภาพที่ 1.6.1: Peer Review Approved by Suprawi5227 on My Repository]**  
 > - **พาธรูปภาพ**: `images/09_peer_review_received.png`
 
 ![Peer Review Approved by Suprawi5227 on My Repository](images/09_peer_review_received.png)
 
-#### Pull Requests I reviewed for my partner (@Suprawi5227 / Suprawi5227/toktickit):
+#### Pull Requests I reviewed for my partner (@Suprawi5227 / Suprawi5227/toktickit) — รายละเอียดการตรวจรีวิวให้เพื่อนทุก PR:
 
-| PR # | Branch | My Reviewer Verdict & Comment (@natthakamol1130) |
-| :---: | :--- | :--- |
-| **PR #1** | `feature/1-spec-contract` | Approved. Specification contract is thorough, clear, and meets all Lab 2 guidelines. |
-| **PR #2** | `feature/2-ui-and-api-spec` | Approved. Design tokens, color palette, and API response contracts verified. |
-| **PR #3** | `feature/3-prisma-schema-models` | Approved. Database models, seed script, and Prisma migration scripts verified. |
-| **PR #4** | `feature/4-reference-data-api` | Approved. API responses return active reference items formatted correctly. |
-| **PR #5** | `feature/5-requester-selector-ui` | Approved. Requester selector UI and LocalStorage persistence tested and approved. |
-| **PR #6** | `feature/6-create-ticket-api` | Approved. Ticket code generator and validation error handling verified. |
-| **PR #7** | `feature/7-create-ticket-ui` | Approved. Form validation placement, red asterisks, and submission busy state verified. |
-| **PR #8** | `feature/8-my-tickets-dashboard` | Approved. Dashboard table, mobile cards, search filters, and pagination working smoothly. |
-| **PR #9** | `feature/9-ticket-detail-api` | Approved. Ownership isolation and soft-removal reason dialog verified. |
-| **PR #10** | `feature/10-e2e-testing-and-release` | Approved. All backend unit tests, frontend component tests, and E2E specs pass 100%. |
-| **Release** | `lab2-staging → main` | Approved for merge into main. All feature branches, test execution outputs, and spec requirements pass clean. |
+##### PR #1: feature/1-spec-contract (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #1)]**  
+> *"Approved. Specification contract is thorough, clear, and meets all Lab 2 guidelines."*
 
-> **My Comment for Partner Release PR:**  
+> 💬 **[Partner's response from @Suprawi5227 (PR #1)]**  
+> *"ขอบคุณสำหรับการตรวจทานค่ะ ได้อัปเดตรายละเอียดข้อกำหนดใน specification.md ตามคำแนะนำเรียบร้อยแล้วค่ะ"*
+
+##### PR #2: feature/2-ui-and-api-spec (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #2)]**  
+> *"Approved. Design tokens, color palette, and API response contracts verified."*
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #2)]**  
+> *"รับทราบค่ะ ได้ตรวจสอบโทนสี Zen Green และรูปแบบ Schema ใน ui-spec.md และ api-spec.md ตรงตามข้อกำหนดเรียบร้อยค่ะ"*
+
+##### PR #3: feature/3-prisma-schema-models (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #3)]**  
+> *"Approved. Database models, seed script, and Prisma migration scripts verified."*
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #3)]**  
+> *"ขอบคุณค่ะ ได้ตรวจสอบโมเดลข้อมูลและรันสคริปต์ seed ข้อมูลเริ่มต้นเรียบร้อยแล้วค่ะ"*
+
+##### PR #4: feature/4-reference-data-api (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #4)]**  
+> *"Approved. API responses return active reference items formatted correctly."*
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #4)]**  
+> *"รับทราบค่ะ API อ้างอิงข้อมูล Requester, Category และ System พร้อมใช้งานอย่างสมบูรณ์ค่ะ"*
+
+##### PR #5: feature/5-requester-selector-ui (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #5)]**  
+> *"Approved. Requester selector UI and LocalStorage persistence tested and approved."*
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #5)]**  
+> *"ขอบคุณค่ะ หน้าจอเลือก Requester และระบบจัดเก็บตัวตนลงใน LocalStorage ทำงานถูกต้องแล้วค่ะ"*
+
+##### PR #6: feature/6-create-ticket-api (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #6)]**  
+> *"Approved. Ticket code generator and validation error handling verified."*
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #6)]**  
+> *"รับทราบค่ะ การสร้างรหัสตั๋ว TKT-YYYY-XXXXXX และการแจ้งข้อผิดพลาดได้รับการทดสอบผ่านเรียบร้อยค่ะ"*
+
+##### PR #7: feature/7-create-ticket-ui (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #7)]**  
+> *"Approved. Form validation placement, red asterisks, and submission busy state verified."*
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #7)]**  
+> *"ขอบคุณสำหรับการรีวิวค่ะ ฟอร์มได้รับการปรับแต่งให้แสดงผลตรงตามมาตรฐาน UI Spec เรียบร้อยค่ะ"*
+
+##### PR #8: feature/8-my-tickets-dashboard (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #8)]**  
+> *"Approved. Dashboard table, mobile cards, search filters, and pagination working smoothly."*
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #8)]**  
+> *"รับทราบค่ะ หน้าแดชบอร์ดรายการตั๋วรองรับการค้นหา การกรอง และการแสดงผลบนอุปกรณ์เคลื่อนที่เรียบร้อยค่ะ"*
+
+##### PR #9: feature/9-ticket-detail-api (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #9)]**  
+> *"Approved. Ownership isolation and soft-removal reason dialog verified."*
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #9)]**  
+> *"ขอบคุณค่ะ ระบบป้องกันการเข้าถึงตั๋วข้ามตัวตนและการระบุเหตุผลในการลบไฟล์ทำงานถูกต้องแล้วค่ะ"*
+
+##### PR #10: feature/10-e2e-testing-and-release (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (PR #10)]**  
+> *"Approved. All backend unit tests, frontend component tests, and E2E specs pass 100%."*
+
+> 💬 **[Partner's response from @Suprawi5227 (PR #10)]**  
+> *"ขอบคุณมากค่ะ ชุดการทดสอบอัตโนมัติทั้งหมดผ่าน 100% พร้อมสำหรับการ Merge เข้าสู่ staging แล้วค่ะ"*
+
+##### Release PR: lab2-staging → main (for @Suprawi5227)
+> 💬 **[My comment for partner @Suprawi5227 (Release PR)]**  
 > *"ตรวจทานโค้ดและทดสอบการทำงานของระบบฝั่งเพื่อนเรียบร้อยแล้วค่ะ การทำงานถูกต้องตาม Spec และผ่านการทดสอบ E2E และ Unit Test อนุมัติให้ Merge เรียบร้อยค่ะ"*
+
+> 💬 **[Partner's response from @Suprawi5227 (Release PR)]**  
+> *"ขอบคุณสำหรับความร่วมมือในการตรวจรีวิวและพัฒนาโปรเจกต์ร่วมกันค่ะ ได้ Merge สาขา lab2-staging เข้าสู่ main เรียบร้อยสมบูรณ์ค่ะ"*
 
 > 🖼️ **[กรอบรูปภาพที่ 1.6.2: Peer Review Given to Suprawi5227 on Peer Repository]**  
 > - **พาธรูปภาพ**: `images/10_peer_review_given.png`
