@@ -25,6 +25,6 @@
 ---
 
 ## Final Release Approval
-- **Release PR**: `#11` (lab2-staging to main)
-- **Approval Date**: 2026-09-05
+- **Release PR**: `lab2-staging` -> `main`
+- **Approval Date**: 2026-09-06
 - **Final Verdict**: Approved for merge to `main`.
