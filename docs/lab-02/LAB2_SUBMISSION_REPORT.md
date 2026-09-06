@@ -271,6 +271,16 @@ TokTickIT is an IT service desk web application built using Spec-Driven Developm
 
 ---
 
+### 8. GitHub Peer Review Evidence
+
+#### 8.1 Peer Review Evidence on My Repository (Peer Reviewer @Suprawi5227 reviewing @natthakamol1130)
+![Peer Review Approved by Suprawi5227](images/09_peer_review_received.png)
+
+#### 8.2 Peer Review Evidence on Peer Repository (@natthakamol1130 reviewing @Suprawi5227)
+![Peer Review Given to Suprawi5227](images/10_peer_review_given.png)
+
+---
+
 ## Answer Part 2: Tests
 
 ### 1. Test Plan Table (`docs/lab-02/tests.md`)
