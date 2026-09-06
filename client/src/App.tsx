@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { RequesterUser, Ticket } from "./types.js";
-import { Header } from "./components/Header.jsx";
-import { RequesterSelectorScreen } from "./components/RequesterSelectorScreen.jsx";
-import { CreateTicketView } from "./components/CreateTicketView.jsx";
-import { MyTicketsView } from "./components/MyTicketsView.jsx";
-import { TicketDetailView } from "./components/TicketDetailView.jsx";
+import { RequesterUser, Ticket } from "./types";
+import { Header } from "./components/Header";
+import { RequesterSelectorScreen } from "./components/RequesterSelectorScreen";
+import { CreateTicketView } from "./components/CreateTicketView";
+import { MyTicketsView } from "./components/MyTicketsView";
+import { TicketDetailView } from "./components/TicketDetailView";
 
 type ViewMode = "selector" | "my-tickets" | "create-ticket" | "ticket-detail";
 
