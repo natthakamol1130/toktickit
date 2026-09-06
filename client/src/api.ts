@@ -87,7 +87,39 @@ export async function createTicket(
   return json.data;
 }
 
+export async function fetchTickets(
+  requesterId: number,
+  params: {
+    search?: string;
+    category?: string;
+    priority?: string;
+    status?: string;
+    page?: number;
+    limit?: number;
+    sortBy?: string;
+    sortOrder?: string;
+  } = {}
+): Promise<TicketListResponse> {
+  const query = new URLSearchParams();
+  if (params.search) query.append("search", params.search);
+  if (params.category && params.category !== "ALL") query.append("category", params.category);
+  if (params.priority && params.priority !== "ALL") query.append("priority", params.priority);
+  if (params.status && params.status !== "ALL") query.append("status", params.status);
+  if (params.page) query.append("page", params.page.toString());
+  if (params.limit) query.append("limit", params.limit.toString());
+  if (params.sortBy) query.append("sortBy", params.sortBy);
+  if (params.sortOrder) query.append("sortOrder", params.sortOrder);
 
+  const res = await fetch(`${API_URL}/api/tickets?${query.toString()}`, {
+    headers: {
+      "x-requester-id": requesterId.toString(),
+    },
+  });
+
+  const json = await res.json();
+  if (!res.ok) throw new Error(json.error?.message || "Failed to fetch tickets");
+  return json;
+}
 
 export async function fetchTicketDetail(
   requesterId: number,
