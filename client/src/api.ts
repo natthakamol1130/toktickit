@@ -121,4 +121,66 @@ export async function fetchTickets(
   return json;
 }
 
+export async function fetchTicketDetail(
+  requesterId: number,
+  ticketId: number
+): Promise<Ticket> {
+  const res = await fetch(`${API_URL}/api/tickets/${ticketId}`, {
+    headers: {
+      "x-requester-id": requesterId.toString(),
+    },
+  });
 
+  const json = await res.json();
+  if (!res.ok) {
+    const error = new Error(json.error?.message || "Failed to fetch ticket detail");
+    (error as any).status = res.status;
+    (error as any).code = json.error?.code;
+    throw error;
+  }
+  return json.data;
+}
+
+export async function uploadAttachment(
+  requesterId: number,
+  ticketId: number,
+  file: File
+): Promise<Attachment> {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const res = await fetch(`${API_URL}/api/tickets/${ticketId}/attachments`, {
+    method: "POST",
+    headers: {
+      "x-requester-id": requesterId.toString(),
+    },
+    body: formData,
+  });
+
+  const json = await res.json();
+  if (!res.ok) throw new Error(json.error?.message || "Failed to upload attachment");
+  return json.data;
+}
+
+export async function softRemoveAttachment(
+  requesterId: number,
+  attachmentId: number,
+  reason: string
+): Promise<Attachment> {
+  const res = await fetch(`${API_URL}/api/attachments/${attachmentId}`, {
+    method: "DELETE",
+    headers: {
+      "x-requester-id": requesterId.toString(),
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ reason }),
+  });
+
+  const json = await res.json();
+  if (!res.ok) throw new Error(json.error?.message || "Failed to remove attachment");
+  return json.data;
+}
+
+export function getAttachmentDownloadUrl(attachmentId: number): string {
+  return `${API_URL}/api/attachments/${attachmentId}/download`;
+}
