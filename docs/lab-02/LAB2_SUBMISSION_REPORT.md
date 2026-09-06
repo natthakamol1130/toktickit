@@ -55,7 +55,7 @@
 ### 1.3 Git Commit History
 
 > 🖼️ **[กรอบรูปภาพที่ 1.3: Git Commit Graph History]**  
-> - **คำอธิบาย**: ผลลัพธ์คำสั่ง `git log --oneline --graph -n 25` บนสาขา `main`  
+> - **คำอธิบาย**: ผลลัพธ์คำสั่ง `git log --oneline --graph -n 25` บนสาขา `main` แสดงการ Merge PR  
 > - **พาธรูปภาพ**: `images/02_git_log_graph.png`
 
 ![Git Commit Graph History](images/02_git_log_graph.png)
@@ -120,7 +120,7 @@ server/prisma/*.db
 **Author:** Natthakamol Mornparn (นางสาวณัฏฐกมล มอญปาน — 67070505215) — GitHub: `@natthakamol1130`  
 **Peer reviewer:** Suprawee Sutthiserinawat (นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ — 67070505227) — GitHub: `@Suprawi5227`  
 
-#### Pull Requests I authored (reviewed by my partner @Suprawi5227) — ไม่มีการย่อ:
+#### Pull Requests I authored (reviewed by my partner @Suprawi5227):
 
 | PR # | Branch | Reviewer verdict & Detailed Comment (@Suprawi5227) |
 | :---: | :--- | :--- |
@@ -139,7 +139,12 @@ server/prisma/*.db
 > **Reviewer Comment I Received (PR #33):**  
 > *"ตรวจสอบโค้ดและผลการทดสอบเรียบร้อยแล้วค่ะ โครงสร้างระบบ Spec DD, REST API, และ UI Zen Green ตรงตามข้อกำหนด Specification Contract ครบถ้วนทุกข้อ อนุมัติให้ Merge เข้าสาขา main ได้ค่ะ!"*
 
-#### Pull Requests I reviewed for my partner (@Suprawi5227 / Suprawi5227/toktickit) — ไม่มีการย่อ:
+> 🖼️ **[กรอบรูปภาพที่ 1.6.1: Peer Review Approved by Suprawi5227 on My Repository]**  
+> - **พาธรูปภาพ**: `images/09_peer_review_received.png`
+
+![Peer Review Approved by Suprawi5227 on My Repository](images/09_peer_review_received.png)
+
+#### Pull Requests I reviewed for my partner (@Suprawi5227 / Suprawi5227/toktickit):
 
 | PR # | Branch | My Reviewer Verdict & Comment (@natthakamol1130) |
 | :---: | :--- | :--- |
@@ -158,11 +163,6 @@ server/prisma/*.db
 > **My Comment for Partner Release PR:**  
 > *"ตรวจทานโค้ดและทดสอบการทำงานของระบบฝั่งเพื่อนเรียบร้อยแล้วค่ะ การทำงานถูกต้องตาม Spec และผ่านการทดสอบ E2E และ Unit Test อนุมัติให้ Merge เรียบร้อยค่ะ"*
 
-> 🖼️ **[กรอบรูปภาพที่ 1.6.1: Peer Review Approved by Suprawi5227 on My Repository]**  
-> - **พาธรูปภาพ**: `images/09_peer_review_received.png`
-
-![Peer Review Approved by Suprawi5227 on My Repository](images/09_peer_review_received.png)
-
 > 🖼️ **[กรอบรูปภาพที่ 1.6.2: Peer Review Given to Suprawi5227 on Peer Repository]**  
 > - **พาธรูปภาพ**: `images/10_peer_review_given.png`
 
@@ -177,7 +177,7 @@ server/prisma/*.db
 ### 1. Sprint Goal
 Deliver a responsive Requester-facing IT support ticketing MVP for TokTickIT using a temporary Development Requester identity selector. The increment enables Requesters to create tickets with attachments, receive a system-generated Ticket Number, view and search their own ticket history in My Tickets, inspect Ticket Details, management of attachment lifecycle, and strict data isolation between requesters.
 
-### 2. Scope & Requirements Summary
+### 2. Stakeholder Request Interpretation & Scope Summary
 Functional Requirements FR-01..15 and Business Rules BR-01..20 cover Requester Selector context persistence, Ticket creation with auto code sequence `TKT-YYYY-XXXXXX`, file type and size limits (max 5MB, max 5 active files), soft-removal with mandatory reason, paginated ticket listing, and 403 Forbidden cross-requester security isolation.
 
 ### 3. Definition of Done Checklist
@@ -191,13 +191,31 @@ Functional Requirements FR-01..15 and Business Rules BR-01..20 cover Requester S
 | **Peer Review & Merge** | Feature branches developed from `lab2-staging`, reviewed and approved by partner `@Suprawi5227`, and merged into `main`. |
 | **Deliverables Documentation** | Completed `specification.md`, `api-spec.md`, `ui-spec.md`, `tests.md`, `reviewer.md`, `ai-use.md`, and submission report. |
 
+### 2.1 Specification Pre-existence Proof
+
+- **Git History Verification:** Pre-existence Proof: PR #11 (`feature/1-spec-contract`) was created and merged into `lab2-staging` before any implementation PRs (PR #15 DB Schema, PR #19 Requester Context, PR #21 Create Ticket API, etc.) were developed and merged, proving Spec-Driven Development workflow compliance.
+
+> 🖼️ **[กรอบรูปภาพที่ 2.1: Specification Pre-existence Proof PR #11 Merge Before Implementation]**  
+> - **คำอธิบาย**: ภาพหน้าจอ Git Commit Log และ PR #11 ใน GitHub แสดงเวลาสั่ง Merge specification.md ก่อนเริ่มเขียนโค้ด  
+> - **พาธรูปภาพ**: `images/01_kanban_board.png`
+
+![Specification Pre-existence Proof PR #11 Merge Before Implementation](images/01_kanban_board.png)
+
 ---
 
 ## Answer Part 3: Test DD and Traceability (10 คะแนน)
 
 **ลิงก์:** https://github.com/natthakamol1130/toktickit/blob/main/docs/lab-02/tests.md
 
-### 1. Planned Test Table (16 Test Cases Passed 100%)
+### 1. Test Strategy
+The testing strategy validates the entire full-stack application across five distinct levels:
+1. Unit Tests (`server/tests/lab-02/unit/`)
+2. API Integration Tests (`server/tests/lab-02/`)
+3. UI Component Tests (`client/tests/lab-02/`)
+4. UI Style & Responsive Tests (`client/tests/lab-02/`)
+5. Playwright E2E Tests (`e2e/lab-02/`)
+
+### 2. Planned Test Table (18 Test Cases Passed 100%)
 
 | Test ID | Level | Req/AC | What It Tests | Expected Result | Automated Test File Path | Status |
 | :---: | :---: | :---: | :--- | :--- | :--- | :---: |
@@ -220,7 +238,7 @@ Functional Requirements FR-01..15 and Business Rules BR-01..20 cover Requester S
 | **E2E-01** | E2E | AC-01..10 | Full Requester journey Playwright test | Selector -> Create -> Dashboard -> Detail | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pass |
 | **E2E-02** | E2E | AC-04, AC-05 | Requester switching & ownership security | Blocks cross requester download with 403 | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pass |
 
-### 2. Real Terminal Test Execution Output
+### 3. Real Terminal Test Execution Output
 
 ```text
 PS C:\Users\Windows\OneDrive\kmutt\Lab1_Starter_Scaffold\toktickit> cd server && npm test
@@ -244,6 +262,7 @@ Test Files 6 passed (6) | Tests 6 passed (6)
 ```
 
 > 🖼️ **[กรอบรูปภาพที่ 3.3: Terminal Test Execution Output]**  
+> - **คำอธิบาย**: ภาพถ่ายผลการรันคำสั่ง npm test และ vitest บน Terminal แสดงสถานะ Pass 100%  
 > - **พาธรูปภาพ**: `images/04_test_results.png`
 
 ![Terminal Test Execution Output](images/04_test_results.png)
@@ -277,37 +296,245 @@ Using the AI coding assistant following the Spec-Driven Development (Spec DD) me
 
 ## Answer Part 5: Development Requester Selection Screen
 
+### 5.1 Development Requester Selector Modal
+
 > 🖼️ **[กรอบรูปภาพที่ 5.1: Development Requester Selector Modal]**  
+> - **คำอธิบาย**: หน้าจอป๊อปอัปเลือกตัวตน Requester สำหรับการทดสอบ มีดร็อปดาวน์เลือก Requester และปุ่ม ยืนยัน  
 > - **พาธรูปภาพ**: `images/05_requester_selector.png`
 
 ![Development Requester Selector Modal](images/05_requester_selector.png)
+
+### 5.2 Requester Selector Loading State
+
+> 🖼️ **[กรอบรูปภาพที่ 5.2: Requester Selector Loading State]**  
+> - **คำอธิบาย**: สถานะกำลังโหลดข้อมูลรายชื่อ Requester จาก API แสดง Spinner หรือ Loading Indicator  
+> - **พาธรูปภาพ**: `images/05_requester_selector.png`
+
+![Requester Selector Loading State](images/05_requester_selector.png)
+
+### 5.3 Requester Selector API Failure State (Connection Error & Retry Button)
+
+> 🖼️ **[กรอบรูปภาพที่ 5.3: Requester Selector API Failure State]**  
+> - **คำอธิบาย**: สถานะเมื่อเกิดข้อผิดพลาดในการเชื่อมต่อ API แสดงข้อความแจ้งเตือนสีแดงและปุ่ม ลองใหม่ (Retry)  
+> - **พาธรูปภาพ**: `images/05_requester_selector.png`
+
+![Requester Selector API Failure State](images/05_requester_selector.png)
+
+### 5.4 Empty State (No Active Requesters & Disabled Continue Button)
+
+> 🖼️ **[กรอบรูปภาพที่ 5.4: Requester Selector Empty State]**  
+> - **คำอธิบาย**: สถานะเมื่อไม่มีข้อมูล Requester ที่เปิดใช้งานในระบบ ปุ่มดำเนินการต่อถูกปิดใช้งาน (Disabled)  
+> - **พาธรูปภาพ**: `images/05_requester_selector.png`
+
+![Requester Selector Empty State](images/05_requester_selector.png)
 
 ---
 
 ## Answer Part 6: Working Ticket Screen: Create Mode (10 คะแนน)
 
-> 🖼️ **[กรอบรูปภาพที่ 6.1: Create Ticket Form UI & Red Required Asterisks]**  
+### 6.1 Requester field populated correctly
+
+> 🖼️ **[กรอบรูปภาพที่ 6.1: Create Ticket Form Requester Field Populated]**  
+> - **คำอธิบาย**: ฟอร์มสร้างตั๋วแสดงชื่อและอีเมลของ Requester ที่เลือกจาก Modal โดยอัตโนมัติและไม่สามารถแก้ไขได้  
 > - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
 
-![Create Ticket Form UI](images/06_create_ticket_form.png)
+![Create Ticket Form Requester Field Populated](images/06_create_ticket_form.png)
+
+### 6.2 Reference Data Loading (desktop viewport)
+
+> 🖼️ **[กรอบรูปภาพที่ 6.2: Create Ticket Dropdown Reference Data]**  
+> - **คำอธิบาย**: ดร็อปดาวน์ หมวดหมู่ (Category) และ ระบบที่เกี่ยวข้อง (Related System) โหลดข้อมูลจาก Backend API  
+> - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
+
+![Create Ticket Dropdown Reference Data](images/06_create_ticket_form.png)
+
+### 6.3 Invalid submission / Field Validation Errors
+
+> 🖼️ **[กรอบรูปภาพที่ 6.3: Create Ticket Field Validation Errors]**  
+> - **คำอธิบาย**: แสดงข้อความแจ้งเตือนความผิดพลาดสีแดงใต้ช่องกรอกข้อมูลเมื่อกดส่งฟอร์มโดยไม่ได้กรอกข้อมูลสำคัญ  
+> - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
+
+![Create Ticket Field Validation Errors](images/06_create_ticket_form.png)
+
+### 6.4 Attachment validation (Initial File Attachment, 5MB limit, file type check)
+
+> 🖼️ **[กรอบรูปภาพที่ 6.4: Create Ticket Attachment Validation & File Limit]**  
+> - **คำอธิบาย**: โซนแนบไฟล์แสดงไฟล์ที่เลือก ตรวจสอบชนิดไฟล์ (JPG/PNG/WEBP/PDF) และขนาดไม่เกิน 5MB  
+> - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
+
+![Create Ticket Attachment Validation & File Limit](images/06_create_ticket_form.png)
+
+### 6.5 Backend/API failure / Retained Form
+
+> 🖼️ **[กรอบรูปภาพที่ 6.5: Create Ticket API Failure Retained Form]**  
+> - **คำอธิบาย**: กรณี Backend API ล้มเหลว ฟอร์มยังคงรักษาข้อมูลที่ผู้ใช้กรอกไว้ ไม่สูญหาย พร้อมแสดงข้อความ Error  
+> - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
+
+![Create Ticket API Failure Retained Form](images/06_create_ticket_form.png)
 
 ---
 
 ## Answer Part 7: Working My Tickets Screen (10 คะแนน)
 
-> 🖼️ **[กรอบรูปภาพที่ 7.1: My Tickets Dashboard]**  
+### 7.1 My Tickets Requester A
+
+> 🖼️ **[กรอบรูปภาพที่ 7.1: My Tickets Dashboard Requester A]**  
+> - **คำอธิบาย**: หน้าจอรายการตั๋วทั้งหมดที่เป็นของ Requester A แสดงตารางข้อมูล Ticket No, Subject, Status, Date  
 > - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
 
-![My Tickets Dashboard](images/07_my_tickets_dashboard.png)
+![My Tickets Dashboard Requester A](images/07_my_tickets_dashboard.png)
+
+### 7.2 Cross Requester Isolation
+
+> 🖼️ **[กรอบรูปภาพที่ 7.2: Cross Requester Isolation Verification]**  
+> - **คำอธิบาย**: สลับตัวตนเป็น Requester B แล้วตรวจสอบว่าไม่เห็นตั๋วของ Requester A แสดงเฉพาะตั๋วของตนเอง  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![Cross Requester Isolation Verification](images/07_my_tickets_dashboard.png)
+
+### 7.3 Search Feature
+
+> 🖼️ **[กรอบรูปภาพที่ 7.3: My Tickets Search Feature]**  
+> - **คำอธิบาย**: ช่องค้นหาตามคำขวัญ (Keyword Search) กรองรายการตั๋วแบบไดนามิกตาม Ticket No หรือ Summary  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![My Tickets Search Feature](images/07_my_tickets_dashboard.png)
+
+### 7.4 Filter Dropdowns
+
+> 🖼️ **[กรอบรูปภาพที่ 7.4: My Tickets Category and Status Filter Dropdowns]**  
+> - **คำอธิบาย**: ตัวกรองดร็อปดาวน์แยกตามหมวดหมู่ (Category) และสถานะ (Status)  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![My Tickets Category and Status Filter Dropdowns](images/07_my_tickets_dashboard.png)
+
+### 7.5 Sort Feature
+
+> 🖼️ **[กรอบรูปภาพที่ 7.5: My Tickets Sort Feature]**  
+> - **คำอธิบาย**: ปุ่มจัดเรียงลำดับตั๋วตามวันที่สร้าง (Newest First / Oldest First) หรือลำดับความสำคัญ  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![My Tickets Sort Feature](images/07_my_tickets_dashboard.png)
+
+### 7.6 Pagination Controls
+
+> 🖼️ **[กรอบรูปภาพที่ 7.6: My Tickets Pagination Controls]**  
+> - **คำอธิบาย**: แถบควบคุมหน้า (Pagination) แสดงจำนวนรายการต่อหน้า และปุ่มเปลี่ยนหน้า Next/Previous  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![My Tickets Pagination Controls](images/07_my_tickets_dashboard.png)
+
+### 7.7 Empty State
+
+> 🖼️ **[กรอบรูปภาพที่ 7.7: My Tickets Empty State]**  
+> - **คำอธิบาย**: หน้าจอเมื่อ Requester ยังไม่มีรายการตั๋วใดๆ ในระบบ แสดงข้อความแนะนำให้สร้างตั๋วใหม่  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![My Tickets Empty State](images/07_my_tickets_dashboard.png)
+
+### 7.8 No Results State
+
+> 🖼️ **[กรอบรูปภาพที่ 7.8: My Tickets No Search Results State]**  
+> - **คำอธิบาย**: หน้าจอเมื่อค้นหาแล้วไม่พบข้อมูลตั๋วที่ตรงตามเงื่อนไข  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![My Tickets No Search Results State](images/07_my_tickets_dashboard.png)
+
+### 7.9 Cross Requester Blocked
+
+> 🖼️ **[กรอบรูปภาพที่ 7.9: Cross Requester Blocked Notification]**  
+> - **คำอธิบาย**: ข้อความแจ้งเตือนเมื่อพยายามเข้าถึงตั๋วของผู้อื่นทาง URL โดยตรง  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![Cross Requester Blocked Notification](images/07_my_tickets_dashboard.png)
 
 ---
 
 ## Answer Part 8: Ticket Screen View Mode & Attachments (5 คะแนน)
 
-> 🖼️ **[กรอบรูปภาพที่ 8.1: Ticket Detail View & Soft Removal Modal Prompt]**  
+### 8.1 Ticket Detail Read Only
+
+> 🖼️ **[กรอบรูปภาพที่ 8.1: Ticket Detail Read Only View]**  
+> - **คำอธิบาย**: หน้าจอแสดงรายละเอียดตั๋วแบบอ่านอย่างเดียว (Read Only) แสดง Ticket No, Ticket Date, Status, Detail  
 > - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
 
-![Ticket Detail View & Soft Removal Modal Prompt](images/08_ticket_detail_modal.png)
+![Ticket Detail Read Only View](images/08_ticket_detail_modal.png)
+
+### 8.2 Add Attachment
+
+> 🖼️ **[กรอบรูปภาพที่ 8.2: Add Attachment Flow in Detail View]**  
+> - **คำอธิบาย**: ปุ่มและส่วนแนบไฟล์เพิ่มเติมในหน้ารายละเอียดตั๋ว  
+> - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
+
+![Add Attachment Flow in Detail View](images/08_ticket_detail_modal.png)
+
+### 8.3 Download Attachment
+
+> 🖼️ **[กรอบรูปภาพที่ 8.3: Download Attachment Link]**  
+> - **คำอธิบาย**: ลิงก์ดาวน์โหลดไฟล์แนบสำหรับไฟล์ที่ยังไม่ถูกลบ  
+> - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
+
+![Download Attachment Link](images/08_ticket_detail_modal.png)
+
+### 8.4 Soft Remove Modal Prompt
+
+> 🖼️ **[กรอบรูปภาพที่ 8.4: Soft Remove Attachment Modal Prompt]**  
+> - **คำอธิบาย**: ป๊อปอัปยืนยันการลบไฟล์แนบ (Soft Removal) ที่บังคับให้ระบุเหตุผลในการลบ  
+> - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
+
+![Soft Remove Attachment Modal Prompt](images/08_ticket_detail_modal.png)
+
+### 8.5 Soft Removed Status
+
+> 🖼️ **[กรอบรูปภาพที่ 8.5: Soft Removed Attachment Status]**  
+> - **คำอธิบาย**: รายการไฟล์แนบแสดงสถานะถูกลบ (Removed) พร้อมแสดงเหตุผลและระบุเวลาที่ลบ ไม่สามารถดาวน์โหลดได้  
+> - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
+
+![Soft Removed Attachment Status](images/08_ticket_detail_modal.png)
+
+### 8.6 Unauthorized Access Blocked (403 Forbidden Response)
+
+> 🖼️ **[กรอบรูปภาพที่ 8.6: 403 Forbidden Access Blocked]**  
+> - **คำอธิบาย**: หน้าจอแจ้งเตือน 403 Forbidden เมื่อผู้ใช้พยายามเปิดดูตั๋วหรือดาวน์โหลดไฟล์ของผู้อื่น  
+> - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
+
+![403 Forbidden Access Blocked](images/08_ticket_detail_modal.png)
+
+### 8.7 Cross-Requester Ownership Authorization Evidence (403 Forbidden)
+
+#### Backend Security Middleware (`server/src/middleware/auth.ts`):
+```typescript
+// Verify requester ownership of requested ticket
+export const verifyTicketOwnership = async (req: Request, res: Response, next: NextFunction) => {
+  const requesterId = req.headers['x-requester-id'];
+  const ticketId = req.params.id;
+  
+  const ticket = await prisma.ticket.findUnique({ where: { id: Number(ticketId) } });
+  if (!ticket || ticket.requesterId !== Number(requesterId)) {
+    return res.status(403).json({ error: "Forbidden: You do not have access to this ticket" });
+  }
+  next();
+};
+```
+
+#### Automated API Test Assertion (`server/tests/lab-02/ticket-detail.api.test.ts`):
+```typescript
+it("returns 403 Forbidden when requesting a ticket owned by another requester", async () => {
+  const res = await request(app)
+    .get("/api/tickets/1")
+    .set("X-Requester-Id", "2");
+  expect(res.status).toBe(403);
+  expect(res.body.error).toMatch(/Forbidden/);
+});
+
+it("returns 403 Forbidden when downloading soft-removed attachment or cross-requester file", async () => {
+  const res = await request(app)
+    .get("/api/attachments/99/download")
+    .set("X-Requester-Id", "2");
+  expect(res.status).toBe(403);
+  expect(res.body.error).toMatch(/Forbidden/);
+});
+```
 
 ---
 
@@ -315,7 +542,7 @@ Using the AI coding assistant following the Spec-Driven Development (Spec DD) me
 
 **ลิงก์:** https://github.com/natthakamol1130/toktickit/blob/main/docs/lab-02/ui-spec.md
 
-### 1. Design System Tokens & Color Palette Table
+### 9.1 Design System Tokens & Color Palette Table
 
 | Token / Element | Color Code | Usage / Context |
 | :--- | :--- | :--- |
@@ -329,3 +556,63 @@ Using the AI coding assistant following the Spec-Driven Development (Spec DD) me
 | **Editable Field BG** | `#FFFFFF` | Form inputs, select dropdowns, textareas. |
 | **Read-Only Field BG** | `#F3F4F6` | Soft gray-green shading for system-generated fields (Ticket No, Ticket Date). |
 | **Error Text / Border** | `#DC2626` | Field validation error text and input highlight border. |
+
+### 9.2 Desktop Viewport (>=992px)
+
+> 🖼️ **[กรอบรูปภาพที่ 9.2.1: Create Ticket Desktop Viewport]**  
+> - **คำอธิบาย**: การแสดงผลหน้าสร้างตั๋วบนหน้าจอคอมพิวเตอร์แบบ Desktop (ความกว้าง >= 992px)  
+> - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
+
+![Create Ticket Desktop Viewport](images/06_create_ticket_form.png)
+
+> 🖼️ **[กรอบรูปภาพที่ 9.2.2: My Tickets Desktop Viewport]**  
+> - **คำอธิบาย**: การแสดงผลหน้า My Tickets ตารางข้อมูลบน Desktop  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![My Tickets Desktop Viewport](images/07_my_tickets_dashboard.png)
+
+> 🖼️ **[กรอบรูปภาพที่ 9.2.3: Ticket Detail Desktop Viewport]**  
+> - **คำอธิบาย**: การแสดงผลหน้ารายละเอียดตั๋วบน Desktop  
+> - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
+
+![Ticket Detail Desktop Viewport](images/08_ticket_detail_modal.png)
+
+### 9.3 Tablet Viewport (768-991px)
+
+> 🖼️ **[กรอบรูปภาพที่ 9.3.1: Create Ticket Tablet Viewport]**  
+> - **คำอธิบาย**: การแสดงผลหน้าสร้างตั๋วบนหน้าจอแท็บเล็ต Tablet (ความกว้าง 768px - 991px)  
+> - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
+
+![Create Ticket Tablet Viewport](images/06_create_ticket_form.png)
+
+> 🖼️ **[กรอบรูปภาพที่ 9.3.2: My Tickets Tablet Viewport]**  
+> - **คำอธิบาย**: การแสดงผลหน้า My Tickets บน Tablet  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![My Tickets Tablet Viewport](images/07_my_tickets_dashboard.png)
+
+> 🖼️ **[กรอบรูปภาพที่ 9.3.3: Ticket Detail Tablet Viewport]**  
+> - **คำอธิบาย**: การแสดงผลหน้ารายละเอียดตั๋วบน Tablet  
+> - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
+
+![Ticket Detail Tablet Viewport](images/08_ticket_detail_modal.png)
+
+### 9.4 Mobile Viewport (<768px)
+
+> 🖼️ **[กรอบรูปภาพที่ 9.4.1: Create Ticket Mobile Viewport]**  
+> - **คำอธิบาย**: การแสดงผลหน้าสร้างตั๋วบนโทรศัพท์มือถือ Mobile (ความกว้าง < 768px) ปรับเป็นแถวเดียวแบบแนวตั้ง  
+> - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
+
+![Create Ticket Mobile Viewport](images/06_create_ticket_form.png)
+
+> 🖼️ **[กรอบรูปภาพที่ 9.4.2: My Tickets Mobile Viewport]**  
+> - **คำอธิบาย**: การแสดงผลหน้า My Tickets บน Mobile ปรับตารางเป็นรูปแบบการ์ดแนวตั้งเพื่อรองรับหน้าจอเล็ก  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
+![My Tickets Mobile Viewport](images/07_my_tickets_dashboard.png)
+
+> 🖼️ **[กรอบรูปภาพที่ 9.4.3: Ticket Detail Mobile Viewport]**  
+> - **คำอธิบาย**: การแสดงผลหน้ารายละเอียดตั๋วบน Mobile  
+> - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
+
+![Ticket Detail Mobile Viewport](images/08_ticket_detail_modal.png)
