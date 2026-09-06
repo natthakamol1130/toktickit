@@ -1,5 +1,5 @@
 import React from "react";
-import { RequesterUser } from "../types.js";
+import { RequesterUser } from "../types";
 
 interface HeaderProps {
   currentRequester: RequesterUser | null;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { RequesterUser, Category, RelatedSystem, Priority, Ticket } from "../types.js";
-import { fetchCategories, fetchRelatedSystems, createTicket } from "../api.js";
+import { RequesterUser, Category, RelatedSystem, Priority, Ticket } from "../types";
+import { fetchCategories, fetchRelatedSystems, createTicket } from "../api";
 
 interface CreateTicketViewProps {
   currentRequester: RequesterUser;

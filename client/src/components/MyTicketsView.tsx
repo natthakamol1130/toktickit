@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { RequesterUser, Category, Ticket, PaginationMeta } from "../types.js";
-import { fetchCategories, fetchTickets } from "../api.js";
+import { RequesterUser, Category, Ticket, PaginationMeta } from "../types";
+import { fetchCategories, fetchTickets } from "../api";
 
 interface MyTicketsViewProps {
   currentRequester: RequesterUser;

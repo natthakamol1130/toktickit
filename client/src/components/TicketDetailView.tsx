@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { RequesterUser, Ticket, Attachment } from "../types.js";
+import { RequesterUser, Ticket, Attachment } from "../types";
 import {
   fetchTicketDetail,
   uploadAttachment,
   softRemoveAttachment,
   getAttachmentDownloadUrl,
-} from "../api.js";
+} from "../api";
 
 interface TicketDetailViewProps {
   currentRequester: RequesterUser;

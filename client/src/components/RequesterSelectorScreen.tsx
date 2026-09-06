@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { RequesterUser } from "../types.js";
-import { fetchRequesters } from "../api.js";
+import { RequesterUser } from "../types";
+import { fetchRequesters } from "../api";
 
 interface RequesterSelectorScreenProps {
   onSelectRequester: (user: RequesterUser) => void;
