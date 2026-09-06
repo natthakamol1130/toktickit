@@ -286,9 +286,18 @@ TokTickIT is an IT service desk web application built using Spec-Driven Developm
 
 ---
 
-### 8. GitHub Peer Review Evidence (หลักฐานการรีวิวโค้ดระหว่างคู่รีวิว)
+### 8. GitHub Peer Review Evidence (หลักฐานข้อความและการรีวิวโค้ดระหว่างคู่รีวิว)
 
-#### 8.1 Peer Review Evidence on My Repository (หลักฐานที่เพื่อน @Suprawi5227 มาตรวจรีวิวและกด Approve ให้เรา)
+#### 8.1 Peer Review Received on My Repository (หลักฐานที่เพื่อน @Suprawi5227 มาตรวจรีวิวและกด Approve ให้เรา)
+
+- **Target Repository**: `natthakamol1130/toktickit`
+- **ผู้รีวิว (Reviewer)**: นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ (`@Suprawi5227` / 67070505227)
+- **ผู้พัฒนา (Author)**: นางสาวณัฏฐกมล มอญปาน (`@natthakamol1130` / 67070505215)
+- **สถานะการรีวิว (Status)**: `Approved` (ผ่านการรีวิวและอนุมัติให้ Merge)
+
+**ข้อความความคิดเห็นการรีวิวใน Final Release PR #33 (`lab2-staging` -> `main`):**
+> **Reviewer Verdict: Approved**  
+> "ตรวจสอบโค้ดและผลการทดสอบเรียบร้อยแล้วค่ะ โครงสร้างระบบ Spec DD, REST API, และ UI Zen Green ตรงตามข้อกำหนด Specification Contract ครบถ้วนทุกข้อ อนุมัติให้ Merge เข้าสาขา main ได้ค่ะ!"
 
 > 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 9: หลักฐานที่เพื่อน (@Suprawi5227) รีวิวและกด Approve ให้เรา]**  
 > - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเราที่สุประวีณ์ (@Suprawi5227) เข้ามารีวิวและกด Approve  
@@ -299,7 +308,16 @@ TokTickIT is an IT service desk web application built using Spec-Driven Developm
 
 ---
 
-#### 8.2 Peer Review Evidence on Peer Repository (หลักฐานที่เรา @natthakamol1130 ไปตรวจรีวิวและกด Approve ให้เพื่อน)
+#### 8.2 Peer Review Given on Peer Repository (หลักฐานที่เรา @natthakamol1130 ไปตรวจรีวิวและกด Approve ให้เพื่อน)
+
+- **Target Repository**: `Suprawi5227/toktickit`
+- **ผู้รีวิว (Reviewer)**: นางสาวณัฏฐกมล มอญปาน (`@natthakamol1130` / 67070505215)
+- **ผู้พัฒนา (Author)**: นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ (`@Suprawi5227` / 67070505227)
+- **สถานะการรีวิว (Status)**: `Approved` (ผ่านการรีวิวและอนุมัติให้ Merge)
+
+**ข้อความความคิดเห็นการรีวิวใน Release PR ของเพื่อน (`lab2-staging` -> `main`):**
+> **Reviewer Verdict: Approved**  
+> "ตรวจทานโค้ดและทดสอบการทำงานของระบบฝั่งเพื่อนเรียบร้อยแล้วค่ะ การทำงานถูกต้องตาม Spec และผ่านการทดสอบ E2E และ Unit Test อนุมัติให้ Merge เรียบร้อยค่ะ"
 
 > 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 10: หลักฐานที่เรา (@natthakamol1130) ไปรีวิวและกด Approve ให้เพื่อน]**  
 > - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเพื่อนที่คุณเข้าไปตรวจโค้ดและกด Approve  
