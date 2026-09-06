@@ -53,6 +53,11 @@ Following the TokTickIT GitHub Workflow Guide, the board enforces 6 distinct car
 5. **Fixing**: Review changes were requested or tests failed; corrections are actively being made on the feature branch.
 6. **Done**: The Pull Request is approved by peer reviewer, all automated tests pass, the PR is merged into `lab2-staging`, and all Acceptance Criteria are satisfied.
 
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 1: GitHub Project Board]**  
+> - **คำอธิบาย**: หน้าจอ GitHub Project Kanban Board (มีคอลัมน์ Backlog, Specified, Started, PR Review, Fixing, Done)  
+> - **ที่มา**: [https://github.com/users/natthakamol1130/projects](https://github.com/users/natthakamol1130/projects)  
+> - **พาธรูปภาพ**: `images/01_kanban_board.png`
+
 ![GitHub Project Kanban Board](images/01_kanban_board.png)
 
 ---
@@ -84,6 +89,11 @@ Following the TokTickIT GitHub Workflow Guide, the board enforces 6 distinct car
 | |/  
 | *   fb97b12 Merge pull request #26 from natthakamol1130/feature/7-create-ticket-ui
 ```
+
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 2: Terminal Git Log Graph]**  
+> - **คำอธิบาย**: ผลลัพธ์การรันคำสั่ง `git log --oneline --graph -n 25` บนสาขา `main`  
+> - **ที่มา**: Terminal ใน VS Code (พิมพ์คำสั่ง `git log --oneline --graph -n 25`)  
+> - **พาธรูปภาพ**: `images/02_git_log_graph.png`
 
 ![Git Log Graph](images/02_git_log_graph.png)
 
@@ -141,6 +151,11 @@ Following the TokTickIT GitHub Workflow Guide, the board enforces 6 distinct car
     - `LAB2_SUBMISSION_REPORT.docx`
   - `.gitignore`
   - `README.md`
+
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 3: โครงสร้างไฟล์โปรเจกต์ File Explorer]**  
+> - **คำอธิบาย**: หน้าจอ VS Code File Explorer แสดงโฟลเดอร์ `docs/`, `client/`, `server/`, `prisma/`  
+> - **ที่มา**: VS Code ด้านซ้าย (แถบ Explorer)  
+> - **พาธรูปภาพ**: `images/03_directory_tree.png`
 
 ![VS Code File Explorer Directory Structure](images/03_directory_tree.png)
 
@@ -273,10 +288,18 @@ TokTickIT is an IT service desk web application built using Spec-Driven Developm
 
 ### 8. GitHub Peer Review Evidence
 
-#### 8.1 Peer Review Evidence on My Repository (Peer Reviewer @Suprawi5227 reviewing @natthakamol1130)
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 9: หลักฐานที่เพื่อน (@Suprawi5227) รีวิวและกด Approve ให้เรา]**  
+> - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเราที่สุประวีณ์เข้ามารีวิวและกด Approve  
+> - **ที่มา**: [https://github.com/natthakamol1130/toktickit/pulls](https://github.com/natthakamol1130/toktickit/pulls)  
+> - **พาธรูปภาพ**: `images/09_peer_review_received.png`
+
 ![Peer Review Approved by Suprawi5227](images/09_peer_review_received.png)
 
-#### 8.2 Peer Review Evidence on Peer Repository (@natthakamol1130 reviewing @Suprawi5227)
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 10: หลักฐานที่เรา (@natthakamol1130) ไปรีวิวและกด Approve ให้เพื่อน]**  
+> - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเพื่อนที่เราเข้าไปตรวจและกด Approve  
+> - **ที่มา**: Repository ของเพื่อน (`Suprawi5227/toktickit`)  
+> - **พาธรูปภาพ**: `images/10_peer_review_given.png`
+
 ![Peer Review Given to Suprawi5227](images/10_peer_review_given.png)
 
 ---
@@ -355,6 +378,11 @@ Running 2 tests using 1 worker
   2 passed (7.2s)
 ```
 
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 4: Terminal Test Suite Results]**  
+> - **คำอธิบาย**: หน้าจอ Terminal แสดงการทดสอบผ่านครบ 100% (ทั้ง `npm test` ฝั่ง server และ `npx vitest run --environment jsdom` ฝั่ง client)  
+> - **ที่มา**: Terminal ใน VS Code  
+> - **พาธรูปภาพ**: `images/04_test_results.png`
+
 ![Terminal Test Suite Results](images/04_test_results.png)
 
 ---
@@ -386,12 +414,22 @@ Running 2 tests using 1 worker
 ### 1. Requester Selector Screen
 หน้าจอเลือกสิทธิ์ผู้ใช้งานจำลอง (Development Requester Selector) มี Dropdown และปุ่ม Continue
 
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 5: Requester Selector Screen]**  
+> - **คำอธิบาย**: หน้าจอเลือกสิทธิ์ผู้ใช้งานจำลอง (Development Requester Selector)  
+> - **ที่มา**: เบราว์เซอร์ `http://localhost:5173/`  
+> - **พาธรูปภาพ**: `images/05_requester_selector.png`
+
 ![Requester Selector Screen](images/05_requester_selector.png)
 
 ---
 
 ### 2. Create Ticket Form UI
 หน้าจอบันทึกตั๋วปัญหาแจ้งซ่อม IT มีเครื่องหมายดอกจันสีแดงแสดงฟิลด์บังคับ การดักจับ Validation Error และโซนอัปโหลดไฟล์แนบ
+
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 6: Create Ticket Form UI]**  
+> - **คำอธิบาย**: หน้าจอบันทึกตั๋วปัญหาแจ้งซ่อม IT มีดอกจันสีแดงและฟิลด์อัปโหลดไฟล์  
+> - **ที่มา**: เบราว์เซอร์ `http://localhost:5173/` (กดปุ่ม Create Ticket)  
+> - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
 
 ![Create Ticket Form UI](images/06_create_ticket_form.png)
 
@@ -400,11 +438,21 @@ Running 2 tests using 1 worker
 ### 3. My Tickets Dashboard
 หน้าจอแดชบอร์ดแสดงรายการตั๋วของผู้ใช้ มีช่องค้นหา ตัวกรองสถานะ/ความสำคัญ ตารางตั๋วพร้อม Badge สี และปุ่มเปลี่ยนหน้า (Pagination)
 
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 7: My Tickets Dashboard]**  
+> - **คำอธิบาย**: หน้าจอแดชบอร์ดรายการตั๋วของผู้ใช้ มีตาราง ช่องค้นหา และตัวกรอง  
+> - **ที่มา**: เบราว์เซอร์ `http://localhost:5173/`  
+> - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
+
 ![My Tickets Dashboard](images/07_my_tickets_dashboard.png)
 
 ---
 
 ### 4. Ticket Detail & Attachment Soft Removal
 หน้าจอแสดงรายละเอียดตั๋วแบบ Read-Only รายการไฟล์แนบ ปุ่มอัปโหลดไฟล์เพิ่ม และระบบ Soft-remove พร้อมกรอกเหตุผลในการลบ
+
+> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 8: Ticket Detail & Attachment Soft Removal Modal]**  
+> - **คำอธิบาย**: หน้าจอรายละเอียดตั๋ว Read-Only และ Modal ป๊อปอัปกรอกเหตุผลลบไฟล์แนบ  
+> - **ที่มา**: เบราว์เซอร์ `http://localhost:5173/` (คลิกเปิดตั๋วแล้วกด Remove ไฟล์แนบ)  
+> - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
 
 ![Ticket Detail View](images/08_ticket_detail_modal.png)
