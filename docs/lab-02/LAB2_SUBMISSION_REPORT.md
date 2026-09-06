@@ -286,18 +286,24 @@ TokTickIT is an IT service desk web application built using Spec-Driven Developm
 
 ---
 
-### 8. GitHub Peer Review Evidence
+### 8. GitHub Peer Review Evidence (หลักฐานการรีวิวโค้ดระหว่างคู่รีวิว)
+
+#### 8.1 Peer Review Evidence on My Repository (หลักฐานที่เพื่อน @Suprawi5227 มาตรวจรีวิวและกด Approve ให้เรา)
 
 > 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 9: หลักฐานที่เพื่อน (@Suprawi5227) รีวิวและกด Approve ให้เรา]**  
-> - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเราที่สุประวีณ์เข้ามารีวิวและกด Approve  
-> - **ที่มา**: [https://github.com/natthakamol1130/toktickit/pulls](https://github.com/natthakamol1130/toktickit/pulls)  
+> - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเราที่สุประวีณ์ (@Suprawi5227) เข้ามารีวิวและกด Approve  
+> - **ที่มา**: [https://github.com/natthakamol1130/toktickit/pulls](https://github.com/natthakamol1130/toktickit/pulls) (เลือก PR #33 หรือ PR #32)  
 > - **พาธรูปภาพ**: `images/09_peer_review_received.png`
 
 ![Peer Review Approved by Suprawi5227](images/09_peer_review_received.png)
 
+---
+
+#### 8.2 Peer Review Evidence on Peer Repository (หลักฐานที่เรา @natthakamol1130 ไปตรวจรีวิวและกด Approve ให้เพื่อน)
+
 > 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 10: หลักฐานที่เรา (@natthakamol1130) ไปรีวิวและกด Approve ให้เพื่อน]**  
-> - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเพื่อนที่เราเข้าไปตรวจและกด Approve  
-> - **ที่มา**: Repository ของเพื่อน (`Suprawi5227/toktickit`)  
+> - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเพื่อนที่คุณเข้าไปตรวจโค้ดและกด Approve  
+> - **ที่มา**: GitHub Repository ของเพื่อน (`Suprawi5227/toktickit`)  
 > - **พาธรูปภาพ**: `images/10_peer_review_given.png`
 
 ![Peer Review Given to Suprawi5227](images/10_peer_review_given.png)
