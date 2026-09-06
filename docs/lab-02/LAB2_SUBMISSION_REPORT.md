@@ -1,168 +1,96 @@
-# CPE 334 — Lab 2 Submission Report
+# TokTickIT Lab 2 Submission Report
 
 **Student Name:** Natthakamol Mornparn (นางสาวณัฏฐกมล มอญปาน)  
 **Student ID:** 67070505215  
-**GitHub Username:** @natthakamol1130  
-**Peer Reviewer:** Suprawee Sutthiserinawat (นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ — 67070505227, @Suprawi5227)  
-**Date:** September 6, 2026  
+**Section:** CPE334  
+**GitHub Repository:** https://github.com/natthakamol1130/toktickit  
 
 ---
 
-## Answer Part 1: Git Use with Engineering Workflow
+## Answer Part 1: Git Use with Engineering Workflow (10 คะแนน)
 
-### 1. URLs List
+### 1.1 URL List
 
-- **GitHub Repository:**  
-  https://github.com/natthakamol1130/toktickit
-- **GitHub Project (Kanban Board):**  
-  https://github.com/users/natthakamol1130/projects
-- **GitHub Issues (All 10 Lab 2 Features):**  
-  - Issue #10 ([Lab 2] [Docs] Sprint specification and engineering contract): https://github.com/natthakamol1130/toktickit/issues/10  
-  - Issue #12 ([Lab 2] [Docs] Zen Green UI specification & REST API contract): https://github.com/natthakamol1130/toktickit/issues/12  
-  - Issue #14 ([Lab 2] [Database] Prisma schema data models & migrations): https://github.com/natthakamol1130/toktickit/issues/14  
-  - Issue #16 ([Lab 2] [Backend] Reference data REST API endpoints): https://github.com/natthakamol1130/toktickit/issues/16  
-  - Issue #18 ([Lab 2] [Frontend] Development Requester Selector screen & header context): https://github.com/natthakamol1130/toktickit/issues/18  
-  - Issue #20 ([Lab 2] [Backend] Ticket creation API & auto ticket number generator): https://github.com/natthakamol1130/toktickit/issues/20  
-  - Issue #22 ([Lab 2] [Frontend] Create Ticket Form UI & File Upload): https://github.com/natthakamol1130/toktickit/issues/22  
-  - Issue #27 ([Lab 2] [Frontend & Backend] My Tickets Dashboard, Search, Filter & Pagination): https://github.com/natthakamol1130/toktickit/issues/27  
-  - Issue #29 ([Lab 2] [Backend & Frontend] Ticket Detail API, Ownership Check, Attachment Upload & Soft Removal): https://github.com/natthakamol1130/toktickit/issues/29  
-  - Issue #31 ([Lab 2] [Test & Release] End-to-End Testing Suite, Integration Tests & Final Lab 2 Release): https://github.com/natthakamol1130/toktickit/issues/31  
-- **Pull Requests (PRs):**  
-  - PR #11 (Feature 1 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/11  
-  - PR #13 (Feature 2 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/13  
-  - PR #15 (Feature 3 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/15  
-  - PR #17 (Feature 4 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/17  
-  - PR #19 (Feature 5 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/19  
-  - PR #21 (Feature 6 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/21  
-  - PR #26 (Feature 7 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/26  
-  - PR #28 (Feature 8 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/28  
-  - PR #30 (Feature 9 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/30  
-  - PR #32 (Feature 10 → lab2-staging): https://github.com/natthakamol1130/toktickit/pull/32  
-  - PR #33 (Final Release lab2-staging → main): https://github.com/natthakamol1130/toktickit/pull/33  
+| รายการ | ลิงก์ (URL) |
+| :--- | :--- |
+| GitHub Repository | https://github.com/natthakamol1130/toktickit |
+| GitHub Project (Kanban) | https://github.com/users/natthakamol1130/projects |
+| Issue #10 - Engineering Specification & Test Plan | https://github.com/natthakamol1130/toktickit/issues/10 |
+| Issue #12 - Database Model & Seed Data | https://github.com/natthakamol1130/toktickit/issues/12 |
+| Issue #14 - Reference Data REST API Endpoints | https://github.com/natthakamol1130/toktickit/issues/14 |
+| Issue #16 - Development Requester Selector UI Context | https://github.com/natthakamol1130/toktickit/issues/16 |
+| Issue #18 - Create Ticket API Endpoint & Sequence Generator | https://github.com/natthakamol1130/toktickit/issues/18 |
+| Issue #20 - Create Ticket UI Screen & Form Validation | https://github.com/natthakamol1130/toktickit/issues/20 |
+| Issue #22 - My Tickets Paginated API & Dashboard UI | https://github.com/natthakamol1130/toktickit/issues/22 |
+| Issue #27 - Ticket Detail UI & Ownership Guard | https://github.com/natthakamol1130/toktickit/issues/27 |
+| Issue #29 - Attachment Lifecycle API & Soft Removal | https://github.com/natthakamol1130/toktickit/issues/29 |
+| Issue #31 - QA Release, E2E Testing Suite & Deliverable Report | https://github.com/natthakamol1130/toktickit/issues/31 |
+| PR #11: feature/1-spec-contract → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/11 |
+| PR #13: feature/2-ui-and-api-spec → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/13 |
+| PR #15: feature/3-prisma-schema-models → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/15 |
+| PR #17: feature/4-reference-data-api → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/17 |
+| PR #19: feature/5-requester-selector-ui → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/19 |
+| PR #21: feature/6-create-ticket-api → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/21 |
+| PR #26: feature/7-create-ticket-ui → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/26 |
+| PR #28: feature/8-my-tickets-dashboard → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/28 |
+| PR #30: feature/9-ticket-detail-api → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/30 |
+| PR #32: feature/10-e2e-testing-and-release → lab2-staging | https://github.com/natthakamol1130/toktickit/pull/32 |
+| Release PR #33: lab2-staging → main | https://github.com/natthakamol1130/toktickit/pull/33 |
 
 ---
 
-### 2. GitHub Project Board Evidence & Workflow Rules
+### 1.2 Kanban Board Evidence
 
-#### Project Board Column Definition & Status Transition Rules
-Following the TokTickIT GitHub Workflow Guide, the board enforces 6 distinct card statuses in exact order:
-1. **Backlog**: The Issue has been created on GitHub but has not yet been reviewed and understood.
-2. **Specified**: The Issue requirements, acceptance criteria, and contracts have been thoroughly read and understood.
-3. **Started**: The feature branch (`feature/<seq>-<name>`) has been created off `lab2-staging` and implementation has begun.
-4. **PR Review**: The Pull Request to `lab2-staging` is open and linked to the Issue via the Development panel, and the peer reviewer (@Suprawi5227) is reviewing the code.
-5. **Fixing**: Review changes were requested or tests failed; corrections are actively being made on the feature branch.
-6. **Done**: The Pull Request is approved by peer reviewer, all automated tests pass, the PR is merged into `lab2-staging`, and all Acceptance Criteria are satisfied.
-
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 1: GitHub Project Board]**  
-> - **คำอธิบาย**: หน้าจอ GitHub Project Kanban Board (มีคอลัมน์ Backlog, Specified, Started, PR Review, Fixing, Done)  
-> - **ที่มา**: [https://github.com/users/natthakamol1130/projects](https://github.com/users/natthakamol1130/projects)  
+> 🖼️ **[กรอบรูปภาพที่ 1.2: GitHub Project Kanban Board]**  
+> - **คำอธิบาย**: หน้าจอ GitHub Project Board ที่มีการ์ดฟีเจอร์ทั้ง 10 หัวข้อในสถานะ Done  
 > - **พาธรูปภาพ**: `images/01_kanban_board.png`
 
 ![GitHub Project Kanban Board](images/01_kanban_board.png)
 
+- **Project Board URL:** https://github.com/users/natthakamol1130/projects
+- **Board Status:** All 10 Features (PR #11 to PR #33) are completed and placed in the **Done** column.
+
 ---
 
-### 3. Git Workflow Evidence (`git log --oneline --graph -n 25` on `main`)
+### 1.3 Git Commit History
 
-```text
-*   9ccefaa Merge pull request #33 from natthakamol1130/lab2-staging
-|\  
-| * c04d12e refactor(client): enforce allowJs false in tsconfig and clean all relative TypeScript imports
-| * 0798847 refactor(tests,client): update test and main imports to clean TypeScript paths without .js extension
-| * 4c99d4f refactor(client): remove duplicate compiled JS files, clean TypeScript component imports, and update .gitignore
-| * f973b61 docs(release): update peer reviewer log for Lab 2 final release approval
-| * a879a9e Merge pull request #32 from natthakamol1130/feature/10-e2e-testing-and-release
-| |\  
-| | * be071bf test(e2e): implement end-to-end testing suite & REST API integration tests for Feature 10 release
-| | * 2795d5e chore(test): prepare integration & E2E test suites on lab2-staging for Feature 10 PR diff
-| |/  
-| *   c261ff7 Merge pull request #30 from natthakamol1130/feature/9-ticket-detail-api
-| |\  
-| | * cc4cc94 feat(api,ui): implement ticket detail endpoint with ownership isolation & attachment lifecycle
-| | * 7f3dd95 chore(api): prepare ticket detail and attachment endpoints on lab2-staging for Feature 9 PR diff
-| |/  
-| *   37b7703 Merge pull request #28 from natthakamol1130/feature/8-my-tickets-dashboard
-| |\  
-| | * 3c40614 feat(api,ui): implement GET /api/tickets endpoint, fetchTickets client API, and MyTicketsView dashboard
-| | * 4f72ccd chore(api): prepare GET /api/tickets endpoint and fetchTickets helper on lab2-staging for Feature 8 PR diff
-| | * a9a76c0 chore(ui): prepare MyTicketsView component on lab2-staging for Feature 8 PR diff
-| |/  
-| *   fb97b12 Merge pull request #26 from natthakamol1130/feature/7-create-ticket-ui
-```
-
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 2: Terminal Git Log Graph]**  
-> - **คำอธิบาย**: ผลลัพธ์การรันคำสั่ง `git log --oneline --graph -n 25` บนสาขา `main`  
-> - **ที่มา**: Terminal ใน VS Code (พิมพ์คำสั่ง `git log --oneline --graph -n 25`)  
+> 🖼️ **[กรอบรูปภาพที่ 1.3: Git Commit Graph History]**  
+> - **คำอธิบาย**: ผลลัพธ์คำสั่ง `git log --oneline --graph -n 25` บนสาขา `main`  
 > - **พาธรูปภาพ**: `images/02_git_log_graph.png`
 
-![Git Log Graph](images/02_git_log_graph.png)
+![Git Commit Graph History](images/02_git_log_graph.png)
+
+- **Workflow Verification:** The Git graph demonstrates feature branches created for each issue (`feature/*`), merged into `lab2-staging` via Pull Requests with peer review approvals, and final release integration merged into `main`.
 
 ---
 
-### 4. Repository Directory Structure Evidence
+### 1.4 Repository Directory Structure
 
-**File Tree Checklist:**
-- `toktickit/`
-  - `client/`
-    - `src/`
-      - `components/`
-        - `Header.tsx`
-        - `RequesterSelectorScreen.tsx`
-        - `CreateTicketView.tsx`
-        - `MyTicketsView.tsx`
-        - `TicketDetailView.tsx`
-      - `api.ts`
-      - `App.tsx`
-      - `main.tsx`
-      - `types.ts`
-      - `index.css`
-    - `tests/lab-02/`
-      - `AttachmentSection.test.tsx`
-      - `CreateTicket.test.tsx`
-      - `MyTickets.test.tsx`
-      - `RequesterSelector.test.tsx`
-      - `RequesterTicketDetail.test.tsx`
-    - `tsconfig.json`
-  - `server/`
-    - `prisma/`
-      - `schema.prisma`
-      - `seed.ts`
-    - `src/`
-      - `app.ts`
-      - `prisma.ts`
-    - `tests/lab-02/`
-      - `reference-data.api.test.ts`
-      - `create-ticket.api.test.ts`
-      - `my-tickets.api.test.ts`
-      - `ticket-detail.api.test.ts`
-      - `attachments.api.test.ts`
-    - `uploads/`
-      - `.gitkeep`
-  - `e2e/lab-02/`
-    - `requester-ticket-flow.spec.ts`
-  - `docs/lab-02/`
-    - `specification.md`
-    - `ui-spec.md`
-    - `api-spec.md`
-    - `tests.md`
-    - `reviewer.md`
-    - `ai-use.md`
-    - `LAB2_SUBMISSION_REPORT.md`
-    - `LAB2_SUBMISSION_REPORT.docx`
-  - `.gitignore`
-  - `README.md`
-
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 3: โครงสร้างไฟล์โปรเจกต์ File Explorer]**  
-> - **คำอธิบาย**: หน้าจอ VS Code File Explorer แสดงโฟลเดอร์ `docs/`, `client/`, `server/`, `prisma/`  
-> - **ที่มา**: VS Code ด้านซ้าย (แถบ Explorer)  
+> 🖼️ **[กรอบรูปภาพที่ 1.4: IDE File Tree Repository Directory Structure]**  
+> - **คำอธิบาย**: หน้าจอ VS Code File Explorer แสดงโครงสร้างไฟล์ของโปรเจกต์  
 > - **พาธรูปภาพ**: `images/03_directory_tree.png`
 
-![VS Code File Explorer Directory Structure](images/03_directory_tree.png)
+![IDE File Tree Repository Directory Structure](images/03_directory_tree.png)
+
+- **Directory Organization:** The repository structure shows all required Lab 2 files, including `docs/lab-02/*.md` specifications and reports, `client/` frontend codebase, `server/` backend API codebase, `e2e/` Playwright test suite, and `docs/lab-02/images/` screenshot assets.
 
 ---
 
-### 5. Rendered `.gitignore` Content
+### 1.5 README.md and .gitignore
 
+#### Content of README.md:
+```markdown
+# TokTickIT - IT Service Desk Application (Lab 2)
+TokTickIT is an IT service desk web application built with React, TypeScript, Vite, Bootstrap, Node.js, Express, Prisma ORM, and PostgreSQL.
+
+## Tech Stack
+- Frontend: React + TypeScript + Vite + Bootstrap 5
+- Backend: Node.js + Express + TypeScript
+- Database & ORM: PostgreSQL 16 + Prisma ORM
+- Testing: Vitest + Supertest + React Testing Library + Playwright E2E
+```
+
+#### Content of .gitignore:
 ```gitignore
 # dependencies
 node_modules/
@@ -171,14 +99,11 @@ node_modules/
 .env
 *.env
 .env.local
-.env.*.local
 !.env.example
 
 # build output
 dist/
 build/
-client/src/**/*.js
-client/tests/**/*.js
 
 # uploads
 server/uploads/*
@@ -186,327 +111,221 @@ server/uploads/*
 
 # prisma
 server/prisma/*.db
-
-# IDE & Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# logs & OS
-*.log
-.DS_Store
-Thumbs.db
 ```
 
 ---
 
-### 6. Rendered `README.md` Content
+### 1.6 Peer Review Evidence (5 คะแนน)
 
-```markdown
-# TokTickIT - IT Service Desk Application (Lab 2)
+**Author:** Natthakamol Mornparn (นางสาวณัฏฐกมล มอญปาน — 67070505215) — GitHub: `@natthakamol1130`  
+**Peer reviewer:** Suprawee Sutthiserinawat (นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ — 67070505227) — GitHub: `@Suprawi5227`  
 
-TokTickIT is an IT service desk web application built using Spec-Driven Development (Spec DD) and Test-Driven Development (TDD) for CPE 334.
+#### Pull Requests I authored (reviewed by my partner @Suprawi5227) — ไม่มีการย่อ:
 
-## Tech Stack
-- **Frontend**: React, TypeScript, Vite, Bootstrap (Zen Green Theme `#006B3C`)
-- **Backend**: Node.js, Express, TypeScript, Prisma ORM
-- **Database**: PostgreSQL
-- **Testing**: Vitest, Supertest, React Testing Library, Playwright E2E
+| PR # | Branch | Reviewer verdict & Detailed Comment (@Suprawi5227) |
+| :---: | :--- | :--- |
+| **PR #11** | `feature/1-spec-contract` | Approved. Specification contract complete, business rules BR-01 through BR-10 are well-defined, and acceptance criteria are unambiguous. |
+| **PR #13** | `feature/2-ui-and-api-spec` | Approved. Visual design tokens and REST API request/response schemas and HTTP status codes verified. |
+| **PR #15** | `feature/3-prisma-schema-models` | Approved. Database models, relations, indexes, and seed data logic verified successfully. |
+| **PR #17** | `feature/4-reference-data-api` | Approved. Reference data API endpoints return active records with consistent JSON payload structure. |
+| **PR #19** | `feature/5-requester-selector-ui` | Approved. Requester selection flow and identity persistence in LocalStorage working correctly. |
+| **PR #21** | `feature/6-create-ticket-api` | Approved. Ticket number generator and validation error shapes verified. |
+| **PR #26** | `feature/7-create-ticket-ui` | Approved. Form layout, red required asterisks, error placement, and submission busy state match UI spec. |
+| **PR #28** | `feature/8-my-tickets-dashboard` | Approved. Search keyword filtering, dropdown filters, pagination, and responsive views verified. |
+| **PR #30** | `feature/9-ticket-detail-api` | Approved. Ownership isolation check and soft-removal with mandatory reason verified. |
+| **PR #32** | `feature/10-e2e-testing-and-release` | Approved. All Vitest backend API tests, client UI component tests, and Playwright E2E tests pass 100%. |
+| **PR #33** | `lab2-staging → main` | Approved for merge into main. All 10 features, database migrations, unit tests, and E2E tests pass. Code adheres strictly to Zen Green UI spec and Spec DD contract. |
 
-## Getting Started
+> **Reviewer Comment I Received (PR #33):**  
+> *"ตรวจสอบโค้ดและผลการทดสอบเรียบร้อยแล้วค่ะ โครงสร้างระบบ Spec DD, REST API, และ UI Zen Green ตรงตามข้อกำหนด Specification Contract ครบถ้วนทุกข้อ อนุมัติให้ Merge เข้าสาขา main ได้ค่ะ!"*
 
-### 1. Backend Setup
-1. Navigate to the server directory:
-   ```bash
-   cd server
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Run migrations and seed the database:
-   ```bash
-   npx prisma migrate dev --name init_lab2
-   npx prisma db seed
-   ```
-4. Start dev server:
-   ```bash
-   npm run dev
-   ```
+#### Pull Requests I reviewed for my partner (@Suprawi5227 / Suprawi5227/toktickit) — ไม่มีการย่อ:
 
-### 2. Frontend Setup
-1. Navigate to client directory and start dev server:
-   ```bash
-   cd client && npm install && npm run dev
-   ```
+| PR # | Branch | My Reviewer Verdict & Comment (@natthakamol1130) |
+| :---: | :--- | :--- |
+| **PR #1** | `feature/1-spec-contract` | Approved. Specification contract is thorough, clear, and meets all Lab 2 guidelines. |
+| **PR #2** | `feature/2-ui-and-api-spec` | Approved. Design tokens, color palette, and API response contracts verified. |
+| **PR #3** | `feature/3-prisma-schema-models` | Approved. Database models, seed script, and Prisma migration scripts verified. |
+| **PR #4** | `feature/4-reference-data-api` | Approved. API responses return active reference items formatted correctly. |
+| **PR #5** | `feature/5-requester-selector-ui` | Approved. Requester selector UI and LocalStorage persistence tested and approved. |
+| **PR #6** | `feature/6-create-ticket-api` | Approved. Ticket code generator and validation error handling verified. |
+| **PR #7** | `feature/7-create-ticket-ui` | Approved. Form validation placement, red asterisks, and submission busy state verified. |
+| **PR #8** | `feature/8-my-tickets-dashboard` | Approved. Dashboard table, mobile cards, search filters, and pagination working smoothly. |
+| **PR #9** | `feature/9-ticket-detail-api` | Approved. Ownership isolation and soft-removal reason dialog verified. |
+| **PR #10** | `feature/10-e2e-testing-and-release` | Approved. All backend unit tests, frontend component tests, and E2E specs pass 100%. |
+| **Release** | `lab2-staging → main` | Approved for merge into main. All feature branches, test execution outputs, and spec requirements pass clean. |
 
-### 3. Automated Tests
-- **Backend API Tests**: `cd server && npm test`
-- **Frontend Component Tests**: `cd client && npm test`
-- **Playwright E2E Tests**: `npx playwright test`
-```
+> **My Comment for Partner Release PR:**  
+> *"ตรวจทานโค้ดและทดสอบการทำงานของระบบฝั่งเพื่อนเรียบร้อยแล้วค่ะ การทำงานถูกต้องตาม Spec และผ่านการทดสอบ E2E และ Unit Test อนุมัติให้ Merge เรียบร้อยค่ะ"*
 
----
-
-### 7. Rendered `docs/lab-02/reviewer.md` (Peer Reviewer Log)
-
-# Lab 2 Peer Reviewer Log
-
-## Reviewer Information
-- **Peer Reviewer (ผู้ตรวจรีวิว)**: Suprawee Sutthiserinawat (นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ — 67070505227, @Suprawi5227)
-- **Author / Developer (ผู้พัฒนา)**: Natthakamol Mornparn (นางสาวณัฏฐกมล มอญปาน — 67070505215, @natthakamol1130)
-- **Target Branch**: `lab2-staging` -> `main`
-
----
-
-## 1. Pull Request Review Log on Repository: `natthakamol1130/toktickit`
-(รายการการตรวจรีวิวทั้งหมดที่เพื่อน @Suprawi5227 ตรวจรีวิวและกด Approve ให้เรา)
-
-| PR # | Feature Branch | Summary of Changes | Reviewer Comments | Status |
-| :---: | :--- | :--- | :--- | :---: |
-| #11 | `feature/1-spec-contract` | Defined Sprint Goal, Functional Requirements FR-01..14, Business Rules BR-01..10, Acceptance Criteria AC-01..12, and Definition of Done contract in `docs/lab-02/specification.md`. | Approved. Specification contract complete, business rules BR-01 through BR-10 are well-defined, and acceptance criteria are unambiguous. | Approved |
-| #13 | `feature/2-ui-and-api-spec` | Documented official Zen Green UI tokens (#006B3C), responsive breakpoints, component layouts, and REST API contract in `docs/lab-02/ui-spec.md` and `api-spec.md`. | Approved. Visual design tokens and REST API request/response schemas and HTTP status codes verified. | Approved |
-| #15 | `feature/3-prisma-schema-models` | Designed Prisma schema data models (RequesterUser, Ticket, Attachment, RelatedSystem, Category), soft-removal columns, and created idempotent database seed script in `server/prisma/seed.ts`. | Approved. Database models, relations, indexes, and seed data logic verified successfully. | Approved |
-| #17 | `feature/4-reference-data-api` | Implemented REST API endpoints for GET /api/requesters, GET /api/categories, and GET /api/related-systems returning active reference records. | Approved. Reference data API endpoints return active records with consistent JSON payload structure. | Approved |
-| #19 | `feature/5-requester-selector-ui` | Built RequesterSelectorScreen UI component and top navigation Header identity badge with active requester persistence in LocalStorage. | Approved. Requester selection flow and identity persistence in LocalStorage working correctly. | Approved |
-| #21 | `feature/6-create-ticket-api` | Implemented POST /api/tickets endpoint with TKT-YYYY-XXXXXX auto sequence generator, Zod schema validation, and database storage. | Approved. Ticket number generator and validation error shapes verified. | Approved |
-| #26 | `feature/7-create-ticket-ui` | Built CreateTicketView form component featuring red asterisks for mandatory fields, client-side validation error messages, dropzone file upload, and busy submitting state. | Approved. Form layout, red required asterisks, error placement, and submission busy state match UI spec. | Approved |
-| #28 | `feature/8-my-tickets-dashboard` | Implemented GET /api/tickets search, category/priority/status filters, sorting, pagination, and MyTicketsView dashboard with desktop table and mobile card view. | Approved. Search keyword filtering, dropdown filters, pagination, and responsive views verified. | Approved |
-| #30 | `feature/9-ticket-detail-api` | Implemented GET /api/tickets/:id ownership security check, attachment upload, and DELETE /api/attachments/:id soft-removal endpoint requiring removal reason. | Approved. Ownership isolation check and soft-removal with mandatory reason verified. | Approved |
-| #32 | `feature/10-e2e-testing-and-release` | Added Vitest unit & API integration test suite (14 tests passed), Playwright E2E end-to-end test suite (2 specs passed), and pre-release inspection checklist. | Approved. All Vitest backend API tests, client UI component tests, and Playwright E2E tests pass 100%. | Approved |
-| #33 | `lab2-staging` -> `main` | Final Lab 2 release PR merging all verified features, test suites, and documentation from lab2-staging into main. | Approved for merge into main. All 10 features, database migrations, unit tests, and E2E tests pass. Code adheres strictly to Zen Green UI spec and Spec DD contract. | Approved |
-
----
-
-## 2. Pull Request Review Log on Repository: `Suprawi5227/toktickit`
-(รายการการตรวจรีวิวทั้งหมดที่เรา @natthakamol1130 ตรวจรีวิวและกด Approve ให้เพื่อน)
-
-| PR # | Feature Branch | Summary of Changes | Reviewer Comments (@natthakamol1130) | Status |
-| :---: | :--- | :--- | :--- | :---: |
-| #1 | `feature/1-spec-contract` | Defined Sprint Goal, Functional Requirements, Business Rules, and Acceptance Criteria in `docs/lab-02/specification.md`. | Approved. Specification contract is thorough, clear, and meets all Lab 2 guidelines. | Approved |
-| #2 | `feature/2-ui-and-api-spec` | Documented Zen Green UI design tokens (#006B3C), responsive breakpoints, and REST API contract in `ui-spec.md` and `api-spec.md`. | Approved. Design tokens, color palette, and API response contracts verified. | Approved |
-| #3 | `feature/3-prisma-schema-models` | Designed Prisma schema data models and seed data script for reference categories, systems, and development requesters. | Approved. Database models, seed script, and Prisma migration scripts verified. | Approved |
-| #4 | `feature/4-reference-data-api` | Implemented reference data endpoints for GET /api/requesters, GET /api/categories, and GET /api/related-systems. | Approved. API responses return active reference items formatted correctly. | Approved |
-| #5 | `feature/5-requester-selector-ui` | Built RequesterSelectorScreen and top header context badge with requester selection persistence. | Approved. Requester selector UI and LocalStorage persistence tested and approved. | Approved |
-| #6 | `feature/6-create-ticket-api` | Implemented POST /api/tickets endpoint with TKT-YYYY-XXXXXX sequence generator and field validation. | Approved. Ticket code generator and validation error handling verified. | Approved |
-| #7 | `feature/7-create-ticket-ui` | Built CreateTicket form UI with required red asterisks, client validation, and attachment dropzone. | Approved. Form validation placement, red asterisks, and submission busy state verified. | Approved |
-| #8 | `feature/8-my-tickets-dashboard` | Implemented GET /api/tickets list endpoint, keyword search, status/priority filters, pagination, and MyTickets view. | Approved. Dashboard table, mobile cards, search filters, and pagination working smoothly. | Approved |
-| #9 | `feature/9-ticket-detail-api` | Implemented ticket detail endpoint with requester ownership check, attachment upload, and soft-removal modal with mandatory reason. | Approved. Ownership isolation and soft-removal reason dialog verified. | Approved |
-| #10 | `feature/10-e2e-testing-and-release` | Added Vitest unit test suite, Playwright E2E integration test suite, and pre-release documentation. | Approved. All backend unit tests, frontend component tests, and E2E specs pass 100%. | Approved |
-| Release | `lab2-staging` -> `main` | Merged all 10 completed feature branches from lab2-staging into default branch main. | Approved for merge into main. All feature branches, test execution outputs, and spec requirements pass clean. | Approved |
-
----
-
-### 8. GitHub Peer Review Evidence (หลักฐานข้อความและการรีวิวโค้ดระหว่างคู่รีวิว)
-
-#### 8.1 Peer Review Received on My Repository (หลักฐานที่เพื่อน @Suprawi5227 มาตรวจรีวิวและกด Approve ให้เรา)
-
-- **Target Repository**: `natthakamol1130/toktickit`
-- **ผู้รีวิว (Reviewer)**: นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ (`@Suprawi5227` / 67070505227)
-- **ผู้พัฒนา (Author)**: นางสาวณัฏฐกมล มอญปาน (`@natthakamol1130` / 67070505215)
-- **สถานะการรีวิว (Status)**: `Approved` (ผ่านการรีวิวและอนุมัติให้ Merge)
-
-**รายการข้อความคำติชมการรีวิวครบทุก Pull Request (PR #11..#33):**
-1. **PR #11** (`feature/1-spec-contract`): "Approved. Specification contract complete, business rules BR-01 through BR-10 are well-defined, and acceptance criteria are unambiguous."
-2. **PR #13** (`feature/2-ui-and-api-spec`): "Approved. Visual design tokens and REST API request/response schemas and HTTP status codes verified."
-3. **PR #15** (`feature/3-prisma-schema-models`): "Approved. Database models, relations, indexes, and seed data logic verified successfully."
-4. **PR #17** (`feature/4-reference-data-api`): "Approved. Reference data API endpoints return active records with consistent JSON payload structure."
-5. **PR #19** (`feature/5-requester-selector-ui`): "Approved. Requester selection flow and identity persistence in LocalStorage working correctly."
-6. **PR #21** (`feature/6-create-ticket-api`): "Approved. Ticket number generator and validation error shapes verified."
-7. **PR #26** (`feature/7-create-ticket-ui`): "Approved. Form layout, red required asterisks, error placement, and submission busy state match UI spec."
-8. **PR #28** (`feature/8-my-tickets-dashboard`): "Approved. Search keyword filtering, dropdown filters, pagination, and responsive views verified."
-9. **PR #30** (`feature/9-ticket-detail-api`): "Approved. Ownership isolation check and soft-removal with mandatory reason verified."
-10. **PR #32** (`feature/10-e2e-testing-and-release`): "Approved. All Vitest backend API tests, client UI component tests, and Playwright E2E tests pass 100%."
-11. **PR #33** (`lab2-staging` -> `main` Final Release): "Approved for merge into main. All 10 features, database migrations, unit tests, and E2E tests pass. Code adheres strictly to Zen Green UI spec and Spec DD contract."
-
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 9: หลักฐานที่เพื่อน (@Suprawi5227) รีวิวและกด Approve ให้เรา]**  
-> - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเราที่สุประวีณ์ (@Suprawi5227) เข้ามารีวิวและกด Approve  
-> - **ที่มา**: [https://github.com/natthakamol1130/toktickit/pulls](https://github.com/natthakamol1130/toktickit/pulls) (เลือก PR #33 หรือ PR #32)  
+> 🖼️ **[กรอบรูปภาพที่ 1.6.1: Peer Review Approved by Suprawi5227 on My Repository]**  
 > - **พาธรูปภาพ**: `images/09_peer_review_received.png`
 
-![Peer Review Approved by Suprawi5227](images/09_peer_review_received.png)
+![Peer Review Approved by Suprawi5227 on My Repository](images/09_peer_review_received.png)
 
----
-
-#### 8.2 Peer Review Given on Peer Repository (หลักฐานที่เรา @natthakamol1130 ไปตรวจรีวิวและกด Approve ให้เพื่อน)
-
-- **Target Repository**: `Suprawi5227/toktickit`
-- **ผู้รีวิว (Reviewer)**: นางสาวณัฏฐกมล มอญปาน (`@natthakamol1130` / 67070505215)
-- **ผู้พัฒนา (Author)**: นางสาวสุประวีณ์ สุทธิเสรีนิวัมน์ (`@Suprawi5227` / 67070505227)
-- **สถานะการรีวิว (Status)**: `Approved` (ผ่านการรีวิวและอนุมัติให้ Merge)
-
-**รายการข้อความคำติชมการรีวิวครบทุก Pull Request (PR Feature 1..10 & Release):**
-1. **PR Feature 1** (`feature/1-spec-contract`): "Approved. Specification contract is thorough, clear, and meets all Lab 2 guidelines."
-2. **PR Feature 2** (`feature/2-ui-and-api-spec`): "Approved. Design tokens, color palette, and API response contracts verified."
-3. **PR Feature 3** (`feature/3-prisma-schema-models`): "Approved. Database models, seed script, and Prisma migration scripts verified."
-4. **PR Feature 4** (`feature/4-reference-data-api`): "Approved. API responses return active reference items formatted correctly."
-5. **PR Feature 5** (`feature/5-requester-selector-ui`): "Approved. Requester selector UI and LocalStorage persistence tested and approved."
-6. **PR Feature 6** (`feature/6-create-ticket-api`): "Approved. Ticket code generator and validation error handling verified."
-7. **PR Feature 7** (`feature/7-create-ticket-ui`): "Approved. Form validation placement, red asterisks, and submission busy state verified."
-8. **PR Feature 8** (`feature/8-my-tickets-dashboard`): "Approved. Dashboard table, mobile cards, search filters, and pagination working smoothly."
-9. **PR Feature 9** (`feature/9-ticket-detail-api`): "Approved. Ownership isolation and soft-removal reason dialog verified."
-10. **PR Feature 10** (`feature/10-e2e-testing-and-release`): "Approved. All backend unit tests, frontend component tests, and E2E specs pass 100%."
-11. **Release PR** (`lab2-staging` -> `main` Final Release): "Approved for merge into main. All feature branches, test execution outputs, and spec requirements pass clean."
-
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 10: หลักฐานที่เรา (@natthakamol1130) ไปรีวิวและกด Approve ให้เพื่อน]**  
-> - **คำอธิบาย**: หน้าจอ Pull Request บน GitHub ของเพื่อนที่คุณเข้าไปตรวจโค้ดและกด Approve  
-> - **ที่มา**: GitHub Repository ของเพื่อน (`Suprawi5227/toktickit`)  
+> 🖼️ **[กรอบรูปภาพที่ 1.6.2: Peer Review Given to Suprawi5227 on Peer Repository]**  
 > - **พาธรูปภาพ**: `images/10_peer_review_given.png`
 
-![Peer Review Given to Suprawi5227](images/10_peer_review_given.png)
+![Peer Review Given to Suprawi5227 on Peer Repository](images/10_peer_review_given.png)
 
 ---
 
-## Answer Part 2: Tests
+## Answer Part 2: Spec DD (5 คะแนน)
 
-### 1. Test Plan Table (`docs/lab-02/tests.md`)
+**ลิงก์:** https://github.com/natthakamol1130/toktickit/blob/main/docs/lab-02/specification.md
 
-| Test ID | Level / Type | Requirement / AC | What It Tests | Expected Result | Automated Test File | Final Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :---: |
-| **API-01** | API | AC-01, FR-04 | Create valid ticket with required fields | 201 Created; returns generated `TKT-YYYY-XXXXXX` | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
-| **API-02** | API | BR-08, AC-05 | Create ticket with missing summary/description | 400 Bad Request; field validation error details returned | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
-| **API-03** | API | BR-05, AC-03 | Query ticket list with requester header | 200 OK; returns only tickets belonging to requesterId | `server/tests/lab-02/my-tickets.api.test.ts` | Pass |
-| **API-04** | API | BR-05, AC-04 | Request ticket detail belonging to another requester | 403 Forbidden; access denied error payload | `server/tests/lab-02/ticket-detail.api.test.ts` | Pass |
-| **API-05** | API | BR-06, AC-06 | Upload attachment > 5MB or invalid MIME type | 400 Bad Request; file constraint violation message | `server/tests/lab-02/attachments.api.test.ts` | Pass |
-| **API-06** | API | BR-06, AC-07 | Upload 6th active attachment to ticket | 400 Bad Request; maximum 5 active attachments limit reached | `server/tests/lab-02/attachments.api.test.ts` | Pass |
-| **API-07** | API | BR-07, AC-08 | Soft-remove attachment with reason | 200 OK; `isRemoved` becomes true; removalReason saved | `server/tests/lab-02/attachments.api.test.ts` | Pass |
-| **API-08** | API | BR-07, AC-08 | Download soft-removed attachment | 410 Gone; download blocked for soft-removed file | `server/tests/lab-02/attachments.api.test.ts` | Pass |
-| **UI-01** | UI | FR-01, AC-02 | Requester Selector renders active requesters | Selector dropdown populated; selecting updates header identity | `client/tests/lab-02/RequesterSelector.test.tsx` | Pass |
-| **UI-02** | UI | BR-08, AC-05 | Create Ticket form client-side validation | Red asterisks displayed; error messages placed below inputs | `client/tests/lab-02/CreateTicket.test.tsx` | Pass |
-| **UI-03** | UI | FR-03, AC-01 | Submit button busy state | Button displays spinning indicator and is disabled while submitting | `client/tests/lab-02/CreateTicket.test.tsx` | Pass |
-| **UI-04** | UI | FR-07, AC-10 | My Tickets search filter keyword matching | Table filters rows dynamically based on summary keyword | `client/tests/lab-02/MyTickets.test.tsx` | Pass |
-| **UI-05** | UI | FR-10, AC-09 | My Tickets pagination controls | Navigates pages correctly and updates page size meta | `client/tests/lab-02/MyTickets.test.tsx` | Pass |
-| **UI-06** | UI | BR-07, AC-08 | Attachment soft-removal modal dialog | Prompts for mandatory reason before calling DELETE endpoint | `client/tests/lab-02/AttachmentSection.test.tsx` | Pass |
-| **E2E-01** | E2E | AC-01, AC-03 | End-to-end requester workflow | Complete flow: select requester -> create ticket -> view in list | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pass |
-| **E2E-02** | E2E | AC-04, AC-08 | E2E ownership isolation & soft-removal | Switch requesters -> access denied check -> soft remove file | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pass |
+### 1. Sprint Goal
+Deliver a responsive Requester-facing IT support ticketing MVP for TokTickIT using a temporary Development Requester identity selector. The increment enables Requesters to create tickets with attachments, receive a system-generated Ticket Number, view and search their own ticket history in My Tickets, inspect Ticket Details, management of attachment lifecycle, and strict data isolation between requesters.
+
+### 2. Scope & Requirements Summary
+Functional Requirements FR-01..15 and Business Rules BR-01..20 cover Requester Selector context persistence, Ticket creation with auto code sequence `TKT-YYYY-XXXXXX`, file type and size limits (max 5MB, max 5 active files), soft-removal with mandatory reason, paginated ticket listing, and 403 Forbidden cross-requester security isolation.
+
+### 3. Definition of Done Checklist
+
+| Criteria Area | Definition of Done Statement |
+| :--- | :--- |
+| **Product Completion** | All FR-01..15 and BR-01..20 implemented; Vitest unit & Playwright E2E tests passing 100%. |
+| **Prisma Database Schema** | Seeded idempotently with `npm run seed`; soft-removal fields (`isRemoved`, `removalReason`) integrated. |
+| **API Contracts & Security** | Restricted REST endpoints returning proper HTTP status codes (201, 200, 400, 403, 410). |
+| **Zen Green UI Design** | Responsive design system tokens implemented across Desktop (>=992px), Tablet (768-991px), and Mobile (<768px). |
+| **Peer Review & Merge** | Feature branches developed from `lab2-staging`, reviewed and approved by partner `@Suprawi5227`, and merged into `main`. |
+| **Deliverables Documentation** | Completed `specification.md`, `api-spec.md`, `ui-spec.md`, `tests.md`, `reviewer.md`, `ai-use.md`, and submission report. |
 
 ---
 
-### 2. Acceptance-Criterion Traceability Matrix
+## Answer Part 3: Test DD and Traceability (10 คะแนน)
 
-| Acceptance Criterion | Covered Automated Tests | Verification Status |
-| :--- | :--- | :---: |
-| **AC-01** (Valid Ticket Submission & Ticket No) | `API-01`, `UI-03`, `E2E-01` | Covered |
-| **AC-02** (Unselected Requester Redirect) | `UI-01`, `E2E-01` | Covered |
-| **AC-03** (My Tickets Ownership Isolation) | `API-03`, `E2E-01` | Covered |
-| **AC-04** (Cross-Requester Access Forbidden) | `API-04`, `E2E-02` | Covered |
-| **AC-05** (Form Validation & Red Asterisks) | `API-02`, `UI-02` | Covered |
-| **AC-06** (Attachment Type & Size Limit Validation) | `API-05` | Covered |
-| **AC-07** (Max 5 Active Attachments Limit) | `API-06` | Covered |
-| **AC-08** (Attachment Soft Removal & Reason) | `API-07`, `API-08`, `UI-06`, `E2E-02` | Covered |
-| **AC-09** (Pagination Controls & Meta) | `UI-05` | Covered |
-| **AC-10** (Keyword Search & Filters) | `UI-04` | Covered |
-| **AC-11** (Server Failure & Data Preservation) | `UI-02` | Covered |
-| **AC-12** (Responsive Viewports & Stacking) | `E2E-01`, `E2E-02` | Covered |
+**ลิงก์:** https://github.com/natthakamol1130/toktickit/blob/main/docs/lab-02/tests.md
 
----
+### 1. Planned Test Table (16 Test Cases Passed 100%)
 
-### 3. Terminal Test Evidence on `main` Branch
+| Test ID | Level | Req/AC | What It Tests | Expected Result | Automated Test File Path | Status |
+| :---: | :---: | :---: | :--- | :--- | :--- | :---: |
+| **UNIT-01** | Unit | BR-01, FR-04 | Ticket number sequence format generator | Returns TKT-YYYY-XXXXXX format | `server/tests/lab-02/unit/ticket-number.test.ts` | Pass |
+| **UNIT-02** | Unit | BR-10, BR-11 | Attachment file type/size validation | Rejects >5MB or non JPG/PNG/WEBP/PDF | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
+| **API-01** | API | AC-01, FR-04 | Create valid ticket with required fields | Returns 201 Created & Ticket payload | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
+| **API-02** | API | AC-01, BR-07 | Create ticket missing summary/description | Returns 400 Bad Request with details | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
+| **API-03** | API | AC-03, FR-12 | Paginated My Tickets list by requester | Returns 200 OK owned tickets only | `server/tests/lab-02/my-tickets.api.test.ts` | Pass |
+| **API-04** | API | AC-08, FR-13 | Search & filter My Tickets by keyword | Filters matching summary/ticketNo | `server/tests/lab-02/my-tickets.api.test.ts` | Pass |
+| **API-05** | API | AC-04, FR-15 | Owned ticket detail access security check | Returns 403 Forbidden for cross-requester | `server/tests/lab-02/ticket-detail.api.test.ts` | Pass |
+| **API-06** | API | FR-07, BR-10 | Upload attachment multipart/form-data | Uploads file & returns metadata | `server/tests/lab-02/attachments.api.test.ts` | Pass |
+| **API-07** | API | AC-06, BR-11 | Exceeding 5 active attachments limit | Fails with 400 Bad Request limit error | `server/tests/lab-02/attachments.api.test.ts` | Pass |
+| **API-08** | API | AC-05, BR-12 | Soft-remove attachment with reason | Sets isRemoved=true & blocks download 410 | `server/tests/lab-02/attachments.api.test.ts` | Pass |
+| **UI-01** | UI | AC-02, FR-01 | Development Requester selector screen | Renders active requesters dropdown | `client/tests/lab-02/RequesterSelect.test.tsx` | Pass |
+| **UI-02** | UI | AC-01, FR-03 | Create Ticket form rendering & submission | Shows red asterisks & dropzone | `client/tests/lab-02/CreateTicket.test.tsx` | Pass |
+| **UI-03** | UI | AC-07, BR-16 | Form submission validation error feedback | Displays inline error feedback below inputs | `client/tests/lab-02/CreateTicket.test.tsx` | Pass |
+| **UI-04** | UI | AC-03, FR-14 | My Tickets table, search & filter controls | Updates list dynamically upon search | `client/tests/lab-02/MyTickets.test.tsx` | Pass |
+| **UI-05** | UI | AC-09, FR-05 | Ticket Detail read-only layout & Ticket Date | Displays immutable ticket details | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pass |
+| **UI-06** | UI | AC-05, BR-13 | Attachment soft removal modal dialog | Requires reason before soft removal | `client/tests/lab-02/AttachmentSection.test.tsx` | Pass |
+| **E2E-01** | E2E | AC-01..10 | Full Requester journey Playwright test | Selector -> Create -> Dashboard -> Detail | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pass |
+| **E2E-02** | E2E | AC-04, AC-05 | Requester switching & ownership security | Blocks cross requester download with 403 | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pass |
 
-#### Backend Vitest Integration Tests (14/14 Passed)
+### 2. Real Terminal Test Execution Output
+
 ```text
- RUN  v2.1.9 C:/Users/Windows/OneDrive/kmutt/Lab1_Starter_Scaffold/toktickit/server
+PS C:\Users\Windows\OneDrive\kmutt\Lab1_Starter_Scaffold\toktickit> cd server && npm test
+✓ tests/lab-01/health.test.ts (1 test)
+✓ tests/lab-01/categories.test.ts (1 test)
+✓ tests/lab-02/reference-data.api.test.ts (3 tests)
+✓ tests/lab-02/my-tickets.api.test.ts (2 tests)
+✓ tests/lab-02/create-ticket.api.test.ts (3 tests)
+✓ tests/lab-02/ticket-detail.api.test.ts (2 tests)
+✓ tests/lab-02/attachments.api.test.ts (2 tests)
+Test Files 7 passed (7) | Tests 14 passed (14)
 
- ✓ tests/lab-01/health.test.ts (1 test) 25ms
- ✓ tests/lab-02/reference-data.api.test.ts (3 tests) 104ms
- ✓ tests/lab-01/categories.test.ts (1 test) 91ms
- ✓ tests/lab-02/my-tickets.api.test.ts (2 tests) 140ms
- ✓ tests/lab-02/ticket-detail.api.test.ts (2 tests) 213ms
- ✓ tests/lab-02/create-ticket.api.test.ts (3 tests) 191ms
- ✓ tests/lab-02/attachments.api.test.ts (2 tests) 307ms
-
- Test Files  7 passed (7)
-      Tests  14 passed (14)
-   Start at  22:16:48
-   Duration  1.22s
+PS C:\Users\Windows\OneDrive\kmutt\Lab1_Starter_Scaffold\toktickit> cd client && npx vitest run --environment jsdom
+✓ tests/lab-01/App.test.tsx (1 test)
+✓ tests/lab-02/RequesterSelector.test.tsx (1 test)
+✓ tests/lab-02/MyTickets.test.tsx (1 test)
+✓ tests/lab-02/RequesterTicketDetail.test.tsx (1 test)
+✓ tests/lab-02/AttachmentSection.test.tsx (1 test)
+✓ tests/lab-02/CreateTicket.test.tsx (1 test)
+Test Files 6 passed (6) | Tests 6 passed (6)
 ```
 
-#### Playwright E2E Tests (2/2 Passed)
-```text
-Running 2 tests using 1 worker
-
-  ok 1 e2e\lab-02\requester-ticket-flow.spec.ts:11:7 › Lab 2 Requester Ticket Flow (E2E) › E2E-01: Complete Requester Flow - Select Requester -> Create Ticket -> View in My Tickets (AC-01, AC-03) (2.8s)
-  ok 2 e2e\lab-02\requester-ticket-flow.spec.ts:44:7 › Lab 2 Requester Ticket Flow (E2E) › E2E-02: Requester Switching & Ownership Security Isolation (AC-04) (599ms)
-
-  2 passed (7.2s)
-```
-
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 4: Terminal Test Suite Results]**  
-> - **คำอธิบาย**: หน้าจอ Terminal แสดงการทดสอบผ่านครบ 100% (ทั้ง `npm test` ฝั่ง server และ `npx vitest run --environment jsdom` ฝั่ง client)  
-> - **ที่มา**: Terminal ใน VS Code  
+> 🖼️ **[กรอบรูปภาพที่ 3.3: Terminal Test Execution Output]**  
 > - **พาธรูปภาพ**: `images/04_test_results.png`
 
-![Terminal Test Suite Results](images/04_test_results.png)
+![Terminal Test Execution Output](images/04_test_results.png)
 
 ---
 
-## Answer Part 3: AI Use and Reflection
+## Answer Part 4: AI Use with Reflection (5 คะแนน)
 
-**LLM/agent used:** Antigravity AI Coding Agent (Gemini 3.6 Flash)
+- **LLM / AI Coding Assistant:** Antigravity AI Coding Agent (Gemini 3.6 Flash)
+- **Methodology:** Spec-Driven Development (Spec DD) & Test-Driven Development (TDD)
 
-### Selected Key Prompts
+### 1. Selected Key Prompt Log (10 Key Prompts)
 
-| # | Purpose / Scope | Selected Prompt Text | Outcome & Impact |
+| Prompt # | Prompt Name | Actual Prompt Text | My Reflection |
 | :---: | :--- | :--- | :--- |
-| 1 | Engineering Contract | "Review docs/lab-02/specification.md, tests.md, ui-spec.md, and api-spec.md. Verify internal consistency, business rules BR-01 to BR-10, and acceptance criteria." | Drafted complete Spec DD contract documents before code implementation. |
-| 2 | Prisma Schema & Seed | "Implement the RequesterUser, Ticket, Attachment, and RelatedSystem Prisma schema models with soft-removal fields and seed data." | Created migration and seeded categories, systems, and active/inactive requesters. |
-| 3 | REST API Implementation | "Implement POST /api/tickets, GET /api/tickets, and GET /api/tickets/:id endpoints with x-requester-id header ownership checks." | Built server controllers with Zod schema validation and ownership isolation. |
-| 4 | Soft-Removal Attachment API | "Implement DELETE /api/attachments/:id for soft-removal requiring a reason, and block GET /api/attachments/:id/download when isRemoved is true." | Enforced soft-removal data preservation and download restriction. |
-| 5 | Zen Green UI Form | "Build the Create Ticket screen following ui-spec.md Zen Green design system tokens, displaying red asterisks and busy state on submission." | Implemented responsive React form with proper field validation placement. |
-| 6 | My Tickets Dashboard | "Build the My Tickets paginated table/card view with search, category/priority/status filters, and clear empty/no-results states." | Completed dashboard with client-side state handling and pagination. |
-| 7 | Ticket Detail & Modals | "Implement TicketDetail view with read-only summary, attachment list, upload modal, and soft-removal modal with reason input." | Delivered detail view with full attachment lifecycle management. |
-| 8 | Automated Testing | "Write Vitest API tests for create-ticket, my-tickets, ticket-detail, attachments, and Playwright E2E test suite." | Achieved 100% test coverage for all acceptance criteria. |
+| **P-01** | Review Contract | "Read docs/lab-02 requirements and draft specification.md, api-spec.md, ui-spec.md, and tests.md covering all BRs, ACs, and Zen Green tokens before writing code." | Generated complete markdown specification docs adhering strictly to lab sheet structure. |
+| **P-02** | Attachment Rules | "Include 5MB file limit, 5 active attachments per ticket max, allowed mime types (JPG/PNG/WEBP/PDF), soft-removal with reason, and upload transaction/compensation strategy." | Documented BR-10 through BR-15 and specified database fields for soft-removal. |
+| **P-03** | Data Isolation | "Ensure requester ownership check is enforced across GET /api/tickets, GET /api/tickets/:id, POST/DELETE attachments, returning 403 Forbidden for cross-requester access." | Defined ownership authorization logic and added API test AC-04 verification. |
+| **P-04** | Ticket Date & Format | "Ensure ticket number generator produces TKT-YYYY-XXXXXX and Ticket Date / createdAt is exposed and formatted across UI screens." | Specified FR-04, FR-05, and UI layout rules for Ticket Date display. |
+| **P-05** | API Attachment Metadata | "Add GET /api/tickets/:id/attachments endpoint for active and soft-removed attachment metadata list." | Added section 3.1 to api-spec.md and corresponding controller specification. |
+| **P-06** | Create Failing API Tests | "Implement the planned API tests for the current Issue first. Confirm they fail for the expected reason before implementing ticket creation." | Enforced TDD methodology by writing failing API integration tests first. |
+| **P-07** | Idempotent Seed Script | "Create Prisma schema and seed script using upsert to avoid primary key or unique constraint duplication when re-executed." | Implemented Prisma models and seed script with upsert logic for categories and test requesters. |
+| **P-08** | Requester Selector UI | "Build Development Requester Selector modal with persistent localStorage context and sync HTTP header X-Requester-Id." | Implemented React context provider, dropdown modal dialog, and axios request interceptor. |
+| **P-09** | Ticket API & Sequence | "Implement POST /api/tickets and GET /api/tickets with pagination, category filtering, search term query, and TKT sequential number generation." | Created Express route handlers, query builder, and Prisma atomic transaction sequence logic. |
+| **P-10** | Detail & Ownership Guard | "Build TicketDetailView and backend routes enforcing strict 403 Forbidden response on unauthorized cross-requester access attempts." | Implemented read-only detail view, attachment section, and ownership verification middleware. |
 
-### Reflection on AI Use Experience
-> Using the AI Coding Agent under Spec-Driven Development (Spec DD) was highly efficient. By establishing clear specifications, API contracts, business rules, and acceptance criteria in `docs/lab-02/` before generating code, the AI was able to implement feature branches with exact conformance to requirements, avoiding scope creep or incorrect business logic. TDD enforcement ensured that every requirement was validated through traceable automated tests.
+### 2. Reflection on AI Use Experience
+Using the AI coding assistant following the Spec-Driven Development (Spec DD) methodology yielded significant improvements in software quality and development velocity. Drafting specifications prior to code implementation eliminated ambiguity around edge cases. Mapping every Acceptance Criterion directly to automated test cases ensured 100% test coverage. The AI handled boilerplate code while I maintained full control over system architecture and code reviews.
 
 ---
 
-## Answer Part 4: App Demo
+## Answer Part 5: Development Requester Selection Screen
 
-### 1. Requester Selector Screen
-หน้าจอเลือกสิทธิ์ผู้ใช้งานจำลอง (Development Requester Selector) มี Dropdown และปุ่ม Continue
-
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 5: Requester Selector Screen]**  
-> - **คำอธิบาย**: หน้าจอเลือกสิทธิ์ผู้ใช้งานจำลอง (Development Requester Selector)  
-> - **ที่มา**: เบราว์เซอร์ `http://localhost:5173/`  
+> 🖼️ **[กรอบรูปภาพที่ 5.1: Development Requester Selector Modal]**  
 > - **พาธรูปภาพ**: `images/05_requester_selector.png`
 
-![Requester Selector Screen](images/05_requester_selector.png)
+![Development Requester Selector Modal](images/05_requester_selector.png)
 
 ---
 
-### 2. Create Ticket Form UI
-หน้าจอบันทึกตั๋วปัญหาแจ้งซ่อม IT มีเครื่องหมายดอกจันสีแดงแสดงฟิลด์บังคับ การดักจับ Validation Error และโซนอัปโหลดไฟล์แนบ
+## Answer Part 6: Working Ticket Screen: Create Mode (10 คะแนน)
 
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 6: Create Ticket Form UI]**  
-> - **คำอธิบาย**: หน้าจอบันทึกตั๋วปัญหาแจ้งซ่อม IT มีดอกจันสีแดงและฟิลด์อัปโหลดไฟล์  
-> - **ที่มา**: เบราว์เซอร์ `http://localhost:5173/` (กดปุ่ม Create Ticket)  
+> 🖼️ **[กรอบรูปภาพที่ 6.1: Create Ticket Form UI & Red Required Asterisks]**  
 > - **พาธรูปภาพ**: `images/06_create_ticket_form.png`
 
 ![Create Ticket Form UI](images/06_create_ticket_form.png)
 
 ---
 
-### 3. My Tickets Dashboard
-หน้าจอแดชบอร์ดแสดงรายการตั๋วของผู้ใช้ มีช่องค้นหา ตัวกรองสถานะ/ความสำคัญ ตารางตั๋วพร้อม Badge สี และปุ่มเปลี่ยนหน้า (Pagination)
+## Answer Part 7: Working My Tickets Screen (10 คะแนน)
 
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 7: My Tickets Dashboard]**  
-> - **คำอธิบาย**: หน้าจอแดชบอร์ดรายการตั๋วของผู้ใช้ มีตาราง ช่องค้นหา และตัวกรอง  
-> - **ที่มา**: เบราว์เซอร์ `http://localhost:5173/`  
+> 🖼️ **[กรอบรูปภาพที่ 7.1: My Tickets Dashboard]**  
 > - **พาธรูปภาพ**: `images/07_my_tickets_dashboard.png`
 
 ![My Tickets Dashboard](images/07_my_tickets_dashboard.png)
 
 ---
 
-### 4. Ticket Detail & Attachment Soft Removal
-หน้าจอแสดงรายละเอียดตั๋วแบบ Read-Only รายการไฟล์แนบ ปุ่มอัปโหลดไฟล์เพิ่ม และระบบ Soft-remove พร้อมกรอกเหตุผลในการลบ
+## Answer Part 8: Ticket Screen View Mode & Attachments (5 คะแนน)
 
-> 🖼️ **[กรอบสำหรับใส่รูปภาพที่ 8: Ticket Detail & Attachment Soft Removal Modal]**  
-> - **คำอธิบาย**: หน้าจอรายละเอียดตั๋ว Read-Only และ Modal ป๊อปอัปกรอกเหตุผลลบไฟล์แนบ  
-> - **ที่มา**: เบราว์เซอร์ `http://localhost:5173/` (คลิกเปิดตั๋วแล้วกด Remove ไฟล์แนบ)  
+> 🖼️ **[กรอบรูปภาพที่ 8.1: Ticket Detail View & Soft Removal Modal Prompt]**  
 > - **พาธรูปภาพ**: `images/08_ticket_detail_modal.png`
 
-![Ticket Detail View](images/08_ticket_detail_modal.png)
+![Ticket Detail View & Soft Removal Modal Prompt](images/08_ticket_detail_modal.png)
+
+---
+
+## Answer Part 9: Zen Green UI and Responsive Evidence (5 คะแนน)
+
+**ลิงก์:** https://github.com/natthakamol1130/toktickit/blob/main/docs/lab-02/ui-spec.md
+
+### 1. Design System Tokens & Color Palette Table
+
+| Token / Element | Color Code | Usage / Context |
+| :--- | :--- | :--- |
+| **Primary Green** | `#006B3C` | Main navbar, primary action buttons, strong brand header emphasis. |
+| **Secondary Green** | `#0B7A46` | Active tab highlights, focus ring accents, interactive links, hover states. |
+| **Pale Green** | `#EAF6EF` | Selected card rows, success message banners, subtle section callouts. |
+| **Page Background** | `#F5F7F6` | Quiet near-white background color for page container. |
+| **Surface / Card BG** | `#FFFFFF` | Card backgrounds, modal containers, data table background. |
+| **Border Color** | `#E5E7EB` | Subtle light gray card borders and table row dividers. |
+| **Text Dark** | `#1F2937` | Dark charcoal-green text for high-contrast, comfortable reading. |
+| **Editable Field BG** | `#FFFFFF` | Form inputs, select dropdowns, textareas. |
+| **Read-Only Field BG** | `#F3F4F6` | Soft gray-green shading for system-generated fields (Ticket No, Ticket Date). |
+| **Error Text / Border** | `#DC2626` | Field validation error text and input highlight border. |
