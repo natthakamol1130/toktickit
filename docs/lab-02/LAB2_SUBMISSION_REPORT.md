@@ -53,7 +53,7 @@ Following the TokTickIT GitHub Workflow Guide, the board enforces 6 distinct car
 5. **Fixing**: Review changes were requested or tests failed; corrections are actively being made on the feature branch.
 6. **Done**: The Pull Request is approved by peer reviewer, all automated tests pass, the PR is merged into `lab2-staging`, and all Acceptance Criteria are satisfied.
 
-> **[🖼️ จุดใส่รูปภาพที่ 1: แคปหน้าจอ GitHub Project Kanban Board ของคุณที่มีการ์ดอยู่ในคอลัมน์ต่างๆ / Done]**
+![GitHub Project Kanban Board](images/01_kanban_board.png)
 
 ---
 
@@ -85,7 +85,7 @@ Following the TokTickIT GitHub Workflow Guide, the board enforces 6 distinct car
 | *   fb97b12 Merge pull request #26 from natthakamol1130/feature/7-create-ticket-ui
 ```
 
-> **[🖼️ จุดใส่รูปภาพที่ 2: แคปหน้าจอ Terminal ตอนรันคำสั่ง git log --oneline --graph -n 25 บนสาขา main]**
+![Git Log Graph](images/02_git_log_graph.png)
 
 ---
 
@@ -142,7 +142,7 @@ Following the TokTickIT GitHub Workflow Guide, the board enforces 6 distinct car
   - `.gitignore`
   - `README.md`
 
-> **[🖼️ จุดใส่รูปภาพที่ 3: แคปหน้าจอ VS Code File Explorer แสดงโครงสร้างโฟลเดอร์ของโปรเจกต์]**
+![VS Code File Explorer Directory Structure](images/03_directory_tree.png)
 
 ---
 
@@ -345,7 +345,7 @@ Running 2 tests using 1 worker
   2 passed (7.2s)
 ```
 
-> **[🖼️ จุดใส่รูปภาพที่ 4: แคปหน้าจอ Terminal ตอนรัน npx vitest run และ npx playwright test ผ่านครบ 100%]**
+![Terminal Test Suite Results](images/04_test_results.png)
 
 ---
 
@@ -376,25 +376,25 @@ Running 2 tests using 1 worker
 ### 1. Requester Selector Screen
 หน้าจอเลือกสิทธิ์ผู้ใช้งานจำลอง (Development Requester Selector) มี Dropdown และปุ่ม Continue
 
-> **[🖼️ จุดใส่รูปภาพที่ 5: แคปหน้าจอเว็บ Requester Selector Screen]**
+![Requester Selector Screen](images/05_requester_selector.png)
 
 ---
 
 ### 2. Create Ticket Form UI
 หน้าจอบันทึกตั๋วปัญหาแจ้งซ่อม IT มีเครื่องหมายดอกจันสีแดงแสดงฟิลด์บังคับ การดักจับ Validation Error และโซนอัปโหลดไฟล์แนบ
 
-> **[🖼️ จุดใส่รูปภาพที่ 6: แคปหน้าจอเว็บ Create Ticket Form UI]**
+![Create Ticket Form UI](images/06_create_ticket_form.png)
 
 ---
 
 ### 3. My Tickets Dashboard
 หน้าจอแดชบอร์ดแสดงรายการตั๋วของผู้ใช้ มีช่องค้นหา ตัวกรองสถานะ/ความสำคัญ ตารางตั๋วพร้อม Badge สี และปุ่มเปลี่ยนหน้า (Pagination)
 
-> **[🖼️ จุดใส่รูปภาพที่ 7: แคปหน้าจอเว็บ My Tickets Dashboard]**
+![My Tickets Dashboard](images/07_my_tickets_dashboard.png)
 
 ---
 
 ### 4. Ticket Detail & Attachment Soft Removal
 หน้าจอแสดงรายละเอียดตั๋วแบบ Read-Only รายการไฟล์แนบ ปุ่มอัปโหลดไฟล์เพิ่ม และระบบ Soft-remove พร้อมกรอกเหตุผลในการลบ
 
-> **[🖼️ จุดใส่รูปภาพที่ 8: แคปหน้าจอเว็บ Ticket Detail View และ Modal ลบไฟล์แนบ]**
+![Ticket Detail View](images/08_ticket_detail_modal.png)
