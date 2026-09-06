@@ -14,9 +14,9 @@
 
 - **GitHub Repository:**  
   https://github.com/natthakamol1130/toktickit
-- **GitHub Project (Kanban):**  
+- **GitHub Project (Kanban Board):**  
   https://github.com/users/natthakamol1130/projects
-- **GitHub Issues:**  
+- **GitHub Issues (All 10 Lab 2 Features):**  
   - Issue #10 ([Lab 2] [Docs] Sprint specification and engineering contract): https://github.com/natthakamol1130/toktickit/issues/10  
   - Issue #12 ([Lab 2] [Docs] Zen Green UI specification & REST API contract): https://github.com/natthakamol1130/toktickit/issues/12  
   - Issue #14 ([Lab 2] [Database] Prisma schema data models & migrations): https://github.com/natthakamol1130/toktickit/issues/14  
@@ -42,9 +42,18 @@
 
 ---
 
-### 2. GitHub Project Board Evidence (Kanban)
+### 2. GitHub Project Board Evidence & Workflow Rules
 
-> **[🖼️ แนบภาพ Screenshot: GitHub Project Kanban Board]**
+#### Project Board Column Definition & Status Transition Rules
+Following the TokTickIT GitHub Workflow Guide, the board enforces 6 distinct card statuses in exact order:
+1. **Backlog**: The Issue has been created on GitHub but has not yet been reviewed and understood.
+2. **Specified**: The Issue requirements, acceptance criteria, and contracts have been thoroughly read and understood.
+3. **Started**: The feature branch (`feature/<seq>-<name>`) has been created off `lab2-staging` and implementation has begun.
+4. **PR Review**: The Pull Request to `lab2-staging` is open and linked to the Issue via the Development panel, and the peer reviewer (@Suprawi5227) is reviewing the code.
+5. **Fixing**: Review changes were requested or tests failed; corrections are actively being made on the feature branch.
+6. **Done**: The Pull Request is approved by peer reviewer, all automated tests pass, the PR is merged into `lab2-staging`, and all Acceptance Criteria are satisfied.
+
+> **[🖼️ จุดใส่รูปภาพที่ 1: แคปหน้าจอ GitHub Project Kanban Board ของคุณที่มีการ์ดอยู่ในคอลัมน์ต่างๆ / Done]**
 
 ---
 
@@ -76,6 +85,8 @@
 | *   fb97b12 Merge pull request #26 from natthakamol1130/feature/7-create-ticket-ui
 ```
 
+> **[🖼️ จุดใส่รูปภาพที่ 2: แคปหน้าจอ Terminal ตอนรันคำสั่ง git log --oneline --graph -n 25 บนสาขา main]**
+
 ---
 
 ### 4. Repository Directory Structure Evidence
@@ -101,6 +112,7 @@
       - `MyTickets.test.tsx`
       - `RequesterSelector.test.tsx`
       - `RequesterTicketDetail.test.tsx`
+    - `tsconfig.json`
   - `server/`
     - `prisma/`
       - `schema.prisma`
@@ -126,8 +138,11 @@
     - `reviewer.md`
     - `ai-use.md`
     - `LAB2_SUBMISSION_REPORT.md`
+    - `LAB2_SUBMISSION_REPORT.docx`
   - `.gitignore`
   - `README.md`
+
+> **[🖼️ จุดใส่รูปภาพที่ 3: แคปหน้าจอ VS Code File Explorer แสดงโครงสร้างโฟลเดอร์ของโปรเจกต์]**
 
 ---
 
@@ -171,7 +186,55 @@ Thumbs.db
 
 ---
 
-### 6. Rendered `docs/lab-02/reviewer.md` (Peer Reviewer Log)
+### 6. Rendered `README.md` Content
+
+```markdown
+# TokTickIT - IT Service Desk Application (Lab 2)
+
+TokTickIT is an IT service desk web application built using Spec-Driven Development (Spec DD) and Test-Driven Development (TDD) for CPE 334.
+
+## Tech Stack
+- **Frontend**: React, TypeScript, Vite, Bootstrap (Zen Green Theme `#006B3C`)
+- **Backend**: Node.js, Express, TypeScript, Prisma ORM
+- **Database**: PostgreSQL
+- **Testing**: Vitest, Supertest, React Testing Library, Playwright E2E
+
+## Getting Started
+
+### 1. Backend Setup
+1. Navigate to the server directory:
+   ```bash
+   cd server
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run migrations and seed the database:
+   ```bash
+   npx prisma migrate dev --name init_lab2
+   npx prisma db seed
+   ```
+4. Start dev server:
+   ```bash
+   npm run dev
+   ```
+
+### 2. Frontend Setup
+1. Navigate to client directory and start dev server:
+   ```bash
+   cd client && npm install && npm run dev
+   ```
+
+### 3. Automated Tests
+- **Backend API Tests**: `cd server && npm test`
+- **Frontend Component Tests**: `cd client && npm test`
+- **Playwright E2E Tests**: `npx playwright test`
+```
+
+---
+
+### 7. Rendered `docs/lab-02/reviewer.md` (Peer Reviewer Log)
 
 ```markdown
 # Lab 2 Peer Reviewer Log
@@ -233,7 +296,26 @@ Thumbs.db
 
 ---
 
-### 2. Terminal Test Evidence on `main` Branch
+### 2. Acceptance-Criterion Traceability Matrix
+
+| Acceptance Criterion | Covered Automated Tests | Verification Status |
+| :--- | :--- | :---: |
+| **AC-01** (Valid Ticket Submission & Ticket No) | `API-01`, `UI-03`, `E2E-01` | Covered |
+| **AC-02** (Unselected Requester Redirect) | `UI-01`, `E2E-01` | Covered |
+| **AC-03** (My Tickets Ownership Isolation) | `API-03`, `E2E-01` | Covered |
+| **AC-04** (Cross-Requester Access Forbidden) | `API-04`, `E2E-02` | Covered |
+| **AC-05** (Form Validation & Red Asterisks) | `API-02`, `UI-02` | Covered |
+| **AC-06** (Attachment Type & Size Limit Validation) | `API-05` | Covered |
+| **AC-07** (Max 5 Active Attachments Limit) | `API-06` | Covered |
+| **AC-08** (Attachment Soft Removal & Reason) | `API-07`, `API-08`, `UI-06`, `E2E-02` | Covered |
+| **AC-09** (Pagination Controls & Meta) | `UI-05` | Covered |
+| **AC-10** (Keyword Search & Filters) | `UI-04` | Covered |
+| **AC-11** (Server Failure & Data Preservation) | `UI-02` | Covered |
+| **AC-12** (Responsive Viewports & Stacking) | `E2E-01`, `E2E-02` | Covered |
+
+---
+
+### 3. Terminal Test Evidence on `main` Branch
 
 #### Backend Vitest Integration Tests (14/14 Passed)
 ```text
@@ -242,7 +324,7 @@ Thumbs.db
  ✓ tests/lab-01/health.test.ts (1 test) 25ms
  ✓ tests/lab-02/reference-data.api.test.ts (3 tests) 104ms
  ✓ tests/lab-01/categories.test.ts (1 test) 91ms
- ✓ tests/lab-02/my-tickets.api.test.ts (2 tests) 162ms
+ ✓ tests/lab-02/my-tickets.api.test.ts (2 tests) 140ms
  ✓ tests/lab-02/ticket-detail.api.test.ts (2 tests) 213ms
  ✓ tests/lab-02/create-ticket.api.test.ts (3 tests) 191ms
  ✓ tests/lab-02/attachments.api.test.ts (2 tests) 307ms
@@ -262,6 +344,8 @@ Running 2 tests using 1 worker
 
   2 passed (7.2s)
 ```
+
+> **[🖼️ จุดใส่รูปภาพที่ 4: แคปหน้าจอ Terminal ตอนรัน npx vitest run และ npx playwright test ผ่านครบ 100%]**
 
 ---
 
@@ -292,25 +376,25 @@ Running 2 tests using 1 worker
 ### 1. Requester Selector Screen
 หน้าจอเลือกสิทธิ์ผู้ใช้งานจำลอง (Development Requester Selector) มี Dropdown และปุ่ม Continue
 
-> **[🖼️ แนบภาพ Screenshot: หน้าจอ Requester Selector]**
+> **[🖼️ จุดใส่รูปภาพที่ 5: แคปหน้าจอเว็บ Requester Selector Screen]**
 
 ---
 
 ### 2. Create Ticket Form UI
 หน้าจอบันทึกตั๋วปัญหาแจ้งซ่อม IT มีเครื่องหมายดอกจันสีแดงแสดงฟิลด์บังคับ การดักจับ Validation Error และโซนอัปโหลดไฟล์แนบ
 
-> **[🖼️ แนบภาพ Screenshot: หน้าจอ Create Ticket Form]**
+> **[🖼️ จุดใส่รูปภาพที่ 6: แคปหน้าจอเว็บ Create Ticket Form UI]**
 
 ---
 
 ### 3. My Tickets Dashboard
 หน้าจอแดชบอร์ดแสดงรายการตั๋วของผู้ใช้ มีช่องค้นหา ตัวกรองสถานะ/ความสำคัญ ตารางตั๋วพร้อม Badge สี และปุ่มเปลี่ยนหน้า (Pagination)
 
-> **[🖼️ แนบภาพ Screenshot: หน้าจอ My Tickets Dashboard]**
+> **[🖼️ จุดใส่รูปภาพที่ 7: แคปหน้าจอเว็บ My Tickets Dashboard]**
 
 ---
 
 ### 4. Ticket Detail & Attachment Soft Removal
 หน้าจอแสดงรายละเอียดตั๋วแบบ Read-Only รายการไฟล์แนบ ปุ่มอัปโหลดไฟล์เพิ่ม และระบบ Soft-remove พร้อมกรอกเหตุผลในการลบ
 
-> **[🖼️ แนบภาพ Screenshot: หน้าจอ Ticket Detail และ Modal ลบไฟล์แนบ]**
+> **[🖼️ จุดใส่รูปภาพที่ 8: แคปหน้าจอเว็บ Ticket Detail View และ Modal ลบไฟล์แนบ]**
