@@ -251,7 +251,6 @@ TokTickIT is an IT service desk web application built using Spec-Driven Developm
 
 ### 7. Rendered `docs/lab-02/reviewer.md` (Peer Reviewer Log)
 
-```markdown
 # Lab 2 Peer Reviewer Log
 
 ## Reviewer Information
@@ -296,7 +295,6 @@ TokTickIT is an IT service desk web application built using Spec-Driven Developm
 | #9 | `feature/9-ticket-detail-api` | Implemented ticket detail endpoint with requester ownership check, attachment upload, and soft-removal modal with mandatory reason. | Approved. Ownership isolation and soft-removal reason dialog verified. | Approved |
 | #10 | `feature/10-e2e-testing-and-release` | Added Vitest unit test suite, Playwright E2E integration test suite, and pre-release documentation. | Approved. All backend unit tests, frontend component tests, and E2E specs pass 100%. | Approved |
 | Release | `lab2-staging` -> `main` | Merged all 10 completed feature branches from lab2-staging into default branch main. | Approved for merge into main. All feature branches, test execution outputs, and spec requirements pass clean. | Approved |
-```
 
 ---
 
