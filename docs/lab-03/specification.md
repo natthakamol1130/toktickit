@@ -150,13 +150,19 @@ The UI extends the **Zen Green Design System**:
 - **Comments & Notes**: `GET /api/tickets/:id/comments`, `POST /api/tickets/:id/comments`, `GET /api/tickets/:id/notes`, `POST /api/tickets/:id/notes`.
 - **Admin User Management**: `GET /api/admin/users`, `POST /api/admin/users`, `PATCH /api/admin/users/:id`, `POST /api/admin/users/:id/reset-password`.
 
-## 10. Acceptance Criteria
-- **AC-01**: Given an active user with valid credentials, when the user logs in, then authenticated access is established and user identity and role are returned.
-- **AC-02**: Given a user marked with `mustChangePassword = true`, when login succeeds, then normal application screens remain unavailable until a valid new password is saved.
-- **AC-03**: Given an authenticated Requester, when the client supplies another requesterId, then the backend still applies the authenticated identity and does not return another Requester's data.
-- **AC-04**: Given a Requester account, when an Internal Note endpoint is requested, then the operation is rejected with 403 Forbidden without exposing note content.
-- **AC-05**: Given an IT Staff user, when querying the Ticket Queue with search and filters, then only matching tickets are returned with accurate pagination metadata.
-- **AC-06**: Given an Administrator user, when attempting to deactivate their own account or the last active Administrator account, then the server rejects the request with a clear error message.
+## 10. Acceptance Criteria & Test File Mappings
+- **AC-01**: Given an active user with valid credentials, when the user logs in, then authenticated access is established and user identity and role are returned (`server/tests/lab-03/auth.api.test.ts`, `client/src/tests/lab-03/Login.test.tsx`).
+- **AC-02**: Given a user marked with `mustChangePassword = true`, when login succeeds, then normal application screens remain unavailable until a valid new password is saved (`server/tests/lab-03/auth.api.test.ts`, `client/src/tests/lab-03/ChangePassword.test.tsx`, `e2e/lab-03/authentication.spec.ts`).
+- **AC-03**: Given an authenticated Requester, when the client supplies another requesterId, then the backend still applies the authenticated identity and does not return another Requester's data (`server/tests/lab-03/authorization.api.test.ts`).
+- **AC-04**: Given a Requester account, when an Internal Note endpoint is requested, then the operation is rejected with 403 Forbidden without exposing note content (`server/tests/lab-03/comments-notes.api.test.ts`).
+- **AC-05**: Given an IT Staff user, when querying the Ticket Queue with search and filters, then only matching tickets are returned with accurate pagination metadata (`server/tests/lab-03/staff-queue.api.test.ts`, `client/src/tests/lab-03/StaffTicketQueue.test.tsx`, `e2e/lab-03/staff-ticket-flow.spec.ts`).
+- **AC-06**: Given an Administrator user, when attempting to deactivate their own account or the last active Administrator account, then the server rejects the request with a clear error message (`server/tests/lab-03/users-admin.api.test.ts`, `client/src/tests/lab-03/UserManagement.test.tsx`, `e2e/lab-03/user-administration.spec.ts`).
+- **AC-07**: Given an inactive user account, when login is attempted, then authentication fails with 401 Unauthorized (`server/tests/lab-03/auth.api.test.ts`).
+- **AC-08**: Given an IT Staff user, when claiming or reassigning a ticket, then primary ticket ownership is updated in database and reflected in UI (`server/tests/lab-03/staff-ticket-detail.api.test.ts`, `client/src/tests/lab-03/StaffTicketDetail.test.tsx`).
+- **AC-09**: Given an IT Staff user, when posting an Internal Note, then the note is saved and visible exclusively to IT Staff and Admin (`server/tests/lab-03/comments-notes.api.test.ts`).
+- **AC-10**: Given a Requester, when adding a Public Comment or marking problem resolved, then the comment and indicator are saved on the ticket (`server/tests/lab-03/comments-notes.api.test.ts`).
+- **AC-11**: Given an Administrator, when creating a new user, then the user is saved with single role and initial password with `mustChangePassword = true` (`server/tests/lab-03/users-admin.api.test.ts`).
+- **AC-12**: Given responsive viewports (Desktop, Tablet, Mobile), when rendering application screens, then Zen Green layout reflows without horizontal window overflow (`e2e/lab-03/authentication.spec.ts`, `e2e/lab-03/staff-ticket-flow.spec.ts`, `e2e/lab-03/user-administration.spec.ts`).
 
 ## 11. Definition of Done
 - All 12 Sprint 3 GitHub Issues completed and merged into `lab3-staging` and `main`.

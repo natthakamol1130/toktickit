@@ -32,61 +32,134 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 
 ---
 
-## 3. Screen Specifications
+## 3. Screen Specifications & UI Visual Layout Mockups
 
-### 3.1 Login & Mandatory First Password Change
-- **Login Screen**:
-  - Centered card layout with app logo.
-  - Inputs for Email Address and Password.
-  - Inline error alert for invalid credentials or inactive accounts.
-  - Busy spinner on submit button during API call.
-- **Mandatory Password Change Screen**:
-  - Displayed automatically if user has `mustChangePassword = true`.
-  - Blocks navigation to rest of application.
-  - Fields for Current Password, New Password, and Confirm New Password.
-  - Real-time password requirement indicators (minimum 8 chars, upper/lower/number/special).
+### 3.1 Login Screen Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT                                         [ Guest Context ]  |
++-----------------------------------------------------------------------+
+|                                                                       |
+|                     +---------------------------+                     |
+|                     |     Sign in to TokTickIT  |                     |
+|                     +---------------------------+                     |
+|                     | Email Address             |                     |
+|                     | [ jennifer@toktickit.com ]|                     |
+|                     | Password                  |                     |
+|                     | [ ********************** ]|                     |
+|                     |                           |                     |
+|                     |  [   Sign In Button   ]   |                     |
+|                     +---------------------------+                     |
+|                                                                       |
++-----------------------------------------------------------------------+
+```
 
-### 3.2 Requester Regression & Public Comments
-- **Header Update**: Development Requester Selector removed. User identity comes from authenticated session.
-- **Requester Ticket Detail**:
-  - Read-only ticket details and attachment section.
-  - Added **Public Comments** section:
-    - Comment feed displaying author name, role badge, timestamp, and message.
-    - Text area for adding new Public Comment with "Post Comment" button.
-  - Added **"Problem Appears Resolved"** action button to communicate resolution readiness to IT Staff.
+### 3.2 Mandatory First-Login Password Change Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT                                     Jennifer Anderson (Req)|
++-----------------------------------------------------------------------+
+|                                                                       |
+|              +-----------------------------------------+              |
+|              |         Change Your Password            |              |
+|              | You must change initial password.       |              |
+|              +-----------------------------------------+              |
+|              | Current (Initial) Password              |              |
+|              | [ ********************** ]              |              |
+|              | New Password                            |              |
+|              | [ ********************** ]              |              |
+|              | Confirm New Password                    |              |
+|              | [ ********************** ]              |              |
+|              | Password Rules:                         |              |
+|              | [v] At least 8 characters               |              |
+|              | [v] Upper & lower case letters          |              |
+|              | [v] Number & special character          |              |
+|              |                                         |              |
+|              |          [  Save New Password  ]        |              |
+|              +-----------------------------------------+              |
+|                                                                       |
++-----------------------------------------------------------------------+
+```
 
-### 3.3 IT Staff Ticket Queue
-- **Header & Controls**:
-  - Search input (searches Ticket Number and Summary).
-  - Dropdown filters for Category, Requested Priority, IT Priority, and Status.
-  - Sort dropdown (Creation Date, Ticket Number, Priority, Status) and direction toggle.
-  - Active filter chips with "Clear Filters" option.
-- **Desktop Table View ($\ge 992\text{px}$)**:
-  - Columns: Ticket No, Created Date, Summary, Category, Req. Priority, IT Priority, Status, Owner, Action.
-  - Badges for status and priorities using Zen Green palette.
-- **Mobile Card View ($< 768\text{px}$)**:
-  - Stacked card view displaying key metadata, badges, and "View Detail" button.
-- **Pagination Controls**: Page numbers, Previous/Next buttons, page size selector.
+### 3.3 Requester Ticket Detail & Public Comments Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT   My Tickets   Create Ticket        Jennifer Anderson (Req)|
++-----------------------------------------------------------------------+
+|  Ticket #TKT-2026-001234  [ IN_PROGRESS ]     [ Problem Appears Resolved ]
+|  Summary: Laptop battery drains quickly                              |
+|  Category: Hardware | Priority: MEDIUM                                |
+|-----------------------------------------------------------------------|
+|  Public Comments (Green Border Panel)                                 |
+|  +-----------------------------------------------------------------+  |
+|  | [JA] Jennifer Anderson (Requester)           May 12, 2026 09:14   |  |
+|  | Battery drains fast even when idle.                             |  |
+|  |-----------------------------------------------------------------|  |
+|  | [KP] Kevin Patel (IT Support)                May 13, 2026 10:30   |  |
+|  | We are investigating the battery health on your device.        |  |
+|  +-----------------------------------------------------------------+  |
+|  | Add Public Comment:                                             |  |
+|  | [ Type your message here...                                   ] |  |
+|  |                                                [ Post Comment ] |  |
+|  +-----------------------------------------------------------------+  |
++-----------------------------------------------------------------------+
+```
 
-### 3.4 IT Staff Ticket Detail
-- **Header Information**: Ticket Number, Status badge, Requester name, Created date.
-- **Operational Sidebar / Controls**:
-  - Ticket Owner selector (Dropdown to Claim or assign to active IT Staff/Admin).
-  - IT Priority selector.
-  - Status transition dropdown (enforcing valid status transitions).
-- **Communication Panels**:
-  - **Public Comments Tab / Panel**: Styled with green accent border. Visible to Requester and IT Staff.
-  - **Internal Notes Tab / Panel**: Styled with amber accent border and "Internal Only" warning badge. Visible exclusively to IT Staff and Admin.
+### 3.4 IT Staff Ticket Queue Mockup (Desktop & Mobile)
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT   Ticket Queue   My Queue           Kevin Patel (IT Staff) |
++-----------------------------------------------------------------------+
+|  [ Search ticket number or summary... ]  Filters: [Category v] [Status v]
+|-----------------------------------------------------------------------|
+|  Ticket No     Created      Summary               Status       Owner  |
+|  TKT-2026-1234 12 May 09:14 Laptop battery drains IN_PROGRESS Kevin |
+|  TKT-2026-1233 12 May 08:02 Cannot connect VPN    OPEN         --     |
+|  TKT-2026-1232 11 May 16:45 Email sync mobile     IN_PROGRESS Emily |
+|-----------------------------------------------------------------------|
+|  < Previous   [1]  2  3  ...  9   Next >                              |
++-----------------------------------------------------------------------+
+```
 
-### 3.5 Administrator User Management
-- **User List Table**:
-  - Columns: Name, Email, Role badge, Status badge (Active/Inactive), Actions (Edit, Reset Password).
-  - Search bar (Name or Email) and Role filter dropdown.
-  - "Create User" primary button.
-- **Create / Edit User Modal Drawer**:
-  - Fields: Full Name, Email Address, Role (Dropdown), Active Status (Toggle switch).
-  - Initial Password input (for Create or Reset Password mode).
-  - Clear validation feedback for duplicate email or missing fields.
+### 3.5 IT Staff Ticket Detail & Internal Notes Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT   Ticket Queue                      Kevin Patel (IT Staff) |
++-----------------------------------------------------------------------+
+|  Ticket Detail: TKT-2026-001234               | Operational Sidebar   |
+|  Summary: Laptop battery drains quickly        | Owner: [ Kevin Patel v|
+|  Category: Hardware | Status: [ IN_PROGRESS ] | IT Priority: [ HIGH v |
+|-----------------------------------------------+-----------------------|
+|  Public Comments                              | Internal Notes (Amber)|
+|  +-----------------------------------------+  | +-------------------+ |
+|  | [KP] We are investigating your device.  |  | | [KP] Battery wear | |
+|  +-----------------------------------------+  | | is at 45%. Order  | |
+|                                               | | replacement unit. | |
+|                                               | +-------------------+ |
++-----------------------------------------------------------------------+
+```
+
+### 3.6 Administrator User Management & Drawer Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT   User Management                   John Smith (Admin)     |
++-----------------------------------------------------------------------+
+|  [ Search name or email... ]  Role: [ All Roles v ]   [ + Create User ]
+|-----------------------------------------------------------------------|
+|  Name               Email                     Role       Status Action|
+|  Jennifer Anderson  jennifer@toktickit.com    Requester  Active [Edit]|
+|  Michael Brown      michael@toktickit.com     Requester  Active [Edit]|
+|  Kevin Patel        kevin@toktickit.com       IT_Staff   Active [Edit]|
+|  John Smith         john@toktickit.com        Admin      Active [Edit]|
++-----------------------------------------------------------------------+
+|  Drawer: Create New User                                              |
+|  Full Name: [ Alex Thompson ]                                         |
+|  Email:     [ alex@toktickit.com ]                                    |
+|  Role:      [ IT_STAFF v ]  Active: [ Yes (Toggle) ]                  |
+|  Initial Password: [ InitialPassword123! ]                            |
+|  [ Save User ]                                           [ Cancel ]   |
++-----------------------------------------------------------------------+
+```
 
 ---
 
