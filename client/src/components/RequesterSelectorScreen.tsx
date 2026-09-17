@@ -37,7 +37,10 @@ export const RequesterSelectorScreen: React.FC<RequesterSelectorScreenProps> = (
     <div className="container py-5 d-flex justify-content-center">
       <div className="zg-card p-4 shadow-sm text-center" style={{ maxWidth: 540, width: "100%" }}>
         <div className="mb-3">
-          <span className="display-4 text-success">👤</span>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#006B3C" strokeWidth="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
         </div>
         <h2 className="h4 fw-bold mb-2">Select Development Requester</h2>
         <p className="text-muted small mb-4">

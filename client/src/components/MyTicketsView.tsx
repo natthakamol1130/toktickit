@@ -109,11 +109,15 @@ export const MyTicketsView: React.FC<MyTicketsViewProps> = ({
       {/* Header Bar */}
       <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
         <div>
-          <h1 className="h3 fw-bold m-0" style={{ color: "#D81B60" }}>My Tickets</h1>
+          <h1 className="h3 fw-bold m-0" style={{ color: "#FF69B4" }}>My Tickets</h1>
           <p className="text-muted small m-0">View and track all of your IT support requests</p>
         </div>
-        <button className="btn btn-zg-primary fw-semibold" onClick={onCreateTicketClick}>
-          ➕ Create Ticket
+        <button className="btn btn-zg-primary fw-semibold d-flex align-items-center gap-2" onClick={onCreateTicketClick}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Create Ticket
         </button>
       </div>
 
@@ -123,7 +127,12 @@ export const MyTicketsView: React.FC<MyTicketsViewProps> = ({
           {/* Search */}
           <div className="col-lg-4 col-md-6">
             <div className="input-group">
-              <span className="input-group-text bg-light border-end-0">🔍</span>
+              <span className="input-group-text bg-light border-end-0">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
               <input
                 type="text"
                 className="form-control border-start-0"
