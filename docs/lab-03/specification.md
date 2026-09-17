@@ -6,7 +6,58 @@ Deliver an operational, secure, multi-role web application increment for TokTick
 ## 2. Stakeholder Request Interpretation
 The system now requires real authenticated users and role-based access control across three primary roles: Requester, IT Staff, and Administrator. Login must authenticate via email and password, enforcing a mandatory first-login password change for accounts created with initial passwords. Requesters must continue creating and tracking their owned tickets while gaining the ability to post Public Comments and indicate problem resolution. IT Staff require a professional Ticket Queue with search, filtering, sorting, and pagination, along with ticket detail workflows to claim/reassign ownership, set IT Priority, transition statuses, write Public Comments, and record private Internal Notes. Administrators require a minimalist User Management screen to manage user accounts, assign single roles, activate/deactivate accounts, and reset initial passwords with strict safety rules preventing self-deactivation or leaving the system with no active Administrator.
 
-## 3. Scope
+## 3. Workflow Diagrams
+
+### 3.1 Authentication & First-Login Password Change Flowchart
+```mermaid
+flowchart TD
+    A["User Submits Email & Password"] --> B{"Valid Credentials & Active Account?"}
+    B -- No --> C["Return 401 Unauthorized / Error Alert"]
+    B -- Yes --> D{"mustChangePassword == true?"}
+    D -- Yes --> E["Redirect to Mandatory Change Password Screen"]
+    E --> F["Submit New Valid Password"]
+    F --> G["Set mustChangePassword = false & Save Hashed Password"]
+    G --> H["Grant Application Access according to User Role"]
+    D -- No --> H
+```
+
+### 3.2 IT Staff Ticket Queue & Detail Operations Flowchart
+```mermaid
+flowchart TD
+    A["IT Staff Logged In"] --> B["Open IT Staff Ticket Queue"]
+    B --> C["Apply Search / Category / Priority / Status Filters"]
+    C --> D["Select Ticket from Paginated Table/Grid"]
+    D --> E["Open IT Staff Ticket Detail Screen"]
+    E --> F{"Perform Operational Action"}
+    F -- Claim/Reassign --> G["Update Primary Ticket Owner"]
+    F -- Set IT Priority --> H["Update IT Priority"]
+    F -- Transition Status --> I["Check Transition Matrix & Update Status"]
+    F -- Communication --> J{"Comment Type?"}
+    J -- Public Comment --> K["Post Public Comment (Visible to All Roles)"]
+    J -- Internal Note --> L["Post Internal Note (Visible to Staff & Admin Only)"]
+```
+
+### 3.3 Administrator User Management & Safety Guards Flowchart
+```mermaid
+flowchart TD
+    A["Administrator Logged In"] --> B["Open User Management Screen"]
+    B --> C["View User List with Search & Role Filter"]
+    C --> D{"Select Action"}
+    D -- Create User --> E["Open Create User Drawer with Initial Password"]
+    D -- Edit User --> F["Update Name, Email, Role, or Status"]
+    D -- Reset Password --> G["Set New Initial Password (mustChangePassword = true)"]
+    F --> H{"Safety Guard Checks"}
+    H -- Deactivating Self? --> I["Reject with 400 Bad Request"]
+    H -- Deactivating Last Active Admin? --> J["Reject with 400 Bad Request"]
+    H -- Duplicate Email? --> K["Reject with 409 Conflict"]
+    H -- Valid Action --> L["Persist User Changes to Database"]
+    E --> L
+    G --> L
+```
+
+---
+
+## 4. Scope
 
 ### Included
 - **Authentication & Security Engine**: Password hashing using bcrypt, session/token authentication, login/logout, current user retrieval (`GET /api/auth/me`), and mandatory first-login password change enforcement (`mustChangePassword = true`).
@@ -31,7 +82,7 @@ The system now requires real authenticated users and role-based access control a
 - Multiple roles per user (each user has exactly one role).
 - User deletion, bulk user operations, import/export, and account audit history.
 
-## 4. Functional Requirements
+## 5. Functional Requirements
 - **FR-01**: The system shall authenticate users via valid email and password credentials.
 - **FR-02**: The system shall block normal application access for users marked as requiring a password change until a valid new password is saved.
 - **FR-03**: The system shall provide an authenticated current user retrieval endpoint (`GET /api/auth/me`) returning user identity and assigned role.
@@ -52,7 +103,7 @@ The system now requires real authenticated users and role-based access control a
 - **FR-18**: The system shall allow Administrators to edit user Name, Email, Role, and Activation State.
 - **FR-19**: The system shall allow Administrators to set a new Initial Password for a user, marking `mustChangePassword = true`.
 
-## 5. Business Rules
+## 6. Business Rules
 - **BR-01**: Only an active user account (`isActive = true`) with valid credentials may authenticate successfully.
 - **BR-02**: A user marked with `mustChangePassword = true` cannot access normal application screens until a new valid password is saved.
 - **BR-03**: Authenticated User Identity: The authenticated user session/token determines identity and ownership on all endpoints; client-supplied user IDs are ignored for authorization.
@@ -67,7 +118,7 @@ The system now requires real authenticated users and role-based access control a
 - **BR-12**: Ticket Ownership: A ticket may have zero or one primary Ticket Owner (an active IT Staff or Administrator). Requested Priority is immutable by IT Staff, while IT Priority is managed by IT Staff/Admin.
 - **BR-13**: Comment and Note Content: Comments and Notes are append-only. Content must be trimmed, non-empty, and limited to 1 to 2000 characters.
 
-## 6. UI Specification Summary
+## 7. UI Specification Summary
 The UI extends the **Zen Green Design System**:
 - **Application Shell**: Displays app header "TokTickIT", active navigation links based on role, authenticated user name and role badge, and Logout action.
 - **Login Screen**: Clean card centered layout with Email and Password fields, submit busy state, field validation, and safe error alerts for inactive or invalid accounts.
@@ -77,7 +128,7 @@ The UI extends the **Zen Green Design System**:
 - **IT Staff Ticket Detail Screen**: Operational editing sidebar (Owner dropdown, IT Priority dropdown, Status transition dropdown), two tabbed/stacked communication panels: Public Comments (Green border) and Internal Notes (Amber/Yellow border, "Internal Only" badge).
 - **Administrator User Management Screen**: User list table with Search, Role filter dropdown, "Create User" action button, inline edit actions, and "Create / Edit User" modal/drawer with Initial Password reset options.
 
-## 7. Data Changes
+## 8. Data Changes
 
 ### Models & Schema Updates (Prisma)
 - **`User`**: `id` (Int PK), `email` (String Unique), `passwordHash` (String), `name` (String), `role` (Enum: `REQUESTER`, `IT_STAFF`, `ADMINISTRATOR`), `isActive` (Boolean default true), `mustChangePassword` (Boolean default true), `createdAt` (DateTime), `updatedAt` (DateTime).
@@ -91,7 +142,7 @@ The UI extends the **Zen Green Design System**:
 - Index on `Ticket(ownerId, status)` for IT Staff Queue queries.
 - Index on `PublicComment(ticketId, createdAt)` and `InternalNote(ticketId, createdAt)`.
 
-## 8. API Contract Summary
+## 9. API Contract Summary
 - **Auth**: `POST /api/auth/login`, `POST /api/auth/logout`, `GET /api/auth/me`, `POST /api/auth/change-password`.
 - **Requester**: Continuation of Lab 2 ticket and attachment APIs with session auth.
 - **IT Staff Queue**: `GET /api/staff/tickets` (search, filters, sort, pagination).
@@ -99,7 +150,7 @@ The UI extends the **Zen Green Design System**:
 - **Comments & Notes**: `GET /api/tickets/:id/comments`, `POST /api/tickets/:id/comments`, `GET /api/tickets/:id/notes`, `POST /api/tickets/:id/notes`.
 - **Admin User Management**: `GET /api/admin/users`, `POST /api/admin/users`, `PATCH /api/admin/users/:id`, `POST /api/admin/users/:id/reset-password`.
 
-## 9. Acceptance Criteria
+## 10. Acceptance Criteria
 - **AC-01**: Given an active user with valid credentials, when the user logs in, then authenticated access is established and user identity and role are returned.
 - **AC-02**: Given a user marked with `mustChangePassword = true`, when login succeeds, then normal application screens remain unavailable until a valid new password is saved.
 - **AC-03**: Given an authenticated Requester, when the client supplies another requesterId, then the backend still applies the authenticated identity and does not return another Requester's data.
@@ -107,7 +158,7 @@ The UI extends the **Zen Green Design System**:
 - **AC-05**: Given an IT Staff user, when querying the Ticket Queue with search and filters, then only matching tickets are returned with accurate pagination metadata.
 - **AC-06**: Given an Administrator user, when attempting to deactivate their own account or the last active Administrator account, then the server rejects the request with a clear error message.
 
-## 10. Definition of Done
+## 11. Definition of Done
 - All 12 Sprint 3 GitHub Issues completed and merged into `lab3-staging` and `main`.
 - All backend REST APIs implemented and protected by server-side role authorization.
 - All frontend screens built adhering to Zen Green Design Tokens and responsive viewports.
@@ -115,7 +166,7 @@ The UI extends the **Zen Green Design System**:
 - Complete visual screenshot evidence captured in `artifacts/lab-03/screenshots/`.
 - Clean PDF submission report `report_lab03_67070505215.pdf` generated covering Part 1 through Part 9.
 
-## 11. Assumptions and Decisions
+## 12. Assumptions and Decisions
 - Session/Authentication token is stored in HTTP-only secure cookie or Authorization header.
 - Initial passwords set by Admin require `mustChangePassword = true` automatically.
 - Deactivated users immediately lose authentication access on their next API request.
