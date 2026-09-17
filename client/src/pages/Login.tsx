@@ -63,7 +63,7 @@ export const Login: React.FC<LoginProps> = ({ onSuccess }) => {
           {/* Hot Pink Heading as requested by user */}
           <h2
             className="fw-bold mb-1"
-            style={{ color: "#FF69B4", fontSize: "1.75rem" }}
+            style={{ color: "#006B3C", fontSize: "1.75rem" }}
           >
             Sign in to TokTickIT
           </h2>

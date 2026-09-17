@@ -71,7 +71,7 @@ export const ChangePassword: React.FC<ChangePasswordProps> = ({
       >
         <div className="card-header bg-white border-bottom-0 text-center pt-4 pb-2">
           {/* Hot Pink Heading as requested by user */}
-          <h2 className="fw-bold mb-1" style={{ color: "#FF69B4", fontSize: "1.75rem" }}>
+          <h2 className="fw-bold mb-1" style={{ color: "#006B3C", fontSize: "1.75rem" }}>
             {isMandatory ? "Mandatory Password Update" : "Change Password"}
           </h2>
           <p className="text-muted small mb-0">
