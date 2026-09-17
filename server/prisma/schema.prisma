@@ -98,19 +98,20 @@ model RelatedSystem {
 }
 
 model Ticket {
-  id                Int               @id @default(autoincrement())
-  ticketNo          String            @unique
-  requesterId       Int
-  ownerId           Int?
-  categoryId        Int
-  relatedSystemId   Int
-  requestedPriority RequestedPriority @default(MEDIUM)
-  itPriority        ITPriority?
-  status            TicketStatus      @default(NEW)
-  summary           String
-  description       String
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
+  id                   Int               @id @default(autoincrement())
+  ticketNo             String            @unique
+  requesterId          Int
+  ownerId              Int?
+  categoryId           Int
+  relatedSystemId      Int
+  requestedPriority    RequestedPriority @default(MEDIUM)
+  itPriority           ITPriority?
+  status               TicketStatus      @default(NEW)
+  summary              String
+  description          String
+  requesterResolvedInd Boolean           @default(false)
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
 
   requester      User            @relation("RequesterTickets", fields: [requesterId], references: [id])
   owner          User?           @relation("OwnerTickets", fields: [ownerId], references: [id])
