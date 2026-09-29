@@ -5,6 +5,8 @@ import {
   Ticket,
   Attachment,
   TicketListResponse,
+  User,
+  AuthResponse,
 } from "./types";
 
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
@@ -37,6 +39,68 @@ export async function checkSystem(): Promise<SystemStatus> {
   const rawData = await catRes.json();
   const categories: Category[] = Array.isArray(rawData) ? rawData : rawData.data;
   return { online: true, categories };
+}
+
+// ---------------------------------------------------------------------------
+// Auth API Client Functions
+// ---------------------------------------------------------------------------
+
+export async function loginApi(email: string, password: string): Promise<AuthResponse> {
+  const res = await fetch(`${API_URL}/api/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+
+  const json = await res.json();
+  if (!res.ok) {
+    throw new Error(json.error?.message || "Invalid credentials or deactivated account");
+  }
+  return json;
+}
+
+export async function changePasswordApi(
+  token: string,
+  currentPassword: string,
+  newPassword: string
+): Promise<{ success: boolean; message: string }> {
+  const res = await fetch(`${API_URL}/api/auth/change-password`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ currentPassword, newPassword }),
+  });
+
+  const json = await res.json();
+  if (!res.ok) {
+    throw new Error(json.error?.message || "Failed to change password");
+  }
+  return json;
+}
+
+export async function getMeApi(token: string): Promise<User> {
+  const res = await fetch(`${API_URL}/api/auth/me`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const json = await res.json();
+  if (!res.ok) {
+    throw new Error(json.error?.message || "Failed to fetch user session");
+  }
+  return json.user;
+}
+
+export async function logoutApi(token: string): Promise<void> {
+  await fetch(`${API_URL}/api/auth/logout`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).catch(() => {});
 }
 
 // ---------------------------------------------------------------------------

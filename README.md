@@ -2,11 +2,26 @@
 
 TokTickIT is an IT service desk web application for Account and Access, Hardware, Software, and Network requests.
 
+## Documentation & Engineering Specifications
+
+### Sprint 3 (Lab 3)
+- [Sprint 3 Engineering Specification](docs/lab-03/specification.md)
+- [Zen Green UI Specification](docs/lab-03/ui-spec.md)
+- [REST API Contract Specification](docs/lab-03/api-spec.md)
+- [Test Plan & Traceability Matrix](docs/lab-03/tests.md)
+
+### Sprint 2 (Lab 2)
+- [Sprint 2 Engineering Specification](docs/lab-02/specification.md)
+- [Zen Green UI Specification](docs/lab-02/ui-spec.md)
+- [REST API Contract Specification](docs/lab-02/api-spec.md)
+
+---
+
 ## Tech Stack
 - **Frontend**: React, TypeScript, Vite, Bootstrap
 - **Backend**: Node.js, Express, TypeScript, Prisma ORM
 - **Database**: PostgreSQL
-- **Testing**: Vitest, Supertest
+- **Testing**: Vitest, Supertest, Playwright
 
 ## Getting Started
 
@@ -31,7 +46,7 @@ TokTickIT is an IT service desk web application for Account and Access, Hardware
    - Update `DATABASE_URL` in `.env` with your PostgreSQL credentials.
 4. Run migrations and seed the database:
    ```bash
-   npx prisma migrate dev --name init
+   npx prisma db push
    npm run prisma:seed
    ```
 5. Start the backend development server:
@@ -63,4 +78,8 @@ TokTickIT is an IT service desk web application for Account and Access, Hardware
   ```bash
   cd client
   npm test
+  ```
+- **End-to-End tests**:
+  ```bash
+  npx playwright test
   ```

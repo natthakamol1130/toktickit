@@ -1,3 +1,20 @@
+export type Role = "REQUESTER" | "IT_STAFF" | "ADMINISTRATOR";
+
+export interface User {
+  id: number;
+  email: string;
+  name: string;
+  role: Role;
+  mustChangePassword: boolean;
+  isActive?: boolean;
+}
+
+export interface AuthResponse {
+  success: boolean;
+  token: string;
+  user: User;
+}
+
 export interface RequesterUser {
   id: number;
   name: string;
@@ -62,3 +79,4 @@ export interface TicketListResponse {
   data: Ticket[];
   meta: PaginationMeta;
 }
+
