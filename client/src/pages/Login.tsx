@@ -3,9 +3,10 @@ import { useAuth } from "../contexts/AuthContext";
 
 interface LoginProps {
   onSuccess?: () => void;
+  onSwitchToLegacy?: () => void;
 }
 
-export const Login: React.FC<LoginProps> = ({ onSuccess }) => {
+export const Login: React.FC<LoginProps> = ({ onSuccess, onSwitchToLegacy }) => {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -67,7 +68,7 @@ export const Login: React.FC<LoginProps> = ({ onSuccess }) => {
           >
             Sign in to TokTickIT
           </h2>
-          <p className="text-muted small mb-0">Enter your credentials to access IT Services</p>
+          <p className="text-muted small mb-0">Select Development Requester or enter your credentials to access IT Services</p>
         </div>
 
         <div className="card-body p-4">
@@ -111,7 +112,7 @@ export const Login: React.FC<LoginProps> = ({ onSuccess }) => {
 
             <button
               type="submit"
-              className="btn btn-primary w-100 py-2.5 fw-bold text-white shadow-sm"
+              className="btn btn-primary w-100 py-2.5 fw-bold text-white shadow-sm mb-3"
               style={{
                 backgroundColor: "#006B3C",
                 borderColor: "#006B3C",
@@ -122,6 +123,18 @@ export const Login: React.FC<LoginProps> = ({ onSuccess }) => {
               {submitting ? "Signing in..." : "Sign In"}
             </button>
           </form>
+
+          {onSwitchToLegacy && (
+            <div className="text-center pt-2 border-top">
+              <button
+                type="button"
+                className="btn btn-link text-decoration-none text-secondary small p-0"
+                onClick={onSwitchToLegacy}
+              >
+                Select Development Requester (Lab 1/2 Mode)
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="card-footer bg-white border-top-0 text-center pb-4 pt-0 text-muted extra-small">
