@@ -6,6 +6,7 @@ import multer from "multer";
 import { RequestedPriority } from "@prisma/client";
 import { getPrisma } from "./prisma.js";
 import { authRouter } from "./routes/auth.js";
+import { requesterTicketsRouter } from "./routes/requesterTickets.js";
 
 export const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRouter);
+app.use("/api", requesterTicketsRouter);
 
 // Ensure upload directory exists
 const uploadDir = path.join(process.cwd(), "uploads");
