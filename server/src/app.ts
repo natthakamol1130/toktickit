@@ -8,6 +8,7 @@ import { getPrisma } from "./prisma.js";
 import { authRouter } from "./routes/auth.js";
 import { requesterTicketsRouter } from "./routes/requesterTickets.js";
 import { staffTicketsRouter } from "./routes/staffTickets.js";
+import { adminUsersRouter } from "./routes/adminUsers.js";
 
 export const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRouter);
 app.use("/api", requesterTicketsRouter);
 app.use("/api", staffTicketsRouter);
+app.use("/api", adminUsersRouter);
 
 // Ensure upload directory exists
 const uploadDir = path.join(process.cwd(), "uploads");
