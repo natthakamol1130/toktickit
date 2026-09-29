@@ -214,8 +214,8 @@ adminUsersRouter.patch(
         return;
       }
 
-      // Prevent deactivating the last active Administrator account
-      if (targetUser.role === "ADMINISTRATOR" && isActive === false) {
+      // Prevent deactivating or downgrading the last active Administrator account
+      if (targetUser.role === "ADMINISTRATOR" && (isActive === false || (role && role !== "ADMINISTRATOR"))) {
         const activeAdminCount = await prisma.user.count({
           where: { role: "ADMINISTRATOR", isActive: true },
         });
@@ -223,7 +223,7 @@ adminUsersRouter.patch(
         if (activeAdminCount <= 1) {
           res.status(400).json({
             success: false,
-            error: { message: "Cannot deactivate the last active Administrator account" },
+            error: { message: "Cannot deactivate or downgrade the last active Administrator account" },
           });
           return;
         }

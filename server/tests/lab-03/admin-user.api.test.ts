@@ -105,8 +105,7 @@ describe("Lab 3 Administrator User Management REST APIs", () => {
     expect(res.body.data.department).toBe("DevOps");
   });
 
-  it("PATCH /api/admin/users/:id - should prevent Administrator self-deactivation", async () => {
-    // John Smith Admin User ID is 1 or fetched from /api/auth/me
+  it("PATCH /api/admin/users/:id - should prevent Administrator self-deactivation (400)", async () => {
     const meRes = await request(app)
       .get("/api/auth/me")
       .set("Authorization", `Bearer ${adminToken}`);
@@ -121,6 +120,26 @@ describe("Lab 3 Administrator User Management REST APIs", () => {
 
     expect(res.status).toBe(400);
     expect(res.body.success).toBe(false);
+    expect(res.body.error.message).toContain("Self-deactivation");
+  });
+
+  it("PATCH /api/admin/users/:id - should prevent deactivating or downgrading the last active Administrator account (400)", async () => {
+    const meRes = await request(app)
+      .get("/api/auth/me")
+      .set("Authorization", `Bearer ${adminToken}`);
+    const adminId = meRes.body.user.id;
+
+    // Test downgrading last admin role
+    const roleRes = await request(app)
+      .patch(`/api/admin/users/${adminId}`)
+      .set("Authorization", `Bearer ${adminToken}`)
+      .send({
+        role: "IT_STAFF",
+      });
+
+    expect(roleRes.status).toBe(400);
+    expect(roleRes.body.success).toBe(false);
+    expect(roleRes.body.error.message).toContain("last active Administrator");
   });
 
   it("POST /api/admin/users/:id/reset-password - should reset user initial password", async () => {
