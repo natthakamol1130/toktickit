@@ -3901,6 +3901,10 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 +-----------------------------------------------------------------------+
 ```
 
+#### Real Implemented Login Screen Screenshots
+![Real Login Screen Baseline](images/03_login_screen.png)
+![Real Login Desktop Viewport](images/ui_login_desktop.png)
+
 ### 3.2 Mandatory First-Login Password Change Mockup
 ```text
 +-----------------------------------------------------------------------+
@@ -3914,7 +3918,6 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 |              | Current (Initial) Password              |              |
 |              | [ ********************** ]              |              |
 |              | New Password                            |              |
-|              | [ ********************** ]              |              |
 |              | Confirm New Password                    |              |
 |              | [ ********************** ]              |              |
 |              | Password Rules:                         |              |
@@ -3927,6 +3930,10 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 |                                                                       |
 +-----------------------------------------------------------------------+
 ```
+
+#### Real Implemented Mandatory Password Change Screenshots
+![Real Mandatory Password Change Screen](images/04_password_change.png)
+![Real Password Change Desktop Viewport](images/ui_password_desktop.png)
 
 ### 3.3 Requester Ticket Detail & Public Comments Mockup
 ```text
@@ -3952,6 +3959,9 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 +-----------------------------------------------------------------------+
 ```
 
+#### Real Implemented Requester Ticket View Screenshot
+![Real Requester Ticket View Screen](images/05_requester_view.png)
+
 ### 3.4 IT Staff Ticket Queue Mockup (Desktop & Mobile)
 ```text
 +-----------------------------------------------------------------------+
@@ -3967,6 +3977,10 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 |  < Previous   [1]  2  3  ...  9   Next >                              |
 +-----------------------------------------------------------------------+
 ```
+
+#### Real Implemented IT Staff Ticket Queue Screenshots
+![Real IT Staff Queue Screen](images/06_staff_queue.png)
+![Real Staff Queue Desktop Viewport](images/ui_staff_desktop.png)
 
 ### 3.5 IT Staff Ticket Detail & Internal Notes Mockup
 ```text
@@ -3985,6 +3999,9 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 |                                               | +-------------------+ |
 +-----------------------------------------------------------------------+
 ```
+
+#### Real Implemented IT Staff Ticket Operational Detail Screenshot
+![Real IT Staff Queue Operations Viewport](images/ui_staff_desktop.png)
 
 ### 3.6 Administrator User Management & Drawer Mockup
 ```text
@@ -4007,6 +4024,10 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 |  [ Save User ]                                           [ Cancel ]   |
 +-----------------------------------------------------------------------+
 ```
+
+#### Real Implemented Administrator User Management Screenshots
+![Real Admin User Management Screen](images/07_admin_users.png)
+![Real Admin Desktop Viewport](images/ui_admin_desktop.png)
 
 ---
 
