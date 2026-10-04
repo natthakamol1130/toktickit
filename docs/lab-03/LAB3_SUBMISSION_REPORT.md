@@ -156,6 +156,8 @@ toktickit/
 │   ├── tests.md
 │   ├── ui-spec.md
 │   ├── api-spec.md
+│   ├── reviewer.md
+│   ├── ai-use.md
 │   ├── LAB3_SUBMISSION_REPORT.md
 │   ├── LAB3_SUBMISSION_REPORT.pdf
 │   ├── report_lab03_67070505215.pdf
