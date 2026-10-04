@@ -7,7 +7,8 @@ The TokTickIT Lab 3 engineering increment extends the single-context requester p
 All 10 feature issues for Lab 3 (Issue #34 to Issue #52) were managed using a 10-Issue staged integration workflow. Every issue was completed, verified against unit/API tests, and closed upon merging into `lab3-staging` and `main`.
 
 ![Real GitHub Issues Board](images/real_github_issues.png)
-![GitHub Project Kanban Board](images/01_kanban_board.png)
+![GitHub Project Kanban Board Part 1](images/01_kanban_board_part1.png)
+![GitHub Project Kanban Board Part 2](images/01_kanban_board_part2.png)
 
 ## 1.3 Git Log Graph & Branching Model
 The project strictly enforced feature-branch isolation (`feature/lab03-X-*` -> PR -> `lab3-staging` -> `main`), maintaining clean commit history with standard Conventional Commits.
@@ -51,121 +52,99 @@ The project strictly enforced feature-branch isolation (`feature/lab03-X-*` -> P
 ### Issue 1: Lab 3 Specification DD Documents (Issue #34)
 #### PR Received (natthakamol1130/toktickit/pull/35)
 ![Real PR Received Issue 1](images/real_pr_received_issue1.png)
-![PR Received Card Issue 1](images/pr_received_issue1.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/45)
 ![Real PR Given Issue 1](images/real_pr_given_issue1.png)
-![PR Given Card Issue 1](images/pr_given_issue1.png)
 
 ---
 
 ### Issue 2: Lab 3 Test-Driven Development Plan (Issue #36)
 #### PR Received (natthakamol1130/toktickit/pull/37)
 ![Real PR Received Issue 2](images/real_pr_received_issue2.png)
-![PR Received Card Issue 2](images/pr_received_issue2.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/47)
 ![Real PR Given Issue 2](images/real_pr_given_issue2.png)
-![PR Given Card Issue 2](images/pr_given_issue2.png)
 
 ---
 
 ### Issue 3: Database Schema Evolution (Issue #38)
 #### PR Received (natthakamol1130/toktickit/pull/39)
 ![Real PR Received Issue 3](images/real_pr_received_issue3.png)
-![PR Received Card Issue 3](images/pr_received_issue3.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/49)
 ![Real PR Given Issue 3](images/real_pr_given_issue3.png)
-![PR Given Card Issue 3](images/pr_given_issue3.png)
 
 ---
 
 ### Issue 4: Idempotent Seed Data with Bcrypt Hashing (Issue #40)
 #### PR Received (natthakamol1130/toktickit/pull/41)
 ![Real PR Received Issue 4](images/real_pr_received_issue4.png)
-![PR Received Card Issue 4](images/pr_received_issue4.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/49)
 ![Real PR Given Issue 4](images/real_pr_given_issue4.png)
-![PR Given Card Issue 4](images/pr_given_issue4.png)
 
 ---
 
 ### Issue 5: Backend Auth & Change Password Middleware APIs (Issue #42)
 #### PR Received (natthakamol1130/toktickit/pull/43)
 ![Real PR Received Issue 5](images/real_pr_received_issue5.png)
-![PR Received Card Issue 5](images/pr_received_issue5.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/49)
 ![Real PR Given Issue 5](images/real_pr_given_issue5.png)
-![PR Given Card Issue 5](images/pr_given_issue5.png)
 
 ---
 
 ### Issue 6: Client Auth UI & Context Integration (Issue #44)
 #### PR Received (natthakamol1130/toktickit/pull/45)
 ![Real PR Received Issue 6](images/real_pr_received_issue6.png)
-![PR Received Card Issue 6](images/pr_received_issue6.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/49)
 ![Real PR Given Issue 6](images/real_pr_given_issue6.png)
-![PR Given Card Issue 6](images/pr_given_issue6.png)
 
 ---
 
 ### Issue 7: Requester Ticket & Comment Access Control APIs (Issue #46)
 #### PR Received (natthakamol1130/toktickit/pull/47)
 ![Real PR Received Issue 7](images/real_pr_received_issue7.png)
-![PR Received Card Issue 7](images/pr_received_issue7.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/51)
 ![Real PR Given Issue 7](images/real_pr_given_issue7.png)
-![PR Given Card Issue 7](images/pr_given_issue7.png)
 
 ---
 
 ### Issue 8: IT Staff Ticket Queue & Internal Notes APIs (Issue #48)
 #### PR Received (natthakamol1130/toktickit/pull/49)
 ![Real PR Received Issue 8](images/real_pr_received_issue8.png)
-![PR Received Card Issue 8](images/pr_received_issue8.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/51)
 ![Real PR Given Issue 8](images/real_pr_given_issue8.png)
-![PR Given Card Issue 8](images/pr_given_issue8.png)
 
 ---
 
 ### Issue 9: Admin User Management APIs & Safety Rules (Issue #50)
 #### PR Received (natthakamol1130/toktickit/pull/51)
 ![Real PR Received Issue 9](images/real_pr_received_issue9.png)
-![PR Received Card Issue 9](images/pr_received_issue9.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/52)
 ![Real PR Given Issue 9](images/real_pr_given_issue9.png)
-![PR Given Card Issue 9](images/pr_given_issue9.png)
 
 ---
 
 ### Issue 10: Multi-Role Integration & E2E Verification (Issue #52)
 #### PR Received (natthakamol1130/toktickit/pull/53)
 ![Real PR Received Issue 10](images/real_pr_received_issue10.png)
-![PR Received Card Issue 10](images/pr_received_issue10.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/53)
 ![Real PR Given Issue 10](images/real_pr_given_issue10.png)
-![PR Given Card Issue 10](images/pr_given_issue10.png)
 
 ---
 
 ### Lab 3 Final Release Integration PR
 #### PR Received (natthakamol1130/toktickit/pull/55)
 ![Real PR Received Release](images/real_pr_received_release.png)
-![PR Received Card Release](images/pr_received_release.png)
 
 #### PR Given (Suprawi5227/toktickit/pull/54)
 ![Real PR Given Release](images/real_pr_given_release.png)
-![PR Given Card Release](images/pr_given_release.png)
 
 ---
 
@@ -178,7 +157,9 @@ toktickit/
 │   ├── ui-spec.md
 │   ├── api-spec.md
 │   ├── LAB3_SUBMISSION_REPORT.md
-│   └── report_lab03_67070505215.pdf
+│   ├── LAB3_SUBMISSION_REPORT.pdf
+│   ├── report_lab03_67070505215.pdf
+│   └── report_lab3_67070505215.pdf
 ├── server/
 │   ├── prisma/
 │   │   ├── schema.prisma
@@ -226,6 +207,10 @@ Evolve TokTickIT into an enterprise IT Service Desk supporting three security ro
 - **BR-06 (Admin Self-Deactivation)**: Administrators are blocked from deactivating their own active account (`400 Bad Request`).
 - **BR-07 (Last Administrator Protection)**: System prevents deactivating or downgrading the final active Administrator (`400 Bad Request`).
 - **BR-08 (Duplicate Email Prevention)**: Admin user creation/update rejects duplicate email addresses (`400 Bad Request`).
+- **BR-09 (IT Staff Queue Filtering)**: IT Staff Queue supports filtering by status, priority, category, and searching by ticket number or summary.
+- **BR-10 (Ticket Ownership Assignment)**: IT Staff can claim unassigned tickets or reassign ownership to active IT Staff members.
+- **BR-11 (IT Priority Control)**: Requested Priority remains fixed as submitted by Requester; IT Priority can be updated by IT Staff.
+- **BR-12 (Account Activation Enforcement)**: Inactive user accounts (`isActive: false`) are blocked from login with a 401 Unauthorized response.
 
 ## 2.3 Role-Based Access Control Security Matrix
 
@@ -344,11 +329,27 @@ The UI design follows the Zen Green design system (`#006B3C` primary green, Boot
 ![Staff Queue Tablet](images/ui_staff_tablet.png)
 ![Admin Users Tablet](images/ui_admin_tablet.png)
 
-## 9.3 Mobile Viewport Evidence (375px)
-![Login Mobile](images/ui_login_mobile.png)
-![Password Change Mobile](images/ui_password_mobile.png)
-![Staff Queue Mobile](images/ui_staff_mobile.png)
-![Admin Users Mobile](images/ui_admin_mobile.png)
+## 9.3 Mobile Viewport Evidence (375px) - Scaled Grid
+Below is the scaled side-by-side evidence of the mobile viewports (375px), styled to fit comfortably on the page without overflowing:
+
+<div class="mobile-grid">
+  <div class="mobile-card">
+    <img src="images/ui_login_mobile.png" alt="Login Mobile (375px)" />
+    <p>Login Screen (375px)</p>
+  </div>
+  <div class="mobile-card">
+    <img src="images/ui_password_mobile.png" alt="Password Mobile (375px)" />
+    <p>Password Change (375px)</p>
+  </div>
+  <div class="mobile-card">
+    <img src="images/ui_staff_mobile.png" alt="Staff Queue Mobile (375px)" />
+    <p>IT Staff Queue (375px)</p>
+  </div>
+  <div class="mobile-card">
+    <img src="images/ui_admin_mobile.png" alt="Admin Users Mobile (375px)" />
+    <p>Admin Users (375px)</p>
+  </div>
+</div>
 
 ## 9.4 Visual Checklist Verification
 
