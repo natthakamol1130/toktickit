@@ -217,8 +217,7 @@ toktickit/
 │   ├── ai-use.md
 │   ├── LAB3_SUBMISSION_REPORT.md
 │   ├── LAB3_SUBMISSION_REPORT.pdf
-│   ├── report_lab03_67070505215.pdf
-│   └── report_lab3_67070505215.pdf
+│   └── report_lab03_67070505215.pdf
 ├── server/
 │   ├── prisma/
 │   │   ├── schema.prisma
