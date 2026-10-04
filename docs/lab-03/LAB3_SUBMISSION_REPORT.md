@@ -8,15 +8,15 @@ All 10 feature issues for Lab 3 (Issue #34 to Issue #52) were managed using a 10
 
 ![Real GitHub Issues Board](images/real_github_issues.png)
 ![GitHub Project Kanban Board Part 1](images/01_kanban_board_part1.png)
-![GitHub Project Kanban Board Part 2](images/01_kanban_board_part2.png)
+![GitHub Project Kanban Board Part 2 Workflow](images/01_kanban_board_part2.png)
 
 ## 1.3 Git Log Graph & Branching Model
-The project strictly enforced feature-branch isolation (`feature/lab03-X-*` -> PR -> `lab3-staging` -> `main`), maintaining clean commit history with standard Conventional Commits. Below is the full commit log breakdown corresponding to the Git commit graph.
+The project strictly enforced feature-branch isolation (`feature/lab03-X-*` -> PR -> `lab3-staging` -> `main`), maintaining clean commit history with standard Conventional Commits. Below is the full commit log graph and commit breakdown.
 
 ![Git Commit Log Graph](images/02_git_log_graph.png)
 
-### Table 1: Git Commit History & Merge Graph Breakdown
-| Commit Hash | Author | Date | Target Branch | Commit Message / Description |
+### Table 1: Git Commit History & Branching Breakdown
+| Commit Hash | Author | Date | Branch | Commit Description |
 |---|---|---|---|---|
 | `a2062302` | Phrao (natthakamol1130) | Oct 4, 2026 | `main` | docs(report): finalize Lab 3 submission report matching handout format Answer Part 1-9 |
 | `4d46d6c0` | Suprawi5227 | Sep 30, 2026 | `main` | Merge pull request #55 from natthakamol1130/lab3-staging |
