@@ -504,21 +504,16 @@ The UI extends the **Zen Green Design System**:
 
 # Answer Part 3: Test DD and Traceability
 
-The full Test Plan & Traceability Matrix is rendered below from [`docs/lab-03/tests.md`](docs/lab-03/tests.md).
-
-# TokTickIT Lab 3 Test Plan and Results
-
-## 1. Test Strategy
+## 3.1 Test Strategy & Methodology
 The testing strategy covers Unit, API/Integration, UI Component, Security Authorization, and End-to-End (E2E) levels using **Vitest**, **React Testing Library**, and **Playwright**.
 
 - **Server API Tests**: Executed in `server/tests/lab-03/` using Vitest & Supertest to verify authentication, session validation, role authorization, IT Staff Queue queries, Ticket operations, Comments/Notes scoping, and Administrator user management rules.
 - **Client UI Component Tests**: Executed in `client/src/tests/lab-03/` using Vitest & React Testing Library to verify form validation, password rules, role navigation, queue filters/sorting, modal drawers, and responsive feedback.
 - **E2E Tests**: Executed in `e2e/lab-03/` via Playwright across Desktop, Tablet, and Mobile viewports to verify complete multi-role workflows.
 
----
+## 3.2 Planned Tests Table & Traceability Matrix
 
-## 2. Planned Tests Table
-
+### Planned Tests Table
 | Test ID | Level / Type | Requirement / AC | What It Tests | Expected Result | Automated Test File | Final Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :---: |
 | **API-01** | API | AC-01, FR-01 | Valid user authentication (Login) | 200 OK; returns user identity and role | `server/tests/lab-03/auth.api.test.ts` | Pass |
@@ -540,10 +535,7 @@ The testing strategy covers Unit, API/Integration, UI Component, Security Author
 | **E2E-02** | E2E | AC-05, FR-09..13 | IT Staff Ticket Queue & Operational Flow | Login as Staff -> filter queue -> open ticket -> claim & note | `e2e/lab-03/staff-ticket-flow.spec.ts` | Pass |
 | **E2E-03** | E2E | AC-06, FR-15..19 | Administrator User Management & Safety Flow | Login as Admin -> create user -> reset password -> safety guard | `e2e/lab-03/user-administration.spec.ts` | Pass |
 
----
-
-## 3. Acceptance-Criterion Traceability Matrix
-
+### Acceptance-Criterion Traceability Matrix
 | Acceptance Criterion | Description | Covered Automated Tests | Verification Status |
 | :--- | :--- | :--- | :---: |
 | **AC-01** | User Login & Role Authentication | `API-01`, `UI-01`, `E2E-01` | Covered |
@@ -558,36 +550,6 @@ The testing strategy covers Unit, API/Integration, UI Component, Security Author
 | **AC-10** | Requester Public Comment & Resolution Indicator | `comments-notes.api.test.ts`, `StaffTicketDetail.test.tsx` | Covered |
 | **AC-11** | Admin User Creation with Initial Password & Single Role | `API-09`, `UI-05`, `E2E-03` | Covered |
 | **AC-12** | Responsive Viewport Reflow & Zen Green Styling | `E2E-01`, `E2E-02`, `E2E-03` | Covered |
-
----
-
-## 4. Responsive and Visual Checklist
-
-- [ ] **Desktop ($\ge 992\text{px}$)**: Full navigation bar; multi-column queue table; split ticket detail view.
-- [ ] **Tablet ($768\text{px} - 991\text{px}$)**: Reflowed filter controls; responsive table wrapping.
-- [ ] **Mobile ($< 768\text{px}$)**: Vertical card view for Queue and User Management; stacked communication panels.
-- [ ] **Zen Green Badge Styling**: Status, Requested Priority, IT Priority, and Role badges properly colored.
-
----
-
-## 5. Test Commands
-
-```bash
-# Run server API test suite
-cd server && npm test
-
-# Run client UI unit test suite
-cd client && npm test
-
-# Run Playwright E2E test suite
-npx playwright test
-```
-
----
-
-## 6. Final Results
-All planned unit, API, UI component, authorization, and E2E tests pass cleanly on the final `main` branch.
-
 
 ## 3.3 Automated Backend API Test Suite Code
 
@@ -1394,6 +1356,22 @@ describe("Lab 3 E2E Client Application Integration", () => {
 });
 
 ```
+
+## 3.5 Automated Test Suite Execution Results
+![Automated Test Suite Output](images/08_test_results.png)
+
+```bash
+# Run server API test suite
+cd server && npm test
+
+# Run client UI unit test suite
+cd client && npm test
+
+# Run Playwright E2E test suite
+npx playwright test
+```
+
+All planned unit, API, UI component, authorization, and E2E tests pass cleanly on the final `main` branch.
 
 ---
 
@@ -2210,15 +2188,13 @@ export const ChangePassword: React.FC<ChangePasswordProps> = ({
 
 ## 6.1 IT Staff Queue Search, Filter, Sort, & Pagination Verification
 The IT Staff Ticket Queue (`GET /api/staff/tickets`) provides IT Staff and Administrators with an operational console to discover, filter, and prioritize incoming support tickets.
-- **Keyword Search**: Performs multi-field partial matching across Ticket Number (e.g. `TKT-2026-001234`) and Ticket Summary.
-- **Multi-Category & Priority Filters**: Supports filtering by Category (`Account and Access`, `Hardware`, `Software`, `Network`), Requested Priority, IT Priority (`LOW`, `MEDIUM`, `HIGH`, `URGENT`), and Ticket Status.
-- **Multi-Field Sorting & Pagination**: Supports sorting by Creation Date, Ticket Number, Priority, or Status in ascending/descending order, returning paginated arrays with metadata (`page`, `limit`, `total`, `totalPages`).
-- **Ownership & Status Badges**: Displays assigned Ticket Owner name or "Unassigned" pill, color-coded Requested Priority and IT Priority badges, and workflow status pills.
-- **Empty & No-Results Feedback**: Displays helpful Zen Green empty state callouts when no tickets match search criteria.
+- **Role Boundary**: Requesters are blocked from accessing the IT Staff Queue endpoint (`HTTP 403 Forbidden`).
+- **Dynamic Search & Filtering**: Supports case-insensitive text search across ticket titles, filtering by status (`NEW`, `ASSIGNED`, `IN_PROGRESS`, `PENDING_REQUESTER`, `RESOLVED`, `CLOSED`), filtering by requested priority (`LOW`, `MEDIUM`, `HIGH`, `URGENT`), and filtering by IT Priority.
+- **Multi-Field Sorting & Pagination**: Supports sorting by creation date, last updated date, and priority, returning standard paginated payloads (`page`, `limit`, `totalCount`, `totalPages`).
 
 ## 6.2 Visual Screenshots Evidence
-![IT Staff Ticket Queue Screen](images/06_staff_queue.png)
-![IT Staff Desktop Viewport](images/ui_staff_desktop.png)
+![IT Staff Queue Screen](images/06_staff_queue.png)
+![Staff Queue Desktop Viewport](images/ui_staff_desktop.png)
 
 ## 6.3 IT Staff Queue API Routes Implementation (`server/src/routes/staffTickets.ts`)
 ```typescript
@@ -2647,21 +2623,21 @@ staffTicketsRouter.post(
 
 ---
 
-# Answer Part 7: Working IT Staff Ticket Detail UI
+# Answer Part 7: Working IT Staff Ticket Operational UI & Communication
 
-## 7.1 Operational Controls, Workflow Transitions, & Dual Communication Panels
-The IT Staff Ticket Detail screen extends ticket management with operational workflows and role-isolated communication channels:
-- **Ownership Management**: Allows IT Staff to claim unassigned tickets or reassign primary ticket ownership (`PATCH /api/staff/tickets/:id/assign`).
-- **IT Priority Control**: Allows IT Staff/Admin to adjust IT Priority independently from the Requester's immutable Requested Priority (`PATCH /api/staff/tickets/:id/workflow`).
-- **Permitted Status Workflow**: Enforces permitted status transitions (`New` → `Open` → `In Progress` → `Waiting for Requester` → `Resolved` / `Closed` / `Reopened` / `Cancelled`).
-- **Public Comments vs. Internal Notes**:
-  - **Public Comments**: Append-only communication visible to Requester, IT Staff, and Administrator. Requesters may post comments and mark "Problem Appears Resolved".
-  - **Internal Notes**: Append-only operational notes visible strictly to IT Staff and Administrator. The backend blocks Requester access with HTTP 403 Forbidden without leaking note existence.
+## 7.1 Operational Controls & Internal Note Protection Verification
+- **Ownership Management**: IT Staff can self-assign tickets (`Claim Ticket`) or reassign tickets to other staff members via dropdown selection.
+- **IT Priority Control**: IT Staff can set or adjust operational priority (`IT Priority`) independently of the Requester's requested priority.
+- **Status State Machine**: Enforces valid status transitions (`NEW` → `ASSIGNED` → `IN_PROGRESS` → `PENDING_REQUESTER` → `RESOLVED` → `CLOSED`).
+- **Dual-Stream Discussion & Note Protection**:
+  - **Public Comments**: Visible to both Requester and IT Staff.
+  - **Internal Notes**: Stored with `isInternal = true`. Accessible ONLY by IT Staff and Administrators. If a Requester calls the API endpoint, the backend returns `403 Forbidden` with zero note content leaked.
 
 ## 7.2 Visual Screenshots Evidence
-![Requester Ticket Detail Screen](images/05_requester_view.png)
+![Requester Ticket View Screen](images/05_requester_view.png)
+![IT Staff Queue Operations Viewport](images/ui_staff_desktop.png)
 
-## 7.3 Requester Ticket API Routes Implementation (`server/src/routes/requesterTickets.ts`)
+## 7.3 Requester Ticket & Public Comment API Implementation (`server/src/routes/requesterTickets.ts`)
 ```typescript
 import { Router, Response } from "express";
 import { getPrisma } from "../prisma.js";
@@ -2991,430 +2967,13 @@ requesterTicketsRouter.post(
 
 ```
 
-## 7.4 Ticket Detail View Component Implementation (`client/src/components/TicketDetailView.tsx`)
-```typescript
-import React, { useEffect, useState, useCallback } from "react";
-import { RequesterUser, Ticket, Attachment } from "../types";
-import {
-  fetchTicketDetail,
-  uploadAttachment,
-  softRemoveAttachment,
-  getAttachmentDownloadUrl,
-} from "../api";
-
-interface TicketDetailViewProps {
-  currentRequester: RequesterUser;
-  ticketId: number;
-  onBack: () => void;
-}
-
-export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
-  currentRequester,
-  ticketId,
-  onBack,
-}) => {
-  const [ticket, setTicket] = useState<Ticket | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<{ message: string; status?: number; code?: string } | null>(null);
-
-  // Modals & Actions State
-  const [showUploadModal, setShowUploadModal] = useState<boolean>(false);
-  const [uploadFile, setUploadFile] = useState<File | null>(null);
-  const [uploading, setUploading] = useState<boolean>(false);
-  const [uploadError, setUploadError] = useState<string | null>(null);
-
-  const [selectedRemoveAttachment, setSelectedRemoveAttachment] = useState<Attachment | null>(null);
-  const [removalReason, setRemovalReason] = useState<string>("");
-  const [removing, setRemoving] = useState<boolean>(false);
-  const [removeError, setRemoveError] = useState<string | null>(null);
-
-  const loadDetail = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await fetchTicketDetail(currentRequester.id, ticketId);
-      setTicket(data);
-    } catch (err: any) {
-      setError({
-        message: err.message || "Failed to load ticket details",
-        status: err.status,
-        code: err.code,
-      });
-    } finally {
-      setLoading(false);
-    }
-  }, [currentRequester.id, ticketId]);
-
-  useEffect(() => {
-    loadDetail();
-  }, [loadDetail]);
-
-  const handleUploadSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!uploadFile) return;
-
-    setUploading(true);
-    setUploadError(null);
-    try {
-      await uploadAttachment(currentRequester.id, ticketId, uploadFile);
-      setShowUploadModal(false);
-      setUploadFile(null);
-      await loadDetail();
-    } catch (err: any) {
-      setUploadError(err.message || "Failed to upload file");
-    } finally {
-      setUploading(false);
-    }
-  };
-
-  const handleSoftRemoveSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedRemoveAttachment || !removalReason.trim()) {
-      setRemoveError("Removal reason is required");
-      return;
-    }
-
-    setRemoving(true);
-    setRemoveError(null);
-    try {
-      await softRemoveAttachment(currentRequester.id, selectedRemoveAttachment.id, removalReason);
-      setSelectedRemoveAttachment(null);
-      setRemovalReason("");
-      await loadDetail();
-    } catch (err: any) {
-      setRemoveError(err.message || "Failed to remove attachment");
-    } finally {
-      setRemoving(false);
-    }
-  };
-
-  const renderPriorityBadge = (priority: string) => {
-    const p = priority.toUpperCase();
-    const cls =
-      p === "URGENT"
-        ? "badge-priority-urgent"
-        : p === "HIGH"
-        ? "badge-priority-high"
-        : p === "MEDIUM"
-        ? "badge-priority-medium"
-        : "badge-priority-low";
-    return <span className={`badge ${cls} px-2 py-1`}>{priority}</span>;
-  };
-
-  const renderStatusBadge = (status: string) => {
-    const s = status.toUpperCase();
-    const cls =
-      s === "NEW"
-        ? "badge-status-new"
-        : s === "IN_PROGRESS"
-        ? "badge-status-in_progress"
-        : s === "RESOLVED"
-        ? "badge-status-resolved"
-        : "badge-status-closed";
-    return <span className={`badge ${cls} px-2 py-1`}>{status.replace("_", " ")}</span>;
-  };
-
-  if (loading) {
-    return (
-      <div className="container py-5 text-center">
-        <div className="spinner-border text-success" role="status">
-          <span className="visually-hidden">Loading ticket details...</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="container py-5">
-        <button className="btn btn-outline-secondary btn-sm mb-4" onClick={onBack}>
-          ← Back to My Tickets
-        </button>
-        <div className="zg-card p-4 border-danger shadow-sm">
-          <div className="d-flex align-items-center gap-3 text-danger mb-3">
-            <span className="fs-1">🚫</span>
-            <div>
-              <h2 className="h4 fw-bold mb-1">
-                {error.status === 403 ? "403 Forbidden - Access Denied" : "Error Loading Ticket"}
-              </h2>
-              <p className="mb-0 text-muted">{error.message}</p>
-            </div>
-          </div>
-          {error.status === 403 && (
-            <div className="alert alert-warning py-2 small mb-0">
-              <strong>Ownership Security Check:</strong> Lab 2 enforces strict ticket ownership isolation. You cannot view or modify tickets belonging to another Requester.
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  if (!ticket) return null;
-
-  const activeAttachments = (ticket.attachments || []).filter((a) => !a.isRemoved);
-  const removedAttachments = (ticket.attachments || []).filter((a) => a.isRemoved);
-
-  return (
-    <div className="container py-4" style={{ maxWidth: 960 }}>
-      {/* Top Action Bar */}
-      <div className="d-flex align-items-center justify-content-between mb-4">
-        <button className="btn btn-outline-secondary btn-sm" onClick={onBack}>
-          ← Back to My Tickets
-        </button>
-        <div className="d-flex align-items-center gap-2">
-          <span className="text-muted small">Status:</span>
-          {renderStatusBadge(ticket.status)}
-        </div>
-      </div>
-
-      {/* Main Ticket Container */}
-      <div className="zg-card p-4 shadow-sm mb-4">
-        {/* Ticket Header & Number */}
-        <div className="border-bottom pb-3 mb-4">
-          <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
-            <h2 className="h3 fw-bold m-0" style={{ color: "#D81B60" }}>{ticket.ticketNo}</h2>
-            <div>{renderPriorityBadge(ticket.requestedPriority)}</div>
-          </div>
-          <h1 className="h5 fw-semibold text-dark m-0">{ticket.summary}</h1>
-        </div>
-
-        {/* Read-Only Information Grid */}
-        <div className="row g-3 mb-4 p-3 rounded-3 bg-light">
-          <div className="col-md-3 col-6">
-            <label className="form-label text-muted small fw-semibold">Requester</label>
-            <div className="fw-semibold text-dark">{ticket.requester?.name || currentRequester.name}</div>
-          </div>
-          <div className="col-md-3 col-6">
-            <label className="form-label text-muted small fw-semibold">Category</label>
-            <div><span className="badge bg-white text-dark border">{ticket.category?.name}</span></div>
-          </div>
-          <div className="col-md-3 col-6">
-            <label className="form-label text-muted small fw-semibold">Related System</label>
-            <div><span className="badge bg-white text-dark border">{ticket.relatedSystem?.name}</span></div>
-          </div>
-          <div className="col-md-3 col-6">
-            <label className="form-label text-muted small fw-semibold">Submitted On</label>
-            <div className="text-muted small">
-              {new Date(ticket.createdAt).toLocaleString("en-US", {
-                dateStyle: "medium",
-                timeStyle: "short",
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* Description Body */}
-        <div className="mb-4">
-          <h5 className="fw-bold mb-2">Description</h5>
-          <div
-            className="p-3 rounded-3 bg-white border"
-            style={{ whiteSpace: "pre-wrap", minHeight: 100, color: "#1F2925" }}
-          >
-            {ticket.description}
-          </div>
-        </div>
-
-        {/* Attachments Section */}
-        <div className="border-top pt-4">
-          <div className="d-flex align-items-center justify-content-between mb-3">
-            <h5 className="fw-bold m-0">
-              Supporting Attachments ({activeAttachments.length} / 5 Active)
-            </h5>
-            <button
-              className="btn btn-sm btn-zg-primary"
-              onClick={() => setShowUploadModal(true)}
-              disabled={activeAttachments.length >= 5}
-            >
-              ➕ Add Attachment
-            </button>
-          </div>
-
-          {/* Active Attachments List */}
-          {activeAttachments.length > 0 && (
-            <div className="list-group mb-3">
-              {activeAttachments.map((att) => (
-                <div
-                  key={att.id}
-                  className="list-group-item d-flex align-items-center justify-content-between py-2 px-3"
-                >
-                  <div className="d-flex align-items-center gap-3 overflow-hidden me-2">
-                    <span className="fs-5">{att.mimeType.includes("pdf") ? "📄" : "🖼️"}</span>
-                    <div>
-                      <div className="fw-semibold text-dark text-truncate" style={{ maxWidth: 320 }}>
-                        {att.fileName}
-                      </div>
-                      <div className="text-muted small">
-                        {(att.fileSize / 1024).toFixed(1)} KB • Attached {new Date(att.createdAt).toLocaleDateString()}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="d-flex align-items-center gap-2">
-                    <a
-                      href={getAttachmentDownloadUrl(att.id)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-sm btn-outline-primary"
-                      title="Download file"
-                    >
-                      ↓ Download
-                    </a>
-                    <button
-                      className="btn btn-sm btn-outline-danger"
-                      onClick={() => setSelectedRemoveAttachment(att)}
-                      title="Soft-remove attachment"
-                    >
-                      🗑️ Remove
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Soft-Removed Attachments List */}
-          {removedAttachments.length > 0 && (
-            <div className="mt-3">
-              <p className="fw-semibold text-muted small mb-2">Soft-Removed Attachments ({removedAttachments.length}):</p>
-              <div className="list-group">
-                {removedAttachments.map((att) => (
-                  <div
-                    key={att.id}
-                    className="list-group-item bg-light d-flex align-items-center justify-content-between py-2 px-3 text-muted"
-                  >
-                    <div className="d-flex align-items-center gap-3 overflow-hidden me-2">
-                      <span className="fs-5">🚫</span>
-                      <div>
-                        <div className="text-decoration-line-through fw-semibold text-truncate" style={{ maxWidth: 300 }}>
-                          {att.fileName}
-                        </div>
-                        <div className="small text-danger">
-                          Reason: "{att.removalReason || "No reason specified"}"
-                        </div>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center gap-2">
-                      <span className="badge bg-secondary">Removed</span>
-                      <button className="btn btn-sm btn-outline-secondary disabled" disabled>
-                        Blocked
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {activeAttachments.length === 0 && removedAttachments.length === 0 && (
-            <p className="text-muted small m-0 italic">No attachments added to this ticket.</p>
-          )}
-        </div>
-      </div>
-
-      {/* Upload Attachment Modal */}
-      {showUploadModal && (
-        <div className="modal show d-block bg-dark bg-opacity-50" tabIndex={-1}>
-          <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content zg-card">
-              <form onSubmit={handleUploadSubmit}>
-                <div className="modal-header border-bottom">
-                  <h5 className="modal-title fw-bold">Add Permitted Attachment</h5>
-                  <button type="button" className="btn-close" onClick={() => setShowUploadModal(false)} />
-                </div>
-                <div className="modal-body">
-                  <p className="text-muted small mb-3">
-                    Select a file to attach to ticket <strong>{ticket.ticketNo}</strong>. Allowed: JPG, PNG, WEBP, PDF (Max 5MB).
-                  </p>
-                  {uploadError && <div className="alert alert-danger py-2 small mb-3">{uploadError}</div>}
-                  <input
-                    type="file"
-                    className="form-control"
-                    accept="image/jpeg,image/png,image/webp,application/pdf"
-                    onChange={(e) => setUploadFile(e.target.files?.[0] || null)}
-                    required
-                  />
-                </div>
-                <div className="modal-footer border-top">
-                  <button type="button" className="btn btn-secondary" onClick={() => setShowUploadModal(false)}>
-                    Cancel
-                  </button>
-                  <button type="submit" className="btn btn-zg-primary" disabled={!uploadFile || uploading}>
-                    {uploading ? "Uploading..." : "Upload File"}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Soft Removal Confirmation Modal */}
-      {selectedRemoveAttachment && (
-        <div className="modal show d-block bg-dark bg-opacity-50" tabIndex={-1}>
-          <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content zg-card">
-              <form onSubmit={handleSoftRemoveSubmit}>
-                <div className="modal-header border-bottom">
-                  <h5 className="modal-title text-danger fw-bold">Confirm Attachment Soft-Removal</h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    onClick={() => setSelectedRemoveAttachment(null)}
-                  />
-                </div>
-                <div className="modal-body">
-                  <p className="mb-2">
-                    Are you sure you want to soft-remove attachment <strong>{selectedRemoveAttachment.fileName}</strong>?
-                  </p>
-                  <p className="text-muted small mb-3">
-                    Soft-removal will permanently block downloading and previewing for all users while preserving metadata for compliance.
-                  </p>
-
-                  {removeError && <div className="alert alert-danger py-2 small mb-3">{removeError}</div>}
-
-                  <label className="form-label fw-semibold">
-                    Mandatory Removal Reason <span className="zg-required-asterisk">*</span>
-                  </label>
-                  <textarea
-                    className="form-control"
-                    rows={3}
-                    placeholder="Enter reason for removal (e.g. Uploaded wrong file, contains sensitive data)..."
-                    value={removalReason}
-                    onChange={(e) => setRemovalReason(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="modal-footer border-top">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={() => setSelectedRemoveAttachment(null)}
-                  >
-                    Cancel
-                  </button>
-                  <button type="submit" className="btn btn-danger fw-bold" disabled={!removalReason.trim() || removing}>
-                    {removing ? "Removing..." : "Soft-Remove Attachment"}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-```
-
 ---
 
-# Answer Part 8: Working Administrator User Management UI
+# Answer Part 8: Working Administrator User Management & Safety Guards UI
 
-## 8.1 User Management Console & Safety Guards Verification
-The Administrator User Management screen (`GET /api/admin/users`) provides Administrators with user administration capabilities guarded by strict safety rules:
-- **User List & Filtering**: Lists user accounts with Name, Email, Role, Status, and Edit action. Supports searching by name/email and filtering by role.
-- **Create User Drawer**: Creates new user accounts (`POST /api/admin/users`) with initial passwords, marking `mustChangePassword = true`. Enforces unique email constraints (returning 409 Conflict on duplicates).
+## 8.1 User Management Console & Safety Guard Verification
+- **User Listing & Search**: Administrators view all system users with search, role filtering (`REQUESTER`, `IT_STAFF`, `ADMINISTRATOR`), and active status badges.
+- **Create User**: Administrators create new user accounts with specified role and initial password.
 - **Edit User Profile & Activation**: Updates name, email, role, and activation status (`isActive`).
 - **Initial Password Reset**: Sets a new initial password for a user (`POST /api/admin/users/:id/reset-password`), enforcing mandatory password change at next login.
 - **Administrator Safety Guards**:
