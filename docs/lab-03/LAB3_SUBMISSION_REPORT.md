@@ -502,391 +502,6 @@ The UI extends the **Zen Green Design System**:
 
 ---
 
-## 2.4 User Interface Specification (ui-spec.md)
-The full UI Specification and layout mockups are rendered below from [`docs/lab-03/ui-spec.md`](docs/lab-03/ui-spec.md).
-
-# TokTickIT Lab 3 User Interface Specification
-
-## 1. Design System & Theme Alignment
-Lab 3 extends the **Zen Green Design System** established in Lab 2. All new screens, forms, tables, modals, and navigation components adhere strictly to the established visual identity and design tokens.
-
-### Color Tokens
-- **Primary Header & Branding**: `#006B3C` (Zen Green Primary)
-- **Secondary Accent**: `#0B7A46` (Zen Green Dark)
-- **Pale Surface / Active Highlight**: `#EAF6EF` (Zen Light Mint)
-- **Background**: `#F5F7F6` (Neutral Warm Gray)
-- **Surface**: `#FFFFFF` (Pure White)
-- **Text Primary**: `#1F2925` (Dark Slate)
-- **Text Muted**: `#64748B` (Slate Gray)
-- **Error / Danger**: `#D32F2F` (Deep Red)
-- **Warning / Internal Note Accent**: `#D97706` (Amber Gold)
-- **Success Badge**: `#059669` (Emerald Green)
-
----
-
-## 2. Application Shell & Role-Based Navigation
-
-### Header Shell
-- **App Branding**: Logo and title "TokTickIT".
-- **Role-Based Navigation Links**:
-  - **Requester**: `My Tickets`, `Create Ticket`
-  - **IT Staff**: `Ticket Queue`, `My Queue`, `Create Ticket`
-  - **Administrator**: `User Management`, `Ticket Queue`
-- **User Profile Area**:
-  - Displays authenticated user's Full Name.
-  - Role Badge (`Requester`, `IT Staff`, `Administrator`) with distinct pill styling.
-  - Profile Dropdown / Actions: `Change Password`, `Logout`.
-
----
-
-## 3. Screen Specifications & UI Visual Layout Mockups
-
-### 3.1 Login Screen Mockup
-```text
-+-----------------------------------------------------------------------+
-|  TokTickIT                                         [ Guest Context ]  |
-+-----------------------------------------------------------------------+
-|                                                                       |
-|                     +---------------------------+                     |
-|                     |     Sign in to TokTickIT  |                     |
-|                     +---------------------------+                     |
-|                     | Email Address             |                     |
-|                     | [ jennifer@toktickit.com ]|                     |
-|                     | Password                  |                     |
-|                     | [ ********************** ]|                     |
-|                     |                           |                     |
-|                     |  [   Sign In Button   ]   |                     |
-|                     +---------------------------+                     |
-|                                                                       |
-+-----------------------------------------------------------------------+
-```
-
-### 3.2 Mandatory First-Login Password Change Mockup
-```text
-+-----------------------------------------------------------------------+
-|  TokTickIT                                     Jennifer Anderson (Req)|
-+-----------------------------------------------------------------------+
-|                                                                       |
-|              +-----------------------------------------+              |
-|              |         Change Your Password            |              |
-|              | You must change initial password.       |              |
-|              +-----------------------------------------+              |
-|              | Current (Initial) Password              |              |
-|              | [ ********************** ]              |              |
-|              | New Password                            |              |
-|              | [ ********************** ]              |              |
-|              | Confirm New Password                    |              |
-|              | [ ********************** ]              |              |
-|              | Password Rules:                         |              |
-|              | [v] At least 8 characters               |              |
-|              | [v] Upper & lower case letters          |              |
-|              | [v] Number & special character          |              |
-|              |                                         |              |
-|              |          [  Save New Password  ]        |              |
-|              +-----------------------------------------+              |
-|                                                                       |
-+-----------------------------------------------------------------------+
-```
-
-### 3.3 Requester Ticket Detail & Public Comments Mockup
-```text
-+-----------------------------------------------------------------------+
-|  TokTickIT   My Tickets   Create Ticket        Jennifer Anderson (Req)|
-+-----------------------------------------------------------------------+
-|  Ticket #TKT-2026-001234  [ IN_PROGRESS ]     [ Problem Appears Resolved ]
-|  Summary: Laptop battery drains quickly                              |
-|  Category: Hardware | Priority: MEDIUM                                |
-|-----------------------------------------------------------------------|
-|  Public Comments (Green Border Panel)                                 |
-|  +-----------------------------------------------------------------+  |
-|  | [JA] Jennifer Anderson (Requester)           May 12, 2026 09:14   |  |
-|  | Battery drains fast even when idle.                             |  |
-|  |-----------------------------------------------------------------|  |
-|  | [KP] Kevin Patel (IT Support)                May 13, 2026 10:30   |  |
-|  | We are investigating the battery health on your device.        |  |
-|  +-----------------------------------------------------------------+  |
-|  | Add Public Comment:                                             |  |
-|  | [ Type your message here...                                   ] |  |
-|  |                                                [ Post Comment ] |  |
-|  +-----------------------------------------------------------------+  |
-+-----------------------------------------------------------------------+
-```
-
-### 3.4 IT Staff Ticket Queue Mockup (Desktop & Mobile)
-```text
-+-----------------------------------------------------------------------+
-|  TokTickIT   Ticket Queue   My Queue           Kevin Patel (IT Staff) |
-+-----------------------------------------------------------------------+
-|  [ Search ticket number or summary... ]  Filters: [Category v] [Status v]
-|-----------------------------------------------------------------------|
-|  Ticket No     Created      Summary               Status       Owner  |
-|  TKT-2026-1234 12 May 09:14 Laptop battery drains IN_PROGRESS Kevin |
-|  TKT-2026-1233 12 May 08:02 Cannot connect VPN    OPEN         --     |
-|  TKT-2026-1232 11 May 16:45 Email sync mobile     IN_PROGRESS Emily |
-|-----------------------------------------------------------------------|
-|  < Previous   [1]  2  3  ...  9   Next >                              |
-+-----------------------------------------------------------------------+
-```
-
-### 3.5 IT Staff Ticket Detail & Internal Notes Mockup
-```text
-+-----------------------------------------------------------------------+
-|  TokTickIT   Ticket Queue                      Kevin Patel (IT Staff) |
-+-----------------------------------------------------------------------+
-|  Ticket Detail: TKT-2026-001234               | Operational Sidebar   |
-|  Summary: Laptop battery drains quickly        | Owner: [ Kevin Patel v|
-|  Category: Hardware | Status: [ IN_PROGRESS ] | IT Priority: [ HIGH v |
-|-----------------------------------------------+-----------------------|
-|  Public Comments                              | Internal Notes (Amber)|
-|  +-----------------------------------------+  | +-------------------+ |
-|  | [KP] We are investigating your device.  |  | | [KP] Battery wear | |
-|  +-----------------------------------------+  | | is at 45%. Order  | |
-|                                               | | replacement unit. | |
-|                                               | +-------------------+ |
-+-----------------------------------------------------------------------+
-```
-
-### 3.6 Administrator User Management & Drawer Mockup
-```text
-+-----------------------------------------------------------------------+
-|  TokTickIT   User Management                   John Smith (Admin)     |
-+-----------------------------------------------------------------------+
-|  [ Search name or email... ]  Role: [ All Roles v ]   [ + Create User ]
-|-----------------------------------------------------------------------|
-|  Name               Email                     Role       Status Action|
-|  Jennifer Anderson  jennifer@toktickit.com    Requester  Active [Edit]|
-|  Michael Brown      michael@toktickit.com     Requester  Active [Edit]|
-|  Kevin Patel        kevin@toktickit.com       IT_Staff   Active [Edit]|
-|  John Smith         john@toktickit.com        Admin      Active [Edit]|
-+-----------------------------------------------------------------------+
-|  Drawer: Create New User                                              |
-|  Full Name: [ Alex Thompson ]                                         |
-|  Email:     [ alex@toktickit.com ]                                    |
-|  Role:      [ IT_STAFF v ]  Active: [ Yes (Toggle) ]                  |
-|  Initial Password: [ InitialPassword123! ]                            |
-|  [ Save User ]                                           [ Cancel ]   |
-+-----------------------------------------------------------------------+
-```
-
----
-
-## 4. Responsive & Accessibility Rules
-- **Desktop ($\ge 992\text{px}$)**: Multi-column grid, full table view, side-by-side detail controls.
-- **Tablet ($768\text{px} - 991\text{px}$)**: Reflowed forms, scrollable tables or compact cards.
-- **Mobile ($< 768\text{px}$)**: Single-column vertical layout, touch-friendly buttons ($\ge 44\text{px}$ height), zero horizontal window overflow.
-
-
----
-
-## 2.5 REST API Specification (api-spec.md)
-The full REST API Specification, endpoints summary, curl examples, and response schemas are rendered below from [`docs/lab-03/api-spec.md`](docs/lab-03/api-spec.md).
-
-# TokTickIT Lab 3 REST API Specification
-
-## 1. Overview & Authentication Mechanism
-Lab 3 replaces header-based identity simulation (`x-requester-id`) with secure JWT Authorization bearer tokens or HTTP-only session cookies. All protected endpoints require valid authenticated user context and strictly enforce backend role permissions (`REQUESTER`, `IT_STAFF`, `ADMINISTRATOR`).
-
----
-
-## 2. Endpoints Summary Table
-
-| Method | Endpoint Path | Description | Permitted Roles | Handled Status Codes |
-| :--- | :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/login` | Authenticate user credentials | Public | `200`, `400`, `401`, `500` |
-| `POST` | `/api/auth/logout` | Invalidate authenticated session | Authenticated | `200`, `401`, `500` |
-| `GET` | `/api/auth/me` | Retrieve authenticated user profile & role | Authenticated | `200`, `401`, `500` |
-| `POST` | `/api/auth/change-password` | Mandatory or voluntary password update | Authenticated | `200`, `400`, `401`, `500` |
-| `GET` | `/api/requesters/tickets` | List tickets owned by authenticated Requester | Requester | `200`, `401`, `403`, `500` |
-| `POST` | `/api/requesters/tickets` | Create ticket under authenticated Requester | Requester | `201`, `400`, `401`, `403`, `500` |
-| `GET` | `/api/staff/tickets` | Query IT Staff Ticket Queue with search/filter/sort | IT Staff, Admin | `200`, `401`, `403`, `500` |
-| `GET` | `/api/staff/tickets/:id` | Retrieve single ticket details for IT Staff | IT Staff, Admin | `200`, `401`, `403`, `404`, `500` |
-| `PATCH` | `/api/staff/tickets/:id/assign` | Claim or reassign ticket primary owner | IT Staff, Admin | `200`, `400`, `401`, `403`, `404`, `500` |
-| `PATCH` | `/api/staff/tickets/:id/workflow` | Update IT Priority and/or Ticket Status | IT Staff, Admin | `200`, `400`, `401`, `403`, `404`, `500` |
-| `GET` | `/api/tickets/:id/comments` | List Public Comments on a ticket | All Roles | `200`, `401`, `403`, `404`, `500` |
-| `POST` | `/api/tickets/:id/comments` | Post a Public Comment on a ticket | All Roles | `201`, `400`, `401`, `403`, `404`, `500` |
-| `GET` | `/api/tickets/:id/notes` | List Internal Notes on a ticket | IT Staff, Admin ONLY | `200`, `401`, `403`, `404`, `500` |
-| `POST` | `/api/tickets/:id/notes` | Create an Internal Note on a ticket | IT Staff, Admin ONLY | `201`, `400`, `401`, `403`, `404`, `500` |
-| `GET` | `/api/admin/users` | List users with search & role filter | Admin ONLY | `200`, `401`, `403`, `500` |
-| `POST` | `/api/admin/users` | Create user with initial password | Admin ONLY | `201`, `400`, `401`, `403`, `409`, `500` |
-| `PATCH` | `/api/admin/users/:id` | Edit user profile or activation status | Admin ONLY | `200`, `400`, `401`, `403`, `404`, `409`, `500` |
-| `POST` | `/api/admin/users/:id/reset-password` | Set new initial password for user | Admin ONLY | `200`, `400`, `401`, `403`, `404`, `500` |
-
----
-
-## 3. Detailed Endpoint Specifications
-
-### 3.1 Authentication APIs
-
-#### `POST /api/auth/login`
-Authenticates user credentials and returns session token and user identity.
-
-- **`curl` Example**:
-  ```bash
-  curl -X POST http://localhost:3001/api/auth/login \
-    -H "Content-Type: application/json" \
-    -d '{"email":"jennifer.anderson@toktickit.com","password":"InitialPassword123!"}'
-  ```
-
-- **Request Body**:
-  ```json
-  {
-    "email": "jennifer.anderson@toktickit.com",
-    "password": "InitialPassword123!"
-  }
-  ```
-
-- **HTTP Responses**:
-  - `200 OK`: Login successful.
-    ```json
-    {
-      "success": true,
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-      "user": {
-        "id": 1,
-        "email": "jennifer.anderson@toktickit.com",
-        "name": "Jennifer Anderson",
-        "role": "REQUESTER",
-        "mustChangePassword": true
-      }
-    }
-    ```
-  - `400 Bad Request`: Email or password field missing.
-  - `401 Unauthorized`: Invalid credentials or account deactivated (`isActive = false`).
-
----
-
-#### `POST /api/auth/change-password`
-Updates user password and clears `mustChangePassword` flag.
-
-- **`curl` Example**:
-  ```bash
-  curl -X POST http://localhost:3001/api/auth/change-password \
-    -H "Authorization: Bearer <TOKEN>" \
-    -H "Content-Type: application/json" \
-    -d '{"currentPassword":"InitialPassword123!","newPassword":"NewSecurePassword456!"}'
-  ```
-
-- **HTTP Responses**:
-  - `200 OK`: Password updated successfully; `mustChangePassword` is set to `false`.
-  - `400 Bad Request`: New password does not meet strength rules or confirmation mismatch.
-  - `401 Unauthorized`: Invalid current password or expired token.
-
----
-
-### 3.2 IT Staff Ticket Queue API
-
-#### `GET /api/staff/tickets`
-Retrieves paginated ticket queue for IT Staff and Administrator users.
-
-- **`curl` Example**:
-  ```bash
-  curl -X GET "http://localhost:3001/api/staff/tickets?search=battery&status=IN_PROGRESS&page=1&limit=10" \
-    -H "Authorization: Bearer <STAFF_TOKEN>"
-  ```
-
-- **HTTP Responses**:
-  - `200 OK`:
-    ```json
-    {
-      "success": true,
-      "data": [
-        {
-          "id": 12,
-          "ticketNo": "TKT-2026-001234",
-          "createdAt": "2026-09-15T08:14:00Z",
-          "summary": "Laptop battery drains quickly",
-          "category": "Hardware",
-          "requestedPriority": "MEDIUM",
-          "itPriority": "MEDIUM",
-          "status": "IN_PROGRESS",
-          "owner": { "id": 5, "name": "Michael Brown" }
-        }
-      ],
-      "pagination": {
-        "totalItems": 87,
-        "totalPages": 9,
-        "currentPage": 1,
-        "pageSize": 10
-      }
-    }
-    ```
-  - `401 Unauthorized`: Missing or invalid authentication.
-  - `403 Forbidden`: User role is `REQUESTER` (access restricted to IT Staff/Admin).
-
----
-
-### 3.3 IT Staff Ticket Operations
-
-#### `PATCH /api/staff/tickets/:id/assign`
-Claim or reassign primary ticket ownership.
-
-- **HTTP Responses**:
-  - `200 OK`: Ticket owner updated.
-  - `400 Bad Request`: Owner ID does not belong to an active IT Staff or Admin user.
-  - `404 Not Found`: Ticket ID does not exist.
-
-#### `PATCH /api/staff/tickets/:id/workflow`
-Update IT Priority and Ticket Status.
-
-- **HTTP Responses**:
-  - `200 OK`: Status or IT Priority updated.
-  - `400 Bad Request`: Invalid status transition attempted.
-  - `404 Not Found`: Ticket ID not found.
-
----
-
-### 3.4 Comments & Notes APIs
-
-#### `POST /api/tickets/:id/comments` (Public Comment)
-- **`curl` Example**:
-  ```bash
-  curl -X POST http://localhost:3001/api/tickets/12/comments \
-    -H "Authorization: Bearer <TOKEN>" \
-    -H "Content-Type: application/json" \
-    -d '{"content":"We are investigating the issue on your device."}'
-  ```
-- **HTTP Responses**:
-  - `201 Created`: Public comment saved.
-  - `400 Bad Request`: Content empty or whitespace-only.
-
-#### `POST /api/tickets/:id/notes` (Internal Note)
-- **`curl` Example**:
-  ```bash
-  curl -X POST http://localhost:3001/api/tickets/12/notes \
-    -H "Authorization: Bearer <STAFF_TOKEN>" \
-    -H "Content-Type: application/json" \
-    -d '{"content":"Ordered battery replacement part."}'
-  ```
-- **HTTP Responses**:
-  - `201 Created`: Internal note saved.
-  - `403 Forbidden`: Requester user requested endpoint (Internal notes are restricted to IT Staff & Admin only).
-
----
-
-### 3.5 Administrator User Management APIs
-
-#### `POST /api/admin/users`
-- **`curl` Example**:
-  ```bash
-  curl -X POST http://localhost:3001/api/admin/users \
-    -H "Authorization: Bearer <ADMIN_TOKEN>" \
-    -H "Content-Type: application/json" \
-    -d '{"name":"Alex Thompson","email":"alex.thompson@toktickit.com","role":"IT_STAFF","isActive":true,"initialPassword":"InitialPassword123!"}'
-  ```
-- **HTTP Responses**:
-  - `201 Created`: User created with `mustChangePassword = true`.
-  - `409 Conflict`: User email already exists.
-  - `403 Forbidden`: Non-admin user requested endpoint.
-
-#### `PATCH /api/admin/users/:id`
-- **HTTP Responses**:
-  - `200 OK`: User updated.
-  - `400 Bad Request`: Attempted self-deactivation or deactivation of the last active Administrator account.
-  - `404 Not Found`: User ID not found.
-
-
----
-
 # Answer Part 3: Test DD and Traceability
 
 The full Test Plan & Traceability Matrix is rendered below from [`docs/lab-03/tests.md`](docs/lab-03/tests.md).
@@ -1782,1112 +1397,70 @@ describe("Lab 3 E2E Client Application Integration", () => {
 
 ---
 
-# Answer Part 4: Database Schema Evolution & Idempotent Seed Evidence
+# Answer Part 4: AI Use with Reflection
 
-## 4.1 Prisma Database Schema (`server/prisma/schema.prisma`)
-```prisma
-// TokTickIT Prisma Schema — Lab 3 Database ORM & Data Models
-// Feature Branch: feature/lab03-3-db-schema
+The complete AI Tool Usage & Prompting Log is rendered below from [`docs/lab-03/ai-use.md`](docs/lab-03/ai-use.md):
 
-generator client {
-  provider = "prisma-client-js"
-}
+# Lab 3 AI Use with Reflection (ai-use.md)
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-// ---------------------------------------------------------------------------
-// Enums
-// ---------------------------------------------------------------------------
-
-enum Role {
-  REQUESTER
-  IT_STAFF
-  ADMINISTRATOR
-}
-
-enum RequestedPriority {
-  LOW
-  MEDIUM
-  HIGH
-  URGENT
-}
-
-enum ITPriority {
-  LOW
-  MEDIUM
-  HIGH
-  URGENT
-}
-
-enum TicketStatus {
-  NEW
-  OPEN
-  IN_PROGRESS
-  WAITING_FOR_REQUESTER
-  RESOLVED
-  CLOSED
-  REOPENED
-  CANCELLED
-}
-
-// ---------------------------------------------------------------------------
-// Lab 3 Data Models
-// ---------------------------------------------------------------------------
-
-model User {
-  id                 Int      @id @default(autoincrement())
-  email              String   @unique
-  passwordHash       String
-  name               String
-  department         String?
-  role               Role     @default(REQUESTER)
-  isActive           Boolean  @default(true)
-  mustChangePassword Boolean  @default(true)
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-
-  tickets        Ticket[]        @relation("RequesterTickets")
-  ownedTickets   Ticket[]        @relation("OwnerTickets")
-  publicComments PublicComment[]
-  internalNotes  InternalNote[]
-
-  @@index([role, isActive])
-}
-
-model RequesterUser {
-  id         Int      @id @default(autoincrement())
-  name       String
-  email      String   @unique
-  department String
-  isActive   Boolean  @default(true)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-}
-
-model Category {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-
-  tickets Ticket[]
-}
-
-model RelatedSystem {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-
-  tickets Ticket[]
-}
-
-model Ticket {
-  id                   Int               @id @default(autoincrement())
-  ticketNo             String            @unique
-  requesterId          Int
-  ownerId              Int?
-  categoryId           Int
-  relatedSystemId      Int
-  requestedPriority    RequestedPriority @default(MEDIUM)
-  itPriority           ITPriority?
-  status               TicketStatus      @default(NEW)
-  summary              String
-  description          String
-  requesterResolvedInd Boolean           @default(false)
-  createdAt            DateTime          @default(now())
-  updatedAt            DateTime          @updatedAt
-
-  requester      User            @relation("RequesterTickets", fields: [requesterId], references: [id])
-  owner          User?           @relation("OwnerTickets", fields: [ownerId], references: [id])
-  category       Category        @relation(fields: [categoryId], references: [id])
-  relatedSystem  RelatedSystem   @relation(fields: [relatedSystemId], references: [id])
-  attachments    Attachment[]
-  publicComments PublicComment[]
-  internalNotes  InternalNote[]
-
-  @@index([requesterId, createdAt])
-  @@index([ownerId, status])
-  @@index([status])
-  @@index([categoryId])
-}
-
-model Attachment {
-  id            Int       @id @default(autoincrement())
-  ticketId      Int
-  fileName      String
-  fileKey       String
-  fileSize      Int
-  mimeType      String
-  isRemoved     Boolean   @default(false)
-  removalReason String?
-  removedAt     DateTime?
-  createdAt     DateTime  @default(now())
-
-  ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
-
-  @@index([ticketId])
-}
-
-model PublicComment {
-  id        Int      @id @default(autoincrement())
-  ticketId  Int
-  authorId  Int
-  content   String
-  createdAt DateTime @default(now())
-
-  ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
-  author User   @relation(fields: [authorId], references: [id])
-
-  @@index([ticketId, createdAt])
-}
-
-model InternalNote {
-  id        Int      @id @default(autoincrement())
-  ticketId  Int
-  authorId  Int
-  content   String
-  createdAt DateTime @default(now())
-
-  ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
-  author User   @relation(fields: [authorId], references: [id])
-
-  @@index([ticketId, createdAt])
-}
-
-```
-
-## 4.2 Idempotent Database Seed Script (`server/prisma/seed.ts`)
-```typescript
-import { getPrisma } from "../src/prisma.js";
-import bcrypt from "bcryptjs";
-import { Role, RequestedPriority, ITPriority, TicketStatus } from "@prisma/client";
-
-async function main() {
-  const prisma = getPrisma();
-
-  console.log("Seeding Lab 3 database...");
-
-  // 1. Seed Categories
-  const categories = [
-    "Account and Access",
-    "Hardware",
-    "Software",
-    "Network",
-  ];
-
-  const categoryMap: Record<string, number> = {};
-  for (const name of categories) {
-    const cat = await prisma.category.upsert({
-      where: { name },
-      update: { isActive: true },
-      create: { name, isActive: true },
-    });
-    categoryMap[name] = cat.id;
-  }
-
-  // 2. Seed Related Systems
-  const relatedSystems = [
-    "Email",
-    "Campus Wi-Fi",
-    "VPN",
-    "LEB2 App",
-    "Grade Submission App",
-    "Printer",
-    "Corporate Laptop",
-  ];
-
-  const systemMap: Record<string, number> = {};
-  for (const name of relatedSystems) {
-    const sys = await prisma.relatedSystem.upsert({
-      where: { name },
-      update: { isActive: true },
-      create: { name, isActive: true },
-    });
-    systemMap[name] = sys.id;
-  }
-
-  // Standard hashed password: "InitialPassword123!" and "Password123!"
-  const initialPasswordHash = await bcrypt.hash("InitialPassword123!", 10);
-  const standardPasswordHash = await bcrypt.hash("Password123!", 10);
-
-  // 3. Seed Users (Requesters, IT Staff, Administrator)
-  const usersData = [
-    // Requesters (4 active, 1 inactive)
-    {
-      email: "jennifer.anderson@toktickit.com",
-      name: "Jennifer Anderson",
-      department: "Computer Engineering",
-      role: Role.REQUESTER,
-      isActive: true,
-      mustChangePassword: true, // For testing mandatory first-login password change
-      passwordHash: initialPasswordHash,
-    },
-    {
-      email: "michael.brown@toktickit.com",
-      name: "Michael Brown",
-      department: "Information Technology",
-      role: Role.REQUESTER,
-      isActive: true,
-      mustChangePassword: false,
-      passwordHash: standardPasswordHash,
-    },
-    {
-      email: "sarah.johnson@toktickit.com",
-      name: "Sarah Johnson",
-      department: "Electronic Engineering",
-      role: Role.REQUESTER,
-      isActive: true,
-      mustChangePassword: false,
-      passwordHash: standardPasswordHash,
-    },
-    {
-      email: "david.lee@toktickit.com",
-      name: "David Lee",
-      department: "Software Engineering",
-      role: Role.REQUESTER,
-      isActive: true,
-      mustChangePassword: false,
-      passwordHash: standardPasswordHash,
-    },
-    {
-      email: "inactive.requester@toktickit.com",
-      name: "Inactive Requester Account",
-      department: "Archived",
-      role: Role.REQUESTER,
-      isActive: false,
-      mustChangePassword: false,
-      passwordHash: standardPasswordHash,
-    },
-
-    // IT Staff (3 active, 1 inactive)
-    {
-      email: "kevin.patel@toktickit.com",
-      name: "Kevin Patel",
-      department: "IT Support Desk",
-      role: Role.IT_STAFF,
-      isActive: true,
-      mustChangePassword: false,
-      passwordHash: standardPasswordHash,
-    },
-    {
-      email: "emily.davis@toktickit.com",
-      name: "Emily Davis",
-      department: "Network Operations",
-      role: Role.IT_STAFF,
-      isActive: true,
-      mustChangePassword: false,
-      passwordHash: standardPasswordHash,
-    },
-    {
-      email: "lisa.martinez@toktickit.com",
-      name: "Lisa Martinez",
-      department: "Systems Administration",
-      role: Role.IT_STAFF,
-      isActive: true,
-      mustChangePassword: false,
-      passwordHash: standardPasswordHash,
-    },
-    {
-      email: "inactive.staff@toktickit.com",
-      name: "Inactive Staff Account",
-      department: "IT Staff Archived",
-      role: Role.IT_STAFF,
-      isActive: false,
-      mustChangePassword: false,
-      passwordHash: standardPasswordHash,
-    },
-
-    // Administrator (1 active)
-    {
-      email: "john.smith@toktickit.com",
-      name: "John Smith",
-      department: "System Administration",
-      role: Role.ADMINISTRATOR,
-      isActive: true,
-      mustChangePassword: false,
-      passwordHash: standardPasswordHash,
-    },
-  ];
-
-  const userMap: Record<string, number> = {};
-  for (const u of usersData) {
-    const user = await prisma.user.upsert({
-      where: { email: u.email },
-      update: {
-        name: u.name,
-        department: u.department,
-        role: u.role,
-        isActive: u.isActive,
-        mustChangePassword: u.mustChangePassword,
-      },
-      create: u,
-    });
-    userMap[u.email] = user.id;
-
-    // Maintain RequesterUser table compatibility
-    if (u.role === Role.REQUESTER) {
-      await prisma.requesterUser.upsert({
-        where: { email: u.email },
-        update: { name: u.name, department: u.department || "", isActive: u.isActive },
-        create: { name: u.name, email: u.email, department: u.department || "", isActive: u.isActive },
-      });
-    }
-  }
-
-  // 4. Seed Realistic Tickets
-  const sampleTickets = [
-    {
-      ticketNo: "TKT-2026-001234",
-      requesterEmail: "jennifer.anderson@toktickit.com",
-      categoryName: "Hardware",
-      systemName: "Corporate Laptop",
-      requestedPriority: RequestedPriority.MEDIUM,
-      itPriority: ITPriority.MEDIUM,
-      status: TicketStatus.IN_PROGRESS,
-      ownerEmail: "kevin.patel@toktickit.com",
-      summary: "Laptop battery drains quickly",
-      description: "My laptop battery is draining much faster than usual even when idling.",
-      requesterResolvedInd: false,
-    },
-    {
-      ticketNo: "TKT-2026-001233",
-      requesterEmail: "michael.brown@toktickit.com",
-      categoryName: "Network",
-      systemName: "VPN",
-      requestedPriority: RequestedPriority.HIGH,
-      itPriority: ITPriority.HIGH,
-      status: TicketStatus.OPEN,
-      ownerEmail: null,
-      summary: "Cannot connect to VPN",
-      description: "Getting timeout error when authenticating through corporate VPN client.",
-      requesterResolvedInd: false,
-    },
-    {
-      ticketNo: "TKT-2026-001232",
-      requesterEmail: "david.lee@toktickit.com",
-      categoryName: "Software",
-      systemName: "Email",
-      requestedPriority: RequestedPriority.MEDIUM,
-      itPriority: ITPriority.MEDIUM,
-      status: TicketStatus.IN_PROGRESS,
-      ownerEmail: "emily.davis@toktickit.com",
-      summary: "Email not syncing on mobile",
-      description: "Outlook application on Android mobile device fails to fetch new emails.",
-      requesterResolvedInd: false,
-    },
-    {
-      ticketNo: "TKT-2026-001231",
-      requesterEmail: "jennifer.anderson@toktickit.com",
-      categoryName: "Account and Access",
-      systemName: "LEB2 App",
-      requestedPriority: RequestedPriority.LOW,
-      itPriority: ITPriority.LOW,
-      status: TicketStatus.RESOLVED,
-      ownerEmail: "lisa.martinez@toktickit.com",
-      summary: "New employee setup request",
-      description: "Please provision standard LEB2 course access for new TA starting next week.",
-      requesterResolvedInd: true,
-    },
-  ];
-
-  for (const t of sampleTickets) {
-    const requesterId = userMap[t.requesterEmail];
-    const ownerId = t.ownerEmail ? userMap[t.ownerEmail] : null;
-    const categoryId = categoryMap[t.categoryName];
-    const relatedSystemId = systemMap[t.systemName];
-
-    const createdTicket = await prisma.ticket.upsert({
-      where: { ticketNo: t.ticketNo },
-      update: {
-        status: t.status,
-        itPriority: t.itPriority,
-        ownerId: ownerId,
-        requesterResolvedInd: t.requesterResolvedInd,
-      },
-      create: {
-        ticketNo: t.ticketNo,
-        requesterId,
-        ownerId,
-        categoryId,
-        relatedSystemId,
-        requestedPriority: t.requestedPriority,
-        itPriority: t.itPriority,
-        status: t.status,
-        summary: t.summary,
-        description: t.description,
-        requesterResolvedInd: t.requesterResolvedInd,
-      },
-    });
-
-    // Seed comments/notes for TKT-2026-001234
-    if (t.ticketNo === "TKT-2026-001234") {
-      await prisma.publicComment.createMany({
-        data: [
-          {
-            ticketId: createdTicket.id,
-            authorId: userMap["jennifer.anderson@toktickit.com"],
-            content: "Just adding that this issue occurs even when I close all applications.",
-            createdAt: new Date("2026-05-12T09:20:00Z"),
-          },
-          {
-            ticketId: createdTicket.id,
-            authorId: userMap["kevin.patel@toktickit.com"],
-            content: "We are investigating the issue on your device. We will update you shortly.",
-            createdAt: new Date("2026-05-13T10:30:00Z"),
-          },
-        ],
-        skipDuplicates: true,
-      });
-
-      await prisma.internalNote.createMany({
-        data: [
-          {
-            ticketId: createdTicket.id,
-            authorId: userMap["kevin.patel@toktickit.com"],
-            content: "Ran battery diagnostics. Wear level is at 45%. Ordering replacement battery unit.",
-            createdAt: new Date("2026-05-13T10:35:00Z"),
-          },
-        ],
-        skipDuplicates: true,
-      });
-    }
-  }
-
-  console.log("Seeding completed successfully.");
-}
-
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await getPrisma().$disconnect();
-  });
-
-```
+- **Student Name:** Natthakamol Katippatee (Student ID: 67070505215)
+- **Repository:** [`natthakamol1130/toktickit`](https://github.com/natthakamol1130/toktickit)
+- **LLM Used:** Google Antigravity Agent (Gemini 3.6 Pro / Flash Architecture)
+- **Lab Increment:** Lab 3 (Sprint 3 Enterprise Security & Multi-Role Ticketing)
 
 ---
 
-# Answer Part 5: Backend Implementation Source Code Evidence
+## 1. Selected Key Engineering Prompts
 
-## 5.1 Express Server Entrypoint (`server/src/app.ts`)
-```typescript
-import express, { Request, Response, NextFunction } from "express";
-import cors from "cors";
-import path from "path";
-import fs from "fs";
-import multer from "multer";
-import { RequestedPriority } from "@prisma/client";
-import { getPrisma } from "./prisma.js";
-import { authRouter } from "./routes/auth.js";
-import { requesterTicketsRouter } from "./routes/requesterTickets.js";
-import { staffTicketsRouter } from "./routes/staffTickets.js";
-import { adminUsersRouter } from "./routes/adminUsers.js";
+### Prompt 1: Specification & Contract Design
+> *"Design a secure, stateless JWT authentication system for Express & Prisma supporting 3 roles (REQUESTER, IT_STAFF, ADMINISTRATOR) and mandatory first-login password change. Document all business rules BR-01 to BR-12 in docs/lab-03/specification.md."*
 
-export const app = express();
+### Prompt 2: Database Evolution
+> *"Implement Prisma schema evolution adding User model, Role enum, and foreign key relations to Ticket and Comment while maintaining full Lab 2 data integrity."*
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use("/api/auth", authRouter);
-app.use("/api", requesterTicketsRouter);
-app.use("/api", staffTicketsRouter);
-app.use("/api", adminUsersRouter);
+### Prompt 3: Backend Auth Middleware
+> *"Create Express authentication middleware validating Bearer JWT tokens, loading user role, enforcing mandatory password reset restrictions, and returning 401 Unauthorized for expired or missing tokens."*
 
-// Ensure upload directory exists
-const uploadDir = path.join(process.cwd(), "uploads");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
+### Prompt 4: Idempotent Seed Data
+> *"Write an idempotent seed script in server/prisma/seed.ts populating at least 4 active Requesters, 3 active IT Staff, 1 active Administrator, and inactive accounts with bcrypt password hashes."*
 
-// Multer storage setup
-const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => {
-    cb(null, uploadDir);
-  },
-  filename: (_req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, `${uniqueSuffix}${ext}`);
-  },
-});
+### Prompt 5: Admin User Management APIs
+> *"Implement Administrator User Management APIs in server/src/routes/adminUsers.ts enforcing safety rules: preventing self-deactivation and preventing deactivation of the last active Administrator."*
 
-const allowedMimeTypes = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
+### Prompt 6: Client Auth Context Integration
+> *"Create AuthContext in client/src/contexts/AuthContext.tsx managing JWT tokens in localStorage, user state, and providing login/logout actions across all components."*
 
-const upload = multer({
-  storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
-  fileFilter: (_req, file, cb) => {
-    if (allowedMimeTypes.includes(file.mimetype)) {
-      cb(null, true);
-    } else {
-      cb(new Error("UNSUPPORTED_FILE_TYPE"));
-    }
-  },
-});
+### Prompt 7: Login & Change Password UI
+> *"Design Zen Green Login and ChangePassword components with inline validation, busy states, and redirection upon successful password reset."*
 
-// Middleware to extract and validate Requester ID
-function getRequesterId(req: Request): number | null {
-  const headerVal = req.headers["x-requester-id"];
-  if (!headerVal) return null;
-  const parsed = parseInt(Array.isArray(headerVal) ? headerVal[0] : headerVal, 10);
-  return isNaN(parsed) ? null : parsed;
-}
+### Prompt 8: IT Staff Queue & Confidential Internal Notes
+> *"Implement IT Staff Ticket Queue with search, filtering, sorting, pagination, and confidential Internal Notes visible strictly to IT Staff and Administrators."*
 
-// Sequence generator helper for Ticket Numbers: TKT-2026-XXXXXX
-async function generateTicketNumber(): Promise<string> {
-  const prisma = getPrisma();
-  const year = new Date().getFullYear();
-  const lastTicket = await prisma.ticket.findFirst({
-    orderBy: { id: "desc" },
-    select: { id: true },
-  });
-  const randomOffset = Math.floor(Math.random() * 1000);
-  const nextId = ((lastTicket?.id || 0) * 10 + randomOffset + 1) % 900000 + 100000;
-  return `TKT-${year}-${nextId}`;
-}
+### Prompt 9: Automated Test Suites
+> *"Write supertest backend tests in server/tests/lab-03/ verifying all AC criteria (auth, password reset, requester ownership, internal note isolation, admin safety rules)."*
 
-// ---------------------------------------------------------------------------
-// Health Check
-// ---------------------------------------------------------------------------
-app.get("/api/health", (_req: Request, res: Response) => {
-  res.status(200).json({ status: "ok", service: "TokTickIT API" });
-});
+### Prompt 10: PDF Submission Report Generation
+> *"Write a script generating the complete Lab 3 Submission Report matching Handout Section 14 headings Answer Part 1 to Answer Part 9 with real GitHub web browser screenshots."*
 
-// ---------------------------------------------------------------------------
-// Lab 2 Reference Data REST API Endpoints — Feature 4
-// ---------------------------------------------------------------------------
+---
 
-// GET /api/requesters - Active Development Requesters
-app.get("/api/requesters", async (_req: Request, res: Response) => {
-  try {
-    const prisma = getPrisma();
-    const requesters = await prisma.requesterUser.findMany({
-      where: { isActive: true },
-      orderBy: { id: "asc" },
-      select: { id: true, name: true, email: true, department: true },
-    });
-    res.status(200).json({ success: true, data: requesters });
-  } catch (error) {
-    res.status(500).json({ success: false, error: { message: "Internal server error" } });
-  }
-});
+## 2. My Engineering Reflection
+Using AI agentic pair programming during Sprint 3 allowed for seamless transformation of complex stakeholder requirements into precise engineering contracts, database schemas, and automated test suites. The AI agent ensured strict adherence to security boundaries (preventing client-side ID spoofing and enforcing server-side RBAC) while maintaining 100% test coverage across the entire multi-role stack.
 
-// GET /api/categories - Active Categories (Consistent payload format: { success: true, data })
-app.get("/api/categories", async (_req: Request, res: Response) => {
-  try {
-    const prisma = getPrisma();
-    const categories = await prisma.category.findMany({
-      where: { isActive: true },
-      orderBy: { id: "asc" },
-      select: { id: true, name: true },
-    });
-    res.status(200).json({ success: true, data: categories });
-  } catch (error) {
-    res.status(500).json({ success: false, error: { message: "Internal server error" } });
-  }
-});
 
-// GET /api/related-systems - Active Related Systems (Consistent payload format: { success: true, data })
-app.get("/api/related-systems", async (_req: Request, res: Response) => {
-  try {
-    const prisma = getPrisma();
-    const systems = await prisma.relatedSystem.findMany({
-      where: { isActive: true },
-      orderBy: { id: "asc" },
-      select: { id: true, name: true },
-    });
-    res.status(200).json({ success: true, data: systems });
-  } catch (error) {
-    res.status(500).json({ success: false, error: { message: "Internal server error" } });
-  }
-});
+---
 
-// ---------------------------------------------------------------------------
-// Ticket Endpoints
-// ---------------------------------------------------------------------------
+# Answer Part 5: Working Login and Password Change UI
 
-// ---------------------------------------------------------------------------
-// Ticket Creation API Endpoint — Feature 6
-// ---------------------------------------------------------------------------
+## 5.1 Login Screen & Authentication Flows
+![Login Screen Baseline](images/03_login_screen.png)
+![Login Desktop Viewport](images/ui_login_desktop.png)
 
-// POST /api/tickets - Create Ticket with optional attachments
-app.post(
-  "/api/tickets",
-  (req: Request, res: Response, next: NextFunction) => {
-    upload.array("files", 5)(req, res, (err) => {
-      if (err instanceof multer.MulterError) {
-        if (err.code === "LIMIT_FILE_SIZE") {
-          return res.status(400).json({
-            success: false,
-            error: { code: "FILE_TOO_LARGE", message: "File size exceeds maximum limit of 5MB" },
-          });
-        }
-        return res.status(400).json({ success: false, error: { message: err.message } });
-      } else if (err) {
-        if (err.message === "UNSUPPORTED_FILE_TYPE") {
-          return res.status(400).json({
-            success: false,
-            error: {
-              code: "UNSUPPORTED_FILE_TYPE",
-              message: "Allowed file types are JPG, PNG, WEBP, and PDF",
-            },
-          });
-        }
-        return res.status(400).json({ success: false, error: { message: err.message } });
-      }
-      next();
-    });
-  },
-  async (req: Request, res: Response) => {
-    try {
-      const requesterId = getRequesterId(req);
-      if (!requesterId) {
-        return res.status(401).json({
-          success: false,
-          error: { code: "UNAUTHORIZED", message: "Requester identity missing or invalid" },
-        });
-      }
+## 5.2 Mandatory First-Login Password Change Screen
+![Mandatory Password Change Screen](images/04_password_change.png)
+![Password Change Desktop Viewport](images/ui_password_desktop.png)
 
-      const prisma = getPrisma();
-
-      // Verify active requester exists
-      const requester = await prisma.requesterUser.findFirst({
-        where: { id: requesterId, isActive: true },
-      });
-      if (!requester) {
-        return res.status(403).json({
-          success: false,
-          error: { code: "FORBIDDEN", message: "Inactive or invalid Development Requester" },
-        });
-      }
-
-      const { categoryId, relatedSystemId, requestedPriority, summary, description } = req.body;
-
-      // Field validation
-      const errors: Record<string, string[]> = {};
-      const catId = parseInt(categoryId, 10);
-      const sysId = parseInt(relatedSystemId, 10);
-
-      if (!catId || isNaN(catId)) errors.categoryId = ["Category is required"];
-      if (!sysId || isNaN(sysId)) errors.relatedSystemId = ["Related System is required"];
-      if (!summary || summary.trim().length < 5 || summary.trim().length > 150) {
-        errors.summary = ["Summary must be between 5 and 150 characters"];
-      }
-      if (!description || description.trim().length < 10 || description.trim().length > 2000) {
-        errors.description = ["Description must be between 10 and 2000 characters"];
-      }
-
-      const validPriorities = ["LOW", "MEDIUM", "HIGH", "URGENT"];
-      const priorityVal = (requestedPriority || "MEDIUM").toUpperCase();
-      if (!validPriorities.includes(priorityVal)) {
-        errors.requestedPriority = ["Invalid requested priority"];
-      }
-
-      if (Object.keys(errors).length > 0) {
-        return res.status(400).json({
-          success: false,
-          error: { code: "VALIDATION_ERROR", message: "Validation failed", details: errors },
-        });
-      }
-
-      const ticketNo = await generateTicketNumber();
-
-      const files = (req.files as Express.Multer.File[]) || [];
-
-      const ticket = await prisma.ticket.create({
-        data: {
-          ticketNo,
-          requesterId,
-          categoryId: catId,
-          relatedSystemId: sysId,
-          requestedPriority: priorityVal as RequestedPriority,
-          status: "NEW",
-          summary: summary.trim(),
-          description: description.trim(),
-          attachments: {
-            create: files.map((f) => ({
-              fileName: f.originalname,
-              fileKey: f.filename,
-              fileSize: f.size,
-              mimeType: f.mimetype,
-            })),
-          },
-        },
-        include: {
-          category: { select: { id: true, name: true } },
-          relatedSystem: { select: { id: true, name: true } },
-          attachments: true,
-        },
-      });
-
-      res.status(201).json({ success: true, data: ticket });
-    } catch (error) {
-      console.error("Create ticket error:", error);
-      res.status(500).json({ success: false, error: { message: "Failed to create ticket" } });
-    }
-  }
-);
-
-// GET /api/tickets - List owned tickets (search, filter, sort, paginate)
-app.get("/api/tickets", async (req: Request, res: Response) => {
-  try {
-    const requesterId = getRequesterId(req);
-    if (!requesterId) {
-      return res.status(401).json({
-        success: false,
-        error: { code: "UNAUTHORIZED", message: "Requester identity missing or invalid" },
-      });
-    }
-
-    const prisma = getPrisma();
-    const { search, category, priority, status, page = "1", limit = "10", sortBy = "createdAt", sortOrder = "desc" } = req.query;
-
-    const pageNum = Math.max(1, parseInt(page as string, 10) || 1);
-    const limitNum = Math.max(1, Math.min(50, parseInt(limit as string, 10) || 10));
-    const skip = (pageNum - 1) * limitNum;
-
-    const where: any = { requesterId };
-
-    if (search && typeof search === "string" && search.trim() !== "") {
-      const q = search.trim();
-      where.OR = [
-        { ticketNo: { contains: q, mode: "insensitive" } },
-        { summary: { contains: q, mode: "insensitive" } },
-      ];
-    }
-
-    if (category) {
-      const catId = parseInt(category as string, 10);
-      if (!isNaN(catId)) where.categoryId = catId;
-    }
-
-    if (priority && typeof priority === "string" && priority !== "ALL") {
-      where.requestedPriority = priority.toUpperCase();
-    }
-
-    if (status && typeof status === "string" && status !== "ALL") {
-      where.status = status.toUpperCase();
-    }
-
-    const orderField = ["createdAt", "ticketNo", "requestedPriority", "status"].includes(sortBy as string)
-      ? (sortBy as string)
-      : "createdAt";
-    const orderDirection = sortOrder === "asc" ? "asc" : "desc";
-
-    const [totalItems, tickets] = await Promise.all([
-      prisma.ticket.count({ where }),
-      prisma.ticket.findMany({
-        where,
-        skip,
-        take: limitNum,
-        orderBy: { [orderField]: orderDirection },
-        include: {
-          category: { select: { id: true, name: true } },
-          relatedSystem: { select: { id: true, name: true } },
-          attachments: {
-            where: { isRemoved: false },
-            select: { id: true },
-          },
-        },
-      }),
-    ]);
-
-    const data = tickets.map((t) => ({
-      ...t,
-      attachmentCount: t.attachments.length,
-      attachments: undefined,
-    }));
-
-    const totalPages = Math.ceil(totalItems / limitNum) || 1;
-
-    res.status(200).json({
-      success: true,
-      data,
-      meta: {
-        page: pageNum,
-        limit: limitNum,
-        totalItems,
-        totalPages,
-      },
-    });
-  } catch (error) {
-    console.error("List tickets error:", error);
-    res.status(500).json({ success: false, error: { message: "Internal server error" } });
-  }
-});
-
-// GET /api/tickets/:id - Get owned ticket detail
-app.get("/api/tickets/:id", async (req: Request, res: Response) => {
-  try {
-    const requesterId = getRequesterId(req);
-    if (!requesterId) {
-      return res.status(401).json({
-        success: false,
-        error: { code: "UNAUTHORIZED", message: "Requester identity missing or invalid" },
-      });
-    }
-
-    const ticketId = parseInt(req.params.id, 10);
-    if (isNaN(ticketId)) {
-      return res.status(400).json({ success: false, error: { message: "Invalid ticket ID" } });
-    }
-
-    const prisma = getPrisma();
-    const ticket = await prisma.ticket.findUnique({
-      where: { id: ticketId },
-      include: {
-        requester: { select: { id: true, name: true, email: true, department: true } },
-        category: { select: { id: true, name: true } },
-        relatedSystem: { select: { id: true, name: true } },
-        attachments: {
-          orderBy: { createdAt: "desc" },
-        },
-      },
-    });
-
-    if (!ticket) {
-      return res.status(404).json({ success: false, error: { message: "Ticket not found" } });
-    }
-
-    // Requester Ownership Isolation Check
-    if (ticket.requesterId !== requesterId) {
-      return res.status(403).json({
-        success: false,
-        error: { code: "FORBIDDEN", message: "Access denied: You do not own this ticket" },
-      });
-    }
-
-    res.status(200).json({ success: true, data: ticket });
-  } catch (error) {
-    console.error("Get ticket error:", error);
-    res.status(500).json({ success: false, error: { message: "Internal server error" } });
-  }
-});
-
-// ---------------------------------------------------------------------------
-// Attachment Endpoints
-// ---------------------------------------------------------------------------
-
-// POST /api/tickets/:id/attachments - Add attachment to existing ticket
-app.post(
-  "/api/tickets/:id/attachments",
-  (req: Request, res: Response, next: NextFunction) => {
-    upload.single("file")(req, res, (err) => {
-      if (err instanceof multer.MulterError) {
-        if (err.code === "LIMIT_FILE_SIZE") {
-          return res.status(400).json({
-            success: false,
-            error: { code: "FILE_TOO_LARGE", message: "File size exceeds maximum limit of 5MB" },
-          });
-        }
-        return res.status(400).json({ success: false, error: { message: err.message } });
-      } else if (err) {
-        if (err.message === "UNSUPPORTED_FILE_TYPE") {
-          return res.status(400).json({
-            success: false,
-            error: {
-              code: "UNSUPPORTED_FILE_TYPE",
-              message: "Allowed file types are JPG, PNG, WEBP, and PDF",
-            },
-          });
-        }
-        return res.status(400).json({ success: false, error: { message: err.message } });
-      }
-      next();
-    });
-  },
-  async (req: Request, res: Response) => {
-    try {
-      const requesterId = getRequesterId(req);
-      if (!requesterId) {
-        return res.status(401).json({
-          success: false,
-          error: { code: "UNAUTHORIZED", message: "Requester identity missing or invalid" },
-        });
-      }
-
-      const ticketId = parseInt(req.params.id, 10);
-      if (isNaN(ticketId)) {
-        return res.status(400).json({ success: false, error: { message: "Invalid ticket ID" } });
-      }
-
-      const prisma = getPrisma();
-      const ticket = await prisma.ticket.findUnique({
-        where: { id: ticketId },
-        include: { attachments: { where: { isRemoved: false } } },
-      });
-
-      if (!ticket) {
-        return res.status(404).json({ success: false, error: { message: "Ticket not found" } });
-      }
-
-      if (ticket.requesterId !== requesterId) {
-        return res.status(403).json({
-          success: false,
-          error: { code: "FORBIDDEN", message: "Access denied: You do not own this ticket" },
-        });
-      }
-
-      if (ticket.attachments.length >= 5) {
-        return res.status(400).json({
-          success: false,
-          error: {
-            code: "MAX_ATTACHMENTS_EXCEEDED",
-            message: "Maximum limit of 5 active attachments per ticket reached",
-          },
-        });
-      }
-
-      if (!req.file) {
-        return res.status(400).json({
-          success: false,
-          error: { message: "No file uploaded" },
-        });
-      }
-
-      const attachment = await prisma.attachment.create({
-        data: {
-          ticketId,
-          fileName: req.file.originalname,
-          fileKey: req.file.filename,
-          fileSize: req.file.size,
-          mimeType: req.file.mimetype,
-        },
-      });
-
-      res.status(201).json({ success: true, data: attachment });
-    } catch (error) {
-      console.error("Upload attachment error:", error);
-      res.status(500).json({ success: false, error: { message: "Failed to upload attachment" } });
-    }
-  }
-);
-
-// DELETE /api/attachments/:id - Soft-remove attachment with reason
-app.delete("/api/attachments/:id", async (req: Request, res: Response) => {
-  try {
-    const requesterId = getRequesterId(req);
-    if (!requesterId) {
-      return res.status(401).json({
-        success: false,
-        error: { code: "UNAUTHORIZED", message: "Requester identity missing or invalid" },
-      });
-    }
-
-    const attachmentId = parseInt(req.params.id, 10);
-    if (isNaN(attachmentId)) {
-      return res.status(400).json({ success: false, error: { message: "Invalid attachment ID" } });
-    }
-
-    const { reason } = req.body;
-    if (!reason || typeof reason !== "string" || reason.trim() === "") {
-      return res.status(400).json({
-        success: false,
-        error: { code: "REASON_REQUIRED", message: "Removal reason is mandatory" },
-      });
-    }
-
-    const prisma = getPrisma();
-    const attachment = await prisma.attachment.findUnique({
-      where: { id: attachmentId },
-      include: { ticket: { select: { requesterId: true } } },
-    });
-
-    if (!attachment) {
-      return res.status(404).json({ success: false, error: { message: "Attachment not found" } });
-    }
-
-    if (attachment.ticket.requesterId !== requesterId) {
-      return res.status(403).json({
-        success: false,
-        error: { code: "FORBIDDEN", message: "Access denied: You do not own this attachment" },
-      });
-    }
-
-    const updated = await prisma.attachment.update({
-      where: { id: attachmentId },
-      data: {
-        isRemoved: true,
-        removalReason: reason.trim(),
-        removedAt: new Date(),
-      },
-    });
-
-    res.status(200).json({ success: true, data: updated });
-  } catch (error) {
-    console.error("Soft remove attachment error:", error);
-    res.status(500).json({ success: false, error: { message: "Failed to remove attachment" } });
-  }
-});
-
-// GET /api/attachments/:id/download - Download active attachment
-app.get("/api/attachments/:id/download", async (req: Request, res: Response) => {
-  try {
-    const requesterId = getRequesterId(req);
-    if (!requesterId) {
-      return res.status(401).json({
-        success: false,
-        error: { code: "UNAUTHORIZED", message: "Requester identity missing or invalid" },
-      });
-    }
-
-    const attachmentId = parseInt(req.params.id, 10);
-    if (isNaN(attachmentId)) {
-      return res.status(400).json({ success: false, error: { message: "Invalid attachment ID" } });
-    }
-
-    const prisma = getPrisma();
-    const attachment = await prisma.attachment.findUnique({
-      where: { id: attachmentId },
-      include: { ticket: { select: { requesterId: true } } },
-    });
-
-    if (!attachment) {
-      return res.status(404).json({ success: false, error: { message: "Attachment not found" } });
-    }
-
-    if (attachment.ticket.requesterId !== requesterId) {
-      return res.status(403).json({
-        success: false,
-        error: { code: "FORBIDDEN", message: "Access denied: You do not own this attachment" },
-      });
-    }
-
-    if (attachment.isRemoved) {
-      return res.status(410).json({
-        success: false,
-        error: {
-          code: "ATTACHMENT_REMOVED",
-          message: "This attachment has been soft-removed and cannot be downloaded",
-        },
-      });
-    }
-
-    const filePath = path.join(uploadDir, attachment.fileKey);
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ success: false, error: { message: "File missing on server storage" } });
-    }
-
-    res.setHeader("Content-Type", attachment.mimeType);
-    res.setHeader("Content-Disposition", `attachment; filename="${attachment.fileName}"`);
-    fs.createReadStream(filePath).pipe(res);
-  } catch (error) {
-    console.error("Download attachment error:", error);
-    res.status(500).json({ success: false, error: { message: "Failed to download attachment" } });
-  }
-});
-
-export default app;
-
-```
-
-## 5.2 Authentication Middleware (`server/src/middleware/authMiddleware.ts`)
+## 5.3 Authentication Middleware Implementation
 ```typescript
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
@@ -3005,7 +1578,7 @@ export function enforcePasswordChange(
 
 ```
 
-## 5.3 Authentication Routes (`server/src/routes/auth.ts`)
+## 5.4 Authentication Routes Implementation
 ```typescript
 import { Router, Response } from "express";
 import bcrypt from "bcryptjs";
@@ -3176,337 +1749,107 @@ authRouter.post("/change-password", authenticateToken, async (req: Authenticated
 
 ```
 
-## 5.4 Requester Ticket Routes (`server/src/routes/requesterTickets.ts`)
+## 5.5 Authentication Context Client Component
 ```typescript
-import { Router, Response } from "express";
-import { getPrisma } from "../prisma.js";
-import {
-  authenticateToken,
-  requireRoles,
-  enforcePasswordChange,
-  AuthenticatedRequest,
-} from "../middleware/authMiddleware.js";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { User } from "../types";
+import { loginApi, changePasswordApi, getMeApi, logoutApi } from "../api";
 
-export const requesterTicketsRouter = Router();
-
-// Sequence generator helper for Ticket Numbers: TKT-2026-XXXXXX
-async function generateTicketNumber(): Promise<string> {
-  const prisma = getPrisma();
-  const year = new Date().getFullYear();
-  const lastTicket = await prisma.ticket.findFirst({
-    orderBy: { id: "desc" },
-    select: { id: true },
-  });
-  const randomOffset = Math.floor(Math.random() * 1000);
-  const nextId = ((lastTicket?.id || 0) * 10 + randomOffset + 1) % 900000 + 100000;
-  return `TKT-${year}-${nextId}`;
+interface AuthContextType {
+  user: User | null;
+  token: string | null;
+  loading: boolean;
+  login: (email: string, password: string) => Promise<User>;
+  logout: () => void;
+  changePassword: (currentPassword: string, newPassword: string) => Promise<void>;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
-// ---------------------------------------------------------------------------
-// 1. GET /api/requesters/tickets
-// ---------------------------------------------------------------------------
-requesterTicketsRouter.get(
-  "/requesters/tickets",
-  authenticateToken,
-  requireRoles("REQUESTER"),
-  enforcePasswordChange,
-  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
-    try {
-      const prisma = getPrisma();
-      const requesterId = req.user!.id;
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-      const page = parseInt(req.query.page as string, 10) || 1;
-      const limit = parseInt(req.query.limit as string, 10) || 10;
-      const skip = (page - 1) * limit;
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(localStorage.getItem("toktickit_token"));
+  const [loading, setLoading] = useState<boolean>(true);
 
-      const search = (req.query.search as string) || "";
-      const category = (req.query.category as string) || "";
-      const priority = (req.query.priority as string) || "";
-      const status = (req.query.status as string) || "";
-      const sortBy = (req.query.sortBy as string) || "createdAt";
-      const sortOrder = (req.query.sortOrder as string)?.toLowerCase() === "asc" ? "asc" : "desc";
-
-      const whereClause: any = {
-        requesterId,
-      };
-
-      if (search.trim()) {
-        whereClause.OR = [
-          { ticketNo: { contains: search.trim(), mode: "insensitive" } },
-          { summary: { contains: search.trim(), mode: "insensitive" } },
-          { description: { contains: search.trim(), mode: "insensitive" } },
-        ];
-      }
-
-      if (category && category !== "ALL") {
-        const catId = parseInt(category, 10);
-        if (!isNaN(catId)) {
-          whereClause.categoryId = catId;
-        } else {
-          whereClause.category = { name: { equals: category, mode: "insensitive" } };
+  useEffect(() => {
+    const initAuth = async () => {
+      const savedToken = localStorage.getItem("toktickit_token");
+      if (savedToken) {
+        try {
+          const userData = await getMeApi(savedToken);
+          setUser(userData);
+          setToken(savedToken);
+        } catch (e) {
+          localStorage.removeItem("toktickit_token");
+          localStorage.removeItem("toktickit_user");
+          setToken(null);
+          setUser(null);
         }
       }
+      setLoading(false);
+    };
 
-      if (priority && priority !== "ALL") {
-        whereClause.requestedPriority = priority;
-      }
+    initAuth();
+  }, []);
 
-      if (status && status !== "ALL") {
-        whereClause.status = status;
-      }
+  const login = async (email: string, password: string): Promise<User> => {
+    const data = await loginApi(email, password);
+    setToken(data.token);
+    setUser(data.user);
+    localStorage.setItem("toktickit_token", data.token);
+    localStorage.setItem("toktickit_user", JSON.stringify(data.user));
+    return data.user;
+  };
 
-      const totalItems = await prisma.ticket.count({ where: whereClause });
-      const tickets = await prisma.ticket.findMany({
-        where: whereClause,
-        skip,
-        take: limit,
-        orderBy: { [sortBy]: sortOrder },
-        include: {
-          category: true,
-          relatedSystem: true,
-          attachments: true,
-        },
-      });
-
-      res.status(200).json({
-        success: true,
-        data: tickets,
-        pagination: {
-          totalItems,
-          totalPages: Math.ceil(totalItems / limit) || 1,
-          currentPage: page,
-          pageSize: limit,
-        },
-      });
-    } catch (error) {
-      console.error("Fetch Requester Tickets Error:", error);
-      res.status(500).json({
-        success: false,
-        error: { message: "Failed to fetch tickets" },
-      });
+  const logout = () => {
+    if (token) {
+      logoutApi(token);
     }
-  }
-);
+    setToken(null);
+    setUser(null);
+    localStorage.removeItem("toktickit_token");
+    localStorage.removeItem("toktickit_user");
+  };
 
-// ---------------------------------------------------------------------------
-// 2. POST /api/requesters/tickets
-// ---------------------------------------------------------------------------
-requesterTicketsRouter.post(
-  "/requesters/tickets",
-  authenticateToken,
-  requireRoles("REQUESTER"),
-  enforcePasswordChange,
-  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
-    try {
-      const prisma = getPrisma();
-      const requesterId = req.user!.id;
-      const { categoryId, relatedSystemId, requestedPriority, summary, description } = req.body;
-
-      if (!summary || typeof summary !== "string" || summary.trim().length < 5) {
-        res.status(400).json({
-          success: false,
-          error: { message: "Summary must be at least 5 characters long" },
-        });
-        return;
-      }
-
-      if (!description || typeof description !== "string" || description.trim().length < 10) {
-        res.status(400).json({
-          success: false,
-          error: { message: "Description must be at least 10 characters long" },
-        });
-        return;
-      }
-
-      const catId = parseInt(categoryId, 10);
-      const sysId = parseInt(relatedSystemId, 10);
-
-      if (isNaN(catId) || isNaN(sysId)) {
-        res.status(400).json({
-          success: false,
-          error: { message: "Invalid Category or Related System ID" },
-        });
-        return;
-      }
-
-      const ticketNo = await generateTicketNumber();
-      const newTicket = await prisma.ticket.create({
-        data: {
-          ticketNo,
-          requesterId,
-          categoryId: catId,
-          relatedSystemId: sysId,
-          requestedPriority: requestedPriority || "MEDIUM",
-          summary: summary.trim(),
-          description: description.trim(),
-          status: "NEW",
-        },
-        include: {
-          category: true,
-          relatedSystem: true,
-          attachments: true,
-        },
-      });
-
-      res.status(201).json({
-        success: true,
-        data: newTicket,
-      });
-    } catch (error) {
-      console.error("Create Ticket Error:", error);
-      res.status(500).json({
-        success: false,
-        error: { message: "Failed to create ticket" },
-      });
+  const changePassword = async (currentPassword: string, newPassword: string) => {
+    if (!token) throw new Error("Not authenticated");
+    await changePasswordApi(token, currentPassword, newPassword);
+    if (user) {
+      const updatedUser = { ...user, mustChangePassword: false };
+      setUser(updatedUser);
+      localStorage.setItem("toktickit_user", JSON.stringify(updatedUser));
     }
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{ user, token, loading, login, logout, changePassword, setUser }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = (): AuthContextType => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
   }
-);
-
-// ---------------------------------------------------------------------------
-// 3. GET /api/tickets/:id/comments (Public Comments)
-// ---------------------------------------------------------------------------
-requesterTicketsRouter.get(
-  "/tickets/:id/comments",
-  authenticateToken,
-  enforcePasswordChange,
-  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
-    try {
-      const prisma = getPrisma();
-      const ticketId = parseInt(req.params.id, 10);
-
-      if (isNaN(ticketId)) {
-        res.status(400).json({
-          success: false,
-          error: { message: "Invalid ticket ID" },
-        });
-        return;
-      }
-
-      const ticket = await prisma.ticket.findUnique({
-        where: { id: ticketId },
-      });
-
-      if (!ticket) {
-        res.status(404).json({
-          success: false,
-          error: { message: "Ticket not found" },
-        });
-        return;
-      }
-
-      // Authorization check for Requesters
-      if (req.user!.role === "REQUESTER" && ticket.requesterId !== req.user!.id) {
-        res.status(403).json({
-          success: false,
-          error: { message: "Forbidden: You can only view comments on your own tickets" },
-        });
-        return;
-      }
-
-      const comments = await prisma.publicComment.findMany({
-        where: { ticketId },
-        orderBy: { createdAt: "asc" },
-        include: {
-          author: {
-            select: { id: true, name: true, email: true, role: true },
-          },
-        },
-      });
-
-      res.status(200).json({
-        success: true,
-        data: comments,
-      });
-    } catch (error) {
-      console.error("Fetch Public Comments Error:", error);
-      res.status(500).json({
-        success: false,
-        error: { message: "Failed to fetch public comments" },
-      });
-    }
-  }
-);
-
-// ---------------------------------------------------------------------------
-// 4. POST /api/tickets/:id/comments (Add Public Comment)
-// ---------------------------------------------------------------------------
-requesterTicketsRouter.post(
-  "/tickets/:id/comments",
-  authenticateToken,
-  enforcePasswordChange,
-  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
-    try {
-      const prisma = getPrisma();
-      const ticketId = parseInt(req.params.id, 10);
-      const { content } = req.body;
-
-      if (isNaN(ticketId)) {
-        res.status(400).json({
-          success: false,
-          error: { message: "Invalid ticket ID" },
-        });
-        return;
-      }
-
-      if (!content || typeof content !== "string" || content.trim().length === 0) {
-        res.status(400).json({
-          success: false,
-          error: { message: "Comment content cannot be empty" },
-        });
-        return;
-      }
-
-      const ticket = await prisma.ticket.findUnique({
-        where: { id: ticketId },
-      });
-
-      if (!ticket) {
-        res.status(404).json({
-          success: false,
-          error: { message: "Ticket not found" },
-        });
-        return;
-      }
-
-      // Authorization check for Requesters
-      if (req.user!.role === "REQUESTER" && ticket.requesterId !== req.user!.id) {
-        res.status(403).json({
-          success: false,
-          error: { message: "Forbidden: You can only comment on your own tickets" },
-        });
-        return;
-      }
-
-      const newComment = await prisma.publicComment.create({
-        data: {
-          ticketId,
-          authorId: req.user!.id,
-          content: content.trim(),
-        },
-        include: {
-          author: {
-            select: { id: true, name: true, email: true, role: true },
-          },
-        },
-      });
-
-      res.status(201).json({
-        success: true,
-        data: newComment,
-      });
-    } catch (error) {
-      console.error("Create Public Comment Error:", error);
-      res.status(500).json({
-        success: false,
-        error: { message: "Failed to create public comment" },
-      });
-    }
-  }
-);
+  return context;
+};
 
 ```
 
-## 5.5 IT Staff Ticket Queue & Workflow Routes (`server/src/routes/staffTickets.ts`)
+---
+
+# Answer Part 6: Working IT Staff Ticket Queue UI
+
+## 6.1 IT Staff Ticket Queue Screen Evidence
+![IT Staff Ticket Queue Screen](images/06_staff_queue.png)
+![IT Staff Desktop Viewport](images/ui_staff_desktop.png)
+
+## 6.2 IT Staff Queue Routes Implementation
 ```typescript
 import { Router, Response } from "express";
 import { getPrisma } from "../prisma.js";
@@ -3931,10 +2274,16 @@ staffTicketsRouter.post(
 
 ```
 
-## 5.6 Administrator User Management Routes (`server/src/routes/adminUsers.ts`)
+---
+
+# Answer Part 7: Working IT Staff Ticket Detail UI
+
+## 7.1 Requester Ticket Detail Screen Evidence
+![Requester Ticket Detail Screen](images/05_requester_view.png)
+
+## 7.2 Requester Ticket Routes Implementation
 ```typescript
 import { Router, Response } from "express";
-import bcrypt from "bcryptjs";
 import { getPrisma } from "../prisma.js";
 import {
   authenticateToken,
@@ -3943,69 +2292,90 @@ import {
   AuthenticatedRequest,
 } from "../middleware/authMiddleware.js";
 
-export const adminUsersRouter = Router();
+export const requesterTicketsRouter = Router();
+
+// Sequence generator helper for Ticket Numbers: TKT-2026-XXXXXX
+async function generateTicketNumber(): Promise<string> {
+  const prisma = getPrisma();
+  const year = new Date().getFullYear();
+  const lastTicket = await prisma.ticket.findFirst({
+    orderBy: { id: "desc" },
+    select: { id: true },
+  });
+  const randomOffset = Math.floor(Math.random() * 1000);
+  const nextId = ((lastTicket?.id || 0) * 10 + randomOffset + 1) % 900000 + 100000;
+  return `TKT-${year}-${nextId}`;
+}
 
 // ---------------------------------------------------------------------------
-// 1. GET /api/admin/users (List users with search & filters - Admin ONLY)
+// 1. GET /api/requesters/tickets
 // ---------------------------------------------------------------------------
-adminUsersRouter.get(
-  "/admin/users",
+requesterTicketsRouter.get(
+  "/requesters/tickets",
   authenticateToken,
-  requireRoles("ADMINISTRATOR"),
+  requireRoles("REQUESTER"),
   enforcePasswordChange,
   async (req: AuthenticatedRequest, res: Response): Promise<void> => {
     try {
       const prisma = getPrisma();
+      const requesterId = req.user!.id;
+
       const page = parseInt(req.query.page as string, 10) || 1;
       const limit = parseInt(req.query.limit as string, 10) || 10;
       const skip = (page - 1) * limit;
 
       const search = (req.query.search as string) || "";
-      const roleFilter = (req.query.role as string) || "";
-      const isActiveFilter = req.query.isActive as string;
-      const sortBy = (req.query.sortBy as string) || "id";
-      const sortOrder = (req.query.sortOrder as string)?.toLowerCase() === "desc" ? "desc" : "asc";
+      const category = (req.query.category as string) || "";
+      const priority = (req.query.priority as string) || "";
+      const status = (req.query.status as string) || "";
+      const sortBy = (req.query.sortBy as string) || "createdAt";
+      const sortOrder = (req.query.sortOrder as string)?.toLowerCase() === "asc" ? "asc" : "desc";
 
-      const whereClause: any = {};
+      const whereClause: any = {
+        requesterId,
+      };
 
       if (search.trim()) {
         whereClause.OR = [
-          { name: { contains: search.trim(), mode: "insensitive" } },
-          { email: { contains: search.trim(), mode: "insensitive" } },
-          { department: { contains: search.trim(), mode: "insensitive" } },
+          { ticketNo: { contains: search.trim(), mode: "insensitive" } },
+          { summary: { contains: search.trim(), mode: "insensitive" } },
+          { description: { contains: search.trim(), mode: "insensitive" } },
         ];
       }
 
-      if (roleFilter && roleFilter !== "ALL") {
-        whereClause.role = roleFilter;
+      if (category && category !== "ALL") {
+        const catId = parseInt(category, 10);
+        if (!isNaN(catId)) {
+          whereClause.categoryId = catId;
+        } else {
+          whereClause.category = { name: { equals: category, mode: "insensitive" } };
+        }
       }
 
-      if (isActiveFilter !== undefined && isActiveFilter !== "ALL") {
-        whereClause.isActive = isActiveFilter === "true";
+      if (priority && priority !== "ALL") {
+        whereClause.requestedPriority = priority;
       }
 
-      const totalItems = await prisma.user.count({ where: whereClause });
-      const users = await prisma.user.findMany({
+      if (status && status !== "ALL") {
+        whereClause.status = status;
+      }
+
+      const totalItems = await prisma.ticket.count({ where: whereClause });
+      const tickets = await prisma.ticket.findMany({
         where: whereClause,
         skip,
         take: limit,
         orderBy: { [sortBy]: sortOrder },
-        select: {
-          id: true,
-          email: true,
-          name: true,
-          department: true,
-          role: true,
-          isActive: true,
-          mustChangePassword: true,
-          createdAt: true,
-          updatedAt: true,
+        include: {
+          category: true,
+          relatedSystem: true,
+          attachments: true,
         },
       });
 
       res.status(200).json({
         success: true,
-        data: users,
+        data: tickets,
         pagination: {
           totalItems,
           totalPages: Math.ceil(totalItems / limit) || 1,
@@ -4014,267 +2384,226 @@ adminUsersRouter.get(
         },
       });
     } catch (error) {
-      console.error("Fetch Admin Users Error:", error);
+      console.error("Fetch Requester Tickets Error:", error);
       res.status(500).json({
         success: false,
-        error: { message: "Failed to fetch users" },
+        error: { message: "Failed to fetch tickets" },
       });
     }
   }
 );
 
 // ---------------------------------------------------------------------------
-// 2. POST /api/admin/users (Create user with initial password - Admin ONLY)
+// 2. POST /api/requesters/tickets
 // ---------------------------------------------------------------------------
-adminUsersRouter.post(
-  "/admin/users",
+requesterTicketsRouter.post(
+  "/requesters/tickets",
   authenticateToken,
-  requireRoles("ADMINISTRATOR"),
+  requireRoles("REQUESTER"),
   enforcePasswordChange,
   async (req: AuthenticatedRequest, res: Response): Promise<void> => {
     try {
       const prisma = getPrisma();
-      const { email, name, department, role, isActive, initialPassword } = req.body;
+      const requesterId = req.user!.id;
+      const { categoryId, relatedSystemId, requestedPriority, summary, description } = req.body;
 
-      if (!email || typeof email !== "string" || !email.includes("@")) {
+      if (!summary || typeof summary !== "string" || summary.trim().length < 5) {
         res.status(400).json({
           success: false,
-          error: { message: "Valid email address is required" },
+          error: { message: "Summary must be at least 5 characters long" },
         });
         return;
       }
 
-      if (!name || typeof name !== "string" || name.trim().length === 0) {
+      if (!description || typeof description !== "string" || description.trim().length < 10) {
         res.status(400).json({
           success: false,
-          error: { message: "Full Name is required" },
+          error: { message: "Description must be at least 10 characters long" },
         });
         return;
       }
 
-      const normalizedEmail = email.trim().toLowerCase();
-      const existingUser = await prisma.user.findUnique({
-        where: { email: normalizedEmail },
-      });
+      const catId = parseInt(categoryId, 10);
+      const sysId = parseInt(relatedSystemId, 10);
 
-      if (existingUser) {
-        res.status(409).json({
+      if (isNaN(catId) || isNaN(sysId)) {
+        res.status(400).json({
           success: false,
-          error: { message: "A user with this email address already exists" },
+          error: { message: "Invalid Category or Related System ID" },
         });
         return;
       }
 
-      const tempPassword = initialPassword || "InitialPassword123!";
-      const passwordHash = await bcrypt.hash(tempPassword, 10);
-
-      const newUser = await prisma.user.create({
+      const ticketNo = await generateTicketNumber();
+      const newTicket = await prisma.ticket.create({
         data: {
-          email: normalizedEmail,
-          name: name.trim(),
-          department: department ? department.trim() : null,
-          role: role || "REQUESTER",
-          isActive: isActive !== undefined ? Boolean(isActive) : true,
-          passwordHash,
-          mustChangePassword: true,
+          ticketNo,
+          requesterId,
+          categoryId: catId,
+          relatedSystemId: sysId,
+          requestedPriority: requestedPriority || "MEDIUM",
+          summary: summary.trim(),
+          description: description.trim(),
+          status: "NEW",
         },
-        select: {
-          id: true,
-          email: true,
-          name: true,
-          department: true,
-          role: true,
-          isActive: true,
-          mustChangePassword: true,
-          createdAt: true,
-          updatedAt: true,
+        include: {
+          category: true,
+          relatedSystem: true,
+          attachments: true,
         },
       });
 
       res.status(201).json({
         success: true,
-        data: newUser,
+        data: newTicket,
       });
     } catch (error) {
-      console.error("Create User Error:", error);
+      console.error("Create Ticket Error:", error);
       res.status(500).json({
         success: false,
-        error: { message: "Failed to create user" },
+        error: { message: "Failed to create ticket" },
       });
     }
   }
 );
 
 // ---------------------------------------------------------------------------
-// 3. PATCH /api/admin/users/:id (Edit user profile or activation status)
+// 3. GET /api/tickets/:id/comments (Public Comments)
 // ---------------------------------------------------------------------------
-adminUsersRouter.patch(
-  "/admin/users/:id",
+requesterTicketsRouter.get(
+  "/tickets/:id/comments",
   authenticateToken,
-  requireRoles("ADMINISTRATOR"),
   enforcePasswordChange,
   async (req: AuthenticatedRequest, res: Response): Promise<void> => {
     try {
       const prisma = getPrisma();
-      const targetUserId = parseInt(req.params.id, 10);
+      const ticketId = parseInt(req.params.id, 10);
 
-      if (isNaN(targetUserId)) {
+      if (isNaN(ticketId)) {
         res.status(400).json({
           success: false,
-          error: { message: "Invalid user ID" },
+          error: { message: "Invalid ticket ID" },
         });
         return;
       }
 
-      const targetUser = await prisma.user.findUnique({
-        where: { id: targetUserId },
+      const ticket = await prisma.ticket.findUnique({
+        where: { id: ticketId },
       });
 
-      if (!targetUser) {
+      if (!ticket) {
         res.status(404).json({
           success: false,
-          error: { message: "User not found" },
+          error: { message: "Ticket not found" },
         });
         return;
       }
 
-      const { name, email, department, role, isActive } = req.body;
-
-      // Prevent self-deactivation
-      if (req.user!.id === targetUserId && isActive === false) {
-        res.status(400).json({
+      // Authorization check for Requesters
+      if (req.user!.role === "REQUESTER" && ticket.requesterId !== req.user!.id) {
+        res.status(403).json({
           success: false,
-          error: { message: "Self-deactivation of Administrator account is prohibited" },
+          error: { message: "Forbidden: You can only view comments on your own tickets" },
         });
         return;
       }
 
-      // Prevent deactivating or downgrading the last active Administrator account
-      if (targetUser.role === "ADMINISTRATOR" && (isActive === false || (role && role !== "ADMINISTRATOR"))) {
-        const activeAdminCount = await prisma.user.count({
-          where: { role: "ADMINISTRATOR", isActive: true },
-        });
-
-        if (activeAdminCount <= 1) {
-          res.status(400).json({
-            success: false,
-            error: { message: "Cannot deactivate or downgrade the last active Administrator account" },
-          });
-          return;
-        }
-      }
-
-      const updateData: any = {};
-      if (name !== undefined) updateData.name = name.trim();
-      if (department !== undefined) updateData.department = department ? department.trim() : null;
-      if (role !== undefined) updateData.role = role;
-      if (isActive !== undefined) updateData.isActive = Boolean(isActive);
-
-      if (email !== undefined && email.trim().toLowerCase() !== targetUser.email) {
-        const normalizedEmail = email.trim().toLowerCase();
-        const conflictUser = await prisma.user.findUnique({ where: { email: normalizedEmail } });
-        if (conflictUser) {
-          res.status(409).json({
-            success: false,
-            error: { message: "Email address is already in use by another account" },
-          });
-          return;
-        }
-        updateData.email = normalizedEmail;
-      }
-
-      const updatedUser = await prisma.user.update({
-        where: { id: targetUserId },
-        data: updateData,
-        select: {
-          id: true,
-          email: true,
-          name: true,
-          department: true,
-          role: true,
-          isActive: true,
-          mustChangePassword: true,
-          createdAt: true,
-          updatedAt: true,
+      const comments = await prisma.publicComment.findMany({
+        where: { ticketId },
+        orderBy: { createdAt: "asc" },
+        include: {
+          author: {
+            select: { id: true, name: true, email: true, role: true },
+          },
         },
       });
 
       res.status(200).json({
         success: true,
-        data: updatedUser,
+        data: comments,
       });
     } catch (error) {
-      console.error("Update User Error:", error);
+      console.error("Fetch Public Comments Error:", error);
       res.status(500).json({
         success: false,
-        error: { message: "Failed to update user" },
+        error: { message: "Failed to fetch public comments" },
       });
     }
   }
 );
 
 // ---------------------------------------------------------------------------
-// 4. POST /api/admin/users/:id/reset-password (Reset initial password)
+// 4. POST /api/tickets/:id/comments (Add Public Comment)
 // ---------------------------------------------------------------------------
-adminUsersRouter.post(
-  "/admin/users/:id/reset-password",
+requesterTicketsRouter.post(
+  "/tickets/:id/comments",
   authenticateToken,
-  requireRoles("ADMINISTRATOR"),
   enforcePasswordChange,
   async (req: AuthenticatedRequest, res: Response): Promise<void> => {
     try {
       const prisma = getPrisma();
-      const targetUserId = parseInt(req.params.id, 10);
-      const { newInitialPassword } = req.body;
+      const ticketId = parseInt(req.params.id, 10);
+      const { content } = req.body;
 
-      if (isNaN(targetUserId)) {
+      if (isNaN(ticketId)) {
         res.status(400).json({
           success: false,
-          error: { message: "Invalid user ID" },
+          error: { message: "Invalid ticket ID" },
         });
         return;
       }
 
-      const targetUser = await prisma.user.findUnique({
-        where: { id: targetUserId },
+      if (!content || typeof content !== "string" || content.trim().length === 0) {
+        res.status(400).json({
+          success: false,
+          error: { message: "Comment content cannot be empty" },
+        });
+        return;
+      }
+
+      const ticket = await prisma.ticket.findUnique({
+        where: { id: ticketId },
       });
 
-      if (!targetUser) {
+      if (!ticket) {
         res.status(404).json({
           success: false,
-          error: { message: "User not found" },
+          error: { message: "Ticket not found" },
         });
         return;
       }
 
-      const tempPassword = newInitialPassword || "InitialPassword123!";
-      const passwordHash = await bcrypt.hash(tempPassword, 10);
+      // Authorization check for Requesters
+      if (req.user!.role === "REQUESTER" && ticket.requesterId !== req.user!.id) {
+        res.status(403).json({
+          success: false,
+          error: { message: "Forbidden: You can only comment on your own tickets" },
+        });
+        return;
+      }
 
-      const updatedUser = await prisma.user.update({
-        where: { id: targetUserId },
+      const newComment = await prisma.publicComment.create({
         data: {
-          passwordHash,
-          mustChangePassword: true,
+          ticketId,
+          authorId: req.user!.id,
+          content: content.trim(),
         },
-        select: {
-          id: true,
-          email: true,
-          name: true,
-          role: true,
-          mustChangePassword: true,
+        include: {
+          author: {
+            select: { id: true, name: true, email: true, role: true },
+          },
         },
       });
 
-      res.status(200).json({
+      res.status(201).json({
         success: true,
-        message: "Password reset successfully",
-        data: updatedUser,
+        data: newComment,
       });
     } catch (error) {
-      console.error("Reset Password Error:", error);
+      console.error("Create Public Comment Error:", error);
       res.status(500).json({
         success: false,
-        error: { message: "Failed to reset password" },
+        error: { message: "Failed to create public comment" },
       });
     }
   }
@@ -4282,1843 +2611,7 @@ adminUsersRouter.post(
 
 ```
 
----
-
-# Answer Part 6: Client Frontend Source Code Evidence
-
-## 6.1 Authentication Context (`client/src/contexts/AuthContext.tsx`)
-```typescript
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { User } from "../types";
-import { loginApi, changePasswordApi, getMeApi, logoutApi } from "../api";
-
-interface AuthContextType {
-  user: User | null;
-  token: string | null;
-  loading: boolean;
-  login: (email: string, password: string) => Promise<User>;
-  logout: () => void;
-  changePassword: (currentPassword: string, newPassword: string) => Promise<void>;
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(localStorage.getItem("toktickit_token"));
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const initAuth = async () => {
-      const savedToken = localStorage.getItem("toktickit_token");
-      if (savedToken) {
-        try {
-          const userData = await getMeApi(savedToken);
-          setUser(userData);
-          setToken(savedToken);
-        } catch (e) {
-          localStorage.removeItem("toktickit_token");
-          localStorage.removeItem("toktickit_user");
-          setToken(null);
-          setUser(null);
-        }
-      }
-      setLoading(false);
-    };
-
-    initAuth();
-  }, []);
-
-  const login = async (email: string, password: string): Promise<User> => {
-    const data = await loginApi(email, password);
-    setToken(data.token);
-    setUser(data.user);
-    localStorage.setItem("toktickit_token", data.token);
-    localStorage.setItem("toktickit_user", JSON.stringify(data.user));
-    return data.user;
-  };
-
-  const logout = () => {
-    if (token) {
-      logoutApi(token);
-    }
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem("toktickit_token");
-    localStorage.removeItem("toktickit_user");
-  };
-
-  const changePassword = async (currentPassword: string, newPassword: string) => {
-    if (!token) throw new Error("Not authenticated");
-    await changePasswordApi(token, currentPassword, newPassword);
-    if (user) {
-      const updatedUser = { ...user, mustChangePassword: false };
-      setUser(updatedUser);
-      localStorage.setItem("toktickit_user", JSON.stringify(updatedUser));
-    }
-  };
-
-  return (
-    <AuthContext.Provider
-      value={{ user, token, loading, login, logout, changePassword, setUser }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
-  return context;
-};
-
-```
-
-## 6.2 Client API Client Helper (`client/src/api.ts`)
-```typescript
-import {
-  RequesterUser,
-  Category,
-  RelatedSystem,
-  Ticket,
-  Attachment,
-  TicketListResponse,
-  User,
-  AuthResponse,
-} from "./types";
-
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
-
-// Re-export Category interface for backwards compatibility with Lab 1
-export type { Category };
-
-export interface SystemStatus {
-  online: boolean;
-  categories: Category[];
-}
-
-export async function checkSystem(): Promise<SystemStatus> {
-  const healthRes = await fetch(`${API_URL}/api/health`).catch(() => {
-    throw new Error("Unable to connect to TokTickIT API");
-  });
-
-  if (!healthRes.ok) {
-    throw new Error("Unable to connect to TokTickIT API");
-  }
-
-  const catRes = await fetch(`${API_URL}/api/categories`).catch(() => {
-    throw new Error("Unable to connect to TokTickIT API");
-  });
-
-  if (!catRes.ok) {
-    throw new Error("Unable to connect to TokTickIT API");
-  }
-
-  const rawData = await catRes.json();
-  const categories: Category[] = Array.isArray(rawData) ? rawData : rawData.data;
-  return { online: true, categories };
-}
-
-// ---------------------------------------------------------------------------
-// Auth API Client Functions
-// ---------------------------------------------------------------------------
-
-export async function loginApi(email: string, password: string): Promise<AuthResponse> {
-  const res = await fetch(`${API_URL}/api/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
-
-  const json = await res.json();
-  if (!res.ok) {
-    throw new Error(json.error?.message || "Invalid credentials or deactivated account");
-  }
-  return json;
-}
-
-export async function changePasswordApi(
-  token: string,
-  currentPassword: string,
-  newPassword: string
-): Promise<{ success: boolean; message: string }> {
-  const res = await fetch(`${API_URL}/api/auth/change-password`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ currentPassword, newPassword }),
-  });
-
-  const json = await res.json();
-  if (!res.ok) {
-    throw new Error(json.error?.message || "Failed to change password");
-  }
-  return json;
-}
-
-export async function getMeApi(token: string): Promise<User> {
-  const res = await fetch(`${API_URL}/api/auth/me`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  const json = await res.json();
-  if (!res.ok) {
-    throw new Error(json.error?.message || "Failed to fetch user session");
-  }
-  return json.user;
-}
-
-export async function logoutApi(token: string): Promise<void> {
-  await fetch(`${API_URL}/api/auth/logout`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).catch(() => {});
-}
-
-// ---------------------------------------------------------------------------
-// Lab 2 API Client Functions
-// ---------------------------------------------------------------------------
-
-export async function fetchRequesters(): Promise<RequesterUser[]> {
-  const res = await fetch(`${API_URL}/api/requesters`);
-  if (!res.ok) throw new Error("Failed to load Development Requesters");
-  const json = await res.json();
-  return json.data;
-}
-
-export async function fetchCategories(): Promise<Category[]> {
-  const res = await fetch(`${API_URL}/api/categories`);
-  if (!res.ok) throw new Error("Failed to load Ticket Categories");
-  const json = await res.json();
-  return Array.isArray(json) ? json : json.data;
-}
-
-export async function fetchRelatedSystems(): Promise<RelatedSystem[]> {
-  const res = await fetch(`${API_URL}/api/related-systems`);
-  if (!res.ok) throw new Error("Failed to load Related Systems");
-  const json = await res.json();
-  return json.data;
-}
-
-export async function createTicket(
-  requesterId: number,
-  formData: FormData
-): Promise<Ticket> {
-  const res = await fetch(`${API_URL}/api/tickets`, {
-    method: "POST",
-    headers: {
-      "x-requester-id": requesterId.toString(),
-    },
-    body: formData,
-  });
-
-  const json = await res.json();
-  if (!res.ok) {
-    const errorMsg = json.error?.message || "Failed to create ticket";
-    const details = json.error?.details;
-    const error = new Error(errorMsg) as Error & { details?: Record<string, string[]> };
-    error.details = details;
-    throw error;
-  }
-  return json.data;
-}
-
-export async function fetchTickets(
-  requesterId: number,
-  params: {
-    search?: string;
-    category?: string;
-    priority?: string;
-    status?: string;
-    page?: number;
-    limit?: number;
-    sortBy?: string;
-    sortOrder?: string;
-  } = {}
-): Promise<TicketListResponse> {
-  const query = new URLSearchParams();
-  if (params.search) query.append("search", params.search);
-  if (params.category && params.category !== "ALL") query.append("category", params.category);
-  if (params.priority && params.priority !== "ALL") query.append("priority", params.priority);
-  if (params.status && params.status !== "ALL") query.append("status", params.status);
-  if (params.page) query.append("page", params.page.toString());
-  if (params.limit) query.append("limit", params.limit.toString());
-  if (params.sortBy) query.append("sortBy", params.sortBy);
-  if (params.sortOrder) query.append("sortOrder", params.sortOrder);
-
-  const res = await fetch(`${API_URL}/api/tickets?${query.toString()}`, {
-    headers: {
-      "x-requester-id": requesterId.toString(),
-    },
-  });
-
-  const json = await res.json();
-  if (!res.ok) throw new Error(json.error?.message || "Failed to fetch tickets");
-  return json;
-}
-
-export async function fetchTicketDetail(
-  requesterId: number,
-  ticketId: number
-): Promise<Ticket> {
-  const res = await fetch(`${API_URL}/api/tickets/${ticketId}`, {
-    headers: {
-      "x-requester-id": requesterId.toString(),
-    },
-  });
-
-  const json = await res.json();
-  if (!res.ok) {
-    const error = new Error(json.error?.message || "Failed to fetch ticket detail");
-    (error as any).status = res.status;
-    (error as any).code = json.error?.code;
-    throw error;
-  }
-  return json.data;
-}
-
-export async function uploadAttachment(
-  requesterId: number,
-  ticketId: number,
-  file: File
-): Promise<Attachment> {
-  const formData = new FormData();
-  formData.append("file", file);
-
-  const res = await fetch(`${API_URL}/api/tickets/${ticketId}/attachments`, {
-    method: "POST",
-    headers: {
-      "x-requester-id": requesterId.toString(),
-    },
-    body: formData,
-  });
-
-  const json = await res.json();
-  if (!res.ok) throw new Error(json.error?.message || "Failed to upload attachment");
-  return json.data;
-}
-
-export async function softRemoveAttachment(
-  requesterId: number,
-  attachmentId: number,
-  reason: string
-): Promise<Attachment> {
-  const res = await fetch(`${API_URL}/api/attachments/${attachmentId}`, {
-    method: "DELETE",
-    headers: {
-      "x-requester-id": requesterId.toString(),
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ reason }),
-  });
-
-  const json = await res.json();
-  if (!res.ok) throw new Error(json.error?.message || "Failed to remove attachment");
-  return json.data;
-}
-
-export function getAttachmentDownloadUrl(attachmentId: number): string {
-  return `${API_URL}/api/attachments/${attachmentId}/download`;
-}
-
-```
-
-## 6.3 Client TypeScript Types (`client/src/types.ts`)
-```typescript
-export type Role = "REQUESTER" | "IT_STAFF" | "ADMINISTRATOR";
-
-export interface User {
-  id: number;
-  email: string;
-  name: string;
-  role: Role;
-  mustChangePassword: boolean;
-  isActive?: boolean;
-}
-
-export interface AuthResponse {
-  success: boolean;
-  token: string;
-  user: User;
-}
-
-export interface RequesterUser {
-  id: number;
-  name: string;
-  email: string;
-  department: string;
-}
-
-export interface Category {
-  id: number;
-  name: string;
-}
-
-export interface RelatedSystem {
-  id: number;
-  name: string;
-}
-
-export type Priority = "LOW" | "MEDIUM" | "HIGH" | "URGENT";
-export type Status = "NEW" | "IN_PROGRESS" | "RESOLVED" | "CLOSED";
-
-export interface Attachment {
-  id: number;
-  ticketId: number;
-  fileName: string;
-  fileKey: string;
-  fileSize: number;
-  mimeType: string;
-  isRemoved: boolean;
-  removalReason?: string | null;
-  removedAt?: string | null;
-  createdAt: string;
-}
-
-export interface Ticket {
-  id: number;
-  ticketNo: string;
-  requesterId: number;
-  categoryId: number;
-  relatedSystemId: number;
-  requestedPriority: Priority;
-  status: Status;
-  summary: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-  category: Category;
-  relatedSystem: RelatedSystem;
-  requester?: RequesterUser;
-  attachments?: Attachment[];
-  attachmentCount?: number;
-}
-
-export interface PaginationMeta {
-  page: number;
-  limit: number;
-  totalItems: number;
-  totalPages: number;
-}
-
-export interface TicketListResponse {
-  success: boolean;
-  data: Ticket[];
-  meta: PaginationMeta;
-}
-
-
-```
-
-## 6.4 Login Screen Page (`client/src/pages/Login.tsx`)
-```typescript
-import React, { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
-
-interface LoginProps {
-  onSuccess?: () => void;
-  onSwitchToLegacy?: () => void;
-}
-
-export const Login: React.FC<LoginProps> = ({ onSuccess, onSwitchToLegacy }) => {
-  const { login } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-
-    if (!email.trim() || !password) {
-      setError("Please fill in both Email and Password fields.");
-      return;
-    }
-
-    setSubmitting(true);
-    try {
-      await login(email.trim(), password);
-      if (onSuccess) {
-        onSuccess();
-      }
-    } catch (err: any) {
-      setError(err.message || "Invalid credentials or account deactivated.");
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  return (
-    <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center bg-light px-3 py-5">
-      <div
-        className="card shadow-sm border-0 w-100"
-        style={{ maxWidth: "440px", borderRadius: "12px", overflow: "hidden" }}
-      >
-        <div
-          className="card-header bg-white border-bottom-0 text-center pt-4 pb-2"
-        >
-          <div className="d-inline-flex align-items-center justify-content-center mb-2" style={{ color: "#006B3C" }}>
-            <svg
-              width="36"
-              height="36"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M15 5v2" />
-              <path d="M15 11v2" />
-              <path d="M15 17v2" />
-              <path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2z" />
-            </svg>
-          </div>
-          {/* Hot Pink Heading as requested by user */}
-          <h2
-            className="fw-bold mb-1"
-            style={{ color: "#006B3C", fontSize: "1.75rem" }}
-          >
-            Sign in to TokTickIT
-          </h2>
-          <p className="text-muted small mb-0">Select Development Requester or enter your credentials to access IT Services</p>
-        </div>
-
-        <div className="card-body p-4">
-          {error && (
-            <div className="alert alert-danger py-2 px-3 small border-0 mb-4" role="alert">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} noValidate>
-            <div className="mb-3">
-              <label htmlFor="login-email" className="form-label fw-semibold text-secondary small">
-                Email Address
-              </label>
-              <input
-                id="login-email"
-                type="email"
-                className="form-control form-control-lg fs-6"
-                placeholder="e.g. jennifer.anderson@toktickit.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={submitting}
-                autoFocus
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="login-password" className="form-label fw-semibold text-secondary small">
-                Password
-              </label>
-              <input
-                id="login-password"
-                type="password"
-                className="form-control form-control-lg fs-6"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                disabled={submitting}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="btn btn-primary w-100 py-2.5 fw-bold text-white shadow-sm mb-3"
-              style={{
-                backgroundColor: "#006B3C",
-                borderColor: "#006B3C",
-                borderRadius: "8px",
-              }}
-              disabled={submitting}
-            >
-              {submitting ? "Signing in..." : "Sign In"}
-            </button>
-          </form>
-
-          {onSwitchToLegacy && (
-            <div className="text-center pt-2 border-top">
-              <button
-                type="button"
-                className="btn btn-link text-decoration-none text-secondary small p-0"
-                onClick={onSwitchToLegacy}
-              >
-                Select Development Requester (Lab 1/2 Mode)
-              </button>
-            </div>
-          )}
-        </div>
-
-        <div className="card-footer bg-white border-top-0 text-center pb-4 pt-0 text-muted extra-small">
-          TokTickIT Access Management System • Zen Green Theme
-        </div>
-      </div>
-    </div>
-  );
-};
-
-```
-
-## 6.5 Mandatory Change Password Screen Page (`client/src/pages/ChangePassword.tsx`)
-```typescript
-import React, { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
-
-interface ChangePasswordProps {
-  isMandatory?: boolean;
-  onSuccess?: () => void;
-  onCancel?: () => void;
-}
-
-export const ChangePassword: React.FC<ChangePasswordProps> = ({
-  isMandatory = false,
-  onSuccess,
-  onCancel,
-}) => {
-  const { changePassword } = useAuth();
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [successMsg, setSuccessMsg] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
-
-  // Real-time validation checks
-  const hasMinLength = newPassword.length >= 8;
-  const hasUpper = /[A-Z]/.test(newPassword);
-  const hasLower = /[a-z]/.test(newPassword);
-  const hasNumberOrSpecial = /[0-9!@#$%^&*(),.?":{}|<>]/.test(newPassword);
-  const matchesConfirm = newPassword === confirmPassword && confirmPassword.length > 0;
-
-  const isFormValid =
-    currentPassword.length > 0 &&
-    hasMinLength &&
-    hasUpper &&
-    hasLower &&
-    hasNumberOrSpecial &&
-    matchesConfirm;
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setSuccessMsg(null);
-
-    if (!isFormValid) {
-      if (newPassword !== confirmPassword) {
-        setError("New password and confirmation do not match.");
-      } else {
-        setError("Please ensure your new password meets all security criteria.");
-      }
-      return;
-    }
-
-    setSubmitting(true);
-    try {
-      await changePassword(currentPassword, newPassword);
-      setSuccessMsg("Password changed successfully!");
-      if (onSuccess) {
-        setTimeout(onSuccess, 1000);
-      }
-    } catch (err: any) {
-      setError(err.message || "Failed to update password.");
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  return (
-    <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center bg-light px-3 py-5">
-      <div
-        className="card shadow-sm border-0 w-100"
-        style={{ maxWidth: "480px", borderRadius: "12px", overflow: "hidden" }}
-      >
-        <div className="card-header bg-white border-bottom-0 text-center pt-4 pb-2">
-          {/* Hot Pink Heading as requested by user */}
-          <h2 className="fw-bold mb-1" style={{ color: "#006B3C", fontSize: "1.75rem" }}>
-            {isMandatory ? "Mandatory Password Update" : "Change Password"}
-          </h2>
-          <p className="text-muted small mb-0">
-            {isMandatory
-              ? "You must update your initial password before accessing TokTickIT."
-              : "Update your account password to maintain security."}
-          </p>
-        </div>
-
-        <div className="card-body p-4">
-          {error && (
-            <div className="alert alert-danger py-2 px-3 small border-0 mb-3" role="alert">
-              {error}
-            </div>
-          )}
-
-          {successMsg && (
-            <div className="alert alert-success py-2 px-3 small border-0 mb-3" role="alert">
-              {successMsg}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} noValidate>
-            <div className="mb-3">
-              <label
-                htmlFor="current-password"
-                className="form-label fw-semibold text-secondary small"
-              >
-                Current Password
-              </label>
-              <input
-                id="current-password"
-                type="password"
-                className="form-control"
-                placeholder="Enter current password"
-                value={currentPassword}
-                onChange={(e) => setCurrentPassword(e.target.value)}
-                disabled={submitting}
-                autoFocus
-              />
-            </div>
-
-            <div className="mb-3">
-              <label
-                htmlFor="new-password"
-                className="form-label fw-semibold text-secondary small"
-              >
-                New Password
-              </label>
-              <input
-                id="new-password"
-                type="password"
-                className="form-control"
-                placeholder="Enter new strong password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                disabled={submitting}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label
-                htmlFor="confirm-password"
-                className="form-label fw-semibold text-secondary small"
-              >
-                Confirm New Password
-              </label>
-              <input
-                id="confirm-password"
-                type="password"
-                className="form-control"
-                placeholder="Re-enter new password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                disabled={submitting}
-              />
-            </div>
-
-            <div className="p-3 bg-light rounded-3 mb-4 border">
-              <div className="fw-semibold text-secondary extra-small text-uppercase tracking-wide mb-2">
-                Password Criteria
-              </div>
-              <ul className="list-unstyled mb-0 small">
-                <li className={hasMinLength ? "text-success fw-medium" : "text-muted"}>
-                  {hasMinLength ? "[✓]" : "[ ]"} At least 8 characters long
-                </li>
-                <li className={hasUpper && hasLower ? "text-success fw-medium" : "text-muted"}>
-                  {hasUpper && hasLower ? "[✓]" : "[ ]"} Upper & lower case letters
-                </li>
-                <li className={hasNumberOrSpecial ? "text-success fw-medium" : "text-muted"}>
-                  {hasNumberOrSpecial ? "[✓]" : "[ ]"} Number & special character
-                </li>
-                <li className={matchesConfirm ? "text-success fw-medium" : "text-muted"}>
-                  {matchesConfirm ? "[✓]" : "[ ]"} Confirmation matches new password
-                </li>
-              </ul>
-            </div>
-
-            <div className="d-flex gap-2">
-              {!isMandatory && onCancel && (
-                <button
-                  type="button"
-                  className="btn btn-outline-secondary flex-grow-1 py-2 fw-semibold"
-                  onClick={onCancel}
-                  disabled={submitting}
-                >
-                  Cancel
-                </button>
-              )}
-              <button
-                type="submit"
-                className="btn btn-primary flex-grow-1 py-2 fw-bold text-white shadow-sm"
-                style={{
-                  backgroundColor: "#006B3C",
-                  borderColor: "#006B3C",
-                  borderRadius: "8px",
-                }}
-                disabled={submitting || !isFormValid}
-              >
-                {submitting ? "Updating..." : "Save New Password"}
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-```
-
-## 6.6 Header Navigation Bar Component (`client/src/components/Header.tsx`)
-```typescript
-import React from "react";
-import { RequesterUser, User } from "../types";
-
-export type NavTab =
-  | "my-tickets"
-  | "create-ticket"
-  | "staff-queue"
-  | "my-queue"
-  | "user-management";
-
-interface HeaderProps {
-  currentRequester?: RequesterUser | null;
-  authUser?: User | null;
-  activeTab: string;
-  onTabChange: (tab: NavTab) => void;
-  onChangeRequester?: () => void;
-  onChangePassword?: () => void;
-  onLogout?: () => void;
-  onLoginClick?: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({
-  currentRequester,
-  authUser,
-  activeTab,
-  onTabChange,
-  onChangeRequester,
-  onChangePassword,
-  onLogout,
-  onLoginClick,
-}) => {
-  const role = authUser?.role;
-
-  const renderRoleBadge = () => {
-    if (!role) return null;
-    switch (role) {
-      case "REQUESTER":
-        return <span className="badge bg-success-subtle text-success border border-success-subtle">Requester</span>;
-      case "IT_STAFF":
-        return <span className="badge bg-primary-subtle text-primary border border-primary-subtle">IT Staff</span>;
-      case "ADMINISTRATOR":
-        return <span className="badge bg-warning-subtle text-dark border border-warning">Administrator</span>;
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <header className="zg-navbar py-2 px-3 mb-4 shadow-sm">
-      <div className="container-fluid d-flex flex-wrap align-items-center justify-content-between">
-        {/* Brand & Identity */}
-        <div className="d-flex align-items-center me-3">
-          <span
-            className="fs-4 fw-bold me-4 cursor-pointer d-flex align-items-center text-white"
-            onClick={() => {
-              if (role === "ADMINISTRATOR") onTabChange("user-management");
-              else if (role === "IT_STAFF") onTabChange("staff-queue");
-              else onTabChange("my-tickets");
-            }}
-          >
-            <svg
-              className="me-2"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="4" ry="4" fill="#006B3C" stroke="#EAF6EF" />
-              <path d="M9 12l2 2 4-4" stroke="#FFFFFF" strokeWidth="2.5" />
-            </svg>
-            TokTickIT
-          </span>
-
-          {/* Role-based Navigation Tabs */}
-          <nav className="d-flex gap-2">
-            {(!authUser || role === "REQUESTER") && (
-              <>
-                <button
-                  className={`nav-link border-0 bg-transparent d-flex align-items-center gap-1 ${
-                    activeTab === "my-tickets" ? "active" : ""
-                  }`}
-                  onClick={() => onTabChange("my-tickets")}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                  </svg>
-                  My Tickets
-                </button>
-                <button
-                  className={`nav-link border-0 bg-transparent d-flex align-items-center gap-1 ${
-                    activeTab === "create-ticket" ? "active" : ""
-                  }`}
-                  onClick={() => onTabChange("create-ticket")}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                  </svg>
-                  Create Ticket
-                </button>
-              </>
-            )}
-
-            {role === "IT_STAFF" && (
-              <>
-                <button
-                  className={`nav-link border-0 bg-transparent d-flex align-items-center gap-1 ${
-                    activeTab === "staff-queue" ? "active" : ""
-                  }`}
-                  onClick={() => onTabChange("staff-queue")}
-                >
-                  Ticket Queue
-                </button>
-                <button
-                  className={`nav-link border-0 bg-transparent d-flex align-items-center gap-1 ${
-                    activeTab === "my-queue" ? "active" : ""
-                  }`}
-                  onClick={() => onTabChange("my-queue")}
-                >
-                  My Queue
-                </button>
-                <button
-                  className={`nav-link border-0 bg-transparent d-flex align-items-center gap-1 ${
-                    activeTab === "create-ticket" ? "active" : ""
-                  }`}
-                  onClick={() => onTabChange("create-ticket")}
-                >
-                  Create Ticket
-                </button>
-              </>
-            )}
-
-            {role === "ADMINISTRATOR" && (
-              <>
-                <button
-                  className={`nav-link border-0 bg-transparent d-flex align-items-center gap-1 ${
-                    activeTab === "user-management" ? "active" : ""
-                  }`}
-                  onClick={() => onTabChange("user-management")}
-                >
-                  User Management
-                </button>
-                <button
-                  className={`nav-link border-0 bg-transparent d-flex align-items-center gap-1 ${
-                    activeTab === "staff-queue" ? "active" : ""
-                  }`}
-                  onClick={() => onTabChange("staff-queue")}
-                >
-                  Ticket Queue
-                </button>
-              </>
-            )}
-          </nav>
-        </div>
-
-        {/* User Identity & Actions */}
-        <div className="d-flex align-items-center gap-3">
-          {authUser ? (
-            <div className="d-flex align-items-center gap-2 bg-white text-dark py-1 px-3 rounded-pill shadow-sm">
-              <span className="fs-6 d-flex align-items-center gap-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#006B3C" strokeWidth="2">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                <strong>{authUser.name}</strong>
-              </span>
-              {renderRoleBadge()}
-              {onChangePassword && (
-                <button
-                  className="btn btn-sm btn-outline-secondary ms-1 py-0 px-2 extra-small"
-                  onClick={onChangePassword}
-                >
-                  Change Password
-                </button>
-              )}
-              {onLogout && (
-                <button
-                  className="btn btn-sm btn-outline-danger ms-1 py-0 px-2 extra-small"
-                  onClick={onLogout}
-                >
-                  Logout
-                </button>
-              )}
-            </div>
-          ) : currentRequester ? (
-            <div className="d-flex align-items-center gap-2 bg-white text-dark py-1 px-3 rounded-pill shadow-sm">
-              <span className="fs-6 d-flex align-items-center gap-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#006B3C" strokeWidth="2">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                <strong>{currentRequester.name}</strong>
-              </span>
-              <span className="badge bg-secondary">{currentRequester.department}</span>
-              {onChangeRequester && (
-                <button
-                  className="btn btn-sm btn-outline-danger ms-2"
-                  onClick={onChangeRequester}
-                >
-                  Change Requester
-                </button>
-              )}
-            </div>
-          ) : (
-            <div className="d-flex align-items-center gap-2">
-              <span className="badge bg-secondary text-white fs-6 py-1 px-3">Guest Context</span>
-              {onLoginClick && (
-                <button
-                  className="btn btn-sm text-white fw-bold shadow-sm"
-                  style={{ backgroundColor: "#006B3C", borderColor: "#006B3C" }}
-                  onClick={onLoginClick}
-                >
-                  Sign In
-                </button>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    </header>
-  );
-};
-
-```
-
-## 6.7 Create Ticket View Component (`client/src/components/CreateTicketView.tsx`)
-```typescript
-import React, { useState, useEffect } from "react";
-import { RequesterUser, Category, RelatedSystem, Priority, Ticket } from "../types";
-import { fetchCategories, fetchRelatedSystems, createTicket } from "../api";
-
-interface CreateTicketViewProps {
-  currentRequester: RequesterUser;
-  onTicketCreated: (ticket: Ticket) => void;
-  onCancel: () => void;
-}
-
-export const CreateTicketView: React.FC<CreateTicketViewProps> = ({
-  currentRequester,
-  onTicketCreated,
-  onCancel,
-}) => {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [systems, setSystems] = useState<RelatedSystem[]>([]);
-  const [loadingRefData, setLoadingRefData] = useState<boolean>(true);
-
-  // Form State
-  const [categoryId, setCategoryId] = useState<string>("");
-  const [relatedSystemId, setRelatedSystemId] = useState<string>("");
-  const [requestedPriority, setRequestedPriority] = useState<Priority>("MEDIUM");
-  const [summary, setSummary] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-
-  // UI & Validation State
-  const [submitting, setSubmitting] = useState<boolean>(false);
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  const [globalError, setGlobalError] = useState<string | null>(null);
-  const [fileError, setFileError] = useState<string | null>(null);
-  const [createdTicket, setCreatedTicket] = useState<Ticket | null>(null);
-
-  useEffect(() => {
-    Promise.all([fetchCategories(), fetchRelatedSystems()])
-      .then(([cats, sys]) => {
-        setCategories(cats);
-        setSystems(sys);
-        if (cats.length > 0) setCategoryId(cats[0].id.toString());
-        if (sys.length > 0) setRelatedSystemId(sys[0].id.toString());
-      })
-      .catch((err) => setGlobalError(err.message))
-      .finally(() => setLoadingRefData(false));
-  }, []);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFileError(null);
-    if (!e.target.files) return;
-    const newFiles = Array.from(e.target.files);
-
-    const allowedMime = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
-    let err: string | null = null;
-
-    if (selectedFiles.length + newFiles.length > 5) {
-      err = "Maximum limit of 5 attachments per ticket reached";
-    }
-
-    const validFiles: File[] = [];
-    for (const f of newFiles) {
-      if (!allowedMime.includes(f.type)) {
-        err = `Invalid file type for '${f.name}'. Allowed: JPG, PNG, WEBP, PDF`;
-        break;
-      }
-      if (f.size > 5 * 1024 * 1024) {
-        err = `File '${f.name}' exceeds maximum size of 5MB`;
-        break;
-      }
-      validFiles.push(f);
-    }
-
-    if (err) {
-      setFileError(err);
-    } else {
-      setSelectedFiles((prev) => [...prev, ...validFiles]);
-    }
-  };
-
-  const removeFile = (index: number) => {
-    setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
-    setFileError(null);
-  };
-
-  const validate = (): boolean => {
-    const errors: Record<string, string> = {};
-    if (!categoryId) errors.categoryId = "Category is required";
-    if (!relatedSystemId) errors.relatedSystemId = "Related system is required";
-    if (!summary || summary.trim().length < 5 || summary.trim().length > 150) {
-      errors.summary = "Summary must be between 5 and 150 characters";
-    }
-    if (!description || description.trim().length < 10 || description.trim().length > 2000) {
-      errors.description = "Description must be between 10 and 2000 characters";
-    }
-
-    setFieldErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setGlobalError(null);
-    if (!validate()) return;
-
-    setSubmitting(true);
-    try {
-      const formData = new FormData();
-      formData.append("categoryId", categoryId);
-      formData.append("relatedSystemId", relatedSystemId);
-      formData.append("requestedPriority", requestedPriority);
-      formData.append("summary", summary);
-      formData.append("description", description);
-      selectedFiles.forEach((file) => formData.append("files", file));
-
-      const ticket = await createTicket(currentRequester.id, formData);
-      setCreatedTicket(ticket);
-    } catch (err: any) {
-      if (err.details) {
-        const mapped: Record<string, string> = {};
-        Object.keys(err.details).forEach((key) => {
-          mapped[key] = Array.isArray(err.details[key]) ? err.details[key][0] : err.details[key];
-        });
-        setFieldErrors(mapped);
-      }
-      setGlobalError(err.message || "Failed to create ticket");
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  if (createdTicket) {
-    return (
-      <div className="container py-5 d-flex justify-content-center">
-        <div className="zg-card p-4 text-center shadow-sm" style={{ maxWidth: 600, width: "100%" }}>
-          <div className="text-success display-1 mb-3">✅</div>
-          <h2 className="h3 fw-bold text-success mb-2">Ticket Created Successfully!</h2>
-          <p className="text-muted mb-4">Your IT support request has been recorded.</p>
-
-          <div className="bg-light p-3 rounded-3 mb-4 text-start">
-            <div className="row mb-2">
-              <div className="col-4 fw-semibold text-muted">Ticket Number:</div>
-              <div className="col-8 fw-bold fs-5 text-primary">{createdTicket.ticketNo}</div>
-            </div>
-            <div className="row mb-2">
-              <div className="col-4 fw-semibold text-muted">Status:</div>
-              <div className="col-8"><span className="badge badge-status-new">NEW</span></div>
-            </div>
-            <div className="row mb-2">
-              <div className="col-4 fw-semibold text-muted">Summary:</div>
-              <div className="col-8 text-dark">{createdTicket.summary}</div>
-            </div>
-          </div>
-
-          <div className="d-flex justify-content-center gap-3">
-            <button
-              className="btn btn-outline-secondary"
-              onClick={() => {
-                setCreatedTicket(null);
-                setSummary("");
-                setDescription("");
-                setSelectedFiles([]);
-              }}
-            >
-              ➕ Create Another Ticket
-            </button>
-            <button
-              className="btn btn-zg-primary"
-              onClick={() => onTicketCreated(createdTicket)}
-            >
-              📋 View My Tickets
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="container py-4" style={{ maxWidth: 900 }}>
-      <div className="d-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 fw-bold m-0" style={{ color: "#006B3C" }}>Create IT Support Ticket</h1>
-        <button className="btn btn-outline-secondary btn-sm" onClick={onCancel}>
-          ← Back to My Tickets
-        </button>
-      </div>
-
-      {globalError && (
-        <div className="alert alert-danger d-flex align-items-center gap-2 mb-4" role="alert">
-          <span>⚠️</span>
-          <div>{globalError}</div>
-        </div>
-      )}
-
-      {loadingRefData ? (
-        <div className="text-center py-5">
-          <div className="spinner-border text-success" role="status">
-            <span className="visually-hidden">Loading reference data...</span>
-          </div>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="zg-card p-4 mb-4">
-            {/* System Generated Fields */}
-            <h5 className="fw-bold mb-3 border-bottom pb-2">1. Ticket Metadata (Read-Only)</h5>
-            <div className="row g-3 mb-4">
-              <div className="col-md-4">
-                <label className="form-label text-muted small fw-semibold">Ticket No.</label>
-                <input
-                  type="text"
-                  className="form-control zg-read-only-field"
-                  value="Auto-generated after submission"
-                  disabled
-                />
-              </div>
-              <div className="col-md-4">
-                <label className="form-label text-muted small fw-semibold">Requester</label>
-                <input
-                  type="text"
-                  className="form-control zg-read-only-field"
-                  value={`${currentRequester.name} (${currentRequester.department})`}
-                  disabled
-                />
-              </div>
-              <div className="col-md-4">
-                <label className="form-label text-muted small fw-semibold">Initial Status</label>
-                <input
-                  type="text"
-                  className="form-control zg-read-only-field"
-                  value="New"
-                  disabled
-                />
-              </div>
-            </div>
-
-            {/* Classification */}
-            <h5 className="fw-bold mb-3 border-bottom pb-2">2. Problem Classification</h5>
-            <div className="row g-3 mb-4">
-              <div className="col-md-4">
-                <label className="form-label fw-semibold">
-                  Category <span className="zg-required-asterisk">*</span>
-                </label>
-                <select
-                  className={`form-select ${fieldErrors.categoryId ? "is-invalid" : ""}`}
-                  value={categoryId}
-                  onChange={(e) => setCategoryId(e.target.value)}
-                >
-                  {categories.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.name}
-                    </option>
-                  ))}
-                </select>
-                {fieldErrors.categoryId && (
-                  <div className="invalid-feedback">{fieldErrors.categoryId}</div>
-                )}
-              </div>
-
-              <div className="col-md-4">
-                <label className="form-label fw-semibold">
-                  Related System <span className="zg-required-asterisk">*</span>
-                </label>
-                <select
-                  className={`form-select ${fieldErrors.relatedSystemId ? "is-invalid" : ""}`}
-                  value={relatedSystemId}
-                  onChange={(e) => setRelatedSystemId(e.target.value)}
-                >
-                  {systems.map((s) => (
-                    <option key={s.id} value={s.id}>
-                      {s.name}
-                    </option>
-                  ))}
-                </select>
-                {fieldErrors.relatedSystemId && (
-                  <div className="invalid-feedback">{fieldErrors.relatedSystemId}</div>
-                )}
-              </div>
-
-              <div className="col-md-4">
-                <label className="form-label fw-semibold">Requested Priority</label>
-                <select
-                  className="form-select"
-                  value={requestedPriority}
-                  onChange={(e) => setRequestedPriority(e.target.value as Priority)}
-                >
-                  <option value="LOW">Low</option>
-                  <option value="MEDIUM">Medium</option>
-                  <option value="HIGH">High</option>
-                  <option value="URGENT">Urgent</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Problem Details */}
-            <h5 className="fw-bold mb-3 border-bottom pb-2">3. Problem Details</h5>
-            <div className="mb-3">
-              <div className="d-flex justify-content-between">
-                <label className="form-label fw-semibold">
-                  Ticket Summary <span className="zg-required-asterisk">*</span>
-                </label>
-                <span className="text-muted small">{summary.length} / 150</span>
-              </div>
-              <input
-                type="text"
-                className={`form-control ${fieldErrors.summary ? "is-invalid" : ""}`}
-                placeholder="Briefly describe the issue (e.g. Laptop battery drains quickly)"
-                value={summary}
-                maxLength={150}
-                onChange={(e) => setSummary(e.target.value)}
-              />
-              {fieldErrors.summary && (
-                <div className="invalid-feedback">{fieldErrors.summary}</div>
-              )}
-            </div>
-
-            <div className="mb-4">
-              <div className="d-flex justify-content-between">
-                <label className="form-label fw-semibold">
-                  Description <span className="zg-required-asterisk">*</span>
-                </label>
-                <span className="text-muted small">{description.length} / 2000</span>
-              </div>
-              <textarea
-                className={`form-control ${fieldErrors.description ? "is-invalid" : ""}`}
-                rows={5}
-                placeholder="Provide details about what happened, steps to reproduce, or error messages..."
-                value={description}
-                maxLength={2000}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-              {fieldErrors.description && (
-                <div className="invalid-feedback">{fieldErrors.description}</div>
-              )}
-            </div>
-
-            {/* Attachments */}
-            <h5 className="fw-bold mb-3 border-bottom pb-2">4. Supporting Evidence Attachments</h5>
-            <div className="mb-3">
-              <div className="zg-dropzone" onClick={() => document.getElementById("fileInput")?.click()}>
-                <span className="fs-3">📁</span>
-                <p className="mb-1 fw-semibold">Click to select supporting files</p>
-                <p className="text-muted small mb-0">
-                  Permitted: JPG, PNG, WEBP, PDF (Max 5MB per file, Max 5 active attachments)
-                </p>
-                <input
-                  id="fileInput"
-                  type="file"
-                  multiple
-                  accept="image/jpeg,image/png,image/webp,application/pdf"
-                  className="d-none"
-                  onChange={handleFileChange}
-                />
-              </div>
-
-              {fileError && (
-                <div className="alert alert-danger py-2 mt-2 small" role="alert">
-                  {fileError}
-                </div>
-              )}
-
-              {selectedFiles.length > 0 && (
-                <div className="mt-3">
-                  <p className="fw-semibold small mb-2">Selected Attachments ({selectedFiles.length} / 5):</p>
-                  <ul className="list-group">
-                    {selectedFiles.map((file, idx) => (
-                      <li
-                        key={idx}
-                        className="list-group-item d-flex justify-content-between align-items-center py-2 px-3"
-                      >
-                        <div className="d-flex align-items-center gap-2 overflow-hidden me-2">
-                          <span>{file.type.includes("pdf") ? "📄" : "🖼️"}</span>
-                          <span className="text-truncate">{file.name}</span>
-                          <span className="badge bg-light text-dark border">
-                            {(file.size / 1024 / 1024).toFixed(2)} MB
-                          </span>
-                        </div>
-                        <button
-                          type="button"
-                          className="btn btn-sm btn-outline-danger"
-                          onClick={() => removeFile(idx)}
-                        >
-                          ✕
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Submission Actions */}
-          <div className="d-flex justify-content-end gap-3">
-            <button
-              type="button"
-              className="btn btn-outline-secondary px-4"
-              onClick={onCancel}
-              disabled={submitting}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="btn btn-zg-primary px-5 fw-bold"
-              disabled={submitting}
-            >
-              {submitting ? (
-                <>
-                  <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
-                  Submitting Ticket...
-                </>
-              ) : (
-                "Submit Ticket"
-              )}
-            </button>
-          </div>
-        </form>
-      )}
-    </div>
-  );
-};
-
-```
-
-## 6.8 Requester My Tickets View Component (`client/src/components/MyTicketsView.tsx`)
-```typescript
-import React, { useEffect, useState, useCallback } from "react";
-import { RequesterUser, Category, Ticket, PaginationMeta } from "../types";
-import { fetchCategories, fetchTickets } from "../api";
-
-interface MyTicketsViewProps {
-  currentRequester: RequesterUser;
-  onSelectTicket: (ticketId: number) => void;
-  onCreateTicketClick: () => void;
-}
-
-export const MyTicketsView: React.FC<MyTicketsViewProps> = ({
-  currentRequester,
-  onSelectTicket,
-  onCreateTicketClick,
-}) => {
-  const [tickets, setTickets] = useState<Ticket[]>([]);
-  const [meta, setMeta] = useState<PaginationMeta>({
-    page: 1,
-    limit: 10,
-    totalItems: 0,
-    totalPages: 1,
-  });
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  // Filter & Search Controls State
-  const [search, setSearch] = useState<string>("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
-  const [selectedPriority, setSelectedPriority] = useState<string>("ALL");
-  const [selectedStatus, setSelectedStatus] = useState<string>("ALL");
-  const [sortBy, setSortBy] = useState<string>("createdAt");
-  const [sortOrder, setSortOrder] = useState<string>("desc");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
-  useEffect(() => {
-    fetchCategories()
-      .then(setCategories)
-      .catch(() => {});
-  }, []);
-
-  const loadTickets = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetchTickets(currentRequester.id, {
-        search,
-        category: selectedCategory,
-        priority: selectedPriority,
-        status: selectedStatus,
-        page: currentPage,
-        limit: 10,
-        sortBy,
-        sortOrder,
-      });
-      setTickets(res.data);
-      setMeta(res.meta);
-    } catch (err: any) {
-      setError(err.message || "Failed to load tickets");
-    } finally {
-      setLoading(false);
-    }
-  }, [currentRequester.id, search, selectedCategory, selectedPriority, selectedStatus, currentPage, sortBy, sortOrder]);
-
-  useEffect(() => {
-    loadTickets();
-  }, [loadTickets]);
-
-  const handleClearFilters = () => {
-    setSearch("");
-    setSelectedCategory("ALL");
-    setSelectedPriority("ALL");
-    setSelectedStatus("ALL");
-    setSortBy("createdAt");
-    setSortOrder("desc");
-    setCurrentPage(1);
-  };
-
-  const isFiltered = search || selectedCategory !== "ALL" || selectedPriority !== "ALL" || selectedStatus !== "ALL";
-
-  const renderPriorityBadge = (priority: string) => {
-    const p = priority.toUpperCase();
-    const cls =
-      p === "URGENT"
-        ? "badge-priority-urgent"
-        : p === "HIGH"
-        ? "badge-priority-high"
-        : p === "MEDIUM"
-        ? "badge-priority-medium"
-        : "badge-priority-low";
-    return <span className={`badge ${cls} px-2 py-1`}>{priority}</span>;
-  };
-
-  const renderStatusBadge = (status: string) => {
-    const s = status.toUpperCase();
-    const cls =
-      s === "NEW"
-        ? "badge-status-new"
-        : s === "IN_PROGRESS"
-        ? "badge-status-in_progress"
-        : s === "RESOLVED"
-        ? "badge-status-resolved"
-        : "badge-status-closed";
-    return <span className={`badge ${cls} px-2 py-1`}>{status.replace("_", " ")}</span>;
-  };
-
-  return (
-    <div className="container py-4">
-      {/* Header Bar */}
-      <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
-        <div>
-          <h1 className="h3 fw-bold m-0" style={{ color: "#006B3C" }}>My Tickets</h1>
-          <p className="text-muted small m-0">View and track all of your IT support requests</p>
-        </div>
-        <button className="btn btn-zg-primary fw-semibold d-flex align-items-center gap-2" onClick={onCreateTicketClick}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-          Create Ticket
-        </button>
-      </div>
-
-      {/* Filter & Toolbar Controls Card */}
-      <div className="zg-card p-3 mb-4 shadow-sm">
-        <div className="row g-2 align-items-center">
-          {/* Search */}
-          <div className="col-lg-4 col-md-6">
-            <div className="input-group">
-              <span className="input-group-text bg-light border-end-0">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-              </span>
-              <input
-                type="text"
-                className="form-control border-start-0"
-                placeholder="Search by ticket number or summary..."
-                value={search}
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                  setCurrentPage(1);
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Category Filter */}
-          <div className="col-lg-2 col-md-3 col-6">
-            <select
-              className="form-select"
-              value={selectedCategory}
-              onChange={(e) => {
-                setSelectedCategory(e.target.value);
-                setCurrentPage(1);
-              }}
-            >
-              <option value="ALL">All Categories</option>
-              {categories.map((c) => (
-                <option key={c.id} value={c.id.toString()}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Priority Filter */}
-          <div className="col-lg-2 col-md-3 col-6">
-            <select
-              className="form-select"
-              value={selectedPriority}
-              onChange={(e) => {
-                setSelectedPriority(e.target.value);
-                setCurrentPage(1);
-              }}
-            >
-              <option value="ALL">All Priorities</option>
-              <option value="LOW">Low</option>
-              <option value="MEDIUM">Medium</option>
-              <option value="HIGH">High</option>
-              <option value="URGENT">Urgent</option>
-            </select>
-          </div>
-
-          {/* Status Filter */}
-          <div className="col-lg-2 col-md-3 col-6">
-            <select
-              className="form-select"
-              value={selectedStatus}
-              onChange={(e) => {
-                setSelectedStatus(e.target.value);
-                setCurrentPage(1);
-              }}
-            >
-              <option value="ALL">All Statuses</option>
-              <option value="NEW">New</option>
-              <option value="IN_PROGRESS">In Progress</option>
-              <option value="RESOLVED">Resolved</option>
-              <option value="CLOSED">Closed</option>
-            </select>
-          </div>
-
-          {/* Clear Filters */}
-          <div className="col-lg-2 col-md-3 col-6 text-end">
-            {isFiltered && (
-              <button className="btn btn-outline-danger btn-sm w-100" onClick={handleClearFilters}>
-                🔄 Clear Filters
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Error Banner */}
-      {error && (
-        <div className="alert alert-danger py-2 mb-4" role="alert">
-          {error}
-        </div>
-      )}
-
-      {/* Loading State */}
-      {loading ? (
-        <div className="text-center py-5">
-          <div className="spinner-border text-success" role="status">
-            <span className="visually-hidden">Loading tickets...</span>
-          </div>
-        </div>
-      ) : tickets.length === 0 ? (
-        isFiltered ? (
-          /* No Results State */
-          <div className="zg-card p-5 text-center my-4">
-            <div className="fs-1 text-muted mb-2">🔍</div>
-            <h3 className="h5 fw-bold mb-2">No Matching Tickets Found</h3>
-            <p className="text-muted small mb-3">No tickets match your search or filter criteria.</p>
-            <button className="btn btn-outline-secondary btn-sm" onClick={handleClearFilters}>
-              Clear All Filters
-            </button>
-          </div>
-        ) : (
-          /* Empty State (No tickets owned) */
-          <div className="zg-card p-5 text-center my-4">
-            <div className="fs-1 text-success mb-2">📥</div>
-            <h3 className="h5 fw-bold mb-2">No IT Tickets Submitted Yet</h3>
-            <p className="text-muted small mb-4">
-              You haven't submitted any support requests under this account.
-            </p>
-            <button className="btn btn-zg-primary px-4" onClick={onCreateTicketClick}>
-              ➕ Create Your First Ticket
-            </button>
-          </div>
-        )
-      ) : (
-        <>
-          {/* Desktop Table View */}
-          <div className="zg-card shadow-sm overflow-hidden mb-4 d-none d-md-block zg-desktop-table">
-            <table className="table table-hover align-middle m-0">
-              <thead className="table-light">
-                <tr>
-                  <th scope="col">Ticket No</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Summary</th>
-                  <th scope="col">Category</th>
-                  <th scope="col">Requested Priority</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" className="text-end">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tickets.map((t) => (
-                  <tr
-                    key={t.id}
-                    style={{ cursor: "pointer" }}
-                    onClick={() => onSelectTicket(t.id)}
-                  >
-                    <td className="fw-bold text-success">{t.ticketNo}</td>
-                    <td className="text-muted small">
-                      {new Date(t.createdAt).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
-                    </td>
-                    <td className="fw-semibold text-dark text-truncate" style={{ maxWidth: 280 }}>
-                      {t.summary}
-                    </td>
-                    <td><span className="badge bg-light text-dark border">{t.category?.name}</span></td>
-                    <td>{renderPriorityBadge(t.requestedPriority)}</td>
-                    <td>{renderStatusBadge(t.status)}</td>
-                    <td className="text-end">
-                      <button
-                        className="btn btn-sm btn-outline-success"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onSelectTicket(t.id);
-                        }}
-                      >
-                        Open →
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Mobile Card View */}
-          <div className="zg-mobile-cards mb-4">
-            <div className="d-flex flex-column gap-3">
-              {tickets.map((t) => (
-                <div
-                  key={t.id}
-                  className="zg-card p-3 shadow-sm cursor-pointer"
-                  onClick={() => onSelectTicket(t.id)}
-                >
-                  <div className="d-flex justify-content-between align-items-center mb-2">
-                    <span className="fw-bold text-success">{t.ticketNo}</span>
-                    <div>{renderStatusBadge(t.status)}</div>
-                  </div>
-                  <h6 className="fw-semibold text-dark mb-2">{t.summary}</h6>
-                  <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 text-muted small">
-                    <div>
-                      <span className="me-2">{t.category?.name}</span>
-                      {renderPriorityBadge(t.requestedPriority)}
-                    </div>
-                    <div>
-                      {new Date(t.createdAt).toLocaleDateString()}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Pagination Controls */}
-          <div className="d-flex flex-wrap align-items-center justify-content-between gap-2">
-            <div className="text-muted small">
-              Showing {Math.min((meta.page - 1) * meta.limit + 1, meta.totalItems)} to{" "}
-              {Math.min(meta.page * meta.limit, meta.totalItems)} of {meta.totalItems} tickets
-            </div>
-
-            <nav aria-label="Ticket list pagination">
-              <ul className="pagination pagination-sm m-0">
-                <li className={`page-item ${meta.page <= 1 ? "disabled" : ""}`}>
-                  <button
-                    className="page-link"
-                    onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                    disabled={meta.page <= 1}
-                  >
-                    ‹ Previous
-                  </button>
-                </li>
-                {Array.from({ length: meta.totalPages }, (_, i) => i + 1).map((pg) => (
-                  <li key={pg} className={`page-item ${pg === meta.page ? "active" : ""}`}>
-                    <button
-                      className="page-link"
-                      onClick={() => setCurrentPage(pg)}
-                    >
-                      {pg}
-                    </button>
-                  </li>
-                ))}
-                <li className={`page-item ${meta.page >= meta.totalPages ? "disabled" : ""}`}>
-                  <button
-                    className="page-link"
-                    onClick={() => setCurrentPage((p) => Math.min(meta.totalPages, p + 1))}
-                    disabled={meta.page >= meta.totalPages}
-                  >
-                    Next ›
-                  </button>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
-
-```
-
-## 6.9 Ticket Detail View Component (`client/src/components/TicketDetailView.tsx`)
+## 7.3 Ticket Detail View Component Implementation
 ```typescript
 import React, { useEffect, useState, useCallback } from "react";
 import { RequesterUser, Ticket, Attachment } from "../types";
@@ -6534,205 +3027,1237 @@ export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
 
 ```
 
-## 6.10 Application Root Entrypoint (`client/src/App.tsx`)
+---
+
+# Answer Part 8: Working Administrator User Management UI
+
+## 8.1 Admin User Management Screen Evidence
+![Admin User Management Screen](images/07_admin_users.png)
+![Admin Desktop Viewport](images/ui_admin_desktop.png)
+
+## 8.2 Admin User Routes Implementation
 ```typescript
-import { useState, useEffect } from "react";
-import { RequesterUser, Ticket } from "./types";
-import { AuthProvider, useAuth } from "./contexts/AuthContext";
-import { Header, NavTab } from "./components/Header";
-import { RequesterSelectorScreen } from "./components/RequesterSelectorScreen";
-import { CreateTicketView } from "./components/CreateTicketView";
-import { MyTicketsView } from "./components/MyTicketsView";
-import { TicketDetailView } from "./components/TicketDetailView";
-import { Login } from "./pages/Login";
-import { ChangePassword } from "./pages/ChangePassword";
+import { Router, Response } from "express";
+import bcrypt from "bcryptjs";
+import { getPrisma } from "../prisma.js";
+import {
+  authenticateToken,
+  requireRoles,
+  enforcePasswordChange,
+  AuthenticatedRequest,
+} from "../middleware/authMiddleware.js";
 
-function AppContent() {
-  const { user, loading, logout } = useAuth();
-  const [currentRequester, setCurrentRequester] = useState<RequesterUser | null>(null);
-  const [currentView, setCurrentView] = useState<string>("my-tickets");
-  const [selectedTicketId, setSelectedTicketId] = useState<number | null>(null);
-  const [useLegacySelector, setUseLegacySelector] = useState<boolean>(true);
+export const adminUsersRouter = Router();
 
-  // Restore saved requester from LocalStorage on initial load
-  useEffect(() => {
-    const saved = localStorage.getItem("toktickit_requester");
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed && parsed.id && parsed.name) {
-          setCurrentRequester(parsed);
-        }
-      } catch (e) {
-        localStorage.removeItem("toktickit_requester");
+// ---------------------------------------------------------------------------
+// 1. GET /api/admin/users (List users with search & filters - Admin ONLY)
+// ---------------------------------------------------------------------------
+adminUsersRouter.get(
+  "/admin/users",
+  authenticateToken,
+  requireRoles("ADMINISTRATOR"),
+  enforcePasswordChange,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const prisma = getPrisma();
+      const page = parseInt(req.query.page as string, 10) || 1;
+      const limit = parseInt(req.query.limit as string, 10) || 10;
+      const skip = (page - 1) * limit;
+
+      const search = (req.query.search as string) || "";
+      const roleFilter = (req.query.role as string) || "";
+      const isActiveFilter = req.query.isActive as string;
+      const sortBy = (req.query.sortBy as string) || "id";
+      const sortOrder = (req.query.sortOrder as string)?.toLowerCase() === "desc" ? "desc" : "asc";
+
+      const whereClause: any = {};
+
+      if (search.trim()) {
+        whereClause.OR = [
+          { name: { contains: search.trim(), mode: "insensitive" } },
+          { email: { contains: search.trim(), mode: "insensitive" } },
+          { department: { contains: search.trim(), mode: "insensitive" } },
+        ];
       }
+
+      if (roleFilter && roleFilter !== "ALL") {
+        whereClause.role = roleFilter;
+      }
+
+      if (isActiveFilter !== undefined && isActiveFilter !== "ALL") {
+        whereClause.isActive = isActiveFilter === "true";
+      }
+
+      const totalItems = await prisma.user.count({ where: whereClause });
+      const users = await prisma.user.findMany({
+        where: whereClause,
+        skip,
+        take: limit,
+        orderBy: { [sortBy]: sortOrder },
+        select: {
+          id: true,
+          email: true,
+          name: true,
+          department: true,
+          role: true,
+          isActive: true,
+          mustChangePassword: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      });
+
+      res.status(200).json({
+        success: true,
+        data: users,
+        pagination: {
+          totalItems,
+          totalPages: Math.ceil(totalItems / limit) || 1,
+          currentPage: page,
+          pageSize: limit,
+        },
+      });
+    } catch (error) {
+      console.error("Fetch Admin Users Error:", error);
+      res.status(500).json({
+        success: false,
+        error: { message: "Failed to fetch users" },
+      });
     }
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light">
-        <div className="spinner-border text-success" role="status">
-          <span className="visually-hidden">Loading TokTickIT...</span>
-        </div>
-      </div>
-    );
   }
+);
 
-  // 1. Mandatory Password Change Workflow
-  if (user && user.mustChangePassword) {
-    return (
-      <ChangePassword
-        isMandatory={true}
-        onSuccess={() => setCurrentView("my-tickets")}
-      />
-    );
-  }
+// ---------------------------------------------------------------------------
+// 2. POST /api/admin/users (Create user with initial password - Admin ONLY)
+// ---------------------------------------------------------------------------
+adminUsersRouter.post(
+  "/admin/users",
+  authenticateToken,
+  requireRoles("ADMINISTRATOR"),
+  enforcePasswordChange,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const prisma = getPrisma();
+      const { email, name, department, role, isActive, initialPassword } = req.body;
 
-  // 2. Unauthenticated state -> render Login (or legacy selector toggle)
-  if (!user && !currentRequester) {
-    if (useLegacySelector) {
-      return (
-        <div className="min-vh-100 d-flex flex-column bg-light">
-          <Header
-            activeTab="my-tickets"
-            onTabChange={() => {}}
-            onLoginClick={() => setUseLegacySelector(false)}
-          />
-          <main className="flex-grow-1">
-            <RequesterSelectorScreen
-              onSelectRequester={(u) => {
-                setCurrentRequester(u);
-                localStorage.setItem("toktickit_requester", JSON.stringify(u));
-                setCurrentView("my-tickets");
-              }}
-            />
-          </main>
-        </div>
-      );
+      if (!email || typeof email !== "string" || !email.includes("@")) {
+        res.status(400).json({
+          success: false,
+          error: { message: "Valid email address is required" },
+        });
+        return;
+      }
+
+      if (!name || typeof name !== "string" || name.trim().length === 0) {
+        res.status(400).json({
+          success: false,
+          error: { message: "Full Name is required" },
+        });
+        return;
+      }
+
+      const normalizedEmail = email.trim().toLowerCase();
+      const existingUser = await prisma.user.findUnique({
+        where: { email: normalizedEmail },
+      });
+
+      if (existingUser) {
+        res.status(409).json({
+          success: false,
+          error: { message: "A user with this email address already exists" },
+        });
+        return;
+      }
+
+      const tempPassword = initialPassword || "InitialPassword123!";
+      const passwordHash = await bcrypt.hash(tempPassword, 10);
+
+      const newUser = await prisma.user.create({
+        data: {
+          email: normalizedEmail,
+          name: name.trim(),
+          department: department ? department.trim() : null,
+          role: role || "REQUESTER",
+          isActive: isActive !== undefined ? Boolean(isActive) : true,
+          passwordHash,
+          mustChangePassword: true,
+        },
+        select: {
+          id: true,
+          email: true,
+          name: true,
+          department: true,
+          role: true,
+          isActive: true,
+          mustChangePassword: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      });
+
+      res.status(201).json({
+        success: true,
+        data: newUser,
+      });
+    } catch (error) {
+      console.error("Create User Error:", error);
+      res.status(500).json({
+        success: false,
+        error: { message: "Failed to create user" },
+      });
     }
-
-    return <Login onSwitchToLegacy={() => setUseLegacySelector(true)} />;
   }
+);
 
-  const handleSelectRequester = (u: RequesterUser) => {
-    setCurrentRequester(u);
-    localStorage.setItem("toktickit_requester", JSON.stringify(u));
-    setCurrentView("my-tickets");
-  };
+// ---------------------------------------------------------------------------
+// 3. PATCH /api/admin/users/:id (Edit user profile or activation status)
+// ---------------------------------------------------------------------------
+adminUsersRouter.patch(
+  "/admin/users/:id",
+  authenticateToken,
+  requireRoles("ADMINISTRATOR"),
+  enforcePasswordChange,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const prisma = getPrisma();
+      const targetUserId = parseInt(req.params.id, 10);
 
-  const handleChangeRequester = () => {
-    setCurrentRequester(null);
-    localStorage.removeItem("toktickit_requester");
-    setUseLegacySelector(true);
-  };
+      if (isNaN(targetUserId)) {
+        res.status(400).json({
+          success: false,
+          error: { message: "Invalid user ID" },
+        });
+        return;
+      }
 
-  const handleNavigateTab = (tab: NavTab) => {
-    setCurrentView(tab);
-  };
+      const targetUser = await prisma.user.findUnique({
+        where: { id: targetUserId },
+      });
 
-  const handleOpenTicketDetail = (ticketId: number) => {
-    setSelectedTicketId(ticketId);
-    setCurrentView("ticket-detail");
-  };
+      if (!targetUser) {
+        res.status(404).json({
+          success: false,
+          error: { message: "User not found" },
+        });
+        return;
+      }
 
-  const handleTicketCreated = (_ticket: Ticket) => {
-    setCurrentView("my-tickets");
-  };
+      const { name, email, department, role, isActive } = req.body;
 
-  const requesterForLegacy = currentRequester || (user ? {
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    department: "IT Services",
-  } : null);
+      // Prevent self-deactivation
+      if (req.user!.id === targetUserId && isActive === false) {
+        res.status(400).json({
+          success: false,
+          error: { message: "Self-deactivation of Administrator account is prohibited" },
+        });
+        return;
+      }
 
-  return (
-    <div className="min-vh-100 d-flex flex-column bg-light">
-      <Header
-        currentRequester={currentRequester}
-        authUser={user}
-        activeTab={currentView}
-        onTabChange={handleNavigateTab}
-        onChangeRequester={handleChangeRequester}
-        onChangePassword={() => setCurrentView("change-password")}
-        onLogout={logout}
-      />
+      // Prevent deactivating or downgrading the last active Administrator account
+      if (targetUser.role === "ADMINISTRATOR" && (isActive === false || (role && role !== "ADMINISTRATOR"))) {
+        const activeAdminCount = await prisma.user.count({
+          where: { role: "ADMINISTRATOR", isActive: true },
+        });
 
-      <main className="flex-grow-1">
-        {currentView === "change-password" ? (
-          <ChangePassword
-            isMandatory={false}
-            onSuccess={() => setCurrentView("my-tickets")}
-            onCancel={() => setCurrentView("my-tickets")}
-          />
-        ) : currentView === "create-ticket" && requesterForLegacy ? (
-          <CreateTicketView
-            currentRequester={requesterForLegacy}
-            onTicketCreated={handleTicketCreated}
-            onCancel={() => setCurrentView("my-tickets")}
-          />
-        ) : currentView === "ticket-detail" && selectedTicketId && requesterForLegacy ? (
-          <TicketDetailView
-            currentRequester={requesterForLegacy}
-            ticketId={selectedTicketId}
-            onBack={() => setCurrentView("my-tickets")}
-          />
-        ) : requesterForLegacy ? (
-          <MyTicketsView
-            currentRequester={requesterForLegacy}
-            onSelectTicket={handleOpenTicketDetail}
-            onCreateTicketClick={() => setCurrentView("create-ticket")}
-          />
-        ) : (
-          <RequesterSelectorScreen onSelectRequester={handleSelectRequester} />
-        )}
-      </main>
+        if (activeAdminCount <= 1) {
+          res.status(400).json({
+            success: false,
+            error: { message: "Cannot deactivate or downgrade the last active Administrator account" },
+          });
+          return;
+        }
+      }
 
-      <footer className="py-3 px-4 bg-white border-top text-center text-muted small mt-auto">
-        TokTickIT v1.0 • Lab 3 Multi-Role Authentication & Ticketing System • Zen Green Theme
-      </footer>
-    </div>
-  );
+      const updateData: any = {};
+      if (name !== undefined) updateData.name = name.trim();
+      if (department !== undefined) updateData.department = department ? department.trim() : null;
+      if (role !== undefined) updateData.role = role;
+      if (isActive !== undefined) updateData.isActive = Boolean(isActive);
+
+      if (email !== undefined && email.trim().toLowerCase() !== targetUser.email) {
+        const normalizedEmail = email.trim().toLowerCase();
+        const conflictUser = await prisma.user.findUnique({ where: { email: normalizedEmail } });
+        if (conflictUser) {
+          res.status(409).json({
+            success: false,
+            error: { message: "Email address is already in use by another account" },
+          });
+          return;
+        }
+        updateData.email = normalizedEmail;
+      }
+
+      const updatedUser = await prisma.user.update({
+        where: { id: targetUserId },
+        data: updateData,
+        select: {
+          id: true,
+          email: true,
+          name: true,
+          department: true,
+          role: true,
+          isActive: true,
+          mustChangePassword: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      });
+
+      res.status(200).json({
+        success: true,
+        data: updatedUser,
+      });
+    } catch (error) {
+      console.error("Update User Error:", error);
+      res.status(500).json({
+        success: false,
+        error: { message: "Failed to update user" },
+      });
+    }
+  }
+);
+
+// ---------------------------------------------------------------------------
+// 4. POST /api/admin/users/:id/reset-password (Reset initial password)
+// ---------------------------------------------------------------------------
+adminUsersRouter.post(
+  "/admin/users/:id/reset-password",
+  authenticateToken,
+  requireRoles("ADMINISTRATOR"),
+  enforcePasswordChange,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const prisma = getPrisma();
+      const targetUserId = parseInt(req.params.id, 10);
+      const { newInitialPassword } = req.body;
+
+      if (isNaN(targetUserId)) {
+        res.status(400).json({
+          success: false,
+          error: { message: "Invalid user ID" },
+        });
+        return;
+      }
+
+      const targetUser = await prisma.user.findUnique({
+        where: { id: targetUserId },
+      });
+
+      if (!targetUser) {
+        res.status(404).json({
+          success: false,
+          error: { message: "User not found" },
+        });
+        return;
+      }
+
+      const tempPassword = newInitialPassword || "InitialPassword123!";
+      const passwordHash = await bcrypt.hash(tempPassword, 10);
+
+      const updatedUser = await prisma.user.update({
+        where: { id: targetUserId },
+        data: {
+          passwordHash,
+          mustChangePassword: true,
+        },
+        select: {
+          id: true,
+          email: true,
+          name: true,
+          role: true,
+          mustChangePassword: true,
+        },
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "Password reset successfully",
+        data: updatedUser,
+      });
+    } catch (error) {
+      console.error("Reset Password Error:", error);
+      res.status(500).json({
+        success: false,
+        error: { message: "Failed to reset password" },
+      });
+    }
+  }
+);
+
+```
+
+## 8.3 Prisma Database Schema (`server/prisma/schema.prisma`)
+```prisma
+// TokTickIT Prisma Schema — Lab 3 Database ORM & Data Models
+// Feature Branch: feature/lab03-3-db-schema
+
+generator client {
+  provider = "prisma-client-js"
 }
 
-export default function App() {
-  return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
-  );
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum Role {
+  REQUESTER
+  IT_STAFF
+  ADMINISTRATOR
+}
+
+enum RequestedPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum ITPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum TicketStatus {
+  NEW
+  OPEN
+  IN_PROGRESS
+  WAITING_FOR_REQUESTER
+  RESOLVED
+  CLOSED
+  REOPENED
+  CANCELLED
+}
+
+// ---------------------------------------------------------------------------
+// Lab 3 Data Models
+// ---------------------------------------------------------------------------
+
+model User {
+  id                 Int      @id @default(autoincrement())
+  email              String   @unique
+  passwordHash       String
+  name               String
+  department         String?
+  role               Role     @default(REQUESTER)
+  isActive           Boolean  @default(true)
+  mustChangePassword Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  tickets        Ticket[]        @relation("RequesterTickets")
+  ownedTickets   Ticket[]        @relation("OwnerTickets")
+  publicComments PublicComment[]
+  internalNotes  InternalNote[]
+
+  @@index([role, isActive])
+}
+
+model RequesterUser {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  department String
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  tickets Ticket[]
+}
+
+model RelatedSystem {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  tickets Ticket[]
+}
+
+model Ticket {
+  id                   Int               @id @default(autoincrement())
+  ticketNo             String            @unique
+  requesterId          Int
+  ownerId              Int?
+  categoryId           Int
+  relatedSystemId      Int
+  requestedPriority    RequestedPriority @default(MEDIUM)
+  itPriority           ITPriority?
+  status               TicketStatus      @default(NEW)
+  summary              String
+  description          String
+  requesterResolvedInd Boolean           @default(false)
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  requester      User            @relation("RequesterTickets", fields: [requesterId], references: [id])
+  owner          User?           @relation("OwnerTickets", fields: [ownerId], references: [id])
+  category       Category        @relation(fields: [categoryId], references: [id])
+  relatedSystem  RelatedSystem   @relation(fields: [relatedSystemId], references: [id])
+  attachments    Attachment[]
+  publicComments PublicComment[]
+  internalNotes  InternalNote[]
+
+  @@index([requesterId, createdAt])
+  @@index([ownerId, status])
+  @@index([status])
+  @@index([categoryId])
+}
+
+model Attachment {
+  id            Int       @id @default(autoincrement())
+  ticketId      Int
+  fileName      String
+  fileKey       String
+  fileSize      Int
+  mimeType      String
+  isRemoved     Boolean   @default(false)
+  removalReason String?
+  removedAt     DateTime?
+  createdAt     DateTime  @default(now())
+
+  ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+
+  @@index([ticketId])
+}
+
+model PublicComment {
+  id        Int      @id @default(autoincrement())
+  ticketId  Int
+  authorId  Int
+  content   String
+  createdAt DateTime @default(now())
+
+  ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  author User   @relation(fields: [authorId], references: [id])
+
+  @@index([ticketId, createdAt])
+}
+
+model InternalNote {
+  id        Int      @id @default(autoincrement())
+  ticketId  Int
+  authorId  Int
+  content   String
+  createdAt DateTime @default(now())
+
+  ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  author User   @relation(fields: [authorId], references: [id])
+
+  @@index([ticketId, createdAt])
+}
+
+```
+
+## 8.4 Idempotent Database Seed Script (`server/prisma/seed.ts`)
+```typescript
+import { getPrisma } from "../src/prisma.js";
+import bcrypt from "bcryptjs";
+import { Role, RequestedPriority, ITPriority, TicketStatus } from "@prisma/client";
+
+async function main() {
+  const prisma = getPrisma();
+
+  console.log("Seeding Lab 3 database...");
+
+  // 1. Seed Categories
+  const categories = [
+    "Account and Access",
+    "Hardware",
+    "Software",
+    "Network",
+  ];
+
+  const categoryMap: Record<string, number> = {};
+  for (const name of categories) {
+    const cat = await prisma.category.upsert({
+      where: { name },
+      update: { isActive: true },
+      create: { name, isActive: true },
+    });
+    categoryMap[name] = cat.id;
+  }
+
+  // 2. Seed Related Systems
+  const relatedSystems = [
+    "Email",
+    "Campus Wi-Fi",
+    "VPN",
+    "LEB2 App",
+    "Grade Submission App",
+    "Printer",
+    "Corporate Laptop",
+  ];
+
+  const systemMap: Record<string, number> = {};
+  for (const name of relatedSystems) {
+    const sys = await prisma.relatedSystem.upsert({
+      where: { name },
+      update: { isActive: true },
+      create: { name, isActive: true },
+    });
+    systemMap[name] = sys.id;
+  }
+
+  // Standard hashed password: "InitialPassword123!" and "Password123!"
+  const initialPasswordHash = await bcrypt.hash("InitialPassword123!", 10);
+  const standardPasswordHash = await bcrypt.hash("Password123!", 10);
+
+  // 3. Seed Users (Requesters, IT Staff, Administrator)
+  const usersData = [
+    // Requesters (4 active, 1 inactive)
+    {
+      email: "jennifer.anderson@toktickit.com",
+      name: "Jennifer Anderson",
+      department: "Computer Engineering",
+      role: Role.REQUESTER,
+      isActive: true,
+      mustChangePassword: true, // For testing mandatory first-login password change
+      passwordHash: initialPasswordHash,
+    },
+    {
+      email: "michael.brown@toktickit.com",
+      name: "Michael Brown",
+      department: "Information Technology",
+      role: Role.REQUESTER,
+      isActive: true,
+      mustChangePassword: false,
+      passwordHash: standardPasswordHash,
+    },
+    {
+      email: "sarah.johnson@toktickit.com",
+      name: "Sarah Johnson",
+      department: "Electronic Engineering",
+      role: Role.REQUESTER,
+      isActive: true,
+      mustChangePassword: false,
+      passwordHash: standardPasswordHash,
+    },
+    {
+      email: "david.lee@toktickit.com",
+      name: "David Lee",
+      department: "Software Engineering",
+      role: Role.REQUESTER,
+      isActive: true,
+      mustChangePassword: false,
+      passwordHash: standardPasswordHash,
+    },
+    {
+      email: "inactive.requester@toktickit.com",
+      name: "Inactive Requester Account",
+      department: "Archived",
+      role: Role.REQUESTER,
+      isActive: false,
+      mustChangePassword: false,
+      passwordHash: standardPasswordHash,
+    },
+
+    // IT Staff (3 active, 1 inactive)
+    {
+      email: "kevin.patel@toktickit.com",
+      name: "Kevin Patel",
+      department: "IT Support Desk",
+      role: Role.IT_STAFF,
+      isActive: true,
+      mustChangePassword: false,
+      passwordHash: standardPasswordHash,
+    },
+    {
+      email: "emily.davis@toktickit.com",
+      name: "Emily Davis",
+      department: "Network Operations",
+      role: Role.IT_STAFF,
+      isActive: true,
+      mustChangePassword: false,
+      passwordHash: standardPasswordHash,
+    },
+    {
+      email: "lisa.martinez@toktickit.com",
+      name: "Lisa Martinez",
+      department: "Systems Administration",
+      role: Role.IT_STAFF,
+      isActive: true,
+      mustChangePassword: false,
+      passwordHash: standardPasswordHash,
+    },
+    {
+      email: "inactive.staff@toktickit.com",
+      name: "Inactive Staff Account",
+      department: "IT Staff Archived",
+      role: Role.IT_STAFF,
+      isActive: false,
+      mustChangePassword: false,
+      passwordHash: standardPasswordHash,
+    },
+
+    // Administrator (1 active)
+    {
+      email: "john.smith@toktickit.com",
+      name: "John Smith",
+      department: "System Administration",
+      role: Role.ADMINISTRATOR,
+      isActive: true,
+      mustChangePassword: false,
+      passwordHash: standardPasswordHash,
+    },
+  ];
+
+  const userMap: Record<string, number> = {};
+  for (const u of usersData) {
+    const user = await prisma.user.upsert({
+      where: { email: u.email },
+      update: {
+        name: u.name,
+        department: u.department,
+        role: u.role,
+        isActive: u.isActive,
+        mustChangePassword: u.mustChangePassword,
+      },
+      create: u,
+    });
+    userMap[u.email] = user.id;
+
+    // Maintain RequesterUser table compatibility
+    if (u.role === Role.REQUESTER) {
+      await prisma.requesterUser.upsert({
+        where: { email: u.email },
+        update: { name: u.name, department: u.department || "", isActive: u.isActive },
+        create: { name: u.name, email: u.email, department: u.department || "", isActive: u.isActive },
+      });
+    }
+  }
+
+  // 4. Seed Realistic Tickets
+  const sampleTickets = [
+    {
+      ticketNo: "TKT-2026-001234",
+      requesterEmail: "jennifer.anderson@toktickit.com",
+      categoryName: "Hardware",
+      systemName: "Corporate Laptop",
+      requestedPriority: RequestedPriority.MEDIUM,
+      itPriority: ITPriority.MEDIUM,
+      status: TicketStatus.IN_PROGRESS,
+      ownerEmail: "kevin.patel@toktickit.com",
+      summary: "Laptop battery drains quickly",
+      description: "My laptop battery is draining much faster than usual even when idling.",
+      requesterResolvedInd: false,
+    },
+    {
+      ticketNo: "TKT-2026-001233",
+      requesterEmail: "michael.brown@toktickit.com",
+      categoryName: "Network",
+      systemName: "VPN",
+      requestedPriority: RequestedPriority.HIGH,
+      itPriority: ITPriority.HIGH,
+      status: TicketStatus.OPEN,
+      ownerEmail: null,
+      summary: "Cannot connect to VPN",
+      description: "Getting timeout error when authenticating through corporate VPN client.",
+      requesterResolvedInd: false,
+    },
+    {
+      ticketNo: "TKT-2026-001232",
+      requesterEmail: "david.lee@toktickit.com",
+      categoryName: "Software",
+      systemName: "Email",
+      requestedPriority: RequestedPriority.MEDIUM,
+      itPriority: ITPriority.MEDIUM,
+      status: TicketStatus.IN_PROGRESS,
+      ownerEmail: "emily.davis@toktickit.com",
+      summary: "Email not syncing on mobile",
+      description: "Outlook application on Android mobile device fails to fetch new emails.",
+      requesterResolvedInd: false,
+    },
+    {
+      ticketNo: "TKT-2026-001231",
+      requesterEmail: "jennifer.anderson@toktickit.com",
+      categoryName: "Account and Access",
+      systemName: "LEB2 App",
+      requestedPriority: RequestedPriority.LOW,
+      itPriority: ITPriority.LOW,
+      status: TicketStatus.RESOLVED,
+      ownerEmail: "lisa.martinez@toktickit.com",
+      summary: "New employee setup request",
+      description: "Please provision standard LEB2 course access for new TA starting next week.",
+      requesterResolvedInd: true,
+    },
+  ];
+
+  for (const t of sampleTickets) {
+    const requesterId = userMap[t.requesterEmail];
+    const ownerId = t.ownerEmail ? userMap[t.ownerEmail] : null;
+    const categoryId = categoryMap[t.categoryName];
+    const relatedSystemId = systemMap[t.systemName];
+
+    const createdTicket = await prisma.ticket.upsert({
+      where: { ticketNo: t.ticketNo },
+      update: {
+        status: t.status,
+        itPriority: t.itPriority,
+        ownerId: ownerId,
+        requesterResolvedInd: t.requesterResolvedInd,
+      },
+      create: {
+        ticketNo: t.ticketNo,
+        requesterId,
+        ownerId,
+        categoryId,
+        relatedSystemId,
+        requestedPriority: t.requestedPriority,
+        itPriority: t.itPriority,
+        status: t.status,
+        summary: t.summary,
+        description: t.description,
+        requesterResolvedInd: t.requesterResolvedInd,
+      },
+    });
+
+    // Seed comments/notes for TKT-2026-001234
+    if (t.ticketNo === "TKT-2026-001234") {
+      await prisma.publicComment.createMany({
+        data: [
+          {
+            ticketId: createdTicket.id,
+            authorId: userMap["jennifer.anderson@toktickit.com"],
+            content: "Just adding that this issue occurs even when I close all applications.",
+            createdAt: new Date("2026-05-12T09:20:00Z"),
+          },
+          {
+            ticketId: createdTicket.id,
+            authorId: userMap["kevin.patel@toktickit.com"],
+            content: "We are investigating the issue on your device. We will update you shortly.",
+            createdAt: new Date("2026-05-13T10:30:00Z"),
+          },
+        ],
+        skipDuplicates: true,
+      });
+
+      await prisma.internalNote.createMany({
+        data: [
+          {
+            ticketId: createdTicket.id,
+            authorId: userMap["kevin.patel@toktickit.com"],
+            content: "Ran battery diagnostics. Wear level is at 45%. Ordering replacement battery unit.",
+            createdAt: new Date("2026-05-13T10:35:00Z"),
+          },
+        ],
+        skipDuplicates: true,
+      });
+    }
+  }
+
+  console.log("Seeding completed successfully.");
+}
+
+main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await getPrisma().$disconnect();
+  });
 
 ```
 
 ---
 
-# Answer Part 7: Visual Evidence & UI Screenshots
+# Answer Part 9: Zen Green UI and Responsive Evidence
 
-## 7.1 Login Screen & Authentication Flows
-![Login Screen Baseline](images/03_login_screen.png)
-![Login Desktop Viewport](images/ui_login_desktop.png)
+## 9.1 User Interface Specification (ui-spec.md)
+# TokTickIT Lab 3 User Interface Specification
 
-## 7.2 Mandatory First-Login Password Change Screen
-![Mandatory Password Change Screen](images/04_password_change.png)
-![Password Change Desktop Viewport](images/ui_password_desktop.png)
+## 1. Design System & Theme Alignment
+Lab 3 extends the **Zen Green Design System** established in Lab 2. All new screens, forms, tables, modals, and navigation components adhere strictly to the established visual identity and design tokens.
 
-## 7.3 Requester Ticket Detail & Public Comments
-![Requester Ticket Detail Screen](images/05_requester_view.png)
+### Color Tokens
+- **Primary Header & Branding**: `#006B3C` (Zen Green Primary)
+- **Secondary Accent**: `#0B7A46` (Zen Green Dark)
+- **Pale Surface / Active Highlight**: `#EAF6EF` (Zen Light Mint)
+- **Background**: `#F5F7F6` (Neutral Warm Gray)
+- **Surface**: `#FFFFFF` (Pure White)
+- **Text Primary**: `#1F2925` (Dark Slate)
+- **Text Muted**: `#64748B` (Slate Gray)
+- **Error / Danger**: `#D32F2F` (Deep Red)
+- **Warning / Internal Note Accent**: `#D97706` (Amber Gold)
+- **Success Badge**: `#059669` (Emerald Green)
 
-## 7.4 IT Staff Ticket Queue & Workflow Operations
-![IT Staff Ticket Queue Screen](images/06_staff_queue.png)
-![IT Staff Desktop Viewport](images/ui_staff_desktop.png)
+---
 
-## 7.5 Administrator User Management & Safety Guards
-![Admin User Management Screen](images/07_admin_users.png)
-![Admin Desktop Viewport](images/ui_admin_desktop.png)
+## 2. Application Shell & Role-Based Navigation
 
-## 7.6 Automated Test Execution Summary
+### Header Shell
+- **App Branding**: Logo and title "TokTickIT".
+- **Role-Based Navigation Links**:
+  - **Requester**: `My Tickets`, `Create Ticket`
+  - **IT Staff**: `Ticket Queue`, `My Queue`, `Create Ticket`
+  - **Administrator**: `User Management`, `Ticket Queue`
+- **User Profile Area**:
+  - Displays authenticated user's Full Name.
+  - Role Badge (`Requester`, `IT Staff`, `Administrator`) with distinct pill styling.
+  - Profile Dropdown / Actions: `Change Password`, `Logout`.
+
+---
+
+## 3. Screen Specifications & UI Visual Layout Mockups
+
+### 3.1 Login Screen Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT                                         [ Guest Context ]  |
++-----------------------------------------------------------------------+
+|                                                                       |
+|                     +---------------------------+                     |
+|                     |     Sign in to TokTickIT  |                     |
+|                     +---------------------------+                     |
+|                     | Email Address             |                     |
+|                     | [ jennifer@toktickit.com ]|                     |
+|                     | Password                  |                     |
+|                     | [ ********************** ]|                     |
+|                     |                           |                     |
+|                     |  [   Sign In Button   ]   |                     |
+|                     +---------------------------+                     |
+|                                                                       |
++-----------------------------------------------------------------------+
+```
+
+### 3.2 Mandatory First-Login Password Change Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT                                     Jennifer Anderson (Req)|
++-----------------------------------------------------------------------+
+|                                                                       |
+|              +-----------------------------------------+              |
+|              |         Change Your Password            |              |
+|              | You must change initial password.       |              |
+|              +-----------------------------------------+              |
+|              | Current (Initial) Password              |              |
+|              | [ ********************** ]              |              |
+|              | New Password                            |              |
+|              | [ ********************** ]              |              |
+|              | Confirm New Password                    |              |
+|              | [ ********************** ]              |              |
+|              | Password Rules:                         |              |
+|              | [v] At least 8 characters               |              |
+|              | [v] Upper & lower case letters          |              |
+|              | [v] Number & special character          |              |
+|              |                                         |              |
+|              |          [  Save New Password  ]        |              |
+|              +-----------------------------------------+              |
+|                                                                       |
++-----------------------------------------------------------------------+
+```
+
+### 3.3 Requester Ticket Detail & Public Comments Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT   My Tickets   Create Ticket        Jennifer Anderson (Req)|
++-----------------------------------------------------------------------+
+|  Ticket #TKT-2026-001234  [ IN_PROGRESS ]     [ Problem Appears Resolved ]
+|  Summary: Laptop battery drains quickly                              |
+|  Category: Hardware | Priority: MEDIUM                                |
+|-----------------------------------------------------------------------|
+|  Public Comments (Green Border Panel)                                 |
+|  +-----------------------------------------------------------------+  |
+|  | [JA] Jennifer Anderson (Requester)           May 12, 2026 09:14   |  |
+|  | Battery drains fast even when idle.                             |  |
+|  |-----------------------------------------------------------------|  |
+|  | [KP] Kevin Patel (IT Support)                May 13, 2026 10:30   |  |
+|  | We are investigating the battery health on your device.        |  |
+|  +-----------------------------------------------------------------+  |
+|  | Add Public Comment:                                             |  |
+|  | [ Type your message here...                                   ] |  |
+|  |                                                [ Post Comment ] |  |
+|  +-----------------------------------------------------------------+  |
++-----------------------------------------------------------------------+
+```
+
+### 3.4 IT Staff Ticket Queue Mockup (Desktop & Mobile)
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT   Ticket Queue   My Queue           Kevin Patel (IT Staff) |
++-----------------------------------------------------------------------+
+|  [ Search ticket number or summary... ]  Filters: [Category v] [Status v]
+|-----------------------------------------------------------------------|
+|  Ticket No     Created      Summary               Status       Owner  |
+|  TKT-2026-1234 12 May 09:14 Laptop battery drains IN_PROGRESS Kevin |
+|  TKT-2026-1233 12 May 08:02 Cannot connect VPN    OPEN         --     |
+|  TKT-2026-1232 11 May 16:45 Email sync mobile     IN_PROGRESS Emily |
+|-----------------------------------------------------------------------|
+|  < Previous   [1]  2  3  ...  9   Next >                              |
++-----------------------------------------------------------------------+
+```
+
+### 3.5 IT Staff Ticket Detail & Internal Notes Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT   Ticket Queue                      Kevin Patel (IT Staff) |
++-----------------------------------------------------------------------+
+|  Ticket Detail: TKT-2026-001234               | Operational Sidebar   |
+|  Summary: Laptop battery drains quickly        | Owner: [ Kevin Patel v|
+|  Category: Hardware | Status: [ IN_PROGRESS ] | IT Priority: [ HIGH v |
+|-----------------------------------------------+-----------------------|
+|  Public Comments                              | Internal Notes (Amber)|
+|  +-----------------------------------------+  | +-------------------+ |
+|  | [KP] We are investigating your device.  |  | | [KP] Battery wear | |
+|  +-----------------------------------------+  | | is at 45%. Order  | |
+|                                               | | replacement unit. | |
+|                                               | +-------------------+ |
++-----------------------------------------------------------------------+
+```
+
+### 3.6 Administrator User Management & Drawer Mockup
+```text
++-----------------------------------------------------------------------+
+|  TokTickIT   User Management                   John Smith (Admin)     |
++-----------------------------------------------------------------------+
+|  [ Search name or email... ]  Role: [ All Roles v ]   [ + Create User ]
+|-----------------------------------------------------------------------|
+|  Name               Email                     Role       Status Action|
+|  Jennifer Anderson  jennifer@toktickit.com    Requester  Active [Edit]|
+|  Michael Brown      michael@toktickit.com     Requester  Active [Edit]|
+|  Kevin Patel        kevin@toktickit.com       IT_Staff   Active [Edit]|
+|  John Smith         john@toktickit.com        Admin      Active [Edit]|
++-----------------------------------------------------------------------+
+|  Drawer: Create New User                                              |
+|  Full Name: [ Alex Thompson ]                                         |
+|  Email:     [ alex@toktickit.com ]                                    |
+|  Role:      [ IT_STAFF v ]  Active: [ Yes (Toggle) ]                  |
+|  Initial Password: [ InitialPassword123! ]                            |
+|  [ Save User ]                                           [ Cancel ]   |
++-----------------------------------------------------------------------+
+```
+
+---
+
+## 4. Responsive & Accessibility Rules
+- **Desktop ($\ge 992\text{px}$)**: Multi-column grid, full table view, side-by-side detail controls.
+- **Tablet ($768\text{px} - 991\text{px}$)**: Reflowed forms, scrollable tables or compact cards.
+- **Mobile ($< 768\text{px}$)**: Single-column vertical layout, touch-friendly buttons ($\ge 44\text{px}$ height), zero horizontal window overflow.
+
+
+## 9.2 REST API Specification (api-spec.md)
+# TokTickIT Lab 3 REST API Specification
+
+## 1. Overview & Authentication Mechanism
+Lab 3 replaces header-based identity simulation (`x-requester-id`) with secure JWT Authorization bearer tokens or HTTP-only session cookies. All protected endpoints require valid authenticated user context and strictly enforce backend role permissions (`REQUESTER`, `IT_STAFF`, `ADMINISTRATOR`).
+
+---
+
+## 2. Endpoints Summary Table
+
+| Method | Endpoint Path | Description | Permitted Roles | Handled Status Codes |
+| :--- | :--- | :--- | :--- | :--- |
+| `POST` | `/api/auth/login` | Authenticate user credentials | Public | `200`, `400`, `401`, `500` |
+| `POST` | `/api/auth/logout` | Invalidate authenticated session | Authenticated | `200`, `401`, `500` |
+| `GET` | `/api/auth/me` | Retrieve authenticated user profile & role | Authenticated | `200`, `401`, `500` |
+| `POST` | `/api/auth/change-password` | Mandatory or voluntary password update | Authenticated | `200`, `400`, `401`, `500` |
+| `GET` | `/api/requesters/tickets` | List tickets owned by authenticated Requester | Requester | `200`, `401`, `403`, `500` |
+| `POST` | `/api/requesters/tickets` | Create ticket under authenticated Requester | Requester | `201`, `400`, `401`, `403`, `500` |
+| `GET` | `/api/staff/tickets` | Query IT Staff Ticket Queue with search/filter/sort | IT Staff, Admin | `200`, `401`, `403`, `500` |
+| `GET` | `/api/staff/tickets/:id` | Retrieve single ticket details for IT Staff | IT Staff, Admin | `200`, `401`, `403`, `404`, `500` |
+| `PATCH` | `/api/staff/tickets/:id/assign` | Claim or reassign ticket primary owner | IT Staff, Admin | `200`, `400`, `401`, `403`, `404`, `500` |
+| `PATCH` | `/api/staff/tickets/:id/workflow` | Update IT Priority and/or Ticket Status | IT Staff, Admin | `200`, `400`, `401`, `403`, `404`, `500` |
+| `GET` | `/api/tickets/:id/comments` | List Public Comments on a ticket | All Roles | `200`, `401`, `403`, `404`, `500` |
+| `POST` | `/api/tickets/:id/comments` | Post a Public Comment on a ticket | All Roles | `201`, `400`, `401`, `403`, `404`, `500` |
+| `GET` | `/api/tickets/:id/notes` | List Internal Notes on a ticket | IT Staff, Admin ONLY | `200`, `401`, `403`, `404`, `500` |
+| `POST` | `/api/tickets/:id/notes` | Create an Internal Note on a ticket | IT Staff, Admin ONLY | `201`, `400`, `401`, `403`, `404`, `500` |
+| `GET` | `/api/admin/users` | List users with search & role filter | Admin ONLY | `200`, `401`, `403`, `500` |
+| `POST` | `/api/admin/users` | Create user with initial password | Admin ONLY | `201`, `400`, `401`, `403`, `409`, `500` |
+| `PATCH` | `/api/admin/users/:id` | Edit user profile or activation status | Admin ONLY | `200`, `400`, `401`, `403`, `404`, `409`, `500` |
+| `POST` | `/api/admin/users/:id/reset-password` | Set new initial password for user | Admin ONLY | `200`, `400`, `401`, `403`, `404`, `500` |
+
+---
+
+## 3. Detailed Endpoint Specifications
+
+### 3.1 Authentication APIs
+
+#### `POST /api/auth/login`
+Authenticates user credentials and returns session token and user identity.
+
+- **`curl` Example**:
+  ```bash
+  curl -X POST http://localhost:3001/api/auth/login \
+    -H "Content-Type: application/json" \
+    -d '{"email":"jennifer.anderson@toktickit.com","password":"InitialPassword123!"}'
+  ```
+
+- **Request Body**:
+  ```json
+  {
+    "email": "jennifer.anderson@toktickit.com",
+    "password": "InitialPassword123!"
+  }
+  ```
+
+- **HTTP Responses**:
+  - `200 OK`: Login successful.
+    ```json
+    {
+      "success": true,
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "user": {
+        "id": 1,
+        "email": "jennifer.anderson@toktickit.com",
+        "name": "Jennifer Anderson",
+        "role": "REQUESTER",
+        "mustChangePassword": true
+      }
+    }
+    ```
+  - `400 Bad Request`: Email or password field missing.
+  - `401 Unauthorized`: Invalid credentials or account deactivated (`isActive = false`).
+
+---
+
+#### `POST /api/auth/change-password`
+Updates user password and clears `mustChangePassword` flag.
+
+- **`curl` Example**:
+  ```bash
+  curl -X POST http://localhost:3001/api/auth/change-password \
+    -H "Authorization: Bearer <TOKEN>" \
+    -H "Content-Type: application/json" \
+    -d '{"currentPassword":"InitialPassword123!","newPassword":"NewSecurePassword456!"}'
+  ```
+
+- **HTTP Responses**:
+  - `200 OK`: Password updated successfully; `mustChangePassword` is set to `false`.
+  - `400 Bad Request`: New password does not meet strength rules or confirmation mismatch.
+  - `401 Unauthorized`: Invalid current password or expired token.
+
+---
+
+### 3.2 IT Staff Ticket Queue API
+
+#### `GET /api/staff/tickets`
+Retrieves paginated ticket queue for IT Staff and Administrator users.
+
+- **`curl` Example**:
+  ```bash
+  curl -X GET "http://localhost:3001/api/staff/tickets?search=battery&status=IN_PROGRESS&page=1&limit=10" \
+    -H "Authorization: Bearer <STAFF_TOKEN>"
+  ```
+
+- **HTTP Responses**:
+  - `200 OK`:
+    ```json
+    {
+      "success": true,
+      "data": [
+        {
+          "id": 12,
+          "ticketNo": "TKT-2026-001234",
+          "createdAt": "2026-09-15T08:14:00Z",
+          "summary": "Laptop battery drains quickly",
+          "category": "Hardware",
+          "requestedPriority": "MEDIUM",
+          "itPriority": "MEDIUM",
+          "status": "IN_PROGRESS",
+          "owner": { "id": 5, "name": "Michael Brown" }
+        }
+      ],
+      "pagination": {
+        "totalItems": 87,
+        "totalPages": 9,
+        "currentPage": 1,
+        "pageSize": 10
+      }
+    }
+    ```
+  - `401 Unauthorized`: Missing or invalid authentication.
+  - `403 Forbidden`: User role is `REQUESTER` (access restricted to IT Staff/Admin).
+
+---
+
+### 3.3 IT Staff Ticket Operations
+
+#### `PATCH /api/staff/tickets/:id/assign`
+Claim or reassign primary ticket ownership.
+
+- **HTTP Responses**:
+  - `200 OK`: Ticket owner updated.
+  - `400 Bad Request`: Owner ID does not belong to an active IT Staff or Admin user.
+  - `404 Not Found`: Ticket ID does not exist.
+
+#### `PATCH /api/staff/tickets/:id/workflow`
+Update IT Priority and Ticket Status.
+
+- **HTTP Responses**:
+  - `200 OK`: Status or IT Priority updated.
+  - `400 Bad Request`: Invalid status transition attempted.
+  - `404 Not Found`: Ticket ID not found.
+
+---
+
+### 3.4 Comments & Notes APIs
+
+#### `POST /api/tickets/:id/comments` (Public Comment)
+- **`curl` Example**:
+  ```bash
+  curl -X POST http://localhost:3001/api/tickets/12/comments \
+    -H "Authorization: Bearer <TOKEN>" \
+    -H "Content-Type: application/json" \
+    -d '{"content":"We are investigating the issue on your device."}'
+  ```
+- **HTTP Responses**:
+  - `201 Created`: Public comment saved.
+  - `400 Bad Request`: Content empty or whitespace-only.
+
+#### `POST /api/tickets/:id/notes` (Internal Note)
+- **`curl` Example**:
+  ```bash
+  curl -X POST http://localhost:3001/api/tickets/12/notes \
+    -H "Authorization: Bearer <STAFF_TOKEN>" \
+    -H "Content-Type: application/json" \
+    -d '{"content":"Ordered battery replacement part."}'
+  ```
+- **HTTP Responses**:
+  - `201 Created`: Internal note saved.
+  - `403 Forbidden`: Requester user requested endpoint (Internal notes are restricted to IT Staff & Admin only).
+
+---
+
+### 3.5 Administrator User Management APIs
+
+#### `POST /api/admin/users`
+- **`curl` Example**:
+  ```bash
+  curl -X POST http://localhost:3001/api/admin/users \
+    -H "Authorization: Bearer <ADMIN_TOKEN>" \
+    -H "Content-Type: application/json" \
+    -d '{"name":"Alex Thompson","email":"alex.thompson@toktickit.com","role":"IT_STAFF","isActive":true,"initialPassword":"InitialPassword123!"}'
+  ```
+- **HTTP Responses**:
+  - `201 Created`: User created with `mustChangePassword = true`.
+  - `409 Conflict`: User email already exists.
+  - `403 Forbidden`: Non-admin user requested endpoint.
+
+#### `PATCH /api/admin/users/:id`
+- **HTTP Responses**:
+  - `200 OK`: User updated.
+  - `400 Bad Request`: Attempted self-deactivation or deactivation of the last active Administrator account.
+  - `404 Not Found`: User ID not found.
+
+
+## 9.3 Automated Test Execution Summary
 ![Automated Test Suite Output](images/08_test_results.png)
 
-## 7.7 Mobile Viewport Evidence (375px)
+## 9.4 Mobile Viewport Evidence (375px)
 <div class="mobile-grid">
   <div class="mobile-card">
     <img src="images/ui_login_mobile.png" alt="Mobile Login Viewport" />
@@ -6747,118 +4272,3 @@ export default function App() {
     <p>Mobile 375px User Management</p>
   </div>
 </div>
-
----
-
-# Answer Part 8: Peer Review Verification (reviewer.md & Feedback)
-
-The complete peer review report signed off by peer reviewer **@Suprawi5227** is rendered below:
-
-# Lab 3 Peer Reviewer Document (reviewer.md)
-
-- **Student Name:** Natthakamol Katippatee (Student ID: 67070505215)
-- **Repository:** [`natthakamol1130/toktickit`](https://github.com/natthakamol1130/toktickit)
-- **Peer Reviewer:** Suprawi Srikamwong ([`@Suprawi5227`](https://github.com/Suprawi5227))
-- **Peer Repository:** [`Suprawi5227/toktickit`](https://github.com/Suprawi5227/toktickit)
-- **Staging Branch:** `lab3-staging`
-- **Main Branch:** `main`
-
----
-
-## 1. Reviewer Identity Verification
-All pull requests in this repository were peer-reviewed and approved by **Suprawi Srikamwong (`@Suprawi5227`)** prior to merging into `lab3-staging` and `main`. Likewise, all pull requests in the peer repository were peer-reviewed and approved by **Natthakamol Katippatee (`@natthakamol1130`)**.
-
----
-
-## 2. Pull Requests Received (natthakamol1130/toktickit)
-
-| Issue # | PR # | Feature Title | Reviewer | Review Action | Status | Direct GitHub PR Link |
-|---|---|---|---|---|---|---|
-| #34 | PR #35 | Lab 3 Spec DD Documents | @Suprawi5227 | Approved specification & RBAC rules | Merged | [PR #35](https://github.com/natthakamol1130/toktickit/pull/35) |
-| #36 | PR #37 | Test DD Plan & Traceability Matrix | @Suprawi5227 | Approved test plan coverage | Merged | [PR #37](https://github.com/natthakamol1130/toktickit/pull/37) |
-| #38 | PR #39 | Prisma Schema Evolution & User Models | @Suprawi5227 | Approved User schema & FK constraints | Merged | [PR #39](https://github.com/natthakamol1130/toktickit/pull/39) |
-| #40 | PR #41 | Idempotent Seed Data with Bcrypt Hashing | @Suprawi5227 | Approved bcrypt salt rounds & seed accounts | Merged | [PR #41](https://github.com/natthakamol1130/toktickit/pull/41) |
-| #42 | PR #43 | Backend JWT Auth & Change Password APIs | @Suprawi5227 | Approved 401 error handling & JWT middleware | Merged | [PR #43](https://github.com/natthakamol1130/toktickit/pull/43) |
-| #44 | PR #45 | Client AuthContext, Login, & ChangePassword UI | @Suprawi5227 | Approved Login screen & logout cleanup | Merged | [PR #45](https://github.com/natthakamol1130/toktickit/pull/45) |
-| #46 | PR #47 | Requester Ticket Access Control APIs | @Suprawi5227 | Approved 403 ownership boundary enforcement | Merged | [PR #47](https://github.com/natthakamol1130/toktickit/pull/47) |
-| #48 | PR #49 | IT Staff Ticket Queue & Internal Notes APIs | @Suprawi5227 | Approved internal notes leak protection | Merged | [PR #49](https://github.com/natthakamol1130/toktickit/pull/49) |
-| #50 | PR #51 | Admin User Management APIs & Safety Rules | @Suprawi5227 | Approved admin self-deactivation & last-admin safety | Merged | [PR #51](https://github.com/natthakamol1130/toktickit/pull/51) |
-| #52 | PR #53 | Multi-Role Integration & E2E Verification | @Suprawi5227 | Approved E2E test suite & v3.0.0 release | Merged | [PR #53](https://github.com/natthakamol1130/toktickit/pull/53) |
-| Release | PR #55 | Lab 3 Release Integration to main | @Suprawi5227 | Approved final v3.0.0 main release | Open/Ready | [PR #55](https://github.com/natthakamol1130/toktickit/pull/55) |
-
----
-
-## 3. Pull Requests Reviewed & Given (Suprawi5227/toktickit)
-
-| Issue # | Peer PR # | PR Description | Review Action | Status | Direct GitHub Link |
-|---|---|---|---|---|---|
-| #34 | PR #45 | Git Setup & Sprint 3 Spec Documents | Verified API & RBAC contract alignment | Approved | [Peer PR #45](https://github.com/Suprawi5227/toktickit/pull/45) |
-| #36 | PR #47 | Test Plan Specification & Traceability | Verified test case coverage | Approved | [Peer PR #47](https://github.com/Suprawi5227/toktickit/pull/47) |
-| #38 | PR #49 | Database Schema Evolution & User Models | Verified User model & FK constraints | Approved | [Peer PR #49](https://github.com/Suprawi5227/toktickit/pull/49) |
-| #40 | PR #49 | Idempotent Seed Data & Bcrypt Hashing | Verified bcrypt salt rounds & idempotent seeds | Approved | [Peer PR #49](https://github.com/Suprawi5227/toktickit/pull/49) |
-| #42 | PR #49 | Backend Auth APIs & Session Middleware | Verified JWT token validation & 401 handling | Approved | [Peer PR #49](https://github.com/Suprawi5227/toktickit/pull/49) |
-| #44 | PR #49 | Client Auth Context & Login UI | Verified form state management & logout cleanup | Approved | [Peer PR #49](https://github.com/Suprawi5227/toktickit/pull/49) |
-| #46 | PR #51 | Requester Ticket Access Control APIs | Verified 403 authorization boundary | Approved | [Peer PR #51](https://github.com/Suprawi5227/toktickit/pull/51) |
-| #48 | PR #51 | IT Staff Ticket Queue & Internal Notes APIs | Verified internal notes leak protection | Approved | [Peer PR #51](https://github.com/Suprawi5227/toktickit/pull/51) |
-| #50 | PR #52 | Admin User Management APIs & Safety Rules | Verified self-deactivation & last-admin rules | Approved | [Peer PR #52](https://github.com/Suprawi5227/toktickit/pull/52) |
-| #52 | PR #53 | Zen Green UI Theme Consistency & Signoff | Verified Zen Green UI & E2E integration | Approved | [Peer PR #53](https://github.com/Suprawi5227/toktickit/pull/53) |
-| Release | PR #54 | Sprint 3 Final Release Integration | Verified full Sprint 3 integration to main | Approved | [Peer PR #54](https://github.com/Suprawi5227/toktickit/pull/54) |
-
----
-
-## 4. Peer Review Approvals & Comments Evidence
-All peer review discussions and approvals were conducted directly on GitHub web PRs and recorded in `docs/lab-03/LAB3_SUBMISSION_REPORT.md` Section 1.5.
-
-
----
-
-# Answer Part 9: AI Tool Usage & Prompting Log (ai-use.md)
-
-The complete AI Tool Usage & Prompting Log is rendered below from [`docs/lab-03/ai-use.md`](docs/lab-03/ai-use.md):
-
-# Lab 3 AI Use with Reflection (ai-use.md)
-
-- **Student Name:** Natthakamol Katippatee (Student ID: 67070505215)
-- **Repository:** [`natthakamol1130/toktickit`](https://github.com/natthakamol1130/toktickit)
-- **LLM Used:** Google Antigravity Agent (Gemini 3.6 Pro / Flash Architecture)
-- **Lab Increment:** Lab 3 (Sprint 3 Enterprise Security & Multi-Role Ticketing)
-
----
-
-## 1. Selected Key Engineering Prompts
-
-### Prompt 1: Specification & Contract Design
-> *"Design a secure, stateless JWT authentication system for Express & Prisma supporting 3 roles (REQUESTER, IT_STAFF, ADMINISTRATOR) and mandatory first-login password change. Document all business rules BR-01 to BR-12 in docs/lab-03/specification.md."*
-
-### Prompt 2: Database Evolution
-> *"Implement Prisma schema evolution adding User model, Role enum, and foreign key relations to Ticket and Comment while maintaining full Lab 2 data integrity."*
-
-### Prompt 3: Backend Auth Middleware
-> *"Create Express authentication middleware validating Bearer JWT tokens, loading user role, enforcing mandatory password reset restrictions, and returning 401 Unauthorized for expired or missing tokens."*
-
-### Prompt 4: Idempotent Seed Data
-> *"Write an idempotent seed script in server/prisma/seed.ts populating at least 4 active Requesters, 3 active IT Staff, 1 active Administrator, and inactive accounts with bcrypt password hashes."*
-
-### Prompt 5: Admin User Management APIs
-> *"Implement Administrator User Management APIs in server/src/routes/adminUsers.ts enforcing safety rules: preventing self-deactivation and preventing deactivation of the last active Administrator."*
-
-### Prompt 6: Client Auth Context Integration
-> *"Create AuthContext in client/src/contexts/AuthContext.tsx managing JWT tokens in localStorage, user state, and providing login/logout actions across all components."*
-
-### Prompt 7: Login & Change Password UI
-> *"Design Zen Green Login and ChangePassword components with inline validation, busy states, and redirection upon successful password reset."*
-
-### Prompt 8: IT Staff Queue & Confidential Internal Notes
-> *"Implement IT Staff Ticket Queue with search, filtering, sorting, pagination, and confidential Internal Notes visible strictly to IT Staff and Administrators."*
-
-### Prompt 9: Automated Test Suites
-> *"Write supertest backend tests in server/tests/lab-03/ verifying all AC criteria (auth, password reset, requester ownership, internal note isolation, admin safety rules)."*
-
-### Prompt 10: PDF Submission Report Generation
-> *"Write a script generating the complete Lab 3 Submission Report matching Handout Section 14 headings Answer Part 1 to Answer Part 9 with real GitHub web browser screenshots."*
-
----
-
-## 2. My Engineering Reflection
-Using AI agentic pair programming during Sprint 3 allowed for seamless transformation of complex stakeholder requirements into precise engineering contracts, database schemas, and automated test suites. The AI agent ensured strict adherence to security boundaries (preventing client-side ID spoofing and enforcing server-side RBAC) while maintaining 100% test coverage across the entire multi-role stack.
-
