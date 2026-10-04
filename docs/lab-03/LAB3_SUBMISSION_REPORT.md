@@ -1,17 +1,42 @@
 # Answer Part 1: Git Use with Engineering Workflow
 
-## 1.1 First-Page Header & Student Information
-The TokTickIT Lab 3 engineering increment extends the single-context requester prototype into a production-grade enterprise IT Service Desk with multi-role authentication (JWT, bcrypt, mandatory password reset), role-based access control, IT Staff Ticket Queue and Internal Notes, and an Administrator User Management Console with safety rules.
+## 1.1 URL List
 
-## 1.2 GitHub Project Kanban Board & Issue Tracking
+| รายการ | ลิงก์ (URL) |
+| :--- | :--- |
+| GitHub Repository | https://github.com/natthakamol1130/toktickit |
+| GitHub Project (Kanban) | https://github.com/users/natthakamol1130/projects |
+| Issue #34 - Lab 3 Specification, UI Spec, and API Spec Documents | https://github.com/natthakamol1130/toktickit/issues/34 |
+| Issue #36 - Test-Driven Development Plan for Lab 3 | https://github.com/natthakamol1130/toktickit/issues/36 |
+| Issue #38 - Prisma Schema Evolution (User, Role Enum, FK Constraints) | https://github.com/natthakamol1130/toktickit/issues/38 |
+| Issue #40 - Idempotent Seed Data with Bcrypt Hashing (4 Accounts) | https://github.com/natthakamol1130/toktickit/issues/40 |
+| Issue #42 - Backend JWT Auth & Change Password Middleware | https://github.com/natthakamol1130/toktickit/issues/42 |
+| Issue #44 - Client AuthContext, Login, & ChangePassword UI Screens | https://github.com/natthakamol1130/toktickit/issues/44 |
+| Issue #46 - Requester Ticket & Comment Access Control APIs | https://github.com/natthakamol1130/toktickit/issues/46 |
+| Issue #48 - IT Staff Ticket Queue & Internal Notes APIs | https://github.com/natthakamol1130/toktickit/issues/48 |
+| Issue #50 - Admin User Management APIs & Safety Rules Enforcement | https://github.com/natthakamol1130/toktickit/issues/50 |
+| Issue #52 - Multi-Role Integration & E2E Production Verification | https://github.com/natthakamol1130/toktickit/issues/52 |
+| PR #35: feature/lab03-1-spec-contract → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/35 |
+| PR #37: feature/lab03-2-test-plan → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/37 |
+| PR #39: feature/lab03-3-db-schema → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/39 |
+| PR #41: feature/lab03-4-seed-data → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/41 |
+| PR #43: feature/lab03-5-auth-api → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/43 |
+| PR #45: feature/lab03-6-auth-ui → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/45 |
+| PR #47: feature/lab03-7-requester-ticket-api → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/47 |
+| PR #49: feature/lab03-8-staff-queue-api → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/49 |
+| PR #51: feature/lab03-9-admin-user-api → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/51 |
+| PR #53: feature/lab03-10-e2e-testing-and-release → lab3-staging | https://github.com/natthakamol1130/toktickit/pull/53 |
+| Release PR #55: lab3-staging → main | https://github.com/natthakamol1130/toktickit/pull/55 |
+
+## 1.2 Kanban Board & Closed Issues Evidence
 All 10 feature issues for Lab 3 (Issue #34 to Issue #52) were managed using a 10-Issue staged integration workflow. Every issue was completed, verified against unit/API tests, and closed upon merging into `lab3-staging` and `main`.
 
 ![Real GitHub Issues Board](images/real_github_issues.png)
 ![GitHub Project Kanban Board Part 1](images/01_kanban_board_part1.png)
 ![GitHub Project Kanban Board Part 2 Workflow](images/01_kanban_board_part2.png)
 
-## 1.3 Git Log Graph & Branching Model
-The project strictly enforced feature-branch isolation (`feature/lab03-X-*` -> PR -> `lab3-staging` -> `main`), maintaining clean commit history with standard Conventional Commits. Below is the full commit log graph and commit breakdown.
+## 1.3 Git Log Graph & Commit Breakdown
+The project strictly enforced feature-branch isolation (`feature/lab03-X-*` -> PR -> `lab3-staging` -> `main`), maintaining clean commit history with standard Conventional Commits. Below is the full commit log graph and commit breakdown table.
 
 ![Git Commit Log Graph](images/02_git_log_graph.png)
 
