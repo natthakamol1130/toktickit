@@ -1452,15 +1452,20 @@ Using AI agentic pair programming during Sprint 3 allowed for seamless transform
 
 # Answer Part 5: Working Login and Password Change UI
 
-## 5.1 Login Screen & Authentication Flows
+## 5.1 Authentication Engine & Password Security Verification
+The authentication engine replaces the temporary Development Requester identity selector with secure email/password credential validation, bcrypt password hashing, and JWT session tokens.
+- **Valid Credential Authentication**: Users submit email and password via `POST /api/auth/login`. Upon validation, the server generates a signed session token and returns user identity metadata including `id`, `email`, `name`, `role` (`REQUESTER`, `IT_STAFF`, `ADMINISTRATOR`), and `mustChangePassword`.
+- **Invalid Credential & Inactive Account Safety**: Inactive user accounts (`isActive = false`) or incorrect passwords are rejected with HTTP 401 Unauthorized, returning safe non-revealing error alerts.
+- **Mandatory First-Login Password Change**: If an account is seeded or created with an initial password (`mustChangePassword = true`), the application blocks access to normal screens and redirects to the Mandatory Change Password screen. The user must provide their current initial password and a new strong password (minimum 8 characters, containing uppercase, lowercase, number, and special character). Upon submission via `POST /api/auth/change-password`, the backend hashes the new password using bcrypt, sets `mustChangePassword = false`, and grants access.
+- **Authenticated Application Shell**: The top navigation header dynamically displays the authenticated user's full name, role badge, navigation links permitted for their role, and a Logout button that invalidates local session state and redirects to Login.
+
+## 5.2 Visual Screenshots Evidence
 ![Login Screen Baseline](images/03_login_screen.png)
 ![Login Desktop Viewport](images/ui_login_desktop.png)
-
-## 5.2 Mandatory First-Login Password Change Screen
 ![Mandatory Password Change Screen](images/04_password_change.png)
 ![Password Change Desktop Viewport](images/ui_password_desktop.png)
 
-## 5.3 Authentication Middleware Implementation
+## 5.3 Authentication Middleware Implementation (`server/src/middleware/authMiddleware.ts`)
 ```typescript
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
@@ -1578,7 +1583,7 @@ export function enforcePasswordChange(
 
 ```
 
-## 5.4 Authentication Routes Implementation
+## 5.4 Authentication Routes Implementation (`server/src/routes/auth.ts`)
 ```typescript
 import { Router, Response } from "express";
 import bcrypt from "bcryptjs";
@@ -1749,7 +1754,7 @@ authRouter.post("/change-password", authenticateToken, async (req: Authenticated
 
 ```
 
-## 5.5 Authentication Context Client Component
+## 5.5 Client AuthContext State Provider (`client/src/contexts/AuthContext.tsx`)
 ```typescript
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { User } from "../types";
@@ -1841,15 +1846,381 @@ export const useAuth = (): AuthContextType => {
 
 ```
 
+## 5.6 Login Page Component (`client/src/pages/Login.tsx`)
+```typescript
+import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+
+interface LoginProps {
+  onSuccess?: () => void;
+  onSwitchToLegacy?: () => void;
+}
+
+export const Login: React.FC<LoginProps> = ({ onSuccess, onSwitchToLegacy }) => {
+  const { login } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+
+    if (!email.trim() || !password) {
+      setError("Please fill in both Email and Password fields.");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      await login(email.trim(), password);
+      if (onSuccess) {
+        onSuccess();
+      }
+    } catch (err: any) {
+      setError(err.message || "Invalid credentials or account deactivated.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center bg-light px-3 py-5">
+      <div
+        className="card shadow-sm border-0 w-100"
+        style={{ maxWidth: "440px", borderRadius: "12px", overflow: "hidden" }}
+      >
+        <div
+          className="card-header bg-white border-bottom-0 text-center pt-4 pb-2"
+        >
+          <div className="d-inline-flex align-items-center justify-content-center mb-2" style={{ color: "#006B3C" }}>
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M15 5v2" />
+              <path d="M15 11v2" />
+              <path d="M15 17v2" />
+              <path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2z" />
+            </svg>
+          </div>
+          {/* Hot Pink Heading as requested by user */}
+          <h2
+            className="fw-bold mb-1"
+            style={{ color: "#006B3C", fontSize: "1.75rem" }}
+          >
+            Sign in to TokTickIT
+          </h2>
+          <p className="text-muted small mb-0">Select Development Requester or enter your credentials to access IT Services</p>
+        </div>
+
+        <div className="card-body p-4">
+          {error && (
+            <div className="alert alert-danger py-2 px-3 small border-0 mb-4" role="alert">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="mb-3">
+              <label htmlFor="login-email" className="form-label fw-semibold text-secondary small">
+                Email Address
+              </label>
+              <input
+                id="login-email"
+                type="email"
+                className="form-control form-control-lg fs-6"
+                placeholder="e.g. jennifer.anderson@toktickit.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={submitting}
+                autoFocus
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="login-password" className="form-label fw-semibold text-secondary small">
+                Password
+              </label>
+              <input
+                id="login-password"
+                type="password"
+                className="form-control form-control-lg fs-6"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={submitting}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="btn btn-primary w-100 py-2.5 fw-bold text-white shadow-sm mb-3"
+              style={{
+                backgroundColor: "#006B3C",
+                borderColor: "#006B3C",
+                borderRadius: "8px",
+              }}
+              disabled={submitting}
+            >
+              {submitting ? "Signing in..." : "Sign In"}
+            </button>
+          </form>
+
+          {onSwitchToLegacy && (
+            <div className="text-center pt-2 border-top">
+              <button
+                type="button"
+                className="btn btn-link text-decoration-none text-secondary small p-0"
+                onClick={onSwitchToLegacy}
+              >
+                Select Development Requester (Lab 1/2 Mode)
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="card-footer bg-white border-top-0 text-center pb-4 pt-0 text-muted extra-small">
+          TokTickIT Access Management System • Zen Green Theme
+        </div>
+      </div>
+    </div>
+  );
+};
+
+```
+
+## 5.7 Change Password Page Component (`client/src/pages/ChangePassword.tsx`)
+```typescript
+import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+
+interface ChangePasswordProps {
+  isMandatory?: boolean;
+  onSuccess?: () => void;
+  onCancel?: () => void;
+}
+
+export const ChangePassword: React.FC<ChangePasswordProps> = ({
+  isMandatory = false,
+  onSuccess,
+  onCancel,
+}) => {
+  const { changePassword } = useAuth();
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Real-time validation checks
+  const hasMinLength = newPassword.length >= 8;
+  const hasUpper = /[A-Z]/.test(newPassword);
+  const hasLower = /[a-z]/.test(newPassword);
+  const hasNumberOrSpecial = /[0-9!@#$%^&*(),.?":{}|<>]/.test(newPassword);
+  const matchesConfirm = newPassword === confirmPassword && confirmPassword.length > 0;
+
+  const isFormValid =
+    currentPassword.length > 0 &&
+    hasMinLength &&
+    hasUpper &&
+    hasLower &&
+    hasNumberOrSpecial &&
+    matchesConfirm;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setSuccessMsg(null);
+
+    if (!isFormValid) {
+      if (newPassword !== confirmPassword) {
+        setError("New password and confirmation do not match.");
+      } else {
+        setError("Please ensure your new password meets all security criteria.");
+      }
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      await changePassword(currentPassword, newPassword);
+      setSuccessMsg("Password changed successfully!");
+      if (onSuccess) {
+        setTimeout(onSuccess, 1000);
+      }
+    } catch (err: any) {
+      setError(err.message || "Failed to update password.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center bg-light px-3 py-5">
+      <div
+        className="card shadow-sm border-0 w-100"
+        style={{ maxWidth: "480px", borderRadius: "12px", overflow: "hidden" }}
+      >
+        <div className="card-header bg-white border-bottom-0 text-center pt-4 pb-2">
+          {/* Hot Pink Heading as requested by user */}
+          <h2 className="fw-bold mb-1" style={{ color: "#006B3C", fontSize: "1.75rem" }}>
+            {isMandatory ? "Mandatory Password Update" : "Change Password"}
+          </h2>
+          <p className="text-muted small mb-0">
+            {isMandatory
+              ? "You must update your initial password before accessing TokTickIT."
+              : "Update your account password to maintain security."}
+          </p>
+        </div>
+
+        <div className="card-body p-4">
+          {error && (
+            <div className="alert alert-danger py-2 px-3 small border-0 mb-3" role="alert">
+              {error}
+            </div>
+          )}
+
+          {successMsg && (
+            <div className="alert alert-success py-2 px-3 small border-0 mb-3" role="alert">
+              {successMsg}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="mb-3">
+              <label
+                htmlFor="current-password"
+                className="form-label fw-semibold text-secondary small"
+              >
+                Current Password
+              </label>
+              <input
+                id="current-password"
+                type="password"
+                className="form-control"
+                placeholder="Enter current password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                disabled={submitting}
+                autoFocus
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="new-password"
+                className="form-label fw-semibold text-secondary small"
+              >
+                New Password
+              </label>
+              <input
+                id="new-password"
+                type="password"
+                className="form-control"
+                placeholder="Enter new strong password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                disabled={submitting}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="confirm-password"
+                className="form-label fw-semibold text-secondary small"
+              >
+                Confirm New Password
+              </label>
+              <input
+                id="confirm-password"
+                type="password"
+                className="form-control"
+                placeholder="Re-enter new password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                disabled={submitting}
+              />
+            </div>
+
+            <div className="p-3 bg-light rounded-3 mb-4 border">
+              <div className="fw-semibold text-secondary extra-small text-uppercase tracking-wide mb-2">
+                Password Criteria
+              </div>
+              <ul className="list-unstyled mb-0 small">
+                <li className={hasMinLength ? "text-success fw-medium" : "text-muted"}>
+                  {hasMinLength ? "[✓]" : "[ ]"} At least 8 characters long
+                </li>
+                <li className={hasUpper && hasLower ? "text-success fw-medium" : "text-muted"}>
+                  {hasUpper && hasLower ? "[✓]" : "[ ]"} Upper & lower case letters
+                </li>
+                <li className={hasNumberOrSpecial ? "text-success fw-medium" : "text-muted"}>
+                  {hasNumberOrSpecial ? "[✓]" : "[ ]"} Number & special character
+                </li>
+                <li className={matchesConfirm ? "text-success fw-medium" : "text-muted"}>
+                  {matchesConfirm ? "[✓]" : "[ ]"} Confirmation matches new password
+                </li>
+              </ul>
+            </div>
+
+            <div className="d-flex gap-2">
+              {!isMandatory && onCancel && (
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary flex-grow-1 py-2 fw-semibold"
+                  onClick={onCancel}
+                  disabled={submitting}
+                >
+                  Cancel
+                </button>
+              )}
+              <button
+                type="submit"
+                className="btn btn-primary flex-grow-1 py-2 fw-bold text-white shadow-sm"
+                style={{
+                  backgroundColor: "#006B3C",
+                  borderColor: "#006B3C",
+                  borderRadius: "8px",
+                }}
+                disabled={submitting || !isFormValid}
+              >
+                {submitting ? "Updating..." : "Save New Password"}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+```
+
 ---
 
 # Answer Part 6: Working IT Staff Ticket Queue UI
 
-## 6.1 IT Staff Ticket Queue Screen Evidence
+## 6.1 IT Staff Queue Search, Filter, Sort, & Pagination Verification
+The IT Staff Ticket Queue (`GET /api/staff/tickets`) provides IT Staff and Administrators with an operational console to discover, filter, and prioritize incoming support tickets.
+- **Keyword Search**: Performs multi-field partial matching across Ticket Number (e.g. `TKT-2026-001234`) and Ticket Summary.
+- **Multi-Category & Priority Filters**: Supports filtering by Category (`Account and Access`, `Hardware`, `Software`, `Network`), Requested Priority, IT Priority (`LOW`, `MEDIUM`, `HIGH`, `URGENT`), and Ticket Status.
+- **Multi-Field Sorting & Pagination**: Supports sorting by Creation Date, Ticket Number, Priority, or Status in ascending/descending order, returning paginated arrays with metadata (`page`, `limit`, `total`, `totalPages`).
+- **Ownership & Status Badges**: Displays assigned Ticket Owner name or "Unassigned" pill, color-coded Requested Priority and IT Priority badges, and workflow status pills.
+- **Empty & No-Results Feedback**: Displays helpful Zen Green empty state callouts when no tickets match search criteria.
+
+## 6.2 Visual Screenshots Evidence
 ![IT Staff Ticket Queue Screen](images/06_staff_queue.png)
 ![IT Staff Desktop Viewport](images/ui_staff_desktop.png)
 
-## 6.2 IT Staff Queue Routes Implementation
+## 6.3 IT Staff Queue API Routes Implementation (`server/src/routes/staffTickets.ts`)
 ```typescript
 import { Router, Response } from "express";
 import { getPrisma } from "../prisma.js";
@@ -2278,10 +2649,19 @@ staffTicketsRouter.post(
 
 # Answer Part 7: Working IT Staff Ticket Detail UI
 
-## 7.1 Requester Ticket Detail Screen Evidence
+## 7.1 Operational Controls, Workflow Transitions, & Dual Communication Panels
+The IT Staff Ticket Detail screen extends ticket management with operational workflows and role-isolated communication channels:
+- **Ownership Management**: Allows IT Staff to claim unassigned tickets or reassign primary ticket ownership (`PATCH /api/staff/tickets/:id/assign`).
+- **IT Priority Control**: Allows IT Staff/Admin to adjust IT Priority independently from the Requester's immutable Requested Priority (`PATCH /api/staff/tickets/:id/workflow`).
+- **Permitted Status Workflow**: Enforces permitted status transitions (`New` → `Open` → `In Progress` → `Waiting for Requester` → `Resolved` / `Closed` / `Reopened` / `Cancelled`).
+- **Public Comments vs. Internal Notes**:
+  - **Public Comments**: Append-only communication visible to Requester, IT Staff, and Administrator. Requesters may post comments and mark "Problem Appears Resolved".
+  - **Internal Notes**: Append-only operational notes visible strictly to IT Staff and Administrator. The backend blocks Requester access with HTTP 403 Forbidden without leaking note existence.
+
+## 7.2 Visual Screenshots Evidence
 ![Requester Ticket Detail Screen](images/05_requester_view.png)
 
-## 7.2 Requester Ticket Routes Implementation
+## 7.3 Requester Ticket API Routes Implementation (`server/src/routes/requesterTickets.ts`)
 ```typescript
 import { Router, Response } from "express";
 import { getPrisma } from "../prisma.js";
@@ -2611,7 +2991,7 @@ requesterTicketsRouter.post(
 
 ```
 
-## 7.3 Ticket Detail View Component Implementation
+## 7.4 Ticket Detail View Component Implementation (`client/src/components/TicketDetailView.tsx`)
 ```typescript
 import React, { useEffect, useState, useCallback } from "react";
 import { RequesterUser, Ticket, Attachment } from "../types";
@@ -3031,11 +3411,22 @@ export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
 
 # Answer Part 8: Working Administrator User Management UI
 
-## 8.1 Admin User Management Screen Evidence
+## 8.1 User Management Console & Safety Guards Verification
+The Administrator User Management screen (`GET /api/admin/users`) provides Administrators with user administration capabilities guarded by strict safety rules:
+- **User List & Filtering**: Lists user accounts with Name, Email, Role, Status, and Edit action. Supports searching by name/email and filtering by role.
+- **Create User Drawer**: Creates new user accounts (`POST /api/admin/users`) with initial passwords, marking `mustChangePassword = true`. Enforces unique email constraints (returning 409 Conflict on duplicates).
+- **Edit User Profile & Activation**: Updates name, email, role, and activation status (`isActive`).
+- **Initial Password Reset**: Sets a new initial password for a user (`POST /api/admin/users/:id/reset-password`), enforcing mandatory password change at next login.
+- **Administrator Safety Guards**:
+  - **BR-09 (Self-Deactivation Protection)**: Backend rejects any attempt by an Administrator to deactivate their own active account, returning 400 Bad Request error alert.
+  - **BR-10 (Last Active Admin Protection)**: Backend rejects any attempt to deactivate or demote the final active Administrator, ensuring the system is never left without an active Administrator.
+  - **Role Authorization Boundary**: Non-Administrator users attempting to access Admin endpoints are rejected with HTTP 403 Forbidden.
+
+## 8.2 Visual Screenshots Evidence
 ![Admin User Management Screen](images/07_admin_users.png)
 ![Admin Desktop Viewport](images/ui_admin_desktop.png)
 
-## 8.2 Admin User Routes Implementation
+## 8.3 Administrator User API Routes Implementation (`server/src/routes/adminUsers.ts`)
 ```typescript
 import { Router, Response } from "express";
 import bcrypt from "bcryptjs";
@@ -3386,7 +3777,7 @@ adminUsersRouter.post(
 
 ```
 
-## 8.3 Prisma Database Schema (`server/prisma/schema.prisma`)
+## 8.4 Prisma Database Schema (`server/prisma/schema.prisma`)
 ```prisma
 // TokTickIT Prisma Schema — Lab 3 Database ORM & Data Models
 // Feature Branch: feature/lab03-3-db-schema
@@ -3562,7 +3953,7 @@ model InternalNote {
 
 ```
 
-## 8.4 Idempotent Database Seed Script (`server/prisma/seed.ts`)
+## 8.5 Database Seed Script (`server/prisma/seed.ts`)
 ```typescript
 import { getPrisma } from "../src/prisma.js";
 import bcrypt from "bcryptjs";
@@ -3877,7 +4268,24 @@ main()
 
 # Answer Part 9: Zen Green UI and Responsive Evidence
 
-## 9.1 User Interface Specification (ui-spec.md)
+## 9.1 Zen Green Design System & Theme Alignment
+All screens adhere to the **Zen Green Design Language**:
+- **Primary Header & Branding**: `#006B3C` (Zen Green Primary)
+- **Secondary Accent**: `#0B7A46` (Zen Green Dark)
+- **Pale Mint Accent**: `#EAF6EF` (Zen Light Mint)
+- **Neutral Background**: `#F5F7F6` (Quiet Slate Gray)
+- **Surface Cards**: Pure White with subtle neutral borders.
+- **Error Alerts**: `#D32F2F` (Deep Red)
+- **Internal Note Accent**: `#D97706` (Amber Gold)
+
+## 9.2 Completed Responsive & Visual Inspection Checklist
+| Viewport | Target Device | Verified Behavior | Visual Checklist Result |
+| :--- | :--- | :--- | :--- |
+| Desktop (≥992px) | Monitor / Laptop | Multi-column grid, full table layouts, sticky action bars, full navigation header. | PASS (No clipping, readable text, clear button hierarchy) |
+| Tablet (768-991px) | iPad / Tablet | 2-column form reflow, responsive tables with horizontal scroll containers, collapsed header navigation. | PASS (Responsive layout reflow, touch targets ≥44px) |
+| Mobile (<768px) | Mobile Phone (375px) | Single-column stacked layout, ticket card grid, responsive draw/modals, touch-friendly buttons. | PASS (No horizontal window overflow, clean touch target spacing) |
+
+## 9.3 Full User Interface Specification (`docs/lab-03/ui-spec.md`)
 # TokTickIT Lab 3 User Interface Specification
 
 ## 1. Design System & Theme Alignment
@@ -4049,7 +4457,7 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 - **Mobile ($< 768\text{px}$)**: Single-column vertical layout, touch-friendly buttons ($\ge 44\text{px}$ height), zero horizontal window overflow.
 
 
-## 9.2 REST API Specification (api-spec.md)
+## 9.4 Full REST API Specification (`docs/lab-03/api-spec.md`)
 # TokTickIT Lab 3 REST API Specification
 
 ## 1. Overview & Authentication Mechanism
@@ -4254,10 +4662,10 @@ Update IT Priority and Ticket Status.
   - `404 Not Found`: User ID not found.
 
 
-## 9.3 Automated Test Execution Summary
+## 9.5 Automated Test Execution Output Summary
 ![Automated Test Suite Output](images/08_test_results.png)
 
-## 9.4 Mobile Viewport Evidence (375px)
+## 9.6 Mobile Viewport Evidence (375px)
 <div class="mobile-grid">
   <div class="mobile-card">
     <img src="images/ui_login_mobile.png" alt="Mobile Login Viewport" />
