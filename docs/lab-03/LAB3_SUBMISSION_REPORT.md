@@ -1439,9 +1439,7 @@ The authentication engine replaces the temporary Development Requester identity 
 
 ## 5.2 Visual Screenshots Evidence
 ![Login Screen Baseline](images/03_login_screen.png)
-![Login Desktop Viewport](images/ui_login_desktop.png)
 ![Mandatory Password Change Screen](images/04_password_change.png)
-![Password Change Desktop Viewport](images/ui_password_desktop.png)
 
 ## 5.3 Authentication Middleware Implementation (`server/src/middleware/authMiddleware.ts`)
 ```typescript
@@ -2194,7 +2192,6 @@ The IT Staff Ticket Queue (`GET /api/staff/tickets`) provides IT Staff and Admin
 
 ## 6.2 Visual Screenshots Evidence
 ![IT Staff Queue Screen](images/06_staff_queue.png)
-![Staff Queue Desktop Viewport](images/ui_staff_desktop.png)
 
 ## 6.3 IT Staff Queue API Routes Implementation (`server/src/routes/staffTickets.ts`)
 ```typescript
@@ -2635,7 +2632,6 @@ staffTicketsRouter.post(
 
 ## 7.2 Visual Screenshots Evidence
 ![Requester Ticket View Screen](images/05_requester_view.png)
-![IT Staff Queue Operations Viewport](images/ui_staff_desktop.png)
 
 ## 7.3 Requester Ticket & Public Comment API Implementation (`server/src/routes/requesterTickets.ts`)
 ```typescript
@@ -2983,7 +2979,6 @@ requesterTicketsRouter.post(
 
 ## 8.2 Visual Screenshots Evidence
 ![Admin User Management Screen](images/07_admin_users.png)
-![Admin Desktop Viewport](images/ui_admin_desktop.png)
 
 ## 8.3 Administrator User API Routes Implementation (`server/src/routes/adminUsers.ts`)
 ```typescript
@@ -3901,8 +3896,7 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 +-----------------------------------------------------------------------+
 ```
 
-#### Real Implemented Login Screen Screenshots
-![Real Login Screen Baseline](images/03_login_screen.png)
+#### Real Implemented Login Screen
 ![Real Login Desktop Viewport](images/ui_login_desktop.png)
 
 ### 3.2 Mandatory First-Login Password Change Mockup
@@ -3931,8 +3925,7 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 +-----------------------------------------------------------------------+
 ```
 
-#### Real Implemented Mandatory Password Change Screenshots
-![Real Mandatory Password Change Screen](images/04_password_change.png)
+#### Real Implemented Mandatory Password Change Screen
 ![Real Password Change Desktop Viewport](images/ui_password_desktop.png)
 
 ### 3.3 Requester Ticket Detail & Public Comments Mockup
@@ -3959,7 +3952,7 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 +-----------------------------------------------------------------------+
 ```
 
-#### Real Implemented Requester Ticket View Screenshot
+#### Real Implemented Requester Ticket View Screen
 ![Real Requester Ticket View Screen](images/05_requester_view.png)
 
 ### 3.4 IT Staff Ticket Queue Mockup (Desktop & Mobile)
@@ -3978,8 +3971,7 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 +-----------------------------------------------------------------------+
 ```
 
-#### Real Implemented IT Staff Ticket Queue Screenshots
-![Real IT Staff Queue Screen](images/06_staff_queue.png)
+#### Real Implemented IT Staff Ticket Queue Screen
 ![Real Staff Queue Desktop Viewport](images/ui_staff_desktop.png)
 
 ### 3.5 IT Staff Ticket Detail & Internal Notes Mockup
@@ -4000,8 +3992,8 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 +-----------------------------------------------------------------------+
 ```
 
-#### Real Implemented IT Staff Ticket Operational Detail Screenshot
-![Real IT Staff Queue Operations Viewport](images/ui_staff_desktop.png)
+#### Real Implemented IT Staff Ticket Operational Detail Screen
+![Real IT Staff Queue Operations Viewport](images/06_staff_queue.png)
 
 ### 3.6 Administrator User Management & Drawer Mockup
 ```text
@@ -4025,8 +4017,7 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 +-----------------------------------------------------------------------+
 ```
 
-#### Real Implemented Administrator User Management Screenshots
-![Real Admin User Management Screen](images/07_admin_users.png)
+#### Real Implemented Administrator User Management Screen
 ![Real Admin Desktop Viewport](images/ui_admin_desktop.png)
 
 ---
