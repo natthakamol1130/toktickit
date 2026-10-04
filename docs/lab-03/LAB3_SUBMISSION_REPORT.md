@@ -11,13 +11,45 @@ All 10 feature issues for Lab 3 (Issue #34 to Issue #52) were managed using a 10
 ![GitHub Project Kanban Board Part 2](images/01_kanban_board_part2.png)
 
 ## 1.3 Git Log Graph & Branching Model
-The project strictly enforced feature-branch isolation (`feature/lab03-X-*` -> PR -> `lab3-staging` -> `main`), maintaining clean commit history with standard Conventional Commits.
+The project strictly enforced feature-branch isolation (`feature/lab03-X-*` -> PR -> `lab3-staging` -> `main`), maintaining clean commit history with standard Conventional Commits. Below is the full commit log breakdown corresponding to the Git commit graph.
 
 ![Git Commit Log Graph](images/02_git_log_graph.png)
 
+### Table 1: Git Commit History & Merge Graph Breakdown
+| Commit Hash | Author | Date | Target Branch | Commit Message / Description |
+|---|---|---|---|---|
+| `a2062302` | Phrao (natthakamol1130) | Oct 4, 2026 | `main` | docs(report): finalize Lab 3 submission report matching handout format Answer Part 1-9 |
+| `4d46d6c0` | Suprawi5227 | Sep 30, 2026 | `main` | Merge pull request #55 from natthakamol1130/lab3-staging |
+| `d1780a96` | Phrao (natthakamol1130) | Sep 30, 2026 | `lab3-staging` | docs(lab-03): add complete Lab 3 submission report and PDF document |
+| `51b9fc4e` | jessica | Sep 30, 2026 | `lab3-staging` | Merge pull request #53 from natthakamol1130/feature/lab03-10-e2e-testing-and-release |
+| `6b84aaf3` | Phrao (natthakamol1130) | Sep 30, 2026 | `feature/lab03-10` | feat(e2e): finalize multi-role application integration, E2E tests, and production build (#52) |
+| `26b547a5` | Suprawi5227 | Sep 29, 2026 | `lab3-staging` | Merge pull request #51 from natthakamol1130/feature/lab03-9-admin-user-api |
+| `a319a8d5` | Phrao (natthakamol1130) | Sep 29, 2026 | `feature/lab03-9` | test(admin-api): add safety rule test cases for admin self-deactivation and last admin |
+| `ed98f699` | Phrao (natthakamol1130) | Sep 29, 2026 | `feature/lab03-9` | feat(api): implement Administrator User Management and Initial Password Reset APIs (#50) |
+| `3ab12b71` | Suprawi5227 | Sep 29, 2026 | `lab3-staging` | Merge pull request #49 from natthakamol1130/feature/lab03-8-staff-queue-api |
+| `84c3ceda` | Phrao (natthakamol1130) | Sep 29, 2026 | `feature/lab03-8` | feat(api): implement IT Staff Ticket Queue, Workflow Controls & Internal Notes (#48) |
+| `aa3d8294` | Suprawi5227 | Sep 29, 2026 | `lab3-staging` | Merge pull request #47 from natthakamol1130/feature/lab03-7-requester-ticket-api |
+| `7da0a74c` | Phrao (natthakamol1130) | Sep 29, 2026 | `feature/lab03-7` | feat(api): implement Requester Ticket Management and Public Comments (#46) |
+| `cee3ab8e` | Suprawi5227 | Sep 17, 2026 | `lab3-staging` | Merge pull request #45 from natthakamol1130/feature/lab03-6-auth-ui |
+| `ca0665d9` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-6` | style(ui): update heading colors from Hot Pink to Zen Green Primary (#44) |
+| `9891c4ea` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-6` | feat(auth-ui): add Login screen, ChangePassword workflow, and RTL tests (#44) |
+| `3c260716` | Suprawi5227 | Sep 17, 2026 | `lab3-staging` | Merge pull request #43 from natthakamol1130/feature/lab03-5-auth-api |
+| `7ab06f14` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-5` | feat(auth): implement backend authentication APIs and session middleware (#42) |
+| `41e3dcd0` | Suprawi5227 | Sep 17, 2026 | `lab3-staging` | Merge pull request #41 from natthakamol1130/feature/lab03-4-seed-data |
+| `51eb2b42` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-4` | feat(seed): add idempotent multi-role seed data with bcrypt hashing (#40) |
+| `465a4a7f` | Suprawi5227 | Sep 17, 2026 | `lab3-staging` | Merge pull request #39 from natthakamol1130/feature/lab03-3-db-schema |
+| `8b0846f3` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-3` | feat(db): add requesterResolvedInd field to Ticket model based on peer review (#39) |
+| `b50669b5` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-3` | feat(db): evolve Prisma schema for User models, roles, comments, and notes (#38) |
+| `fc5eff9b` | Suprawi5227 | Sep 17, 2026 | `lab3-staging` | Merge pull request #37 from natthakamol1130/feature/lab03-2-test-plan |
+| `93bffb8e` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-2` | docs(lab-03): add Test DD plan and traceability matrix (#36) |
+| `ecc61b26` | Suprawi5227 | Sep 17, 2026 | `lab3-staging` | Merge pull request #35 from natthakamol1130/feature/lab03-1-spec-contract |
+| `050eb1c3` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-1` | docs(lab-03): add visual UI mockups and AC-01..AC-12 test mappings (#34) |
+| `2e9da222` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-1` | docs(lab-03): update api-spec with curl examples, status codes, and flowcharts (#35) |
+| `e7b10bc7` | Phrao (natthakamol1130) | Sep 17, 2026 | `feature/lab03-1` | docs(lab-03): add Sprint 3 engineering specification documents (#1) |
+
 ## 1.4 Peer Review Summary Tables (PR Given & PR Received)
 
-### Table 1: Pull Requests Given (natthakamol1130/toktickit)
+### Table 2: Pull Requests Given (natthakamol1130/toktickit)
 | Issue # | PR # | Feature Description | Reviewer | Status | Direct GitHub Link |
 |---|---|---|---|---|---|
 | #34 | [#35](https://github.com/natthakamol1130/toktickit/pull/35) | Lab 3 Specification, UI Spec, and API Spec Documents | @Suprawi5227 | Merged | [PR #35](https://github.com/natthakamol1130/toktickit/pull/35) |
@@ -32,7 +64,7 @@ The project strictly enforced feature-branch isolation (`feature/lab03-X-*` -> P
 | #52 | [#53](https://github.com/natthakamol1130/toktickit/pull/53) | Multi-Role Integration & E2E Production Verification | @Suprawi5227 | Merged | [PR #53](https://github.com/natthakamol1130/toktickit/pull/53) |
 | Release | [#55](https://github.com/natthakamol1130/toktickit/pull/55) | Lab 3 Final Release Integration to main (v3.0.0) | @Suprawi5227 | Open/Ready | [PR #55](https://github.com/natthakamol1130/toktickit/pull/55) |
 
-### Table 2: Pull Requests Reviewed (Suprawi5227/toktickit)
+### Table 3: Pull Requests Reviewed (Suprawi5227/toktickit)
 | Issue # | Peer PR # | PR Description | Review Action | Status | Direct GitHub Link |
 |---|---|---|---|---|---|
 | #34 | [#45](https://github.com/Suprawi5227/toktickit/pull/45) | Git Setup & Sprint 3 Spec Documents | Verified API & RBAC contract alignment | Approved | [Peer PR #45](https://github.com/Suprawi5227/toktickit/pull/45) |
