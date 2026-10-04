@@ -258,7 +258,7 @@ toktickit/
 ## 1.7 Rendered Peer Review Document (reviewer.md)
 Below is the complete text of [`docs/lab-03/reviewer.md`](docs/lab-03/reviewer.md):
 
-# Lab 3 Peer Reviewer Document (reviewer.md)
+### Lab 3 Peer Reviewer Document (reviewer.md)
 
 - **Student Name:** Natthakamol Katippatee (Student ID: 67070505215)
 - **Repository:** [`natthakamol1130/toktickit`](https://github.com/natthakamol1130/toktickit)
@@ -320,7 +320,7 @@ All peer review discussions and approvals were conducted directly on GitHub web 
 
 The full Sprint 3 Engineering Specification is rendered below from [`docs/lab-03/specification.md`](docs/lab-03/specification.md).
 
-# Lab 3 Sprint Engineering Specification
+### Lab 3 Sprint Engineering Specification
 
 ## 1. Sprint Goal
 Deliver an operational, secure, multi-role web application increment for TokTickIT. This increment replaces the temporary Development Requester selector with secure user authentication and role-based access control, introduces a dedicated IT Staff Ticket Queue with ownership management, IT Priority, status workflow, Public Comments, and role-restricted Internal Notes, and provides a minimalist Administrator User Management interface, all adhering to the Zen Green design language and preserving completed Lab 2 functionality.
@@ -1379,7 +1379,7 @@ All planned unit, API, UI component, authorization, and E2E tests pass cleanly o
 
 The complete AI Tool Usage & Prompting Log is rendered below from [`docs/lab-03/ai-use.md`](docs/lab-03/ai-use.md):
 
-# Lab 3 AI Use with Reflection (ai-use.md)
+### Lab 3 AI Use with Reflection (ai-use.md)
 
 - **Student Name:** Natthakamol Katippatee (Student ID: 67070505215)
 - **Repository:** [`natthakamol1130/toktickit`](https://github.com/natthakamol1130/toktickit)
@@ -3845,7 +3845,7 @@ All screens adhere to the **Zen Green Design Language**:
 | Mobile (<768px) | Mobile Phone (375px) | Single-column stacked layout, ticket card grid, responsive draw/modals, touch-friendly buttons. | PASS (No horizontal window overflow, clean touch target spacing) |
 
 ## 9.3 Full User Interface Specification (`docs/lab-03/ui-spec.md`)
-# TokTickIT Lab 3 User Interface Specification
+### TokTickIT Lab 3 User Interface Specification
 
 ## 1. Design System & Theme Alignment
 Lab 3 extends the **Zen Green Design System** established in Lab 2. All new screens, forms, tables, modals, and navigation components adhere strictly to the established visual identity and design tokens.
@@ -4011,13 +4011,13 @@ Lab 3 extends the **Zen Green Design System** established in Lab 2. All new scre
 ---
 
 ## 4. Responsive & Accessibility Rules
-- **Desktop ($\ge 992\text{px}$)**: Multi-column grid, full table view, side-by-side detail controls.
-- **Tablet ($768\text{px} - 991\text{px}$)**: Reflowed forms, scrollable tables or compact cards.
-- **Mobile ($< 768\text{px}$)**: Single-column vertical layout, touch-friendly buttons ($\ge 44\text{px}$ height), zero horizontal window overflow.
+- **Desktop (≥ 992px)**: Multi-column grid, full table view, side-by-side detail controls.
+- **Tablet (768px - 991px)**: Reflowed forms, scrollable tables or compact cards.
+- **Mobile (< 768px)**: Single-column vertical layout, touch-friendly buttons (≥ 44px height), zero horizontal window overflow.
 
 
 ## 9.4 Full REST API Specification (`docs/lab-03/api-spec.md`)
-# TokTickIT Lab 3 REST API Specification
+### TokTickIT Lab 3 REST API Specification
 
 ## 1. Overview & Authentication Mechanism
 Lab 3 replaces header-based identity simulation (`x-requester-id`) with secure JWT Authorization bearer tokens or HTTP-only session cookies. All protected endpoints require valid authenticated user context and strictly enforce backend role permissions (`REQUESTER`, `IT_STAFF`, `ADMINISTRATOR`).
