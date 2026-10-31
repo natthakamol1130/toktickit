@@ -149,6 +149,14 @@ async function main() {
     },
   ];
 
+  await prisma.user.deleteMany({
+    where: {
+      email: {
+        in: ["alex.thompson@toktickit.com", "alex.thompson.test@toktickit.com"],
+      },
+    },
+  });
+
   const userMap: Record<string, number> = {};
   for (const u of usersData) {
     const user = await prisma.user.upsert({
@@ -159,6 +167,7 @@ async function main() {
         role: u.role,
         isActive: u.isActive,
         mustChangePassword: u.mustChangePassword,
+        passwordHash: u.passwordHash,
       },
       create: u,
     });
