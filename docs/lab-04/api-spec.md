@@ -111,13 +111,52 @@ Records a new Action Taken. The system automatically populates `performerId` wit
 }
 ```
 
+#### `GET /api/tickets/:ticketId/actions-taken/:actionId`
+Retrieves details of a single Action Taken by ID.
+
+- **Permissions**:
+  - Requesters can only access Actions Taken for tickets they own (`requesterId == user.id`). Accessing other tickets returns `403 Forbidden`.
+  - IT Staff and Administrators can access any Action Taken on accessible tickets.
+- **Response `200 OK`**:
+```json
+{
+  "success": true,
+  "data": {
+    "id": "act_cm1234567890",
+    "ticketId": "tkt_001",
+    "performerId": "usr_staff_01",
+    "performer": {
+      "id": "usr_staff_01",
+      "name": "Michael IT",
+      "email": "michael.it@toktickit.com"
+    },
+    "actionDateTime": "2026-10-31T09:30:00.000Z",
+    "description": "Inspected internal battery connection and tested power adapter voltage.",
+    "result": "Battery voltage is below operational threshold. Hardware replacement required.",
+    "followUpRequired": true,
+    "followUpNote": "Order replacement battery pack SKU-BAT-882 from approved supplier.",
+    "attachmentNotes": "Refer to battery_diagnostic_report.png attached to ticket.",
+    "createdAt": "2026-10-31T09:32:00.000Z",
+    "updatedAt": "2026-10-31T09:32:00.000Z"
+  }
+}
+```
+- **Response `404 Not Found`**:
+```json
+{
+  "success": false,
+  "error": "Not Found",
+  "message": "Action Taken record not found under this ticket."
+}
+```
+
 ---
 
 #### `PATCH /api/tickets/:ticketId/actions-taken/:actionId`
 Updates an existing Action Taken record.
 
 - **Permissions**: IT Staff, Administrator.
-- **Concurrency Check**: Client must pass `updatedAt` in body. If record has been modified by someone else in the interim, returns `409 Conflict`.
+- **Concurrency Check**: Client must pass `expectedUpdatedAt` in body. If record has been modified by someone else in the interim, returns `409 Conflict`.
 - **Request Body**:
 ```json
 {
@@ -138,6 +177,11 @@ Updates an existing Action Taken record.
   "message": "This Action Taken was updated by another user. Please refresh and review before saving."
 }
 ```
+
+---
+
+#### Action Taken Immutability & Audit Trail Note
+> **Note on Deletion:** The TokTickIT REST API intentionally **does not provide a `DELETE` endpoint** for Actions Taken records. In accordance with enterprise IT service-desk compliance and business rule **BR-13**, all logged actions serve as an immutable historical audit trail of troubleshooting and remediation steps. Staff may correct details via `PATCH`, but historical operational records cannot be purged.
 
 ---
 

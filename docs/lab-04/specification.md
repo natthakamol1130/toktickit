@@ -92,6 +92,7 @@ flowchart TD
 - Multi-level approval workflows and electronic signatures.
 - Advanced business-intelligence tools, custom report builders, or export data warehouses.
 - Multi-tenant organizations and production-scale cloud operations.
+- Action Taken deletion (intentionally omitted to guarantee full audit trail integrity).
 - New unapproved product features not defined in this engineering contract.
 
 ---
@@ -125,13 +126,14 @@ flowchart TD
 | **BR-03** | An Action Taken record must include: Action Date/Time (defaults to now), Description (min 5 chars), Result (min 2 chars), Performed by (auto-assigned from auth token), Follow-Up Required (boolean), Follow-Up Note (mandatory if Follow-Up Required is true), and Attachment Notes (optional string). | Backend Validation & Client Form |
 | **BR-04** | Requesters have read-only visibility into Actions Taken for tickets they own. Write attempts by Requesters must be rejected with HTTP 403 Forbidden. | Backend Middleware |
 | **BR-05** | An Action Taken cannot be attributed to or updated by an inactive user account. Inactive users must be rejected with HTTP 400 Bad Request. | Backend API |
-| **BR-06** | Permitted Ticket Status Transitions: <br>• `NEW` → `OPEN`, `IN_PROGRESS`, `CANCELLED`<br>• `OPEN` → `IN_PROGRESS`, `WAITING_FOR_REQUESTER`, `CANCELLED`<br>• `IN_PROGRESS` → `WAITING_FOR_REQUESTER`, `RESOLVED`, `CANCELLED`<br>• `WAITING_FOR_REQUESTER` → `IN_PROGRESS`, `RESOLVED`, `CANCELLED`<br>• `RESOLVED` → `CLOSED`, `REOPENED`<br>• `CLOSED` → (Terminal, or `REOPENED` by Admin)<br>• `CANCELLED` → (Terminal) | Backend Workflow Controller |
+| **BR-06** | Permitted Ticket Status Transitions: <br>• `NEW` → `OPEN`, `IN_PROGRESS`, `CANCELLED`<br>• `OPEN` → `IN_PROGRESS`, `WAITING_FOR_REQUESTER`, `CANCELLED`<br>• `IN_PROGRESS` → `WAITING_FOR_REQUESTER`, `RESOLVED`, `CANCELLED`<br>• `WAITING_FOR_REQUESTER` → `IN_PROGRESS`, `RESOLVED`, `CANCELLED`<br>• `RESOLVED` → `CLOSED`, `REOPENED`<br>• `REOPENED` → `IN_PROGRESS`, `WAITING_FOR_REQUESTER`, `RESOLVED`, `CANCELLED`<br>• `CLOSED` → (Terminal, or `REOPENED` by Admin)<br>• `CANCELLED` → (Terminal) | Backend Workflow Controller |
 | **BR-07** | A Requester setting "Problem Appears Resolved" does not transition the ticket to `RESOLVED`. Formal resolution requires an active IT Staff or Administrator role. | Backend Workflow Controller |
 | **BR-08** | Stale Update Handling: Every ticket workflow update and action update must submit the client's current `updatedAt` timestamp. If database `updatedAt` is newer, the request must fail with HTTP 409 Conflict. | Backend Service Layer |
 | **BR-09** | Requester Dashboard calculations must query only tickets where `requesterId == authenticatedUser.id`. | Backend Dashboard Service |
 | **BR-10** | IT Staff Dashboard calculations must be computed in real-time from the database across active operational queues without hardcoded values. | Backend Dashboard Service |
 | **BR-11** | Empty Dashboard Behavior: When a metric count is 0, the card must display `0` (not null or NaN), and clicking it shall open the queue displaying an appropriate empty-state message. | UI Component Layer |
 | **BR-12** | Auditability: Deleted tickets or users must not orphan Actions Taken; Actions Taken history must be retained with full referential integrity. | Database Foreign Key Rules |
+| **BR-13** | Action Taken Immutability & Audit Trail: The system intentionally omits a `DELETE` endpoint for Actions Taken. All recorded actions are immutable historical audit records to preserve complete operational traceability. | Backend API & Architecture |
 
 ---
 
@@ -175,7 +177,7 @@ erDiagram
 
 ## 8. Observable Acceptance Criteria (AC)
 
-- **AC-01:** Given an authenticated IT Staff user, when submitting valid Action Taken data for a ticket, then the record is created with `performedById` set to the authenticated user and returned with HTTP 201 Created.
+- **AC-01:** Given an authenticated IT Staff user, when submitting valid Action Taken data for a ticket, then the record is created with `performerId` set to the authenticated user and returned with HTTP 201 Created.
 - **AC-02:** Given an IT Staff user submitting an Action Taken with `followUpRequired: true` and an empty `followUpNote`, then the request is rejected with HTTP 400 Bad Request and a clear field validation message.
 - **AC-03:** Given an authenticated Requester, when attempting to `POST` or `PATCH` an Action Taken, then the server rejects the request with HTTP 403 Forbidden.
 - **AC-04:** Given an authenticated Requester viewing their owned ticket, then all associated Actions Taken are visible in read-only mode without action modification buttons.
