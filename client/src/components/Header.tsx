@@ -2,6 +2,7 @@ import React from "react";
 import { RequesterUser, User } from "../types";
 
 export type NavTab =
+  | "dashboard"
   | "my-tickets"
   | "create-ticket"
   | "staff-queue"
@@ -77,6 +78,15 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Role-based Navigation Tabs */}
           <nav className="d-flex gap-2">
+            <button
+              className={`nav-link border-0 bg-transparent d-flex align-items-center gap-1 ${
+                activeTab === "dashboard" ? "active" : ""
+              }`}
+              onClick={() => onTabChange("dashboard")}
+            >
+              Dashboard
+            </button>
+
             {(!authUser || role === "REQUESTER") && (
               <>
                 <button

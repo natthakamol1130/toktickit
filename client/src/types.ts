@@ -133,3 +133,73 @@ export interface TicketListResponse {
   data: Ticket[];
   meta: PaginationMeta;
 }
+
+
+export interface RequesterDashboardMetrics {
+  totalOpen: number;
+  openCount?: number;
+  newCount?: number;
+  inProgress: number;
+  inProgressCount?: number;
+  waitingForRequester?: number;
+  waitingOnMeCount?: number;
+  resolved: number;
+  resolvedCount?: number;
+  closed: number;
+  closedCount?: number;
+}
+
+export interface RequesterDashboardData {
+  metrics: RequesterDashboardMetrics;
+  recentTickets: Ticket[];
+  quickActions?: { label: string; path: string }[];
+}
+
+export interface StaffDashboardMetrics {
+  newTickets: number;
+  newCount?: number;
+  openTickets: number;
+  openCount?: number;
+  inProgress: number;
+  inProgressCount?: number;
+  waitingForRequester: number;
+  waitingRequesterCount?: number;
+  resolved?: number;
+  resolvedCount?: number;
+  closed?: number;
+  closedCount?: number;
+  myAssigned: number;
+  myAssignedCount?: number;
+  unassigned: number;
+  unassignedCount?: number;
+}
+
+export interface StaffDashboardUserSummary {
+  totalUsers: number;
+  activeUsers: number;
+  inactiveUsers: number;
+  activeRequesters: number;
+  requesters?: number;
+  activeStaff: number;
+  staff?: number;
+  activeAdmins: number;
+  admins?: number;
+}
+
+export interface StaffDashboardData {
+  metrics: StaffDashboardMetrics;
+  byPriority?: {
+    URGENT: number;
+    HIGH: number;
+    MEDIUM: number;
+    LOW: number;
+  };
+  priorityBreakdown?: {
+    urgent: number;
+    high: number;
+    medium: number;
+    low: number;
+  };
+  recentTickets: Ticket[];
+  userSummary?: StaffDashboardUserSummary;
+}
