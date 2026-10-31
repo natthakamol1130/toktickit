@@ -6,11 +6,13 @@ import { RequesterSelectorScreen } from "./components/RequesterSelectorScreen";
 import { CreateTicketView } from "./components/CreateTicketView";
 import { MyTicketsView } from "./components/MyTicketsView";
 import { TicketDetailView } from "./components/TicketDetailView";
+import { RequesterDashboard } from "./components/RequesterDashboard";
+import { StaffDashboard } from "./components/StaffDashboard";
 import { Login } from "./pages/Login";
 import { ChangePassword } from "./pages/ChangePassword";
 
 function AppContent() {
-  const { user, loading, logout } = useAuth();
+  const { user, token, loading, logout } = useAuth();
   const [currentRequester, setCurrentRequester] = useState<RequesterUser | null>(null);
   const [currentView, setCurrentView] = useState<string>("my-tickets");
   const [selectedTicketId, setSelectedTicketId] = useState<number | null>(null);
@@ -128,6 +130,24 @@ function AppContent() {
             onSuccess={() => setCurrentView("my-tickets")}
             onCancel={() => setCurrentView("my-tickets")}
           />
+        ) : currentView === "dashboard" ? (
+          user?.role === "IT_STAFF" || user?.role === "ADMINISTRATOR" ? (
+            <StaffDashboard
+              token={token}
+              userName={user.name}
+              userRole={user.role}
+              onDrillDownQueue={() => setCurrentView("staff-queue")}
+              onSelectTicket={handleOpenTicketDetail}
+            />
+          ) : (
+            <RequesterDashboard
+              token={token}
+              userName={requesterForLegacy?.name || "Requester"}
+              onDrillDownStatus={() => setCurrentView("my-tickets")}
+              onSelectTicket={handleOpenTicketDetail}
+              onCreateTicketClick={() => setCurrentView("create-ticket")}
+            />
+          )
         ) : currentView === "create-ticket" && requesterForLegacy ? (
           <CreateTicketView
             currentRequester={requesterForLegacy}
@@ -139,6 +159,8 @@ function AppContent() {
             currentRequester={requesterForLegacy}
             ticketId={selectedTicketId}
             onBack={() => setCurrentView("my-tickets")}
+            userRole={user?.role || "REQUESTER"}
+            authToken={token}
           />
         ) : requesterForLegacy ? (
           <MyTicketsView
@@ -152,7 +174,7 @@ function AppContent() {
       </main>
 
       <footer className="py-3 px-4 bg-white border-top text-center text-muted small mt-auto">
-        TokTickIT v1.0 • Lab 3 Multi-Role Authentication & Ticketing System • Zen Green Theme
+        TokTickIT v1.0 • Lab 4 Actions Taken, Dashboards & Multi-Role Ticketing System • Zen Green Theme
       </footer>
     </div>
   );

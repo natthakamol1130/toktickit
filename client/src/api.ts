@@ -385,3 +385,46 @@ export async function indicateTicketResolved(
   }
   return json.data;
 }
+
+
+// ---------------------------------------------------------------------------
+// Lab 4: Role Dashboards API Client Functions
+// ---------------------------------------------------------------------------
+
+export async function fetchRequesterDashboard(
+  token: string
+): Promise<import("./types").RequesterDashboardData> {
+  const res = await fetch(`${API_URL}/api/requesters/dashboard`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    const err = new Error(
+      json.error?.message || "Failed to load requester dashboard"
+    );
+    (err as any).status = res.status;
+    throw err;
+  }
+  return json.data;
+}
+
+export async function fetchStaffDashboard(
+  token: string
+): Promise<import("./types").StaffDashboardData> {
+  const res = await fetch(`${API_URL}/api/staff/dashboard`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    const err = new Error(
+      json.error?.message || "Failed to load staff dashboard"
+    );
+    (err as any).status = res.status;
+    throw err;
+  }
+  return json.data;
+}
