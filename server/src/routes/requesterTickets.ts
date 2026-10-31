@@ -6,6 +6,7 @@ import {
   enforcePasswordChange,
   AuthenticatedRequest,
 } from "../middleware/authMiddleware.js";
+import { PERMITTED_STATUS_TRANSITIONS } from "./staffTickets.js";
 
 export const requesterTicketsRouter = Router();
 
@@ -103,6 +104,76 @@ requesterTicketsRouter.get(
       res.status(500).json({
         success: false,
         error: { message: "Failed to fetch tickets" },
+      });
+    }
+  }
+);
+
+// ---------------------------------------------------------------------------
+// 1b. GET /api/requesters/tickets/:id (Single Ticket Detail with Read-Only Actions Taken)
+// ---------------------------------------------------------------------------
+requesterTicketsRouter.get(
+  "/requesters/tickets/:id",
+  authenticateToken,
+  requireRoles("REQUESTER"),
+  enforcePasswordChange,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const prisma = getPrisma();
+      const ticketId = parseInt(req.params.id, 10);
+
+      if (isNaN(ticketId)) {
+        res.status(400).json({
+          success: false,
+          error: { message: "Invalid ticket ID" },
+        });
+        return;
+      }
+
+      const ticket = await prisma.ticket.findUnique({
+        where: { id: ticketId },
+        include: {
+          requester: { select: { id: true, name: true, email: true, department: true } },
+          owner: { select: { id: true, name: true, email: true, role: true } },
+          category: true,
+          relatedSystem: true,
+          attachments: true,
+          publicComments: {
+            include: { author: { select: { id: true, name: true, email: true, role: true } } },
+            orderBy: { createdAt: "asc" },
+          },
+          actionsTaken: {
+            include: { performer: { select: { id: true, name: true, email: true, role: true } } },
+            orderBy: { actionDateTime: "desc" },
+          },
+        },
+      });
+
+      if (!ticket) {
+        res.status(404).json({
+          success: false,
+          error: { message: "Ticket not found" },
+        });
+        return;
+      }
+
+      if (ticket.requesterId !== req.user!.id) {
+        res.status(403).json({
+          success: false,
+          error: { message: "Forbidden: You can only view your own tickets" },
+        });
+        return;
+      }
+
+      res.status(200).json({
+        success: true,
+        data: ticket,
+      });
+    } catch (error) {
+      console.error("Fetch Requester Ticket Detail Error:", error);
+      res.status(500).json({
+        success: false,
+        error: { message: "Failed to fetch ticket detail" },
       });
     }
   }
@@ -319,6 +390,238 @@ requesterTicketsRouter.post(
       res.status(500).json({
         success: false,
         error: { message: "Failed to create public comment" },
+      });
+    }
+  }
+);
+
+// ---------------------------------------------------------------------------
+// 5. PATCH /api/tickets/:id/indicate-resolved (and /tickets/:id/resolve)
+//    Requester Advisory Resolution Indication (FR-08, BR-07, AC-07)
+//    Sets requesterResolvedInd = true & appends Public Comment WITHOUT
+//    transitioning ticket status to RESOLVED.
+// ---------------------------------------------------------------------------
+const handleIndicateResolved = async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+  try {
+    const prisma = getPrisma();
+    const ticketId = parseInt(req.params.id, 10);
+
+    if (isNaN(ticketId)) {
+      res.status(400).json({
+        success: false,
+        error: { message: "Invalid ticket ID" },
+      });
+      return;
+    }
+
+    const ticket = await prisma.ticket.findUnique({
+      where: { id: ticketId },
+    });
+
+    if (!ticket) {
+      res.status(404).json({
+        success: false,
+        error: { message: "Ticket not found" },
+      });
+      return;
+    }
+
+    // Only the ticket's Requester owner may trigger advisory resolution indication
+    if (req.user!.role !== "REQUESTER" || ticket.requesterId !== req.user!.id) {
+      res.status(403).json({
+        success: false,
+        error: {
+          message: "Forbidden: Only the ticket requester owner can indicate that the problem appears resolved",
+        },
+      });
+      return;
+    }
+
+    const note = typeof req.body?.note === "string" ? req.body.note.trim() : "";
+    const commentContent = note
+      ? `Requester indicated that the problem appears resolved. Note: ${note}`
+      : "Requester indicated that the problem appears resolved.";
+
+    const [updatedTicket] = await prisma.$transaction([
+      prisma.ticket.update({
+        where: { id: ticketId },
+        data: {
+          requesterResolvedInd: true,
+        },
+        include: {
+          category: true,
+          relatedSystem: true,
+          owner: { select: { id: true, name: true, email: true, role: true } },
+          publicComments: {
+            include: { author: { select: { id: true, name: true, email: true, role: true } } },
+            orderBy: { createdAt: "asc" },
+          },
+        },
+      }),
+      prisma.publicComment.create({
+        data: {
+          ticketId,
+          authorId: req.user!.id,
+          content: commentContent,
+        },
+      }),
+    ]);
+
+    res.status(200).json({
+      success: true,
+      message: "Advisory resolution indication recorded. Ticket status remains unchanged pending IT Staff review.",
+      data: updatedTicket,
+    });
+  } catch (error) {
+    console.error("Indicate Resolved Error:", error);
+    res.status(500).json({
+      success: false,
+      error: { message: "Failed to record resolution indication" },
+    });
+  }
+};
+
+requesterTicketsRouter.patch(
+  "/tickets/:id/indicate-resolved",
+  authenticateToken,
+  enforcePasswordChange,
+  handleIndicateResolved
+);
+
+requesterTicketsRouter.patch(
+  "/tickets/:id/resolve",
+  authenticateToken,
+  enforcePasswordChange,
+  handleIndicateResolved
+);
+
+requesterTicketsRouter.patch(
+  "/requesters/tickets/:id/resolve",
+  authenticateToken,
+  enforcePasswordChange,
+  handleIndicateResolved
+);
+
+// ---------------------------------------------------------------------------
+// 6. PATCH /api/tickets/:id/status
+//    Enforces Formal Resolution Gate (BR-07): Requesters cannot set status to
+//    RESOLVED or CLOSED (403 Forbidden). IT Staff/Admin follow transition matrix.
+// ---------------------------------------------------------------------------
+requesterTicketsRouter.patch(
+  "/tickets/:id/status",
+  authenticateToken,
+  enforcePasswordChange,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const prisma = getPrisma();
+      const ticketId = parseInt(req.params.id, 10);
+      const { status, expectedUpdatedAt, lastUpdatedAt } = req.body;
+
+      if (isNaN(ticketId)) {
+        res.status(400).json({
+          success: false,
+          error: { message: "Invalid ticket ID" },
+        });
+        return;
+      }
+
+      const existingTicket = await prisma.ticket.findUnique({
+        where: { id: ticketId },
+      });
+
+      if (!existingTicket) {
+        res.status(404).json({
+          success: false,
+          error: { message: "Ticket not found" },
+        });
+        return;
+      }
+
+      // Formal Resolution Gate (BR-07, AC-07): Requesters are strictly forbidden from
+      // setting RESOLVED, CLOSED, or staff workflow statuses (may only cancel own NEW ticket)
+      if (req.user!.role === "REQUESTER") {
+        if (existingTicket.requesterId !== req.user!.id) {
+          res.status(403).json({
+            success: false,
+            error: { message: "Forbidden: You do not own this ticket" },
+          });
+          return;
+        }
+        if (status !== "CANCELLED" || existingTicket.status !== "NEW") {
+          res.status(403).json({
+            success: false,
+            error: {
+              message:
+                "Forbidden: Formal resolution and lifecycle status transitions require IT Staff or Administrator authorization",
+            },
+          });
+          return;
+        }
+      }
+
+      // Optimistic Concurrency Check (BR-08, AC-08)
+      const clientTimestamp = expectedUpdatedAt || lastUpdatedAt;
+      if (clientTimestamp !== undefined && clientTimestamp !== null) {
+        const clientTime = new Date(clientTimestamp).getTime();
+        const serverTime = existingTicket.updatedAt.getTime();
+        if (isNaN(clientTime) || Math.abs(clientTime - serverTime) > 1000) {
+          res.status(409).json({
+            success: false,
+            error: "Conflict",
+            message:
+              "The ticket was modified by another user since you loaded it. Please refresh and try again.",
+            currentTicket: {
+              id: existingTicket.id,
+              ticketNo: existingTicket.ticketNo,
+              status: existingTicket.status,
+              itPriority: existingTicket.itPriority,
+              updatedAt: existingTicket.updatedAt,
+            },
+          });
+          return;
+        }
+      }
+
+      if (!status || !Object.keys(PERMITTED_STATUS_TRANSITIONS).includes(status)) {
+        res.status(400).json({
+          success: false,
+          error: { message: `Invalid ticket status: ${status}` },
+        });
+        return;
+      }
+
+      if (status !== existingTicket.status) {
+        const allowedTargets = PERMITTED_STATUS_TRANSITIONS[existingTicket.status] || [];
+        if (!allowedTargets.includes(status)) {
+          res.status(400).json({
+            success: false,
+            error: {
+              message: `Disallowed status transition from ${existingTicket.status} to ${status}`,
+            },
+          });
+          return;
+        }
+      }
+
+      const updatedTicket = await prisma.ticket.update({
+        where: { id: ticketId },
+        data: { status },
+        include: {
+          category: true,
+          relatedSystem: true,
+          owner: { select: { id: true, name: true, email: true, role: true } },
+        },
+      });
+
+      res.status(200).json({
+        success: true,
+        data: updatedTicket,
+      });
+    } catch (error) {
+      console.error("Update Ticket Status Error:", error);
+      res.status(500).json({
+        success: false,
+        error: { message: "Failed to update ticket status" },
       });
     }
   }
