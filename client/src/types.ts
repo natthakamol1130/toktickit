@@ -98,12 +98,12 @@ export interface ActionTaken {
 
 export interface Ticket {
   id: number;
-  ticketNo: string;
+  ticketNo?: string;
   ticketNumber?: string;
   requesterId: number;
   ownerId?: number | null;
   categoryId: number;
-  relatedSystemId: number;
+  relatedSystemId?: number;
   requestedPriority: Priority;
   itPriority?: Priority | null;
   status: Status;
@@ -112,8 +112,8 @@ export interface Ticket {
   requesterResolvedInd?: boolean;
   createdAt: string;
   updatedAt: string;
-  category: Category;
-  relatedSystem: RelatedSystem;
+  category?: Category;
+  relatedSystem?: RelatedSystem;
   requester?: RequesterUser;
   owner?: { id: number; name: string; email?: string } | null;
   attachments?: Attachment[];

@@ -44,7 +44,7 @@ describe("Lab 4 UI Tests: RequesterDashboard (UI-06)", () => {
               status: "IN_PROGRESS",
               requestedPriority: "HIGH",
               itPriority: "HIGH",
-              requesterResolved: false,
+              requesterResolvedInd: false,
               categoryId: 1,
               category: { id: 1, name: "Network & VPN" },
               requesterId: 4,
