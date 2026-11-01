@@ -1,16 +1,27 @@
 # TokTickIT - IT Service Desk Application
 
-TokTickIT is an IT service desk web application for Account and Access, Hardware, Software, and Network requests.
+TokTickIT is a full-stack enterprise IT service-desk web application for Account and Access, Hardware, Software, and Network support requests, featuring multi-role RBAC (`REQUESTER`, `IT_STAFF`, `ADMINISTRATOR`), structured **Actions Taken** work logs, formal **Ticket Workflow & Resolution Gates**, **Optimistic Concurrency Control (`409 Conflict`)**, and **Role-Specific Operational Dashboards** under the **Zen Green** design system.
+
+---
 
 ## Documentation & Engineering Specifications
 
-### Sprint 3 (Lab 3)
+### Sprint 4 (Lab 4 — Actions Taken, Role Dashboards & Final Regression)
+- [Sprint 4 Engineering Specification](docs/lab-04/specification.md)
+- [Zen Green UI Specification](docs/lab-04/ui-spec.md)
+- [REST API Contract Specification](docs/lab-04/api-spec.md)
+- [Test Plan & Traceability Matrix](docs/lab-04/tests.md)
+- [Verification & Regression Report](docs/lab-04/verification.md)
+- [Peer Review Log](docs/lab-04/reviewer.md)
+- [AI Usage & Engineering Reflection](docs/lab-04/ai-usage.md)
+
+### Sprint 3 (Lab 3 — Authentication, RBAC, Staff Queue & User Administration)
 - [Sprint 3 Engineering Specification](docs/lab-03/specification.md)
 - [Zen Green UI Specification](docs/lab-03/ui-spec.md)
 - [REST API Contract Specification](docs/lab-03/api-spec.md)
 - [Test Plan & Traceability Matrix](docs/lab-03/tests.md)
 
-### Sprint 2 (Lab 2)
+### Sprint 2 (Lab 2 — Requester Ticket Submission & Attachments)
 - [Sprint 2 Engineering Specification](docs/lab-02/specification.md)
 - [Zen Green UI Specification](docs/lab-02/ui-spec.md)
 - [REST API Contract Specification](docs/lab-02/api-spec.md)
@@ -18,10 +29,12 @@ TokTickIT is an IT service desk web application for Account and Access, Hardware
 ---
 
 ## Tech Stack
-- **Frontend**: React, TypeScript, Vite, Bootstrap
-- **Backend**: Node.js, Express, TypeScript, Prisma ORM
+- **Frontend**: React 18, TypeScript, Vite, Bootstrap 5 (Zen Green Theme)
+- **Backend**: Node.js, Express, TypeScript, Prisma ORM, JWT Authentication
 - **Database**: PostgreSQL
-- **Testing**: Vitest, Supertest, Playwright
+- **Testing**: Vitest, Supertest, React Testing Library, Playwright
+
+---
 
 ## Getting Started
 
@@ -46,7 +59,7 @@ TokTickIT is an IT service desk web application for Account and Access, Hardware
    - Update `DATABASE_URL` in `.env` with your PostgreSQL credentials.
 4. Run migrations and seed the database:
    ```bash
-   npx prisma db push
+   npx prisma migrate deploy
    npm run prisma:seed
    ```
 5. Start the backend development server:
@@ -69,17 +82,15 @@ TokTickIT is an IT service desk web application for Account and Access, Hardware
    ```
 
 ### 3. Running Automated Tests
-- **Backend tests**:
+- **Backend API & Regression Suite (`15/15` suites, `63/63` tests)**:
   ```bash
-  cd server
-  npm test
+  npm --prefix server test
   ```
-- **Frontend tests**:
+- **Frontend UI & Regression Suite (`13/13` suites, `26/26` tests)**:
   ```bash
-  cd client
-  npm test
+  npm --prefix client test
   ```
-- **End-to-End tests**:
+- **End-to-End Playwright Suite**:
   ```bash
-  npx playwright test
+  npx playwright test e2e/lab-04/
   ```
