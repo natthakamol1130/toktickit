@@ -65,6 +65,7 @@ model User {
   ownedTickets   Ticket[]        @relation("OwnerTickets")
   publicComments PublicComment[]
   internalNotes  InternalNote[]
+  actionsTaken   ActionTaken[]   @relation("PerformerActions")
 
   @@index([role, isActive])
 }
@@ -120,6 +121,7 @@ model Ticket {
   attachments    Attachment[]
   publicComments PublicComment[]
   internalNotes  InternalNote[]
+  actionsTaken   ActionTaken[]
 
   @@index([requesterId, createdAt])
   @@index([ownerId, status])
@@ -169,3 +171,28 @@ model InternalNote {
 
   @@index([ticketId, createdAt])
 }
+
+// ---------------------------------------------------------------------------
+// Lab 4 Data Models
+// ---------------------------------------------------------------------------
+
+model ActionTaken {
+  id               Int      @id @default(autoincrement())
+  ticketId         Int
+  performerId      Int
+  actionDateTime   DateTime @default(now())
+  description      String
+  result           String
+  followUpRequired Boolean  @default(false)
+  followUpNote     String?
+  attachmentNotes  String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  ticket    Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  performer User   @relation("PerformerActions", fields: [performerId], references: [id])
+
+  @@index([ticketId, actionDateTime(sort: Desc)])
+  @@index([performerId])
+}
+

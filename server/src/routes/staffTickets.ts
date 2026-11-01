@@ -10,6 +10,23 @@ import {
 export const staffTicketsRouter = Router();
 
 // ---------------------------------------------------------------------------
+// Permitted Ticket Status Transitions Matrix (BR-06, FR-07, AC-06)
+// ---------------------------------------------------------------------------
+export const PERMITTED_STATUS_TRANSITIONS: Record<string, string[]> = {
+  NEW: ["OPEN", "IN_PROGRESS", "CANCELLED"],
+  OPEN: ["IN_PROGRESS", "WAITING_FOR_REQUESTER", "CANCELLED"],
+  IN_PROGRESS: ["WAITING_FOR_REQUESTER", "RESOLVED", "CANCELLED"],
+  WAITING_FOR_REQUESTER: ["IN_PROGRESS", "RESOLVED", "CANCELLED"],
+  RESOLVED: ["CLOSED", "REOPENED"],
+  REOPENED: ["IN_PROGRESS", "WAITING_FOR_REQUESTER", "RESOLVED", "CANCELLED"],
+  CLOSED: ["REOPENED"],
+  CANCELLED: [],
+};
+
+const VALID_IT_PRIORITIES = ["LOW", "MEDIUM", "HIGH", "URGENT"];
+const VALID_STATUSES = Object.keys(PERMITTED_STATUS_TRANSITIONS);
+
+// ---------------------------------------------------------------------------
 // 1. GET /api/staff/tickets (IT Staff Ticket Queue)
 // ---------------------------------------------------------------------------
 staffTicketsRouter.get(
@@ -138,6 +155,10 @@ staffTicketsRouter.get(
             include: { author: { select: { id: true, name: true, email: true, role: true } } },
             orderBy: { createdAt: "asc" },
           },
+          actionsTaken: {
+            include: { performer: { select: { id: true, name: true, email: true, role: true } } },
+            orderBy: { actionDateTime: "desc" },
+          },
         },
       });
 
@@ -234,6 +255,8 @@ staffTicketsRouter.patch(
 
 // ---------------------------------------------------------------------------
 // 4. PATCH /api/staff/tickets/:id/workflow (Update IT Priority & Ticket Status)
+//    Enforces Transition Matrix (BR-06), Resolution Gate (BR-07), and
+//    Optimistic Concurrency Control (BR-08, 409 Conflict)
 // ---------------------------------------------------------------------------
 staffTicketsRouter.patch(
   "/staff/tickets/:id/workflow",
@@ -244,7 +267,7 @@ staffTicketsRouter.patch(
     try {
       const prisma = getPrisma();
       const ticketId = parseInt(req.params.id, 10);
-      const { itPriority, status } = req.body;
+      const { itPriority, status, expectedUpdatedAt, lastUpdatedAt } = req.body;
 
       if (isNaN(ticketId)) {
         res.status(400).json({
@@ -254,9 +277,87 @@ staffTicketsRouter.patch(
         return;
       }
 
+      if (!req.user!.isActive) {
+        res.status(400).json({
+          success: false,
+          error: { message: "Inactive user account cannot update ticket workflow" },
+        });
+        return;
+      }
+
+      const existingTicket = await prisma.ticket.findUnique({
+        where: { id: ticketId },
+      });
+
+      if (!existingTicket) {
+        res.status(404).json({
+          success: false,
+          error: { message: "Ticket not found" },
+        });
+        return;
+      }
+
+      // Optimistic Concurrency Check (BR-08, FR-09, AC-08)
+      const clientTimestamp = expectedUpdatedAt || lastUpdatedAt;
+      if (clientTimestamp !== undefined && clientTimestamp !== null) {
+        const clientTime = new Date(clientTimestamp).getTime();
+        const serverTime = existingTicket.updatedAt.getTime();
+        if (isNaN(clientTime) || Math.abs(clientTime - serverTime) > 1000) {
+          res.status(409).json({
+            success: false,
+            error: "Conflict",
+            message:
+              "The ticket was modified by another user since you loaded it. Please refresh and try again.",
+            currentTicket: {
+              id: existingTicket.id,
+              ticketNo: existingTicket.ticketNo,
+              status: existingTicket.status,
+              itPriority: existingTicket.itPriority,
+              updatedAt: existingTicket.updatedAt,
+            },
+          });
+          return;
+        }
+      }
+
       const updateData: any = {};
-      if (itPriority) updateData.itPriority = itPriority;
-      if (status) updateData.status = status;
+
+      if (itPriority !== undefined) {
+        if (!VALID_IT_PRIORITIES.includes(itPriority)) {
+          res.status(400).json({
+            success: false,
+            error: { message: `Invalid IT Priority: ${itPriority}` },
+          });
+          return;
+        }
+        updateData.itPriority = itPriority;
+      }
+
+      if (status !== undefined) {
+        if (!VALID_STATUSES.includes(status)) {
+          res.status(400).json({
+            success: false,
+            error: { message: `Invalid ticket status: ${status}` },
+          });
+          return;
+        }
+
+        // State Transition Matrix Enforcement (BR-06, FR-07, AC-06)
+        if (status !== existingTicket.status) {
+          const allowedTargets = PERMITTED_STATUS_TRANSITIONS[existingTicket.status] || [];
+          if (!allowedTargets.includes(status)) {
+            res.status(400).json({
+              success: false,
+              error: {
+                message: `Disallowed status transition from ${existingTicket.status} to ${status}`,
+              },
+            });
+            return;
+          }
+        }
+
+        updateData.status = status;
+      }
 
       if (Object.keys(updateData).length === 0) {
         res.status(400).json({
@@ -273,6 +374,10 @@ staffTicketsRouter.patch(
           category: true,
           relatedSystem: true,
           owner: { select: { id: true, name: true, email: true, role: true } },
+          actionsTaken: {
+            include: { performer: { select: { id: true, name: true, email: true, role: true } } },
+            orderBy: { actionDateTime: "desc" },
+          },
         },
       });
 

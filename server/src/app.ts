@@ -9,6 +9,8 @@ import { authRouter } from "./routes/auth.js";
 import { requesterTicketsRouter } from "./routes/requesterTickets.js";
 import { staffTicketsRouter } from "./routes/staffTickets.js";
 import { adminUsersRouter } from "./routes/adminUsers.js";
+import { actionsTakenRouter } from "./routes/actionsTaken.js";
+import { dashboardsRouter } from "./routes/dashboards.js";
 
 export const app = express();
 
@@ -19,6 +21,8 @@ app.use("/api/auth", authRouter);
 app.use("/api", requesterTicketsRouter);
 app.use("/api", staffTicketsRouter);
 app.use("/api", adminUsersRouter);
+app.use("/api", actionsTakenRouter);
+app.use("/api", dashboardsRouter);
 
 // Ensure upload directory exists
 const uploadDir = path.join(process.cwd(), "uploads");

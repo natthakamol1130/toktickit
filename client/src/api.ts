@@ -4,6 +4,7 @@ import {
   RelatedSystem,
   Ticket,
   Attachment,
+  ActionTaken,
   TicketListResponse,
   User,
   AuthResponse,
@@ -247,4 +248,183 @@ export async function softRemoveAttachment(
 
 export function getAttachmentDownloadUrl(attachmentId: number): string {
   return `${API_URL}/api/attachments/${attachmentId}/download`;
+}
+
+// ---------------------------------------------------------------------------
+// Lab 4: Actions Taken & Ticket Workflow API Client Functions
+// ---------------------------------------------------------------------------
+
+export async function fetchActionsTaken(
+  token: string,
+  ticketId: number
+): Promise<ActionTaken[]> {
+  const res = await fetch(`${API_URL}/api/tickets/${ticketId}/actions-taken`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    const err = new Error(json.error?.message || "Failed to load actions taken");
+    (err as any).status = res.status;
+    throw err;
+  }
+  return json.data || [];
+}
+
+export async function createActionTaken(
+  token: string,
+  ticketId: number,
+  payload: {
+    actionDateTime?: string;
+    description: string;
+    result: string;
+    followUpRequired: boolean;
+    followUpNote?: string | null;
+    attachmentNotes?: string | null;
+  }
+): Promise<ActionTaken> {
+  const res = await fetch(`${API_URL}/api/tickets/${ticketId}/actions-taken`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    const err = new Error(json.error?.message || json.message || "Failed to record action taken");
+    (err as any).status = res.status;
+    throw err;
+  }
+  return json.data;
+}
+
+export async function updateActionTaken(
+  token: string,
+  ticketId: number,
+  actionId: number,
+  payload: {
+    actionDateTime?: string;
+    description?: string;
+    result?: string;
+    followUpRequired?: boolean;
+    followUpNote?: string | null;
+    attachmentNotes?: string | null;
+    expectedUpdatedAt?: string;
+  }
+): Promise<ActionTaken> {
+  const res = await fetch(`${API_URL}/api/tickets/${ticketId}/actions-taken/${actionId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    const err = new Error(json.error?.message || json.message || "Failed to update action taken");
+    (err as any).status = res.status;
+    throw err;
+  }
+  return json.data;
+}
+
+export async function updateTicketWorkflow(
+  token: string,
+  ticketId: number,
+  payload: {
+    status?: string;
+    itPriority?: string;
+    ownerId?: number | null;
+    expectedUpdatedAt?: string;
+  }
+): Promise<Ticket> {
+  const res = await fetch(`${API_URL}/api/staff/tickets/${ticketId}/workflow`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    const err = new Error(
+      json.error?.message ||
+        json.message ||
+        "Failed to update ticket workflow"
+    );
+    (err as any).status = res.status;
+    (err as any).currentTicket = json.currentTicket;
+    throw err;
+  }
+  return json.data;
+}
+
+export async function indicateTicketResolved(
+  token: string,
+  ticketId: number,
+  note?: string
+): Promise<Ticket> {
+  const res = await fetch(`${API_URL}/api/tickets/${ticketId}/indicate-resolved`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ note }),
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    const err = new Error(json.error?.message || "Failed to indicate resolution");
+    (err as any).status = res.status;
+    throw err;
+  }
+  return json.data;
+}
+
+
+// ---------------------------------------------------------------------------
+// Lab 4: Role Dashboards API Client Functions
+// ---------------------------------------------------------------------------
+
+export async function fetchRequesterDashboard(
+  token: string
+): Promise<import("./types").RequesterDashboardData> {
+  const res = await fetch(`${API_URL}/api/requesters/dashboard`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    const err = new Error(
+      json.error?.message || "Failed to load requester dashboard"
+    );
+    (err as any).status = res.status;
+    throw err;
+  }
+  return json.data;
+}
+
+export async function fetchStaffDashboard(
+  token: string
+): Promise<import("./types").StaffDashboardData> {
+  const res = await fetch(`${API_URL}/api/staff/dashboard`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    const err = new Error(
+      json.error?.message || "Failed to load staff dashboard"
+    );
+    (err as any).status = res.status;
+    throw err;
+  }
+  return json.data;
 }

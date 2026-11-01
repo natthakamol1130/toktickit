@@ -149,6 +149,14 @@ async function main() {
     },
   ];
 
+  await prisma.user.deleteMany({
+    where: {
+      email: {
+        in: ["alex.thompson@toktickit.com", "alex.thompson.test@toktickit.com"],
+      },
+    },
+  });
+
   const userMap: Record<string, number> = {};
   for (const u of usersData) {
     const user = await prisma.user.upsert({
@@ -159,6 +167,7 @@ async function main() {
         role: u.role,
         isActive: u.isActive,
         mustChangePassword: u.mustChangePassword,
+        passwordHash: u.passwordHash,
       },
       create: u,
     });
@@ -228,7 +237,74 @@ async function main() {
       description: "Please provision standard LEB2 course access for new TA starting next week.",
       requesterResolvedInd: true,
     },
+    {
+      ticketNo: "TKT-2026-001235",
+      requesterEmail: "jennifer.anderson@toktickit.com",
+      categoryName: "Account and Access",
+      systemName: "Email",
+      requestedPriority: RequestedPriority.MEDIUM,
+      itPriority: null,
+      status: TicketStatus.NEW,
+      ownerEmail: null,
+      summary: "Cannot access department shared mailbox",
+      description: "Permission error occurs when attempting to open the engineering faculty shared inbox.",
+      requesterResolvedInd: false,
+    },
+    {
+      ticketNo: "TKT-2026-001236",
+      requesterEmail: "michael.brown@toktickit.com",
+      categoryName: "Network",
+      systemName: "Campus Wi-Fi",
+      requestedPriority: RequestedPriority.LOW,
+      itPriority: ITPriority.LOW,
+      status: TicketStatus.WAITING_FOR_REQUESTER,
+      ownerEmail: "kevin.patel@toktickit.com",
+      summary: "Intermittent Wi-Fi drops in library basement",
+      description: "Connection drops every 10-15 minutes on floor B1 near study carrels.",
+      requesterResolvedInd: false,
+    },
+    {
+      ticketNo: "TKT-2026-001237",
+      requesterEmail: "jennifer.anderson@toktickit.com",
+      categoryName: "Hardware",
+      systemName: "Printer",
+      requestedPriority: RequestedPriority.LOW,
+      itPriority: ITPriority.LOW,
+      status: TicketStatus.CLOSED,
+      ownerEmail: "lisa.martinez@toktickit.com",
+      summary: "Faculty printer paper jam cleared",
+      description: "Main laser printer had mechanical roller jam and tray 2 feeder error.",
+      requesterResolvedInd: true,
+    },
+    {
+      ticketNo: "TKT-2026-001238",
+      requesterEmail: "david.lee@toktickit.com",
+      categoryName: "Network",
+      systemName: "Campus Wi-Fi",
+      requestedPriority: RequestedPriority.HIGH,
+      itPriority: ITPriority.HIGH,
+      status: TicketStatus.REOPENED,
+      ownerEmail: "kevin.patel@toktickit.com",
+      summary: "Recurring Wi-Fi dropouts on 3rd floor study area",
+      description: "The Wi-Fi issue reported last week has re-occurred during evening study hours.",
+      requesterResolvedInd: false,
+    },
+    {
+      ticketNo: "TKT-2026-001239",
+      requesterEmail: "michael.brown@toktickit.com",
+      categoryName: "Software",
+      systemName: "LEB2 App",
+      requestedPriority: RequestedPriority.LOW,
+      itPriority: null,
+      status: TicketStatus.CANCELLED,
+      ownerEmail: null,
+      summary: "Duplicate ticket for course registration issue",
+      description: "Created by mistake; original ticket is already being handled under ticket 001235.",
+      requesterResolvedInd: false,
+    },
   ];
+
+  const ticketMap: Record<string, number> = {};
 
   for (const t of sampleTickets) {
     const requesterId = userMap[t.requesterEmail];
@@ -258,6 +334,8 @@ async function main() {
         requesterResolvedInd: t.requesterResolvedInd,
       },
     });
+
+    ticketMap[t.ticketNo] = createdTicket.id;
 
     // Seed comments/notes for TKT-2026-001234
     if (t.ticketNo === "TKT-2026-001234") {
@@ -292,6 +370,126 @@ async function main() {
       });
     }
   }
+
+  // ---------------------------------------------------------------------------
+  // 5. Seed Actions Taken for Lab 4
+  // ---------------------------------------------------------------------------
+  console.log("Seeding Actions Taken for Lab 4...");
+
+  // Remove existing actions for idempotency
+  await prisma.actionTaken.deleteMany({
+    where: {
+      ticketId: { in: Object.values(ticketMap) },
+    },
+  });
+
+  const actionsData = [
+    // Multiple Actions Taken on TKT-2026-001234 (Multi-staff collaborative remediation)
+    {
+      ticketId: ticketMap["TKT-2026-001234"],
+      performerId: userMap["kevin.patel@toktickit.com"],
+      actionDateTime: new Date("2026-05-12T09:30:00Z"),
+      description: "Ran comprehensive battery diagnostic test and examined voltage regulator readings.",
+      result: "Battery health is at 45% of design capacity. Hardware replacement required.",
+      followUpRequired: true,
+      followUpNote: "Order replacement battery pack SKU-BAT-882 from authorized supplier.",
+      attachmentNotes: "battery_diagnostic_report.png",
+    },
+    {
+      ticketId: ticketMap["TKT-2026-001234"],
+      performerId: userMap["emily.davis@toktickit.com"],
+      actionDateTime: new Date("2026-05-12T14:15:00Z"),
+      description: "Received replacement battery pack SKU-BAT-882 from storage and verified component compatibility.",
+      result: "New battery pack passed preliminary resistance and terminal voltage testing.",
+      followUpRequired: true,
+      followUpNote: "Notify Kevin Patel to coordinate device handover with Requester.",
+      attachmentNotes: "part_inspection_cert.pdf",
+    },
+    {
+      ticketId: ticketMap["TKT-2026-001234"],
+      performerId: userMap["kevin.patel@toktickit.com"],
+      actionDateTime: new Date("2026-05-13T11:00:00Z"),
+      description: "Installed new battery unit into laptop chassis and completed full thermal calibration cycle.",
+      result: "Device completed full charge and discharge cycle with 100% capacity verified.",
+      followUpRequired: false,
+      followUpNote: null,
+      attachmentNotes: "final_qa_checklist.png",
+    },
+
+    // 1 Action Taken on TKT-2026-001232 (In Progress)
+    {
+      ticketId: ticketMap["TKT-2026-001232"],
+      performerId: userMap["emily.davis@toktickit.com"],
+      actionDateTime: new Date("2026-05-11T13:45:00Z"),
+      description: "Checked Exchange ActiveSync protocol logs and verified mail routing policies.",
+      result: "Device partnership corrupted in Exchange mailbox server. Stale partnership removed.",
+      followUpRequired: false,
+      followUpNote: null,
+      attachmentNotes: null,
+    },
+
+    // 1 Action Taken on TKT-2026-001236 (Waiting for Requester with follow-up note)
+    {
+      ticketId: ticketMap["TKT-2026-001236"],
+      performerId: userMap["kevin.patel@toktickit.com"],
+      actionDateTime: new Date("2026-05-10T15:20:00Z"),
+      description: "Re-sent authentication instructions and requested client browser console error log.",
+      result: "Email sent to requester with detailed troubleshooting screenshots.",
+      followUpRequired: true,
+      followUpNote: "Wait 48 hours for requester response before escalating.",
+      attachmentNotes: "instructions_guide.pdf",
+    },
+
+    // 1 Action Taken on TKT-2026-001231 (Resolved ticket)
+    {
+      ticketId: ticketMap["TKT-2026-001231"],
+      performerId: userMap["lisa.martinez@toktickit.com"],
+      actionDateTime: new Date("2026-05-09T16:00:00Z"),
+      description: "Provisioned LEB2 course instructor permissions and synchronized active directory role.",
+      result: "Account provisioned and verified active in production cluster.",
+      followUpRequired: false,
+      followUpNote: null,
+      attachmentNotes: null,
+    },
+
+    // 1 Action Taken on TKT-2026-001237 (Closed ticket)
+    {
+      ticketId: ticketMap["TKT-2026-001237"],
+      performerId: userMap["lisa.martinez@toktickit.com"],
+      actionDateTime: new Date("2026-05-08T10:30:00Z"),
+      description: "Configured static IP reservation for departmental laser printer on Subnet 10.20.4.0/24.",
+      result: "Printer rebooted and network connectivity verified via SNMP ping.",
+      followUpRequired: false,
+      followUpNote: null,
+      attachmentNotes: null,
+    },
+
+    // 2 Actions Taken on TKT-2026-001238 (Reopened ticket)
+    {
+      ticketId: ticketMap["TKT-2026-001238"],
+      performerId: userMap["kevin.patel@toktickit.com"],
+      actionDateTime: new Date("2026-05-07T08:45:00Z"),
+      description: "Investigated recurring Wi-Fi disconnection reports on 3rd floor access points.",
+      result: "Interference detected on channel 6 from rogue AP.",
+      followUpRequired: true,
+      followUpNote: "Locate rogue AP and adjust channel plan.",
+      attachmentNotes: null,
+    },
+    {
+      ticketId: ticketMap["TKT-2026-001238"],
+      performerId: userMap["emily.davis@toktickit.com"],
+      actionDateTime: new Date("2026-05-07T14:30:00Z"),
+      description: "Surveyed 3rd floor with RF spectrum analyzer and repositioned AP-302.",
+      result: "Signal strength improved to -58dBm across all study areas.",
+      followUpRequired: false,
+      followUpNote: null,
+      attachmentNotes: "rf_heat_map.png",
+    },
+  ];
+
+  await prisma.actionTaken.createMany({
+    data: actionsData.filter((a) => a.ticketId),
+  });
 
   console.log("Seeding completed successfully.");
 }

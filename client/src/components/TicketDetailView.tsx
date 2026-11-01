@@ -1,24 +1,36 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { RequesterUser, Ticket, Attachment } from "../types";
+import { RequesterUser, Ticket, Attachment, ActionTaken, Role } from "../types";
 import {
   fetchTicketDetail,
   uploadAttachment,
   softRemoveAttachment,
   getAttachmentDownloadUrl,
+  fetchActionsTaken,
+  createActionTaken,
+  updateActionTaken,
+  updateTicketWorkflow,
+  indicateTicketResolved,
 } from "../api";
+import { ActionsTakenSection } from "./ActionsTakenSection";
+import { TicketWorkflowPanel } from "./TicketWorkflowPanel";
 
 interface TicketDetailViewProps {
   currentRequester: RequesterUser;
   ticketId: number;
   onBack: () => void;
+  userRole?: Role;
+  authToken?: string | null;
 }
 
 export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
   currentRequester,
   ticketId,
   onBack,
+  userRole = "REQUESTER",
+  authToken = null,
 }) => {
   const [ticket, setTicket] = useState<Ticket | null>(null);
+  const [actionsTaken, setActionsTaken] = useState<ActionTaken[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<{ message: string; status?: number; code?: string } | null>(null);
 
@@ -39,6 +51,12 @@ export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
     try {
       const data = await fetchTicketDetail(currentRequester.id, ticketId);
       setTicket(data);
+      if (Array.isArray(data.actionsTaken)) {
+        setActionsTaken(data.actionsTaken);
+      } else if (authToken) {
+        const fetchedActions = await fetchActionsTaken(authToken, ticketId).catch(() => []);
+        setActionsTaken(fetchedActions);
+      }
     } catch (err: any) {
       setError({
         message: err.message || "Failed to load ticket details",
@@ -48,7 +66,7 @@ export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
     } finally {
       setLoading(false);
     }
-  }, [currentRequester.id, ticketId]);
+  }, [currentRequester.id, ticketId, authToken]);
 
   useEffect(() => {
     loadDetail();
@@ -93,6 +111,54 @@ export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
     }
   };
 
+  const handleCreateAction = async (payload: {
+    actionDateTime: string;
+    description: string;
+    result: string;
+    followUpRequired: boolean;
+    followUpNote?: string | null;
+    attachmentNotes?: string | null;
+  }) => {
+    if (!authToken) return;
+    await createActionTaken(authToken, ticketId, payload);
+    await loadDetail();
+  };
+
+  const handleUpdateAction = async (
+    actionId: number,
+    payload: {
+      description: string;
+      result: string;
+      followUpRequired: boolean;
+      followUpNote?: string | null;
+      attachmentNotes?: string | null;
+      expectedUpdatedAt?: string;
+    }
+  ) => {
+    if (!authToken) return;
+    await updateActionTaken(authToken, ticketId, actionId, payload);
+    await loadDetail();
+  };
+
+  const handleUpdateWorkflow = async (payload: {
+    status?: string;
+    itPriority?: string;
+    expectedUpdatedAt?: string;
+  }) => {
+    if (!authToken) return;
+    const updated = await updateTicketWorkflow(authToken, ticketId, payload);
+    setTicket(updated);
+  };
+
+  const handleIndicateResolved = async (note?: string) => {
+    if (!authToken) {
+      setTicket((prev) => (prev ? { ...prev, requesterResolvedInd: true } : prev));
+      return;
+    }
+    const updated = await indicateTicketResolved(authToken, ticketId, note);
+    setTicket(updated);
+  };
+
   const renderPriorityBadge = (priority: string) => {
     const p = priority.toUpperCase();
     const cls =
@@ -116,7 +182,7 @@ export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
         : s === "RESOLVED"
         ? "badge-status-resolved"
         : "badge-status-closed";
-    return <span className={`badge ${cls} px-2 py-1`}>{status.replace("_", " ")}</span>;
+    return <span className={`badge ${cls} px-2 py-1`}>{status.replace(/_/g, " ")}</span>;
   };
 
   if (loading) {
@@ -315,6 +381,25 @@ export const TicketDetailView: React.FC<TicketDetailViewProps> = ({
           )}
         </div>
       </div>
+
+      {/* Lab 4: Ticket Workflow & Resolution Controls */}
+      <TicketWorkflowPanel
+        ticket={ticket}
+        userRole={userRole}
+        onUpdateWorkflow={handleUpdateWorkflow}
+        onIndicateResolved={handleIndicateResolved}
+        onRefreshTicket={loadDetail}
+      />
+
+      {/* Lab 4: Actions Taken Work Log Section */}
+      <ActionsTakenSection
+        ticketId={ticket.id}
+        actions={actionsTaken}
+        userRole={userRole}
+        currentUserName={currentRequester.name}
+        onCreateAction={handleCreateAction}
+        onUpdateAction={handleUpdateAction}
+      />
 
       {/* Upload Attachment Modal */}
       {showUploadModal && (
